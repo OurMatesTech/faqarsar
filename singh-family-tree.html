@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Singh Family Tree</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0c0b0f;color:#e8e4dc;font-family:'DM Sans',sans-serif;overflow:hidden;height:100vh;width:100vw}
+
+#toolbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 24px;
+  background:linear-gradient(180deg,rgba(12,11,15,0.95) 0%,rgba(12,11,15,0) 100%);
+  pointer-events:none;
+}
+#toolbar>*{pointer-events:auto}
+.title-area{display:flex;align-items:baseline;gap:12px}
+.title-area h1{font-family:'Playfair Display',serif;font-size:22px;font-weight:500;color:#e8e4dc;letter-spacing:-0.02em}
+.title-area .subtitle{font-size:12px;color:#7a7670;letter-spacing:0.04em}
+.controls{display:flex;gap:8px;align-items:center}
+.controls button{
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
+  color:#a09a90;font-size:13px;padding:6px 14px;border-radius:8px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all 0.2s;
+}
+.controls button:hover{background:rgba(255,255,255,0.1);color:#e8e4dc;border-color:rgba(255,255,255,0.15)}
+.controls input{
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
+  color:#e8e4dc;font-size:13px;padding:6px 14px;border-radius:8px;width:200px;
+  font-family:'DM Sans',sans-serif;outline:none;
+}
+.controls input::placeholder{color:#5a5550}
+.controls input:focus{border-color:rgba(200,170,120,0.4)}
+
+#canvas-wrap{position:absolute;inset:0;overflow:hidden;cursor:grab}
+#canvas-wrap.dragging{cursor:grabbing}
+#canvas{position:absolute;transform-origin:0 0}
+
+svg.lines{position:absolute;top:0;left:0;pointer-events:none;overflow:visible}
+svg.lines path{fill:none;stroke:rgba(200,170,120,0.15);stroke-width:1.5}
+svg.lines path.highlighted{stroke:rgba(200,170,120,0.5);stroke-width:2}
+
+.node{
+  position:absolute;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:12px;padding:12px 16px;
+  cursor:pointer;transition:all 0.25s;
+  text-align:center;min-width:120px;
+}
+.node:hover{background:rgba(255,255,255,0.06);border-color:rgba(200,170,120,0.3);transform:translateY(-2px)}
+.node.active{
+  background:rgba(200,170,120,0.08);
+  border-color:rgba(200,170,120,0.5);
+  box-shadow:0 0 30px rgba(200,170,120,0.08);
+}
+.node.ancestor{border-color:rgba(200,170,120,0.3);border-style:dashed}
+.node.descendant{border-left:3px solid rgba(200,170,120,0.4)}
+.node.search-match{background:rgba(200,170,120,0.1);border-color:rgba(200,170,120,0.4)}
+.node.dimmed{opacity:0.25}
+.node .mid-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:500;color:#e8e4dc;letter-spacing:-0.01em}
+.node .full-label{font-size:10px;color:#6a6560;margin-top:2px;letter-spacing:0.02em}
+.node .gen-badge{
+  display:inline-block;font-size:9px;color:#5a5550;
+  background:rgba(255,255,255,0.04);border-radius:4px;
+  padding:1px 6px;margin-top:4px;
+}
+.node .desc-count{
+  position:absolute;top:-8px;right:-8px;
+  font-size:9px;color:rgba(200,170,120,0.8);
+  background:#1a1820;border:1px solid rgba(200,170,120,0.2);
+  border-radius:10px;padding:1px 6px;min-width:18px;text-align:center;
+}
+.node .leaf-badge{
+  display:inline-block;font-size:9px;color:#6a5040;
+  background:rgba(200,170,120,0.06);border:1px solid rgba(200,170,120,0.1);
+  border-radius:4px;padding:1px 6px;margin-top:4px;margin-left:4px;
+  letter-spacing:0.02em;
+}
+.node.leaf{border-style:dotted;border-color:rgba(255,255,255,0.05)}
+.node.has-note{border-color:rgba(180,80,60,0.3)}
+.node.has-location{border-color:rgba(80,160,120,0.3)}
+.node .card-note{
+  font-size:8px;color:rgba(180,80,60,0.7);margin-top:3px;
+  font-style:italic;line-height:1.3;white-space:normal;
+  max-width:120px;overflow:hidden;text-overflow:ellipsis;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+}
+.node .card-note.location{
+  color:rgba(80,180,120,0.85);font-style:normal;font-weight:500;
+}
+
+#detail-panel{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  z-index:100;min-width:360px;max-width:600px;
+  background:rgba(20,18,24,0.95);backdrop-filter:blur(20px);
+  border:1px solid rgba(200,170,120,0.15);border-radius:16px;
+  padding:20px 24px;display:none;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+#detail-panel.visible{display:block}
+#detail-panel h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:500;color:#e8e4dc;margin-bottom:4px}
+#detail-panel .lineage{font-size:12px;color:#8a8580;line-height:1.8;margin-top:8px}
+#detail-panel .lineage .step{
+  display:inline-block;padding:2px 8px;border-radius:6px;
+  background:rgba(255,255,255,0.04);color:#a09a90;cursor:pointer;
+  transition:background 0.15s;
+}
+#detail-panel .lineage .step:hover{background:rgba(200,170,120,0.15);color:#e8e4dc}
+#detail-panel .lineage .arrow{color:#4a4540;margin:0 3px;font-size:10px}
+.detail-meta{display:flex;gap:16px;margin-top:8px;font-size:11px;color:#6a6560}
+.detail-section{margin-top:10px}
+.detail-section-label{font-size:10px;color:#5a5550;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{
+  font-size:11px;padding:3px 10px;border-radius:6px;
+  background:rgba(255,255,255,0.04);color:#8a8580;cursor:pointer;
+  border:1px solid transparent;transition:all 0.15s;
+}
+.tag:hover{background:rgba(200,170,120,0.1);color:#e8e4dc;border-color:rgba(200,170,120,0.2)}
+#close-detail{
+  position:absolute;top:12px;right:14px;background:none;border:none;
+  color:#5a5550;font-size:18px;cursor:pointer;padding:4px;
+}
+#close-detail:hover{color:#e8e4dc}
+
+#minimap{
+  position:fixed;bottom:20px;right:20px;z-index:90;
+  width:160px;height:100px;
+  background:rgba(20,18,24,0.8);border:1px solid rgba(255,255,255,0.06);
+  border-radius:8px;overflow:hidden;
+}
+#minimap canvas{width:100%;height:100%}
+#minimap .viewport{
+  position:absolute;border:1px solid rgba(200,170,120,0.4);
+  border-radius:2px;pointer-events:none;
+}
+
+.zoom-hint{
+  position:fixed;bottom:20px;right:200px;z-index:90;
+  font-size:11px;color:#4a4540;
+}
+</style>
+</head>
+<body>
+
+<div id="toolbar">
+  <div class="title-area">
+    <h1>Singh family</h1>
+    <span class="subtitle">394 members across 12 generations</span>
+  </div>
+  <div class="controls">
+    <input type="text" id="search" placeholder="Search by name..." />
+    <button onclick="resetView()">Fit to view</button>
+    <button onclick="zoomIn()">+</button>
+    <button onclick="zoomOut()">&minus;</button>
+  </div>
+</div>
+
+<div id="canvas-wrap">
+  <div id="canvas">
+    <svg class="lines" id="lines-svg"></svg>
+  </div>
+</div>
+
+<div id="detail-panel">
+  <button id="close-detail" onclick="clearSelection()">&times;</button>
+  <div id="detail-content"></div>
+</div>
+
+<div id="minimap"><canvas id="minimap-canvas"></canvas><div class="viewport" id="minimap-vp"></div></div>
+<div class="zoom-hint">Scroll to zoom · drag to pan</div>
+
+<script>
+const raw = {"p1":{"id":"p1","firstName":"Baba","middleName":"Singha","lastName":"Singh","parents":[],"children":["p2"],"notes":""},"p2":{"id":"p2","firstName":"Baba","middleName":"Bagga","lastName":"Singh","parents":["p1"],"children":["p3","p4"],"notes":""},"p3":{"id":"p3","firstName":"Baba","middleName":"Mohri","lastName":"Singh","parents":["p2"],"children":["p5","p6","p7","p8","p9","p10"],"notes":""},"p4":{"id":"p4","firstName":"Baba","middleName":"Sangat","lastName":"Singh","parents":["p2"],"children":["p337","p338","p339"],"notes":""},"p5":{"id":"p5","firstName":"Baba","middleName":"Bela","lastName":"Singh","parents":["p3"],"children":["p11","p12","p13"],"notes":""},"p6":{"id":"p6","firstName":"Baba","middleName":"Gulab","lastName":"Singh","parents":["p3"],"children":["p73","p74"],"notes":""},"p7":{"id":"p7","firstName":"Baba","middleName":"Karam","lastName":"Singh","parents":["p3"],"children":["p104","p105","p106"],"notes":""},"p8":{"id":"p8","firstName":"Baba","middleName":"Dharam","lastName":"Singh","parents":["p3"],"children":["p183","p184","p185","p186"],"notes":""},"p9":{"id":"p9","firstName":"Baba","middleName":"Saun","lastName":"Singh","parents":["p3"],"children":[],"notes":""},"p10":{"id":"p10","firstName":"Baba","middleName":"Ram","lastName":"Singh","parents":["p3"],"children":["p115","p116","p117","p118"],"notes":""},"p11":{"id":"p11","firstName":"Baba","middleName":"Fateh","lastName":"Singh","parents":["p5"],"children":["p14"],"notes":""},"p12":{"id":"p12","firstName":"Baba","middleName":"Anokh","lastName":"Singh","parents":["p5"],"children":["p20","p21","p22"],"notes":""},"p13":{"id":"p13","firstName":"Baba","middleName":"Narang","lastName":"Singh","parents":["p5"],"children":["p70"],"notes":""},"p14":{"id":"p14","firstName":"Baba","middleName":"Faagad","lastName":"Singh","parents":["p11"],"children":["p15","p16","p17","p18","p19"],"notes":""},"p15":{"id":"p15","firstName":"Baba","middleName":"Channan","lastName":"Singh","parents":["p14"],"children":["p361","p362","p363"],"notes":""},"p16":{"id":"p16","firstName":"Baba","middleName":"Nuggah","lastName":"Singh","parents":["p14"],"children":["p355","p356"],"notes":""},"p17":{"id":"p17","firstName":"Baba","middleName":"Jetha","lastName":"Singh","parents":["p14"],"children":[],"notes":"No children"},"p18":{"id":"p18","firstName":"Baba","middleName":"Mall","lastName":"Singh","parents":["p14"],"children":["p364","p365","p366"],"notes":""},"p19":{"id":"p19","firstName":"Baba","middleName":"Karnail","lastName":"Singh","parents":["p14"],"children":["p357","p358","p359","p360"],"notes":""},"p20":{"id":"p20","firstName":"Baba","middleName":"Bhagwan","lastName":"Singh","parents":["p12"],"children":["p23","p24"],"notes":""},"p21":{"id":"p21","firstName":"Baba","middleName":"Kishan","lastName":"Singh","parents":["p12"],"children":["p43","p44"],"notes":""},"p22":{"id":"p22","firstName":"Baba","middleName":"Bishan","lastName":"Singh","parents":["p12"],"children":["p58"],"notes":""},"p23":{"id":"p23","firstName":"Baba","middleName":"Arjan","lastName":"Singh","parents":["p20"],"children":["p25","p26"],"notes":""},"p24":{"id":"p24","firstName":"Baba","middleName":"Sajjan","lastName":"Singh","parents":["p20"],"children":["p32","p33","p34","p35"],"notes":""},"p25":{"id":"p25","firstName":"","middleName":"Bakhtaur","lastName":"Singh","parents":["p23"],"children":["p27","p28"],"notes":""},"p26":{"id":"p26","firstName":"","middleName":"Gurnam","lastName":"Singh","parents":["p23"],"children":["p29","p30","p31"],"notes":""},"p27":{"id":"p27","firstName":"","middleName":"Avtar","lastName":"Singh","parents":["p25"],"children":[],"notes":""},"p28":{"id":"p28","firstName":"","middleName":"Guljaar","lastName":"Singh","parents":["p25"],"children":[],"notes":""},"p29":{"id":"p29","firstName":"","middleName":"Jagjeet","lastName":"Singh","parents":["p26"],"children":[],"notes":""},"p30":{"id":"p30","firstName":"","middleName":"Baljeet","lastName":"Singh","parents":["p26"],"children":[],"notes":""},"p31":{"id":"p31","firstName":"","middleName":"Malkeet","lastName":"Singh","parents":["p26"],"children":[],"notes":""},"p32":{"id":"p32","firstName":"","middleName":"Kartar","lastName":"Singh","parents":["p24"],"children":[],"notes":"No children"},"p33":{"id":"p33","firstName":"","middleName":"Harnek","lastName":"Singh","parents":["p24"],"children":["p36","p37"],"notes":""},"p34":{"id":"p34","firstName":"","middleName":"Laal","lastName":"Singh","parents":["p24"],"children":["p38","p39","p40"],"notes":""},"p35":{"id":"p35","firstName":"","middleName":"Jagraaj","lastName":"Singh","parents":["p24"],"children":["p41","p42"],"notes":""},"p36":{"id":"p36","firstName":"","middleName":"Balveer","lastName":"Singh","parents":["p33"],"children":[],"notes":""},"p37":{"id":"p37","firstName":"","middleName":"Basant","lastName":"Singh","parents":["p33"],"children":[],"notes":""},"p38":{"id":"p38","firstName":"","middleName":"Gora","lastName":"Singh","parents":["p34"],"children":[],"notes":""},"p39":{"id":"p39","firstName":"","middleName":"Rashpal","lastName":"Singh","parents":["p34"],"children":[],"notes":""},"p40":{"id":"p40","firstName":"","middleName":"Sukhpaal","lastName":"Singh","parents":["p34"],"children":[],"notes":""},"p41":{"id":"p41","firstName":"","middleName":"Vajeer","lastName":"Singh","parents":["p35"],"children":[],"notes":""},"p42":{"id":"p42","firstName":"","middleName":"Balwinder","lastName":"Singh","parents":["p35"],"children":[],"notes":""},"p43":{"id":"p43","firstName":"Baba","middleName":"Mehar Singh Samaji","lastName":"","parents":["p21"],"children":["p45","p46","p47"],"notes":""},"p44":{"id":"p44","firstName":"Baba","middleName":"Jhanda","lastName":"Singh","parents":["p21"],"children":["p68","p69"],"notes":""},"p45":{"id":"p45","firstName":"","middleName":"Hari","lastName":"Singh","parents":["p43"],"children":["p48","p49"],"notes":""},"p46":{"id":"p46","firstName":"","middleName":"Mukand","lastName":"Singh","parents":["p43"],"children":["p50","p51","p52","p53"],"notes":""},"p47":{"id":"p47","firstName":"","middleName":"Magghar","lastName":"Singh","parents":["p43"],"children":["p54","p55","p56","p57"],"notes":""},"p48":{"id":"p48","firstName":"","middleName":"Jagdev","lastName":"Singh","parents":["p45"],"children":[],"notes":""},"p49":{"id":"p49","firstName":"","middleName":"Darshan","lastName":"Singh","parents":["p45"],"children":[],"notes":""},"p50":{"id":"p50","firstName":"","middleName":"Gurjant","lastName":"Singh","parents":["p46"],"children":[],"notes":""},"p51":{"id":"p51","firstName":"","middleName":"Gurmail","lastName":"Singh","parents":["p46"],"children":[],"notes":""},"p52":{"id":"p52","firstName":"","middleName":"Harmail","lastName":"Singh","parents":["p46"],"children":[],"notes":""},"p53":{"id":"p53","firstName":"","middleName":"Gurdas","lastName":"Singh","parents":["p46"],"children":[],"notes":""},"p54":{"id":"p54","firstName":"","middleName":"Sukhdev","lastName":"Singh","parents":["p47"],"children":[],"notes":""},"p55":{"id":"p55","firstName":"","middleName":"Gurtej","lastName":"Singh","parents":["p47"],"children":[],"notes":""},"p56":{"id":"p56","firstName":"","middleName":"Baltej","lastName":"Singh","parents":["p47"],"children":[],"notes":""},"p57":{"id":"p57","firstName":"","middleName":"Darbaara","lastName":"Singh","parents":["p47"],"children":[],"notes":""},"p58":{"id":"p58","firstName":"Baba","middleName":"Kaaka","lastName":"Singh","parents":["p22"],"children":["p59","p60","p61"],"notes":""},"p59":{"id":"p59","firstName":"","middleName":"Gurdev","lastName":"Singh","parents":["p58"],"children":["p62","p63","p64","p65"],"notes":""},"p60":{"id":"p60","firstName":"","middleName":"Bachan","lastName":"Singh","parents":["p58"],"children":["p66"],"notes":""},"p61":{"id":"p61","firstName":"","middleName":"Jaib","lastName":"Singh","parents":["p58"],"children":["p67"],"notes":""},"p62":{"id":"p62","firstName":"","middleName":"Jagga","lastName":"Singh","parents":["p59"],"children":[],"notes":""},"p63":{"id":"p63","firstName":"","middleName":"Paala","lastName":"Singh","parents":["p59"],"children":[],"notes":""},"p64":{"id":"p64","firstName":"","middleName":"Bohad","lastName":"Singh","parents":["p59"],"children":[],"notes":""},"p65":{"id":"p65","firstName":"","middleName":"Binder","lastName":"Singh","parents":["p59"],"children":[],"notes":""},"p66":{"id":"p66","firstName":"","middleName":"Jagseer","lastName":"Singh","parents":["p60"],"children":[],"notes":""},"p67":{"id":"p67","firstName":"","middleName":"Gurjant","lastName":"Singh","parents":["p61"],"children":[],"notes":""},"p68":{"id":"p68","firstName":"","middleName":"Mukhtiar","lastName":"Singh","parents":["p44"],"children":[],"notes":""},"p69":{"id":"p69","firstName":"","middleName":"Sohan","lastName":"Singh","parents":["p44"],"children":[],"notes":""},"p70":{"id":"p70","firstName":"Baba","middleName":"Lehna","lastName":"Singh","parents":["p13"],"children":["p71","p72"],"notes":""},"p71":{"id":"p71","firstName":"Baba","middleName":"Mall","lastName":"Singh","parents":["p70"],"children":[],"notes":"Died in a train accident; no children"},"p72":{"id":"p72","firstName":"Baba","middleName":"Kaala","lastName":"Singh","parents":["p70"],"children":[],"notes":"Died in a train accident; no children"},"p73":{"id":"p73","firstName":"Baba","middleName":"Raaw","lastName":"Singh","parents":["p6"],"children":["p75","p76","p77","p78","p79","p80"],"notes":""},"p74":{"id":"p74","firstName":"Baba","middleName":"Vsaava","lastName":"Singh","parents":["p6"],"children":["p97","p98"],"notes":""},"p75":{"id":"p75","firstName":"Baba","middleName":"Varyaam","lastName":"Singh","parents":["p73"],"children":["p81","p82","p83"],"notes":""},"p76":{"id":"p76","firstName":"Baba","middleName":"Harnaam Singh Numberdaar","lastName":"","parents":["p73"],"children":["p84","p85","p290"],"notes":""},"p77":{"id":"p77","firstName":"Baba","middleName":"Shaam","lastName":"Singh","parents":["p73"],"children":["p86","p87","p88"],"notes":""},"p78":{"id":"p78","firstName":"Baba","middleName":"Kaahan","lastName":"Singh","parents":["p73"],"children":["p89","p90","p91"],"notes":""},"p79":{"id":"p79","firstName":"Baba","middleName":"Bhaan","lastName":"Singh","parents":["p73"],"children":["p92","p93"],"notes":""},"p80":{"id":"p80","firstName":"Baba","middleName":"Paalu","lastName":"Singh","parents":["p73"],"children":["p94","p95"],"notes":""},"p81":{"id":"p81","firstName":"Baba","middleName":"Bhaag","lastName":"Singh","parents":["p75"],"children":["p324","p325"],"notes":""},"p82":{"id":"p82","firstName":"Baba","middleName":"Preetam","lastName":"Singh","parents":["p75"],"children":["p328","p329"],"notes":""},"p83":{"id":"p83","firstName":"Baba","middleName":"Mehar","lastName":"Singh","parents":["p75"],"children":["p330","p331"],"notes":""},"p84":{"id":"p84","firstName":"Baba","middleName":"Inder","lastName":"Singh","parents":["p76"],"children":["p291","p292","p293","p294"],"notes":""},"p85":{"id":"p85","firstName":"Baba","middleName":"Jageer","lastName":"Singh","parents":["p76"],"children":[],"notes":""},"p86":{"id":"p86","firstName":"Baba","middleName":"Nihaal","lastName":"Singh","parents":["p77"],"children":["p308"],"notes":""},"p87":{"id":"p87","firstName":"Baba","middleName":"Kheta","lastName":"Singh","parents":["p77"],"children":["p305","p306","p307"],"notes":""},"p88":{"id":"p88","firstName":"Baba","middleName":"Neta","lastName":"Singh","parents":["p77"],"children":["p303","p304"],"notes":""},"p89":{"id":"p89","firstName":"Baba","middleName":"Albel","lastName":"Singh","parents":["p78"],"children":["p311"],"notes":""},"p90":{"id":"p90","firstName":"Baba","middleName":"Sapoora","lastName":"Singh","parents":["p78"],"children":["p309"],"notes":""},"p91":{"id":"p91","firstName":"Baba","middleName":"Bhola","lastName":"Singh","parents":["p78"],"children":[],"notes":""},"p92":{"id":"p92","firstName":"Baba","middleName":"Kaala","lastName":"Singh","parents":["p79"],"children":["p319","p320","p321","p322","p323"],"notes":""},"p93":{"id":"p93","firstName":"Baba","middleName":"Gita","lastName":"Singh","parents":["p79"],"children":["p318"],"notes":""},"p94":{"id":"p94","firstName":"Baba","middleName":"Kaala","lastName":"Singh","parents":["p80"],"children":["p96"],"notes":""},"p95":{"id":"p95","firstName":"Baba","middleName":"Aatma","lastName":"Singh","parents":["p80"],"children":["p313","p314"],"notes":""},"p96":{"id":"p96","firstName":"","middleName":"Tehal","lastName":"Singh","parents":["p94"],"children":["p315","p316","p317"],"notes":""},"p97":{"id":"p97","firstName":"Baba","middleName":"Sundar","lastName":"Singh","parents":["p74"],"children":["p99","p100","p101","p102","p103"],"notes":""},"p98":{"id":"p98","firstName":"Baba","middleName":"Kunda","lastName":"Singh","parents":["p74"],"children":[],"notes":"Had 2 daughters"},"p99":{"id":"p99","firstName":"Baba","middleName":"Haakam","lastName":"Singh","parents":["p97"],"children":[],"notes":""},"p100":{"id":"p100","firstName":"Baba","middleName":"Ktaar","lastName":"Singh","parents":["p97"],"children":[],"notes":""},"p101":{"id":"p101","firstName":"Baba","middleName":"Kartaar","lastName":"Singh","parents":["p97"],"children":[],"notes":""},"p102":{"id":"p102","firstName":"Baba","middleName":"Darbaara","lastName":"Singh","parents":["p97"],"children":[],"notes":""},"p103":{"id":"p103","firstName":"Baba","middleName":"Jeon","lastName":"Singh","parents":["p97"],"children":[],"notes":""},"p104":{"id":"p104","firstName":"Baba","middleName":"Maana","lastName":"Singh","parents":["p7"],"children":["p107"],"notes":""},"p105":{"id":"p105","firstName":"Baba","middleName":"Banna","lastName":"Singh","parents":["p7"],"children":[],"notes":"No children; land/property given to Jaggar"},"p106":{"id":"p106","firstName":"Baba","middleName":"Dhanna","lastName":"Singh","parents":["p7"],"children":[],"notes":"No children; land/property given to Jaggar"},"p107":{"id":"p107","firstName":"Baba","middleName":"Jaggar","lastName":"Singh","parents":["p104"],"children":["p108","p109","p110","p111","p112","p113","p114"],"notes":""},"p108":{"id":"p108","firstName":"Baba","middleName":"Bachan","lastName":"Singh","parents":["p107"],"children":["p367","p368","p369","p370","p371","p372"],"notes":""},"p109":{"id":"p109","firstName":"Baba","middleName":"Laal","lastName":"Singh","parents":["p107"],"children":["p373","p374","p375","p376","p377","p378"],"notes":""},"p110":{"id":"p110","firstName":"Baba","middleName":"Ganda","lastName":"Singh","parents":["p107"],"children":["p379","p380","p381","p382","p383","p384"],"notes":"Alias Mukand"},"p111":{"id":"p111","firstName":"Baba","middleName":"Avtar","lastName":"Singh","parents":["p107"],"children":["p385","p386"],"notes":""},"p112":{"id":"p112","firstName":"Baba","middleName":"Harnek","lastName":"Singh","parents":["p107"],"children":["p387","p388","p389"],"notes":""},"p113":{"id":"p113","firstName":"Baba","middleName":"Haakam","lastName":"Singh","parents":["p107"],"children":["p390","p391"],"notes":""},"p114":{"id":"p114","firstName":"Baba","middleName":"Gurjant","lastName":"Singh","parents":["p107"],"children":["p392","p393","p394","p395"],"notes":"Alias Shotu"},"p115":{"id":"p115","firstName":"Baba","middleName":"Laal","lastName":"Singh","parents":["p10"],"children":["p119","p120","p121","p122"],"notes":""},"p116":{"id":"p116","firstName":"Baba","middleName":"Sujaan","lastName":"Singh","parents":["p10"],"children":["p133","p134","p135","p136"],"notes":""},"p117":{"id":"p117","firstName":"Baba","middleName":"Sodha","lastName":"Singh","parents":["p10"],"children":[],"notes":"Died with no children"},"p118":{"id":"p118","firstName":"Baba","middleName":"Yodha","lastName":"Singh","parents":["p10"],"children":["p163","p164"],"notes":""},"p119":{"id":"p119","firstName":"Baba","middleName":"Bhaag","lastName":"Singh","parents":["p115"],"children":["p123","p124","p125"],"notes":""},"p120":{"id":"p120","firstName":"Baba","middleName":"Kirpaal","lastName":"Singh","parents":["p115"],"children":["p126","p127","p128"],"notes":""},"p121":{"id":"p121","firstName":"Baba","middleName":"Tikka","lastName":"Singh","parents":["p115"],"children":["p129","p130","p131","p132"],"notes":""},"p122":{"id":"p122","firstName":"Baba","middleName":"Karnail","lastName":"Singh","parents":["p115"],"children":[],"notes":""},"p123":{"id":"p123","firstName":"Baba","middleName":"Banta","lastName":"Singh","parents":["p119"],"children":[],"notes":""},"p124":{"id":"p124","firstName":"Baba","middleName":"Gurnaam","lastName":"Singh","parents":["p119"],"children":[],"notes":"Alias Gaamu"},"p125":{"id":"p125","firstName":"Baba","middleName":"Jeeta","lastName":"Singh","parents":["p119"],"children":[],"notes":""},"p126":{"id":"p126","firstName":"Baba","middleName":"Haakam","lastName":"Singh","parents":["p120"],"children":[],"notes":""},"p127":{"id":"p127","firstName":"Baba","middleName":"Ajmair","lastName":"Singh","parents":["p120"],"children":[],"notes":"Paathi"},"p128":{"id":"p128","firstName":"Baba","middleName":"Jej","lastName":"Singh","parents":["p120"],"children":[],"notes":""},"p129":{"id":"p129","firstName":"Baba","middleName":"Gurjant","lastName":"Singh","parents":["p121"],"children":[],"notes":"Alias Jattu"},"p130":{"id":"p130","firstName":"Baba","middleName":"Sukhdev","lastName":"Singh","parents":["p121"],"children":[],"notes":"Alias Sukha"},"p131":{"id":"p131","firstName":"Baba","middleName":"Jasveer","lastName":"Singh","parents":["p121"],"children":[],"notes":"Alias DC"},"p132":{"id":"p132","firstName":"Baba","middleName":"Gurdev","lastName":"Singh","parents":["p121"],"children":[],"notes":"Alias Cheena"},"p133":{"id":"p133","firstName":"Baba","middleName":"Fumman","lastName":"Singh","parents":["p116"],"children":["p137","p138","p139","p140"],"notes":""},"p134":{"id":"p134","firstName":"Baba","middleName":"Gurditt","lastName":"Singh","parents":["p116"],"children":["p141","p142","p143"],"notes":""},"p135":{"id":"p135","firstName":"Baba","middleName":"Jwaala","lastName":"Singh","parents":["p116"],"children":["p144","p145"],"notes":""},"p136":{"id":"p136","firstName":"Baba","middleName":"Maalha","lastName":"Singh","parents":["p116"],"children":["p146","p147","p148","p149","p150","p151"],"notes":""},"p137":{"id":"p137","firstName":"Baba","middleName":"Jageer","lastName":"Singh","parents":["p133"],"children":[],"notes":""},"p138":{"id":"p138","firstName":"Baba","middleName":"Jagraj","lastName":"Singh","parents":["p133"],"children":[],"notes":"Alias Gaaja"},"p139":{"id":"p139","firstName":"Baba","middleName":"Mukhtiar","lastName":"Singh","parents":["p133"],"children":[],"notes":"Alias Mishri"},"p140":{"id":"p140","firstName":"Baba","middleName":"Roop","lastName":"Singh","parents":["p133"],"children":["p152","p153"],"notes":""},"p152":{"id":"p152","firstName":"","middleName":"Jagseer","lastName":"Singh","parents":["p140"],"children":[],"notes":""},"p153":{"id":"p153","firstName":"","middleName":"Premjeet","lastName":"Singh","parents":["p140"],"children":[],"notes":"Alias Mithu"},"p141":{"id":"p141","firstName":"Baba","middleName":"Sikanda","lastName":"Singh","parents":["p134"],"children":[],"notes":"📍 Rajasthan"},"p142":{"id":"p142","firstName":"Baba","middleName":"Santa","lastName":"Singh","parents":["p134"],"children":["p154","p155","p156"],"notes":""},"p143":{"id":"p143","firstName":"Baba","middleName":"Kabir","lastName":"Singh","parents":["p134"],"children":["p157","p158"],"notes":""},"p154":{"id":"p154","firstName":"","middleName":"Baldev","lastName":"Singh","parents":["p142"],"children":[],"notes":""},"p155":{"id":"p155","firstName":"","middleName":"Teja","lastName":"Singh","parents":["p142"],"children":[],"notes":""},"p156":{"id":"p156","firstName":"","middleName":"Harnek","lastName":"Singh","parents":["p142"],"children":[],"notes":""},"p157":{"id":"p157","firstName":"","middleName":"Sukhmandar","lastName":"Singh","parents":["p143"],"children":[],"notes":""},"p158":{"id":"p158","firstName":"","middleName":"Jasmail","lastName":"Singh","parents":["p143"],"children":[],"notes":""},"p144":{"id":"p144","firstName":"Baba","middleName":"Bikkar","lastName":"Singh","parents":["p135"],"children":["p159","p160"],"notes":""},"p145":{"id":"p145","firstName":"Baba","middleName":"Jagnandan","lastName":"Singh","parents":["p135"],"children":["p161","p162"],"notes":""},"p159":{"id":"p159","firstName":"","middleName":"Sukhmandar","lastName":"Singh","parents":["p144"],"children":[],"notes":"Alias Mandar"},"p160":{"id":"p160","firstName":"","middleName":"Iqbal","lastName":"Singh","parents":["p144"],"children":[],"notes":"Alias Kaura"},"p161":{"id":"p161","firstName":"","middleName":"Baljeet","lastName":"Singh","parents":["p145"],"children":[],"notes":""},"p162":{"id":"p162","firstName":"","middleName":"Jagdeesh","lastName":"Singh","parents":["p145"],"children":[],"notes":"Alias Pappa"},"p146":{"id":"p146","firstName":"Baba","middleName":"Mithan","lastName":"Singh","parents":["p136"],"children":[],"notes":""},"p147":{"id":"p147","firstName":"Baba","middleName":"Soorajbhaan","lastName":"Singh","parents":["p136"],"children":[],"notes":""},"p148":{"id":"p148","firstName":"Baba","middleName":"Kaaka","lastName":"Singh","parents":["p136"],"children":[],"notes":""},"p149":{"id":"p149","firstName":"Baba","middleName":"Basant","lastName":"Singh","parents":["p136"],"children":[],"notes":""},"p150":{"id":"p150","firstName":"Baba","middleName":"Pirthi","lastName":"Singh","parents":["p136"],"children":[],"notes":""},"p151":{"id":"p151","firstName":"Baba","middleName":"Tek","lastName":"Singh","parents":["p136"],"children":[],"notes":""},"p163":{"id":"p163","firstName":"Baba","middleName":"Kheta","lastName":"Singh","parents":["p118"],"children":["p165","p166","p167"],"notes":""},"p164":{"id":"p164","firstName":"Baba","middleName":"Bukkan","lastName":"Singh","parents":["p118"],"children":["p168","p169","p170"],"notes":""},"p165":{"id":"p165","firstName":"Baba","middleName":"Chadat","lastName":"Singh","parents":["p163"],"children":["p171"],"notes":""},"p166":{"id":"p166","firstName":"Baba","middleName":"Chand","lastName":"Singh","parents":["p163"],"children":["p172","p173"],"notes":""},"p167":{"id":"p167","firstName":"Baba","middleName":"Gurdiyal","lastName":"Singh","parents":["p163"],"children":[],"notes":"📍 Haryana"},"p171":{"id":"p171","firstName":"","middleName":"Balwinder","lastName":"Singh","parents":["p165"],"children":[],"notes":"Alias Bindria"},"p172":{"id":"p172","firstName":"","middleName":"Maha","lastName":"Singh","parents":["p166"],"children":[],"notes":""},"p173":{"id":"p173","firstName":"","middleName":"Joginder","lastName":"Singh","parents":["p166"],"children":[],"notes":""},"p168":{"id":"p168","firstName":"Baba","middleName":"Jagjittar","lastName":"Singh","parents":["p164"],"children":["p174","p175","p176","p177"],"notes":""},"p169":{"id":"p169","firstName":"Baba","middleName":"Harnek","lastName":"Singh","parents":["p164"],"children":["p178","p179"],"notes":""},"p170":{"id":"p170","firstName":"Baba","middleName":"Sukhdev","lastName":"Singh","parents":["p164"],"children":["p180","p181","p182"],"notes":""},"p174":{"id":"p174","firstName":"","middleName":"Sher","lastName":"Singh","parents":["p168"],"children":[],"notes":""},"p175":{"id":"p175","firstName":"","middleName":"Dalel","lastName":"Singh","parents":["p168"],"children":[],"notes":""},"p176":{"id":"p176","firstName":"","middleName":"Kulwant","lastName":"Singh","parents":["p168"],"children":[],"notes":"Alias Kanta"},"p177":{"id":"p177","firstName":"","middleName":"Rajinder","lastName":"Singh","parents":["p168"],"children":[],"notes":"Alias Raja Doctor"},"p178":{"id":"p178","firstName":"","middleName":"Natha","lastName":"Singh","parents":["p169"],"children":[],"notes":""},"p179":{"id":"p179","firstName":"","middleName":"Kaur","lastName":"Singh","parents":["p169"],"children":[],"notes":""},"p180":{"id":"p180","firstName":"","middleName":"Dilbag","lastName":"Singh","parents":["p170"],"children":[],"notes":"Alias Dulla"},"p181":{"id":"p181","firstName":"","middleName":"Jarnail","lastName":"Singh","parents":["p170"],"children":[],"notes":""},"p182":{"id":"p182","firstName":"","middleName":"Gurdeep","lastName":"Singh","parents":["p170"],"children":[],"notes":"Doctor"},"p183":{"id":"p183","firstName":"Baba","middleName":"Visaakha","lastName":"Singh","parents":["p8"],"children":["p270","p271"],"notes":""},"p184":{"id":"p184","firstName":"Baba","middleName":"Nand","lastName":"Singh","parents":["p8"],"children":["p257","p258"],"notes":""},"p185":{"id":"p185","firstName":"Baba","middleName":"Boota","lastName":"Singh","parents":["p8"],"children":["p187","p188","p189"],"notes":""},"p186":{"id":"p186","firstName":"Baba","middleName":"Daan","lastName":"Singh","parents":["p8"],"children":["p218","p219","p220","p221"],"notes":""},"p187":{"id":"p187","firstName":"Baba","middleName":"Chanda","lastName":"Singh","parents":["p185"],"children":["p190","p191","p192","p193"],"notes":""},"p188":{"id":"p188","firstName":"Baba","middleName":"Bhanga","lastName":"Singh","parents":["p185"],"children":["p194","p195"],"notes":""},"p189":{"id":"p189","firstName":"Baba","middleName":"Ganda","lastName":"Singh","parents":["p185"],"children":["p196","p197","p198","p199","p200","p201"],"notes":""},"p190":{"id":"p190","firstName":"Baba","middleName":"Mehar","lastName":"Singh","parents":["p187"],"children":["p202"],"notes":""},"p191":{"id":"p191","firstName":"Baba","middleName":"Ishar","lastName":"Singh","parents":["p187"],"children":["p203","p204"],"notes":""},"p192":{"id":"p192","firstName":"Baba","middleName":"Kikkar","lastName":"Singh","parents":["p187"],"children":["p205","p206","p207","p208"],"notes":""},"p193":{"id":"p193","firstName":"Baba","middleName":"Bachitar","lastName":"Singh","parents":["p187"],"children":["p209"],"notes":""},"p202":{"id":"p202","firstName":"","middleName":"Jagjeet","lastName":"Singh","parents":["p190"],"children":[],"notes":""},"p203":{"id":"p203","firstName":"","middleName":"Darshan","lastName":"Singh","parents":["p191"],"children":[],"notes":""},"p204":{"id":"p204","firstName":"","middleName":"Sukhdev","lastName":"Singh","parents":["p191"],"children":[],"notes":""},"p205":{"id":"p205","firstName":"","middleName":"Mandar","lastName":"Singh","parents":["p192"],"children":[],"notes":""},"p206":{"id":"p206","firstName":"","middleName":"Jagraj","lastName":"Singh","parents":["p192"],"children":[],"notes":""},"p207":{"id":"p207","firstName":"","middleName":"Sukhdev","lastName":"Singh","parents":["p192"],"children":[],"notes":""},"p208":{"id":"p208","firstName":"","middleName":"Bant","lastName":"Singh","parents":["p192"],"children":[],"notes":""},"p209":{"id":"p209","firstName":"","middleName":"Maada","lastName":"Singh","parents":["p193"],"children":[],"notes":""},"p194":{"id":"p194","firstName":"Baba","middleName":"Mukand","lastName":"Singh","parents":["p188"],"children":["p210"],"notes":""},"p195":{"id":"p195","firstName":"Baba","middleName":"Mukhtiar","lastName":"Singh","parents":["p188"],"children":["p211","p212"],"notes":""},"p210":{"id":"p210","firstName":"","middleName":"Gurtej","lastName":"Singh","parents":["p194"],"children":[],"notes":""},"p211":{"id":"p211","firstName":"","middleName":"Kheta","lastName":"Singh","parents":["p195"],"children":[],"notes":""},"p212":{"id":"p212","firstName":"","middleName":"Neta","lastName":"Singh","parents":["p195"],"children":[],"notes":""},"p196":{"id":"p196","firstName":"Baba","middleName":"Mukhtiar","lastName":"Singh","parents":["p189"],"children":[],"notes":"Alias Chidia; 📍 Rajasthan; has 1 daughter"},"p197":{"id":"p197","firstName":"Baba","middleName":"Harnek","lastName":"Singh","parents":["p189"],"children":["p213","p214"],"notes":"📍 Rajasthan"},"p198":{"id":"p198","firstName":"Baba","middleName":"Gurdayal","lastName":"Singh","parents":["p189"],"children":["p215","p216"],"notes":"Alias Aala"},"p199":{"id":"p199","firstName":"Baba","middleName":"Gurbhajan","lastName":"Singh","parents":["p189"],"children":["p217"],"notes":"Alias Bhja"},"p200":{"id":"p200","firstName":"Baba","middleName":"Bachan","lastName":"Singh","parents":["p189"],"children":[],"notes":"No children"},"p201":{"id":"p201","firstName":"Baba","middleName":"Gurcharan","lastName":"Singh","parents":["p189"],"children":[],"notes":"No children"},"p213":{"id":"p213","firstName":"","middleName":"Makhan","lastName":"Singh","parents":["p197"],"children":[],"notes":""},"p214":{"id":"p214","firstName":"","middleName":"Balvir","lastName":"Singh","parents":["p197"],"children":[],"notes":"📍 Rajasthan"},"p215":{"id":"p215","firstName":"","middleName":"Baldev","lastName":"Singh","parents":["p198"],"children":[],"notes":"📍 Rajasthan"},"p216":{"id":"p216","firstName":"","middleName":"Jagjeet","lastName":"Singh","parents":["p198"],"children":[],"notes":"📍 Rajasthan"},"p217":{"id":"p217","firstName":"","middleName":"Pirthipal","lastName":"Singh","parents":["p199"],"children":[],"notes":"Alias Pirthi"},"p218":{"id":"p218","firstName":"Baba","middleName":"Sucha","lastName":"Singh","parents":["p186"],"children":["p222","p223","p224","p225"],"notes":""},"p222":{"id":"p222","firstName":"Baba","middleName":"Maingal","lastName":"Singh","parents":["p218"],"children":[],"notes":""},"p223":{"id":"p223","firstName":"Baba","middleName":"Tek","lastName":"Singh","parents":["p218"],"children":["p226","p227"],"notes":""},"p224":{"id":"p224","firstName":"Baba","middleName":"Kikkar","lastName":"Singh","parents":["p218"],"children":["p228"],"notes":""},"p225":{"id":"p225","firstName":"Baba","middleName":"Bikkar Singh Fauji","lastName":"","parents":["p218"],"children":[],"notes":""},"p226":{"id":"p226","firstName":"","middleName":"Antar","lastName":"Singh","parents":["p223"],"children":["p230","p231"],"notes":""},"p227":{"id":"p227","firstName":"","middleName":"Gora","lastName":"Singh","parents":["p223"],"children":["p232"],"notes":""},"p230":{"id":"p230","firstName":"","middleName":"Balwinder","lastName":"Singh","parents":["p226"],"children":[],"notes":""},"p231":{"id":"p231","firstName":"","middleName":"Surinder","lastName":"Singh","parents":["p226"],"children":[],"notes":""},"p232":{"id":"p232","firstName":"","middleName":"Randheer","lastName":"Singh","parents":["p227"],"children":[],"notes":""},"p228":{"id":"p228","firstName":"","middleName":"Balkaur","lastName":"Singh","parents":["p224"],"children":[],"notes":"📍 Rajasthan"},"p219":{"id":"p219","firstName":"Baba","middleName":"Mitt","lastName":"Singh","parents":["p186"],"children":["p233","p234","p235","p236"],"notes":""},"p233":{"id":"p233","firstName":"Baba","middleName":"Kehar","lastName":"Singh","parents":["p219"],"children":[],"notes":"Has 1 daughter"},"p234":{"id":"p234","firstName":"Baba","middleName":"Jaila","lastName":"Singh","parents":["p219"],"children":["p237","p238"],"notes":""},"p235":{"id":"p235","firstName":"Baba","middleName":"Bagher","lastName":"Singh","parents":["p219"],"children":["p239","p240"],"notes":"Alias Godha"},"p236":{"id":"p236","firstName":"Baba","middleName":"Sohan","lastName":"Singh","parents":["p219"],"children":["p241","p242","p243"],"notes":""},"p237":{"id":"p237","firstName":"","middleName":"Jagroop","lastName":"Singh","parents":["p234"],"children":[],"notes":""},"p238":{"id":"p238","firstName":"","middleName":"Gurtej","lastName":"Singh","parents":["p234"],"children":[],"notes":""},"p239":{"id":"p239","firstName":"","middleName":"Mehma","lastName":"Singh","parents":["p235"],"children":[],"notes":""},"p240":{"id":"p240","firstName":"","middleName":"Gurmail","lastName":"Singh","parents":["p235"],"children":[],"notes":""},"p241":{"id":"p241","firstName":"","middleName":"Naajam","lastName":"Singh","parents":["p236"],"children":[],"notes":""},"p242":{"id":"p242","firstName":"","middleName":"Sukhdev","lastName":"Singh","parents":["p236"],"children":[],"notes":""},"p243":{"id":"p243","firstName":"","middleName":"Ikwar","lastName":"Singh","parents":["p236"],"children":[],"notes":""},"p220":{"id":"p220","firstName":"Baba","middleName":"Heera","lastName":"Singh","parents":["p186"],"children":["p244","p245","p246"],"notes":""},"p244":{"id":"p244","firstName":"Baba","middleName":"Ajaib","lastName":"Singh","parents":["p220"],"children":["p247"],"notes":""},"p245":{"id":"p245","firstName":"Baba","middleName":"Kartaar","lastName":"Singh","parents":["p220"],"children":["p248","p249","p250"],"notes":""},"p246":{"id":"p246","firstName":"Baba","middleName":"Sardool","lastName":"Singh","parents":["p220"],"children":["p251"],"notes":""},"p247":{"id":"p247","firstName":"","middleName":"Baldev","lastName":"Singh","parents":["p244"],"children":[],"notes":"📍 Rajasthan"},"p248":{"id":"p248","firstName":"","middleName":"Amarjit","lastName":"Singh","parents":["p245"],"children":[],"notes":"📍 Rajasthan"},"p249":{"id":"p249","firstName":"","middleName":"Bhoora","lastName":"Singh","parents":["p245"],"children":[],"notes":"📍 Rajasthan"},"p250":{"id":"p250","firstName":"","middleName":"Naajam","lastName":"Singh","parents":["p245"],"children":[],"notes":"📍 Rajasthan"},"p251":{"id":"p251","firstName":"","middleName":"Jeet","lastName":"Singh","parents":["p246"],"children":[],"notes":""},"p221":{"id":"p221","firstName":"Baba","middleName":"Haakam","lastName":"Singh","parents":["p186"],"children":["p252","p253"],"notes":""},"p252":{"id":"p252","firstName":"Baba","middleName":"Karnail","lastName":"Singh","parents":["p221"],"children":["p254"],"notes":""},"p253":{"id":"p253","firstName":"Baba","middleName":"Jagraj","lastName":"Singh","parents":["p221"],"children":["p255","p256"],"notes":""},"p254":{"id":"p254","firstName":"","middleName":"Iqbal","lastName":"Singh","parents":["p252"],"children":[],"notes":""},"p255":{"id":"p255","firstName":"","middleName":"Nirmal","lastName":"Singh","parents":["p253"],"children":[],"notes":""},"p256":{"id":"p256","firstName":"","middleName":"Balwinder","lastName":"Singh","parents":["p253"],"children":[],"notes":""},"p257":{"id":"p257","firstName":"Baba","middleName":"Sarban","lastName":"Singh","parents":["p184"],"children":["p259","p260","p261"],"notes":""},"p258":{"id":"p258","firstName":"Baba","middleName":"Arjan","lastName":"Singh","parents":["p184"],"children":[],"notes":""},"p259":{"id":"p259","firstName":"Baba","middleName":"Mukhtiar","lastName":"Singh","parents":["p257"],"children":["p262","p263"],"notes":""},"p260":{"id":"p260","firstName":"Baba","middleName":"Kartar","lastName":"Singh","parents":["p257"],"children":["p264","p265","p266"],"notes":""},"p261":{"id":"p261","firstName":"Baba","middleName":"Jageer","lastName":"Singh","parents":["p257"],"children":["p267","p268","p269"],"notes":""},"p262":{"id":"p262","firstName":"","middleName":"Darshan","lastName":"Singh","parents":["p259"],"children":[],"notes":""},"p263":{"id":"p263","firstName":"","middleName":"Sukhdev","lastName":"Singh","parents":["p259"],"children":[],"notes":""},"p264":{"id":"p264","firstName":"","middleName":"Gurtej","lastName":"Singh","parents":["p260"],"children":[],"notes":""},"p265":{"id":"p265","firstName":"","middleName":"Gurmail","lastName":"Singh","parents":["p260"],"children":[],"notes":""},"p266":{"id":"p266","firstName":"","middleName":"Gurnek","lastName":"Singh","parents":["p260"],"children":[],"notes":""},"p267":{"id":"p267","firstName":"","middleName":"Balkaur","lastName":"Singh","parents":["p261"],"children":[],"notes":""},"p268":{"id":"p268","firstName":"","middleName":"Laabh","lastName":"Singh","parents":["p261"],"children":[],"notes":""},"p269":{"id":"p269","firstName":"","middleName":"Sukhpal","lastName":"Singh","parents":["p261"],"children":[],"notes":""},"p270":{"id":"p270","firstName":"Baba","middleName":"Sundar","lastName":"Singh","parents":["p183"],"children":["p272","p273","p274","p275","p276"],"notes":""},"p271":{"id":"p271","firstName":"Baba","middleName":"Kunda","lastName":"Singh","parents":["p183"],"children":[],"notes":"Has daughters"},"p272":{"id":"p272","firstName":"Baba","middleName":"Haakam","lastName":"Singh","parents":["p270"],"children":["p277"],"notes":""},"p273":{"id":"p273","firstName":"Baba","middleName":"Jeon","lastName":"Singh","parents":["p270"],"children":["p278","p279"],"notes":""},"p274":{"id":"p274","firstName":"Baba","middleName":"Darbaara","lastName":"Singh","parents":["p270"],"children":["p280"],"notes":""},"p275":{"id":"p275","firstName":"Baba","middleName":"Kartaar","lastName":"Singh","parents":["p270"],"children":["p281"],"notes":""},"p276":{"id":"p276","firstName":"Baba","middleName":"Kataar","lastName":"Singh","parents":["p270"],"children":["p282"],"notes":""},"p277":{"id":"p277","firstName":"","middleName":"Hari","lastName":"Singh","parents":["p272"],"children":["p283"],"notes":""},"p283":{"id":"p283","firstName":"","middleName":"Paal","lastName":"Singh","parents":["p277"],"children":[],"notes":""},"p278":{"id":"p278","firstName":"","middleName":"Jung","lastName":"Singh","parents":["p273"],"children":[],"notes":""},"p279":{"id":"p279","firstName":"","middleName":"Sukhmandar","lastName":"Singh","parents":["p273"],"children":["p284"],"notes":""},"p284":{"id":"p284","firstName":"","middleName":"Kesar","lastName":"Singh","parents":["p279"],"children":[],"notes":""},"p280":{"id":"p280","firstName":"","middleName":"Jabarjung","lastName":"Singh","parents":["p274"],"children":["p285","p286"],"notes":""},"p285":{"id":"p285","firstName":"","middleName":"Jagdeesh","lastName":"Singh","parents":["p280"],"children":[],"notes":""},"p286":{"id":"p286","firstName":"","middleName":"Shivraj","lastName":"Singh","parents":["p280"],"children":[],"notes":""},"p281":{"id":"p281","firstName":"","middleName":"Pooran","lastName":"Singh","parents":["p275"],"children":["p287","p288","p289"],"notes":""},"p287":{"id":"p287","firstName":"","middleName":"Malkeet","lastName":"Singh","parents":["p281"],"children":[],"notes":""},"p288":{"id":"p288","firstName":"","middleName":"Baljinder","lastName":"Singh","parents":["p281"],"children":[],"notes":""},"p289":{"id":"p289","firstName":"","middleName":"Mithu","lastName":"Singh","parents":["p281"],"children":[],"notes":""},"p282":{"id":"p282","firstName":"","middleName":"Diwan","lastName":"Singh","parents":["p276"],"children":[],"notes":""},"p290":{"id":"p290","firstName":"","middleName":"Surjeet","lastName":"Kaur","parents":["p76"],"children":["p297","p298"],"notes":"","gender":"female"},"p291":{"id":"p291","firstName":"","middleName":"Bakhtaur","lastName":"Singh","parents":["p84"],"children":["p295"],"notes":""},"p292":{"id":"p292","firstName":"","middleName":"Gaava","lastName":"Singh","parents":["p84"],"children":["p299","p300","p301"],"notes":""},"p293":{"id":"p293","firstName":"","middleName":"Aatma","lastName":"Singh","parents":["p84"],"children":[],"notes":"Alias Shotu"},"p294":{"id":"p294","firstName":"","middleName":"Bhoora","lastName":"Singh","parents":["p84"],"children":[],"notes":"📍 Kheowali"},"p295":{"id":"p295","firstName":"","middleName":"Makhan","lastName":"Singh","parents":["p291"],"children":["p296","p302"],"notes":""},"p296":{"id":"p296","firstName":"","middleName":"Gurmeet","lastName":"Singh","parents":["p295"],"children":[],"notes":""},"p302":{"id":"p302","firstName":"","middleName":"Chinderpal","lastName":"Singh","parents":["p295"],"children":[],"notes":""},"p297":{"id":"p297","firstName":"","middleName":"Gurjant","lastName":"Singh","parents":["p290"],"children":[],"notes":"Alias Jattana"},"p298":{"id":"p298","firstName":"","middleName":"Harbans","lastName":"Singh","parents":["p290"],"children":[],"notes":""},"p299":{"id":"p299","firstName":"","middleName":"Baldev","lastName":"Singh","parents":["p292"],"children":[],"notes":""},"p300":{"id":"p300","firstName":"","middleName":"Jagseer","lastName":"Singh","parents":["p292"],"children":[],"notes":""},"p301":{"id":"p301","firstName":"","middleName":"Nachattar","lastName":"Singh","parents":["p292"],"children":[],"notes":"Alias Kaka"},"p303":{"id":"p303","firstName":"","middleName":"Gurmeet","lastName":"Singh","parents":["p88"],"children":[],"notes":"Alias Geep"},"p304":{"id":"p304","firstName":"","middleName":"Jagseer","lastName":"Singh","parents":["p88"],"children":[],"notes":"Alias Jagga"},"p305":{"id":"p305","firstName":"","middleName":"Taara","lastName":"Singh","parents":["p87"],"children":[],"notes":""},"p306":{"id":"p306","firstName":"","middleName":"Surinderpal","lastName":"Singh","parents":["p87"],"children":[],"notes":"Alias Jeeta Principal"},"p307":{"id":"p307","firstName":"","middleName":"Sohan","lastName":"Singh","parents":["p87"],"children":[],"notes":""},"p308":{"id":"p308","firstName":"","middleName":"Gurjant","lastName":"Singh","parents":["p86"],"children":[],"notes":"Alias Janta Khalsa; born 15/06/1959"},"p309":{"id":"p309","firstName":"","middleName":"Hameer","lastName":"Singh","parents":["p90"],"children":["p310"],"notes":""},"p310":{"id":"p310","firstName":"","middleName":"Jaipal","lastName":"Singh","parents":["p309"],"children":[],"notes":""},"p311":{"id":"p311","firstName":"","middleName":"Chaanan","lastName":"Singh","parents":["p89"],"children":["p312"],"notes":"Sarpanch 1983–1993"},"p312":{"id":"p312","firstName":"","middleName":"Gurtej","lastName":"Singh","parents":["p311"],"children":[],"notes":"Alias Teja"},"p313":{"id":"p313","firstName":"","middleName":"Dal","lastName":"Singh","parents":["p95"],"children":[],"notes":""},"p314":{"id":"p314","firstName":"","middleName":"Bakshish","lastName":"Singh","parents":["p95"],"children":[],"notes":"Alias DC"},"p315":{"id":"p315","firstName":"","middleName":"Taar","lastName":"Singh","parents":["p96"],"children":[],"notes":""},"p316":{"id":"p316","firstName":"","middleName":"Balwinder","lastName":"Singh","parents":["p96"],"children":[],"notes":""},"p317":{"id":"p317","firstName":"","middleName":"Gurmeet","lastName":"Singh","parents":["p96"],"children":[],"notes":"Alias Geeka"},"p318":{"id":"p318","firstName":"","middleName":"Jarnail","lastName":"Singh","parents":["p93"],"children":[],"notes":""},"p319":{"id":"p319","firstName":"","middleName":"Joginder","lastName":"Singh","parents":["p92"],"children":[],"notes":"Alias Shinder"},"p320":{"id":"p320","firstName":"","middleName":"Nar","lastName":"Singh","parents":["p92"],"children":[],"notes":"Alias Naria"},"p321":{"id":"p321","firstName":"","middleName":"Malkeet","lastName":"Singh","parents":["p92"],"children":[],"notes":"Alias Mahna"},"p322":{"id":"p322","firstName":"","middleName":"Raau","lastName":"Singh","parents":["p92"],"children":[],"notes":""},"p323":{"id":"p323","firstName":"","middleName":"Gurmeet","lastName":"Singh","parents":["p92"],"children":[],"notes":"Alias Meeta"},"p324":{"id":"p324","firstName":"","middleName":"Thaana","lastName":"Singh","parents":["p81"],"children":["p326"],"notes":""},"p325":{"id":"p325","firstName":"","middleName":"Balvir","lastName":"Singh","parents":["p81"],"children":["p327"],"notes":""},"p326":{"id":"p326","firstName":"","middleName":"Boota","lastName":"Singh","parents":["p324"],"children":[],"notes":""},"p327":{"id":"p327","firstName":"","middleName":"Gurmeet","lastName":"Singh","parents":["p325"],"children":[],"notes":""},"p328":{"id":"p328","firstName":"","middleName":"Charan","lastName":"Singh","parents":["p82"],"children":[],"notes":""},"p329":{"id":"p329","firstName":"","middleName":"Bhant","lastName":"Singh","parents":["p82"],"children":[],"notes":""},"p330":{"id":"p330","firstName":"","middleName":"Mahinder","lastName":"Singh","parents":["p83"],"children":["p332","p333","p334"],"notes":""},"p331":{"id":"p331","firstName":"","middleName":"Balkaran","lastName":"Singh","parents":["p83"],"children":["p335","p336"],"notes":""},"p332":{"id":"p332","firstName":"","middleName":"Jaskaran","lastName":"Singh","parents":["p330"],"children":[],"notes":""},"p333":{"id":"p333","firstName":"","middleName":"Kulwant","lastName":"Singh","parents":["p330"],"children":[],"notes":""},"p334":{"id":"p334","firstName":"","middleName":"Sahib","lastName":"Singh","parents":["p330"],"children":[],"notes":""},"p335":{"id":"p335","firstName":"","middleName":"Jagseer","lastName":"Singh","parents":["p331"],"children":[],"notes":""},"p336":{"id":"p336","firstName":"","middleName":"Jarnail","lastName":"Singh","parents":["p331"],"children":[],"notes":""},"p337":{"id":"p337","firstName":"Baba","middleName":"Makhan","lastName":"Singh","parents":["p4"],"children":["p340","p341"],"notes":""},"p338":{"id":"p338","firstName":"Baba","middleName":"Kaaku","lastName":"Singh","parents":["p4"],"children":["p342"],"notes":""},"p339":{"id":"p339","firstName":"Baba","middleName":"Sulakhan","lastName":"Singh","parents":["p4"],"children":["p343","p344"],"notes":""},"p340":{"id":"p340","firstName":"Baba","middleName":"Mitt","lastName":"Singh","parents":["p337"],"children":[],"notes":""},"p341":{"id":"p341","firstName":"Baba","middleName":"Sucha","lastName":"Singh","parents":["p337"],"children":[],"notes":""},"p343":{"id":"p343","firstName":"Baba","middleName":"Dittan","lastName":"Singh","parents":["p339"],"children":[],"notes":""},"p344":{"id":"p344","firstName":"Baba","middleName":"Gujjar","lastName":"Singh","parents":["p339"],"children":[],"notes":""},"p342":{"id":"p342","firstName":"Baba","middleName":"Nand","lastName":"Singh","parents":["p338"],"children":["p345","p346","p347","p348"],"notes":""},"p345":{"id":"p345","firstName":"Baba","middleName":"Gurdyaal","lastName":"Singh","parents":["p342"],"children":[],"notes":""},"p346":{"id":"p346","firstName":"Baba","middleName":"Ishar","lastName":"Singh","parents":["p342"],"children":[],"notes":""},"p347":{"id":"p347","firstName":"Baba","middleName":"Chatar","lastName":"Singh","parents":["p342"],"children":["p349","p350","p351","p352","p353"],"notes":""},"p348":{"id":"p348","firstName":"Baba","middleName":"Bagga","lastName":"Singh","parents":["p342"],"children":[],"notes":""},"p349":{"id":"p349","firstName":"","middleName":"Jagraaj","lastName":"Singh","parents":["p347"],"children":[],"notes":""},"p350":{"id":"p350","firstName":"","middleName":"Inder","lastName":"Singh","parents":["p347"],"children":["p354"],"notes":""},"p351":{"id":"p351","firstName":"","middleName":"Jora","lastName":"Singh","parents":["p347"],"children":[],"notes":""},"p352":{"id":"p352","firstName":"","middleName":"Mukhtyaar","lastName":"Singh","parents":["p347"],"children":[],"notes":""},"p353":{"id":"p353","firstName":"","middleName":"Bhoora","lastName":"Singh","parents":["p347"],"children":[],"notes":""},"p354":{"id":"p354","firstName":"","middleName":"Balveer","lastName":"Singh","parents":["p350"],"children":[],"notes":""},"p355":{"id":"p355","firstName":"","middleName":"Jeeta","lastName":"Singh","parents":["p16"],"children":[],"notes":""},"p356":{"id":"p356","firstName":"","middleName":"Seeta","lastName":"Singh","parents":["p16"],"children":[],"notes":""},"p357":{"id":"p357","firstName":"","middleName":"Bhola","lastName":"Singh","parents":["p19"],"children":[],"notes":""},"p358":{"id":"p358","firstName":"","middleName":"Beera","lastName":"Singh","parents":["p19"],"children":[],"notes":""},"p359":{"id":"p359","firstName":"","middleName":"Makhan","lastName":"Singh","parents":["p19"],"children":[],"notes":""},"p360":{"id":"p360","firstName":"","middleName":"Roop","lastName":"Singh","parents":["p19"],"children":[],"notes":""},"p361":{"id":"p361","firstName":"","middleName":"Dalvaara","lastName":"Singh","parents":["p15"],"children":[],"notes":""},"p362":{"id":"p362","firstName":"","middleName":"Mahinder","lastName":"Singh","parents":["p15"],"children":[],"notes":""},"p363":{"id":"p363","firstName":"","middleName":"Aatma","lastName":"Singh","parents":["p15"],"children":[],"notes":""},"p364":{"id":"p364","firstName":"","middleName":"Naajar","lastName":"Singh","parents":["p18"],"children":[],"notes":""},"p365":{"id":"p365","firstName":"","middleName":"Ajaib","lastName":"Singh","parents":["p18"],"children":[],"notes":""},"p366":{"id":"p366","firstName":"","middleName":"Nandan","lastName":"Singh","parents":["p18"],"children":[],"notes":""},"p367":{"id":"p367","firstName":"","middleName":"Kulwant","lastName":"Singh","parents":["p108"],"children":[],"notes":"Alias Mithu"},"p368":{"id":"p368","firstName":"","middleName":"Malkeet","lastName":"Singh","parents":["p108"],"children":[],"notes":""},"p369":{"id":"p369","firstName":"","middleName":"Mandar","lastName":"Singh","parents":["p108"],"children":[],"notes":""},"p370":{"id":"p370","firstName":"","middleName":"Iqbal","lastName":"Singh","parents":["p108"],"children":[],"notes":""},"p371":{"id":"p371","firstName":"","middleName":"Jail","lastName":"Kaur","parents":["p108"],"children":[],"notes":"","gender":"female"},"p372":{"id":"p372","firstName":"","middleName":"Pal","lastName":"Kaur","parents":["p108"],"children":[],"notes":"","gender":"female"},"p373":{"id":"p373","firstName":"","middleName":"Makhan","lastName":"Singh","parents":["p109"],"children":[],"notes":""},"p374":{"id":"p374","firstName":"","middleName":"Sukhdev","lastName":"Singh","parents":["p109"],"children":[],"notes":""},"p375":{"id":"p375","firstName":"","middleName":"Angrej","lastName":"Singh","parents":["p109"],"children":[],"notes":""},"p376":{"id":"p376","firstName":"","middleName":"Milkho","lastName":"Kaur","parents":["p109"],"children":[],"notes":"","gender":"female"},"p377":{"id":"p377","firstName":"","middleName":"Moorti","lastName":"Kaur","parents":["p109"],"children":[],"notes":"","gender":"female"},"p378":{"id":"p378","firstName":"","middleName":"Choti","lastName":"Kaur","parents":["p109"],"children":[],"notes":"","gender":"female"},"p379":{"id":"p379","firstName":"","middleName":"Darshan","lastName":"Singh","parents":["p110"],"children":[],"notes":""},"p380":{"id":"p380","firstName":"","middleName":"Gurbaksh","lastName":"Singh","parents":["p110"],"children":[],"notes":""},"p381":{"id":"p381","firstName":"","middleName":"Jasveer","lastName":"Singh","parents":["p110"],"children":[],"notes":""},"p382":{"id":"p382","firstName":"","middleName":"Hameer","lastName":"Singh","parents":["p110"],"children":[],"notes":""},"p383":{"id":"p383","firstName":"","middleName":"Ajaib","lastName":"Singh","parents":["p110"],"children":[],"notes":""},"p384":{"id":"p384","firstName":"","middleName":"Kulwant","lastName":"Kaur","parents":["p110"],"children":[],"notes":"","gender":"female"},"p385":{"id":"p385","firstName":"","middleName":"Sarban","lastName":"Singh","parents":["p111"],"children":[],"notes":""},"p386":{"id":"p386","firstName":"","middleName":"Chinderpal","lastName":"Singh","parents":["p111"],"children":[],"notes":"Chairman; born 12/08/1954; 10th in 1972"},"p387":{"id":"p387","firstName":"","middleName":"Surjeet","lastName":"Singh","parents":["p112"],"children":[],"notes":"Alias Jeeta"},"p388":{"id":"p388","firstName":"","middleName":"Baabu","lastName":"Singh","parents":["p112"],"children":[],"notes":""},"p389":{"id":"p389","firstName":"","middleName":"Jaskaran","lastName":"Singh","parents":["p112"],"children":[],"notes":""},"p390":{"id":"p390","firstName":"","middleName":"Narr","lastName":"Singh","parents":["p113"],"children":[],"notes":""},"p391":{"id":"p391","firstName":"","middleName":"Ranjeet","lastName":"Singh","parents":["p113"],"children":[],"notes":""},"p392":{"id":"p392","firstName":"","middleName":"Jagseer","lastName":"Singh","parents":["p114"],"children":[],"notes":"Alias Laada"},"p393":{"id":"p393","firstName":"","middleName":"Swaran","lastName":"Singh","parents":["p114"],"children":[],"notes":"Alias Kaala"},"p394":{"id":"p394","firstName":"","middleName":"Guddi","lastName":"Kaur","parents":["p114"],"children":[],"notes":"","gender":"female"},"p395":{"id":"p395","firstName":"","middleName":"Malkeet","lastName":"Kaur","parents":["p114"],"children":[],"notes":"","gender":"female"}};
+
+const NODE_W = 140, NODE_H = 80, GAP_X = 20, GAP_Y = 100, PAD = 80;
+const positions = {};
+let activeId = null;
+let scale = 1, tx = 0, ty = 0;
+let isDragging = false, dragStartX, dragStartY, dragTxStart, dragTyStart;
+
+function getGen(id, memo={}) {
+  if (memo[id] !== undefined) return memo[id];
+  if (!raw[id].parents.length) { memo[id] = 0; return 0; }
+  memo[id] = getGen(raw[id].parents[0], memo) + 1;
+  return memo[id];
+}
+const genMemo = {};
+Object.keys(raw).forEach(id => getGen(id, genMemo));
+
+function subtreeWidth(id) {
+  const ch = raw[id].children;
+  if (!ch.length) return NODE_W;
+  let total = 0;
+  ch.forEach((c, i) => { total += subtreeWidth(c); if (i < ch.length - 1) total += GAP_X; });
+  return Math.max(NODE_W, total);
+}
+
+function layoutTree(id, x, y) {
+  const w = subtreeWidth(id);
+  positions[id] = { x: x + w / 2 - NODE_W / 2, y };
+  const ch = raw[id].children;
+  if (!ch.length) return;
+  let cx = x;
+  ch.forEach((c, i) => {
+    const cw = subtreeWidth(c);
+    layoutTree(c, cx, y + GAP_Y + NODE_H);
+    cx += cw + GAP_X;
+  });
+}
+
+layoutTree('p1', PAD, PAD);
+
+function getAllDescendants(id) {
+  const r = new Set(); const q = [...raw[id].children];
+  while (q.length) { const c = q.shift(); r.add(c); q.push(...raw[c].children); }
+  return r;
+}
+function countDesc(id) { return getAllDescendants(id).size; }
+function getAncestors(id) {
+  const r = []; let c = id;
+  while (raw[c].parents.length) { c = raw[c].parents[0]; r.unshift(c); }
+  return r;
+}
+function getSiblings(id) {
+  if (!raw[id].parents.length) return [];
+  return raw[raw[id].parents[0]].children.filter(c => c !== id);
+}
+function name(id) { return raw[id].middleName; }
+function fullName(id) { return [raw[id].firstName, raw[id].middleName, raw[id].lastName].filter(Boolean).join(' '); }
+
+const canvas = document.getElementById('canvas');
+const wrap = document.getElementById('canvas-wrap');
+const svg = document.getElementById('lines-svg');
+
+function buildNodes() {
+  Object.keys(raw).forEach(id => {
+    const p = raw[id];
+    const pos = positions[id];
+    const div = document.createElement('div');
+    const isLocation = p.notes && p.notes.startsWith('📍');
+    const isNoChildren = p.notes === 'No children' || p.notes === 'Died with no children';
+    const hasOtherNote = p.notes && !isNoChildren;
+    div.className = 'node' + (isNoChildren ? ' leaf' : '') + (hasOtherNote && !isLocation ? ' has-note' : '') + (isLocation ? ' has-location' : '');
+    div.id = 'node-' + id;
+    div.style.left = pos.x + 'px';
+    div.style.top = pos.y + 'px';
+    div.style.width = NODE_W + 'px';
+    const dc = countDesc(id);
+    const badgeRow = `<div class="gen-badge">G${genMemo[id]+1}</div>${isNoChildren ? '<span class="leaf-badge">' + p.notes.toLowerCase() + '</span>' : ''}`;
+    const noteRow = hasOtherNote ? `<div class="card-note${isLocation ? ' location' : ''}">${p.notes}</div>` : '';
+    div.innerHTML = `<div class="mid-name">${p.middleName}</div><div class="full-label">${fullName(id)}</div>${badgeRow}${noteRow}${dc > 0 ? `<div class="desc-count">${dc}</div>` : ''}`;
+    div.onclick = () => selectPerson(id);
+    canvas.appendChild(div);
+  });
+}
+
+function buildLines() {
+  svg.innerHTML = '';
+  Object.keys(raw).forEach(id => {
+    raw[id].children.forEach(cid => {
+      const p1 = positions[id], p2 = positions[cid];
+      const x1 = p1.x + NODE_W / 2, y1 = p1.y + NODE_H;
+      const x2 = p2.x + NODE_W / 2, y2 = p2.y;
+      const midY = y1 + (y2 - y1) * 0.5;
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', `M${x1},${y1} C${x1},${midY} ${x2},${midY} ${x2},${y2}`);
+      path.setAttribute('data-from', id);
+      path.setAttribute('data-to', cid);
+      svg.appendChild(path);
+    });
+  });
+  const bb = getBounds();
+  svg.setAttribute('width', bb.maxX + PAD);
+  svg.setAttribute('height', bb.maxY + PAD);
+}
+
+function getBounds() {
+  let minX = Infinity, minY = Infinity, maxX = 0, maxY = 0;
+  Object.values(positions).forEach(p => {
+    minX = Math.min(minX, p.x);
+    minY = Math.min(minY, p.y);
+    maxX = Math.max(maxX, p.x + NODE_W);
+    maxY = Math.max(maxY, p.y + NODE_H);
+  });
+  return { minX, minY, maxX, maxY };
+}
+
+function applyTransform() {
+  canvas.style.transform = `translate(${tx}px,${ty}px) scale(${scale})`;
+  drawMinimap();
+}
+
+function resetView() {
+  const bb = getBounds();
+  const cw = wrap.clientWidth, ch = wrap.clientHeight;
+  const sw = cw / (bb.maxX + PAD * 2), sh = ch / (bb.maxY + PAD * 2);
+  scale = Math.min(sw, sh, 1);
+  tx = (cw - (bb.maxX + PAD * 2) * scale) / 2;
+  ty = (ch - (bb.maxY + PAD * 2) * scale) / 2 + 30;
+  applyTransform();
+}
+
+function zoomIn() { scale = Math.min(scale * 1.2, 3); applyTransform(); }
+function zoomOut() { scale = Math.max(scale / 1.2, 0.15); applyTransform(); }
+
+wrap.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const rect = wrap.getBoundingClientRect();
+  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  const oldScale = scale;
+  const delta = e.deltaY > 0 ? 0.9 : 1.1;
+  scale = Math.max(0.15, Math.min(3, scale * delta));
+  tx = mx - (mx - tx) * (scale / oldScale);
+  ty = my - (my - ty) * (scale / oldScale);
+  applyTransform();
+}, { passive: false });
+
+wrap.addEventListener('mousedown', (e) => {
+  if (e.target.closest('.node')) return;
+  isDragging = true; wrap.classList.add('dragging');
+  dragStartX = e.clientX; dragStartY = e.clientY;
+  dragTxStart = tx; dragTyStart = ty;
+});
+window.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  tx = dragTxStart + (e.clientX - dragStartX);
+  ty = dragTyStart + (e.clientY - dragStartY);
+  applyTransform();
+});
+window.addEventListener('mouseup', () => { isDragging = false; wrap.classList.remove('dragging'); });
+
+let touchStartDist = 0, touchStartScale = 1;
+wrap.addEventListener('touchstart', (e) => {
+  if (e.touches.length === 1 && !e.target.closest('.node')) {
+    isDragging = true;
+    dragStartX = e.touches[0].clientX; dragStartY = e.touches[0].clientY;
+    dragTxStart = tx; dragTyStart = ty;
+  } else if (e.touches.length === 2) {
+    isDragging = false;
+    const dx = e.touches[0].clientX - e.touches[1].clientX;
+    const dy = e.touches[0].clientY - e.touches[1].clientY;
+    touchStartDist = Math.sqrt(dx*dx+dy*dy);
+    touchStartScale = scale;
+  }
+}, {passive:true});
+wrap.addEventListener('touchmove', (e) => {
+  if (e.touches.length === 1 && isDragging) {
+    tx = dragTxStart + (e.touches[0].clientX - dragStartX);
+    ty = dragTyStart + (e.touches[0].clientY - dragStartY);
+    applyTransform();
+  } else if (e.touches.length === 2) {
+    const dx = e.touches[0].clientX - e.touches[1].clientX;
+    const dy = e.touches[0].clientY - e.touches[1].clientY;
+    const dist = Math.sqrt(dx*dx+dy*dy);
+    scale = Math.max(0.15, Math.min(3, touchStartScale * (dist / touchStartDist)));
+    applyTransform();
+  }
+}, {passive:true});
+wrap.addEventListener('touchend', () => { isDragging = false; });
+
+function selectPerson(id) {
+  if (activeId === id) { clearSelection(); return; }
+  activeId = id;
+  updateHighlights();
+  showDetail(id);
+  const pos = positions[id];
+  const cw = wrap.clientWidth, ch = wrap.clientHeight;
+  tx = cw / 2 - (pos.x + NODE_W / 2) * scale;
+  ty = ch / 2 - (pos.y + NODE_H / 2) * scale - 40;
+  applyTransform();
+}
+
+function clearSelection() {
+  activeId = null;
+  document.querySelectorAll('.node').forEach(n => n.className = 'node');
+  document.querySelectorAll('#lines-svg path').forEach(p => p.classList.remove('highlighted'));
+  document.getElementById('detail-panel').classList.remove('visible');
+}
+
+function updateHighlights() {
+  const ancestors = new Set(getAncestors(activeId));
+  const descendants = getAllDescendants(activeId);
+  const searchVal = document.getElementById('search').value.toLowerCase();
+  const anySearch = searchVal.length > 0;
+
+  document.querySelectorAll('.node').forEach(n => {
+    const nid = n.id.replace('node-', '');
+    n.className = 'node';
+    if (nid === activeId) n.classList.add('active');
+    else if (ancestors.has(nid)) n.classList.add('ancestor');
+    else if (descendants.has(nid)) n.classList.add('descendant');
+    else if (activeId) n.classList.add('dimmed');
+  });
+
+  const highlightedEdges = new Set();
+  // ancestor path
+  let cur = activeId;
+  while (raw[cur].parents.length) {
+    const par = raw[cur].parents[0];
+    highlightedEdges.add(par + '-' + cur);
+    cur = par;
+  }
+  // direct children
+  raw[activeId].children.forEach(c => highlightedEdges.add(activeId + '-' + c));
+
+  document.querySelectorAll('#lines-svg path').forEach(p => {
+    const key = p.getAttribute('data-from') + '-' + p.getAttribute('data-to');
+    p.classList.toggle('highlighted', highlightedEdges.has(key));
+  });
+}
+
+function showDetail(id) {
+  const p = raw[id];
+  const ancestors = getAncestors(id);
+  const siblings = getSiblings(id);
+  const panel = document.getElementById('detail-panel');
+  const content = document.getElementById('detail-content');
+
+  let lineage = ancestors.map(a =>
+    `<span class="step" onclick="selectPerson('${a}')">${name(a)}</span><span class="arrow">\u2192</span>`
+  ).join('') + `<span class="step" style="color:#e8e4dc;background:rgba(200,170,120,0.1)">${name(id)}</span>`;
+
+  let childrenHtml = '';
+  if (p.children.length) {
+    childrenHtml = `<div class="detail-section"><div class="detail-section-label">Children</div><div class="tags">${p.children.map(c => `<span class="tag" onclick="selectPerson('${c}')">${name(c)}</span>`).join('')}</div></div>`;
+  }
+
+  let siblingsHtml = '';
+  if (siblings.length) {
+    siblingsHtml = `<div class="detail-section"><div class="detail-section-label">Siblings</div><div class="tags">${siblings.map(s => `<span class="tag" onclick="selectPerson('${s}')">${name(s)}</span>`).join('')}</div></div>`;
+  }
+
+  let notes = p.notes ? `<div style="margin-top:8px;font-size:11px;color:#6a6560;font-style:italic">${p.notes}</div>` : '';
+
+  content.innerHTML = `<h3>${fullName(id)}</h3><div class="detail-meta"><span>Generation ${genMemo[id]+1}</span><span>${countDesc(id)} descendants</span>${p.children.length ? `<span>${p.children.length} children</span>` : ''}</div><div class="lineage">${lineage}</div>${childrenHtml}${siblingsHtml}${notes}`;
+  panel.classList.add('visible');
+}
+
+document.getElementById('search').addEventListener('input', (e) => {
+  const val = e.target.value.toLowerCase();
+  document.querySelectorAll('.node').forEach(n => {
+    const nid = n.id.replace('node-', '');
+    n.classList.remove('search-match', 'dimmed');
+    if (val.length > 0) {
+      const matches = raw[nid].middleName.toLowerCase().includes(val) || fullName(nid).toLowerCase().includes(val);
+      if (matches) n.classList.add('search-match');
+      else if (!activeId) n.classList.add('dimmed');
+    }
+  });
+});
+
+const mmCanvas = document.getElementById('minimap-canvas');
+const mmCtx = mmCanvas.getContext('2d');
+function drawMinimap() {
+  const bb = getBounds();
+  const mw = 160, mh = 100;
+  mmCanvas.width = mw * 2; mmCanvas.height = mh * 2;
+  mmCanvas.style.width = mw + 'px'; mmCanvas.style.height = mh + 'px';
+  mmCtx.clearRect(0, 0, mw * 2, mh * 2);
+  const totalW = bb.maxX + PAD * 2, totalH = bb.maxY + PAD * 2;
+  const s = Math.min(mw * 2 / totalW, mh * 2 / totalH);
+
+  mmCtx.strokeStyle = 'rgba(200,170,120,0.1)';
+  mmCtx.lineWidth = 1;
+  Object.keys(raw).forEach(id => {
+    raw[id].children.forEach(cid => {
+      const p1 = positions[id], p2 = positions[cid];
+      mmCtx.beginPath();
+      mmCtx.moveTo((p1.x + NODE_W/2) * s, (p1.y + NODE_H) * s);
+      mmCtx.lineTo((p2.x + NODE_W/2) * s, p2.y * s);
+      mmCtx.stroke();
+    });
+  });
+
+  Object.keys(positions).forEach(id => {
+    const p = positions[id];
+    mmCtx.fillStyle = id === activeId ? 'rgba(200,170,120,0.6)' : 'rgba(200,170,120,0.15)';
+    mmCtx.fillRect(p.x * s, p.y * s, NODE_W * s, NODE_H * s);
+  });
+
+  const vp = document.getElementById('minimap-vp');
+  const vpX = (-tx / scale) * s / 2;
+  const vpY = (-ty / scale) * s / 2;
+  const vpW = (wrap.clientWidth / scale) * s / 2;
+  const vpH = (wrap.clientHeight / scale) * s / 2;
+  vp.style.left = vpX + 'px'; vp.style.top = vpY + 'px';
+  vp.style.width = vpW + 'px'; vp.style.height = vpH + 'px';
+}
+
+buildNodes();
+buildLines();
+resetView();
+</script>
+</body>
+</html>

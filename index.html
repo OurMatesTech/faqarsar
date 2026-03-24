@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faqarsar.com — Singh Family Tree</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#0c0b0f;color:#e8e4dc;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+
+/* ===== LANDING HERO ===== */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  padding:40px 20px;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 30%, rgba(200,170,120,0.06) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-grain{
+  position:absolute;inset:0;opacity:0.03;
+  background-image:url('data:image/svg+xml,<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="256" height="256" filter="url(%23n)" opacity="1"/></svg>');
+  background-size:128px;pointer-events:none;
+}
+.logo-wrap{
+  margin-bottom:32px;
+  animation:fadeUp 1s ease-out;
+}
+.logo-wrap img{
+  height:80px;width:auto;
+  filter:drop-shadow(0 4px 30px rgba(200,170,120,0.1));
+}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,5vw,52px);font-weight:500;
+  text-align:center;letter-spacing:-0.02em;
+  margin-bottom:8px;
+  animation:fadeUp 1s ease-out 0.15s both;
+}
+.hero-title .village{color:rgba(200,170,120,0.9)}
+.hero-subtitle{
+  font-size:clamp(14px,2vw,18px);color:#7a7670;
+  text-align:center;max-width:500px;line-height:1.6;
+  margin-bottom:40px;
+  animation:fadeUp 1s ease-out 0.3s both;
+}
+.stats-row{
+  display:flex;gap:40px;margin-bottom:48px;
+  animation:fadeUp 1s ease-out 0.45s both;
+}
+.stat{text-align:center}
+.stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,4vw,44px);font-weight:600;
+  color:rgba(200,170,120,0.9);line-height:1;
+}
+.stat-label{font-size:12px;color:#5a5550;text-transform:uppercase;letter-spacing:0.08em;margin-top:4px}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 36px;border-radius:12px;
+  background:rgba(200,170,120,0.1);border:1px solid rgba(200,170,120,0.25);
+  color:#e8e4dc;font-size:16px;font-family:'DM Sans',sans-serif;
+  font-weight:500;cursor:pointer;text-decoration:none;
+  transition:all 0.3s;
+  animation:fadeUp 1s ease-out 0.6s both;
+}
+.cta-btn:hover{background:rgba(200,170,120,0.18);border-color:rgba(200,170,120,0.4);transform:translateY(-2px)}
+.cta-btn .arrow{font-size:20px;transition:transform 0.3s}
+.cta-btn:hover .arrow{transform:translateY(3px)}
+.scroll-hint{
+  position:absolute;bottom:30px;
+  font-size:11px;color:#4a4540;letter-spacing:0.06em;
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:1}}
+
+/* ===== TREE SECTION ===== */
+#tree-section{position:relative;height:100vh;border-top:1px solid rgba(255,255,255,0.04)}
+
+#toolbar{
+  position:absolute;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 24px;
+  background:linear-gradient(180deg,rgba(12,11,15,0.95) 0%,rgba(12,11,15,0) 100%);
+  pointer-events:none;
+}
+#toolbar>*{pointer-events:auto}
+.title-area{display:flex;align-items:center;gap:12px}
+.title-area .back-btn{
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
+  color:#a09a90;font-size:13px;padding:6px 12px;border-radius:8px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all 0.2s;text-decoration:none;
+}
+.title-area .back-btn:hover{background:rgba(255,255,255,0.1);color:#e8e4dc}
+.title-area h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:500;color:#e8e4dc}
+.title-area .subtitle{font-size:12px;color:#7a7670;letter-spacing:0.04em}
+.controls{display:flex;gap:8px;align-items:center}
+.controls button{
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
+  color:#a09a90;font-size:13px;padding:6px 14px;border-radius:8px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all 0.2s;
+}
+.controls button:hover{background:rgba(255,255,255,0.1);color:#e8e4dc;border-color:rgba(255,255,255,0.15)}
+.controls input{
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
+  color:#e8e4dc;font-size:13px;padding:6px 14px;border-radius:8px;width:200px;
+  font-family:'DM Sans',sans-serif;outline:none;
+}
+.controls input::placeholder{color:#5a5550}
+.controls input:focus{border-color:rgba(200,170,120,0.4)}
+
+#canvas-wrap{position:absolute;inset:0;overflow:hidden;cursor:grab}
+#canvas-wrap.dragging{cursor:grabbing}
+#canvas{position:absolute;transform-origin:0 0}
+
+svg.lines{position:absolute;top:0;left:0;pointer-events:none;overflow:visible}
+svg.lines path{fill:none;stroke:rgba(200,170,120,0.15);stroke-width:1.5}
+svg.lines path.highlighted{stroke:rgba(200,170,120,0.5);stroke-width:2}
+
+.node{
+  position:absolute;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:12px;padding:12px 16px;
+  cursor:pointer;transition:all 0.25s;
+  text-align:center;min-width:120px;
+}
+.node:hover{background:rgba(255,255,255,0.06);border-color:rgba(200,170,120,0.3);transform:translateY(-2px)}
+.node.active{
+  background:rgba(200,170,120,0.08);
+  border-color:rgba(200,170,120,0.5);
+  box-shadow:0 0 30px rgba(200,170,120,0.08);
+}
+.node.ancestor{border-color:rgba(200,170,120,0.3);border-style:dashed}
+.node.descendant{border-left:3px solid rgba(200,170,120,0.4)}
+.node.search-match{background:rgba(200,170,120,0.1);border-color:rgba(200,170,120,0.4)}
+.node.dimmed{opacity:0.25}
+.node .mid-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:500;color:#e8e4dc;letter-spacing:-0.01em}
+.node .full-label{font-size:10px;color:#6a6560;margin-top:2px;letter-spacing:0.02em}
+.node .gen-badge{
+  display:inline-block;font-size:9px;color:#5a5550;
+  background:rgba(255,255,255,0.04);border-radius:4px;
+  padding:1px 6px;margin-top:4px;
+}
+.node .desc-count{
+  position:absolute;top:-8px;right:-8px;
+  font-size:9px;color:rgba(200,170,120,0.8);
+  background:#1a1820;border:1px solid rgba(200,170,120,0.2);
+  border-radius:10px;padding:1px 6px;min-width:18px;text-align:center;
+}
+.node .leaf-badge{
+  display:inline-block;font-size:9px;color:#6a5040;
+  background:rgba(200,170,120,0.06);border:1px solid rgba(200,170,120,0.1);
+  border-radius:4px;padding:1px 6px;margin-top:4px;margin-left:4px;
+  letter-spacing:0.02em;
+}
+.node.leaf{border-style:dotted;border-color:rgba(255,255,255,0.05)}
+.node.has-note{border-color:rgba(180,80,60,0.3)}
+.node.has-location{border-color:rgba(80,160,120,0.3)}
+.node .card-note{
+  font-size:8px;color:rgba(180,80,60,0.7);margin-top:3px;
+  font-style:italic;line-height:1.3;white-space:normal;
+  max-width:120px;overflow:hidden;text-overflow:ellipsis;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+}
+.node .card-note.location{
+  color:rgba(80,180,120,0.85);font-style:normal;font-weight:500;
+}
+
+#detail-panel{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  z-index:100;min-width:360px;max-width:600px;
+  background:rgba(20,18,24,0.95);backdrop-filter:blur(20px);
+  border:1px solid rgba(200,170,120,0.15);border-radius:16px;
+  padding:20px 24px;display:none;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+#detail-panel.visible{display:block}
+#detail-panel h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:500;color:#e8e4dc;margin-bottom:4px}
+#detail-panel .lineage{font-size:12px;color:#8a8580;line-height:1.8;margin-top:8px}
+#detail-panel .lineage .step{
+  display:inline-block;padding:2px 8px;border-radius:6px;
+  background:rgba(255,255,255,0.04);color:#a09a90;cursor:pointer;
+  transition:background 0.15s;
+}
+#detail-panel .lineage .step:hover{background:rgba(200,170,120,0.15);color:#e8e4dc}
+#detail-panel .lineage .arrow{color:#4a4540;margin:0 3px;font-size:10px}
+.detail-meta{display:flex;gap:16px;margin-top:8px;font-size:11px;color:#6a6560}
+.detail-section{margin-top:10px}
+.detail-section-label{font-size:10px;color:#5a5550;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{
+  font-size:11px;padding:3px 10px;border-radius:6px;
+  background:rgba(255,255,255,0.04);color:#8a8580;cursor:pointer;
+  border:1px solid transparent;transition:all 0.15s;
+}
+.tag:hover{background:rgba(200,170,120,0.1);color:#e8e4dc;border-color:rgba(200,170,120,0.2)}
+#close-detail{
+  position:absolute;top:12px;right:14px;background:none;border:none;
+  color:#5a5550;font-size:18px;cursor:pointer;padding:4px;
+}
+#close-detail:hover{color:#e8e4dc}
+
+#minimap{
+  position:fixed;bottom:20px;right:20px;z-index:90;
+  width:160px;height:100px;
+  background:rgba(20,18,24,0.8);border:1px solid rgba(255,255,255,0.06);
+  border-radius:8px;overflow:hidden;display:none;
+}
+#minimap canvas{width:100%;height:100%}
+#minimap .viewport{
+  position:absolute;border:1px solid rgba(200,170,120,0.4);
+  border-radius:2px;pointer-events:none;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  padding:40px 20px;text-align:center;
+  border-top:1px solid rgba(255,255,255,0.04);
+  font-size:12px;color:#4a4540;
+}
+.footer a{color:rgba(200,170,120,0.6);text-decoration:none}
+.footer a:hover{color:rgba(200,170,120,0.9)}
+
+@media(max-width:600px){
+  .stats-row{gap:24px}
+  .controls input{width:140px}
+  #detail-panel{min-width:90vw;padding:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-grain"></div>
+  <div class="logo-wrap">
+    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="40" r="38" stroke="rgba(200,170,120,0.4)" stroke-width="1.5"/>
+      <circle cx="40" cy="40" r="28" stroke="rgba(200,170,120,0.2)" stroke-width="1"/>
+      <text x="40" y="36" text-anchor="middle" font-family="Playfair Display,serif" font-size="14" fill="rgba(200,170,120,0.9)" font-weight="600">F</text>
+      <text x="40" y="52" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="rgba(200,170,120,0.5)" letter-spacing="0.1em">FAQARSAR</text>
+    </svg>
+  </div>
+  <h1 class="hero-title">Singh Family of <span class="village">Faqarsar</span></h1>
+  <p class="hero-subtitle">A living record of our roots — tracing every branch, every generation, from Baba Singha Singh to today.</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num" id="stat-members">394</div><div class="stat-label">Members</div></div>
+    <div class="stat"><div class="stat-num" id="stat-generations">10</div><div class="stat-label">Generations</div></div>
+    <div class="stat"><div class="stat-num" id="stat-branches">42</div><div class="stat-label">Branches</div></div>
+  </div>
+  <a href="#tree-section" class="cta-btn">Explore the tree <span class="arrow">&darr;</span></a>
+  <div class="scroll-hint">Scroll down to explore</div>
+</section>
+
+<!-- ===== TREE ===== -->
+<section id="tree-section">
+  <div id="toolbar">
+    <div class="title-area">
+      <a href="#hero" class="back-btn">&larr;</a>
+      <div>
+        <h2>Family tree</h2>
+        <span class="subtitle">394 members &middot; Click anyone to trace lineage</span>
+      </div>
+    </div>
+    <div class="controls">
+      <input type="text" id="search" placeholder="Search by name..." />
+      <button onclick="resetView()">Fit</button>
+      <button onclick="zoomIn()">+</button>
+      <button onclick="zoomOut()">&minus;</button>
+    </div>
+  </div>
+
+  <div id="canvas-wrap">
+    <div id="canvas">
+      <svg class="lines" id="lines-svg"></svg>
+    </div>
+  </div>
+</section>
+
+<div id="detail-panel">
+  <button id="close-detail" onclick="clearSelection()">&times;</button>
+  <div id="detail-content"></div>
+</div>
+
+<div id="minimap"><canvas id="minimap-canvas"></canvas><div class="viewport" id="minimap-vp"></div></div>
+
+<footer class="footer">
+  <p>Faqarsar.com &mdash; Preserving our heritage, one name at a time</p>
+</footer>
+
+<script>
+fetch('singh-family.json').then(r=>r.json()).then(data=>{initTree(data)});
+
+function initTree(raw) {
+const NODE_W = 140, NODE_H = 80, GAP_X = 20, GAP_Y = 100, PAD = 80;
+const positions = {};
+let activeId = null;
+let scale = 1, tx = 0, ty = 0;
+let isDragging = false, dragStartX, dragStartY, dragTxStart, dragTyStart;
+
+function getGen(id, memo={}) {
+  if (memo[id] !== undefined) return memo[id];
+  if (!raw[id].parents.length) { memo[id] = 0; return 0; }
+  memo[id] = getGen(raw[id].parents[0], memo) + 1;
+  return memo[id];
+}
+const genMemo = {};
+Object.keys(raw).forEach(id => getGen(id, genMemo));
+
+const memberCount = Object.keys(raw).length;
+const maxGen = Math.max(...Object.values(genMemo)) + 1;
+const roots = Object.keys(raw).filter(id => raw[id].parents.length === 0);
+let branchCount = 0;
+roots.forEach(r => { branchCount += raw[r].children.length || 1; });
+
+document.getElementById('stat-members').textContent = memberCount;
+document.getElementById('stat-generations').textContent = maxGen;
+document.getElementById('stat-branches').textContent = branchCount;
+document.querySelector('.subtitle').textContent = memberCount + ' members \u00b7 Click anyone to trace lineage';
+
+function subtreeWidth(id) {
+  const ch = raw[id].children;
+  if (!ch.length) return NODE_W;
+  let total = 0;
+  ch.forEach((c, i) => { total += subtreeWidth(c); if (i < ch.length - 1) total += GAP_X; });
+  return Math.max(NODE_W, total);
+}
+
+function layoutTree(id, x, y) {
+  const w = subtreeWidth(id);
+  positions[id] = { x: x + w / 2 - NODE_W / 2, y };
+  const ch = raw[id].children;
+  if (!ch.length) return;
+  let cx = x;
+  ch.forEach((c, i) => {
+    const cw = subtreeWidth(c);
+    layoutTree(c, cx, y + GAP_Y + NODE_H);
+    cx += cw + GAP_X;
+  });
+}
+
+layoutTree('p1', PAD, PAD);
+
+function getAllDescendants(id) {
+  const r = new Set(); const q = [...raw[id].children];
+  while (q.length) { const c = q.shift(); r.add(c); q.push(...raw[c].children); }
+  return r;
+}
+function countDesc(id) { return getAllDescendants(id).size; }
+function getAncestors(id) {
+  const r = []; let c = id;
+  while (raw[c].parents.length) { c = raw[c].parents[0]; r.unshift(c); }
+  return r;
+}
+function getSiblings(id) {
+  if (!raw[id].parents.length) return [];
+  return raw[raw[id].parents[0]].children.filter(c => c !== id);
+}
+function name(id) { return raw[id].middleName; }
+function fullName(id) { return [raw[id].firstName, raw[id].middleName, raw[id].lastName].filter(Boolean).join(' '); }
+
+const canvas = document.getElementById('canvas');
+const wrap = document.getElementById('canvas-wrap');
+const svg = document.getElementById('lines-svg');
+
+function buildNodes() {
+  Object.keys(raw).forEach(id => {
+    const p = raw[id];
+    const pos = positions[id];
+    const div = document.createElement('div');
+    const isLocation = p.notes && p.notes.includes('\ud83d\udccd');
+    const isNoChildren = p.notes === 'No children' || p.notes === 'Died with no children';
+    const hasOtherNote = p.notes && !isNoChildren;
+    div.className = 'node' + (isNoChildren ? ' leaf' : '') + (hasOtherNote && !isLocation ? ' has-note' : '') + (isLocation ? ' has-location' : '');
+    div.id = 'node-' + id;
+    div.style.left = pos.x + 'px';
+    div.style.top = pos.y + 'px';
+    div.style.width = NODE_W + 'px';
+    const dc = countDesc(id);
+    const badgeRow = '<div class="gen-badge">G' + (genMemo[id]+1) + '</div>' + (isNoChildren ? '<span class="leaf-badge">' + p.notes.toLowerCase() + '</span>' : '');
+    const noteRow = hasOtherNote ? '<div class="card-note' + (isLocation ? ' location' : '') + '">' + p.notes + '</div>' : '';
+    div.innerHTML = '<div class="mid-name">' + p.middleName + '</div><div class="full-label">' + fullName(id) + '</div>' + badgeRow + noteRow + (dc > 0 ? '<div class="desc-count">' + dc + '</div>' : '');
+    div.onclick = () => selectPerson(id);
+    canvas.appendChild(div);
+  });
+}
+
+function buildLines() {
+  svg.innerHTML = '';
+  Object.keys(raw).forEach(id => {
+    raw[id].children.forEach(cid => {
+      const p1 = positions[id], p2 = positions[cid];
+      const x1 = p1.x + NODE_W / 2, y1 = p1.y + NODE_H;
+      const x2 = p2.x + NODE_W / 2, y2 = p2.y;
+      const midY = y1 + (y2 - y1) * 0.5;
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M'+x1+','+y1+' C'+x1+','+midY+' '+x2+','+midY+' '+x2+','+y2);
+      path.setAttribute('data-from', id);
+      path.setAttribute('data-to', cid);
+      svg.appendChild(path);
+    });
+  });
+  const bb = getBounds();
+  svg.setAttribute('width', bb.maxX + PAD);
+  svg.setAttribute('height', bb.maxY + PAD);
+}
+
+function getBounds() {
+  let minX = Infinity, minY = Infinity, maxX = 0, maxY = 0;
+  Object.values(positions).forEach(p => {
+    minX = Math.min(minX, p.x);
+    minY = Math.min(minY, p.y);
+    maxX = Math.max(maxX, p.x + NODE_W);
+    maxY = Math.max(maxY, p.y + NODE_H);
+  });
+  return { minX, minY, maxX, maxY };
+}
+
+function applyTransform() {
+  canvas.style.transform = 'translate('+tx+'px,'+ty+'px) scale('+scale+')';
+  drawMinimap();
+}
+
+window.resetView = function() {
+  const bb = getBounds();
+  const cw = wrap.clientWidth, ch = wrap.clientHeight;
+  const sw = cw / (bb.maxX + PAD * 2), sh = ch / (bb.maxY + PAD * 2);
+  scale = Math.min(sw, sh, 1);
+  tx = (cw - (bb.maxX + PAD * 2) * scale) / 2;
+  ty = (ch - (bb.maxY + PAD * 2) * scale) / 2 + 30;
+  applyTransform();
+}
+
+window.zoomIn = function() { scale = Math.min(scale * 1.2, 3); applyTransform(); }
+window.zoomOut = function() { scale = Math.max(scale / 1.2, 0.15); applyTransform(); }
+
+wrap.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const rect = wrap.getBoundingClientRect();
+  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  const oldScale = scale;
+  const delta = e.deltaY > 0 ? 0.9 : 1.1;
+  scale = Math.max(0.15, Math.min(3, scale * delta));
+  tx = mx - (mx - tx) * (scale / oldScale);
+  ty = my - (my - ty) * (scale / oldScale);
+  applyTransform();
+}, { passive: false });
+
+wrap.addEventListener('mousedown', (e) => {
+  if (e.target.closest('.node')) return;
+  isDragging = true; wrap.classList.add('dragging');
+  dragStartX = e.clientX; dragStartY = e.clientY;
+  dragTxStart = tx; dragTyStart = ty;
+});
+window.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  tx = dragTxStart + (e.clientX - dragStartX);
+  ty = dragTyStart + (e.clientY - dragStartY);
+  applyTransform();
+});
+window.addEventListener('mouseup', () => { isDragging = false; wrap.classList.remove('dragging'); });
+
+let touchStartDist = 0, touchStartScale = 1;
+wrap.addEventListener('touchstart', (e) => {
+  if (e.touches.length === 1 && !e.target.closest('.node')) {
+    isDragging = true;
+    dragStartX = e.touches[0].clientX; dragStartY = e.touches[0].clientY;
+    dragTxStart = tx; dragTyStart = ty;
+  } else if (e.touches.length === 2) {
+    isDragging = false;
+    const dx = e.touches[0].clientX - e.touches[1].clientX;
+    const dy = e.touches[0].clientY - e.touches[1].clientY;
+    touchStartDist = Math.sqrt(dx*dx+dy*dy);
+    touchStartScale = scale;
+  }
+}, {passive:true});
+wrap.addEventListener('touchmove', (e) => {
+  if (e.touches.length === 1 && isDragging) {
+    tx = dragTxStart + (e.touches[0].clientX - dragStartX);
+    ty = dragTyStart + (e.touches[0].clientY - dragStartY);
+    applyTransform();
+  } else if (e.touches.length === 2) {
+    const dx = e.touches[0].clientX - e.touches[1].clientX;
+    const dy = e.touches[0].clientY - e.touches[1].clientY;
+    const dist = Math.sqrt(dx*dx+dy*dy);
+    scale = Math.max(0.15, Math.min(3, touchStartScale * (dist / touchStartDist)));
+    applyTransform();
+  }
+}, {passive:true});
+wrap.addEventListener('touchend', () => { isDragging = false; });
+
+function selectPerson(id) {
+  if (activeId === id) { clearSelection(); return; }
+  activeId = id;
+  updateHighlights();
+  showDetail(id);
+  const pos = positions[id];
+  const cw = wrap.clientWidth, ch = wrap.clientHeight;
+  tx = cw / 2 - (pos.x + NODE_W / 2) * scale;
+  ty = ch / 2 - (pos.y + NODE_H / 2) * scale - 40;
+  applyTransform();
+}
+
+window.clearSelection = function() {
+  activeId = null;
+  document.querySelectorAll('.node').forEach(n => {
+    const nid = n.id.replace('node-', '');
+    const p = raw[nid];
+    const isLocation = p.notes && p.notes.includes('\ud83d\udccd');
+    const isNoChildren = p.notes === 'No children' || p.notes === 'Died with no children';
+    const hasOtherNote = p.notes && !isNoChildren;
+    n.className = 'node' + (isNoChildren ? ' leaf' : '') + (hasOtherNote && !isLocation ? ' has-note' : '') + (isLocation ? ' has-location' : '');
+  });
+  document.querySelectorAll('#lines-svg path').forEach(p => p.classList.remove('highlighted'));
+  document.getElementById('detail-panel').classList.remove('visible');
+}
+
+function updateHighlights() {
+  const ancestors = new Set(getAncestors(activeId));
+  const descendants = getAllDescendants(activeId);
+
+  document.querySelectorAll('.node').forEach(n => {
+    const nid = n.id.replace('node-', '');
+    const p = raw[nid];
+    const isLocation = p.notes && p.notes.includes('\ud83d\udccd');
+    const isNoChildren = p.notes === 'No children' || p.notes === 'Died with no children';
+    const hasOtherNote = p.notes && !isNoChildren;
+    n.className = 'node' + (isNoChildren ? ' leaf' : '') + (hasOtherNote && !isLocation ? ' has-note' : '') + (isLocation ? ' has-location' : '');
+    if (nid === activeId) n.classList.add('active');
+    else if (ancestors.has(nid)) n.classList.add('ancestor');
+    else if (descendants.has(nid)) n.classList.add('descendant');
+    else if (activeId) n.classList.add('dimmed');
+  });
+
+  const highlightedEdges = new Set();
+  let cur = activeId;
+  while (raw[cur].parents.length) {
+    const par = raw[cur].parents[0];
+    highlightedEdges.add(par + '-' + cur);
+    cur = par;
+  }
+  raw[activeId].children.forEach(c => highlightedEdges.add(activeId + '-' + c));
+
+  document.querySelectorAll('#lines-svg path').forEach(p => {
+    const key = p.getAttribute('data-from') + '-' + p.getAttribute('data-to');
+    p.classList.toggle('highlighted', highlightedEdges.has(key));
+  });
+}
+
+function showDetail(id) {
+  const p = raw[id];
+  const ancestors = getAncestors(id);
+  const siblings = getSiblings(id);
+  const panel = document.getElementById('detail-panel');
+  const content = document.getElementById('detail-content');
+
+  let lineage = ancestors.map(a =>
+    '<span class="step" onclick="window._selectPerson(\'' + a + '\')">' + name(a) + '</span><span class="arrow">\u2192</span>'
+  ).join('') + '<span class="step" style="color:#e8e4dc;background:rgba(200,170,120,0.1)">' + name(id) + '</span>';
+
+  let childrenHtml = '';
+  if (p.children.length) {
+    childrenHtml = '<div class="detail-section"><div class="detail-section-label">Children</div><div class="tags">' + p.children.map(c => '<span class="tag" onclick="window._selectPerson(\'' + c + '\')">' + name(c) + '</span>').join('') + '</div></div>';
+  }
+
+  let siblingsHtml = '';
+  if (siblings.length) {
+    siblingsHtml = '<div class="detail-section"><div class="detail-section-label">Siblings</div><div class="tags">' + siblings.map(s => '<span class="tag" onclick="window._selectPerson(\'' + s + '\')">' + name(s) + '</span>').join('') + '</div></div>';
+  }
+
+  let notes = p.notes ? '<div style="margin-top:8px;font-size:11px;color:#6a6560;font-style:italic">' + p.notes + '</div>' : '';
+
+  content.innerHTML = '<h3>' + fullName(id) + '</h3><div class="detail-meta"><span>Generation ' + (genMemo[id]+1) + '</span><span>' + countDesc(id) + ' descendants</span>' + (p.children.length ? '<span>' + p.children.length + ' children</span>' : '') + '</div><div class="lineage">' + lineage + '</div>' + childrenHtml + siblingsHtml + notes;
+  panel.classList.add('visible');
+}
+
+window._selectPerson = selectPerson;
+
+document.getElementById('search').addEventListener('input', (e) => {
+  const val = e.target.value.toLowerCase();
+  document.querySelectorAll('.node').forEach(n => {
+    const nid = n.id.replace('node-', '');
+    n.classList.remove('search-match', 'dimmed');
+    if (val.length > 0) {
+      const matches = raw[nid].middleName.toLowerCase().includes(val) || fullName(nid).toLowerCase().includes(val);
+      if (matches) n.classList.add('search-match');
+      else if (!activeId) n.classList.add('dimmed');
+    }
+  });
+});
+
+const mmCanvas = document.getElementById('minimap-canvas');
+const mmCtx = mmCanvas.getContext('2d');
+function drawMinimap() {
+  const mm = document.getElementById('minimap');
+  mm.style.display = 'block';
+  const bb = getBounds();
+  const mw = 160, mh = 100;
+  mmCanvas.width = mw * 2; mmCanvas.height = mh * 2;
+  mmCanvas.style.width = mw + 'px'; mmCanvas.style.height = mh + 'px';
+  mmCtx.clearRect(0, 0, mw * 2, mh * 2);
+  const totalW = bb.maxX + PAD * 2, totalH = bb.maxY + PAD * 2;
+  const s = Math.min(mw * 2 / totalW, mh * 2 / totalH);
+  mmCtx.strokeStyle = 'rgba(200,170,120,0.1)'; mmCtx.lineWidth = 1;
+  Object.keys(raw).forEach(id => {
+    raw[id].children.forEach(cid => {
+      const p1 = positions[id], p2 = positions[cid];
+      mmCtx.beginPath();
+      mmCtx.moveTo((p1.x+NODE_W/2)*s,(p1.y+NODE_H)*s);
+      mmCtx.lineTo((p2.x+NODE_W/2)*s,p2.y*s);
+      mmCtx.stroke();
+    });
+  });
+  Object.keys(positions).forEach(id => {
+    const p = positions[id];
+    mmCtx.fillStyle = id === activeId ? 'rgba(200,170,120,0.6)' : 'rgba(200,170,120,0.15)';
+    mmCtx.fillRect(p.x*s,p.y*s,NODE_W*s,NODE_H*s);
+  });
+  const vp = document.getElementById('minimap-vp');
+  const vpX = (-tx/scale)*s/2, vpY = (-ty/scale)*s/2;
+  const vpW = (wrap.clientWidth/scale)*s/2, vpH = (wrap.clientHeight/scale)*s/2;
+  vp.style.left = vpX+'px'; vp.style.top = vpY+'px';
+  vp.style.width = vpW+'px'; vp.style.height = vpH+'px';
+}
+
+const obs = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) {
+    buildNodes();
+    buildLines();
+    resetView();
+    obs.disconnect();
+  }
+}, {threshold: 0.1});
+obs.observe(document.getElementById('tree-section'));
+}
+</script>
+</body>
+</html>
