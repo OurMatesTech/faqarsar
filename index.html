@@ -360,10 +360,73 @@ svg.lines path.highlighted{stroke:rgba(200,170,120,0.6);stroke-width:2.5;stroke-
 .footer a{color:rgba(200,170,120,0.6);text-decoration:none}
 .footer a:hover{color:rgba(200,170,120,0.9)}
 
-@media(max-width:600px){
-  .stats-row{gap:24px}
-  .controls input{width:140px}
-  #detail-panel{min-width:90vw;padding:16px}
+@media(max-width:768px){
+  .hero{padding:30px 16px}
+  .logo-wrap img{height:55px}
+  .hero-title{font-size:24px}
+  .hero-subtitle{font-size:13px;max-width:90%;padding:0 8px}
+  .stats-row{gap:20px}
+  .stat-num{font-size:28px}
+  .cta-row{flex-direction:column;align-items:center;gap:10px}
+  .cta-btn{font-size:14px;padding:12px 28px;width:80%;text-align:center;justify-content:center}
+  .lang-fixed{top:12px;right:12px;font-size:12px;padding:6px 12px}
+
+  #toolbar,#profiles-toolbar{
+    flex-direction:column;gap:10px;padding:12px 16px;align-items:stretch
+  }
+  .title-area{gap:8px}
+  .title-area h2,.title-area .back-btn{font-size:14px}
+  .title-area .subtitle{font-size:10px}
+  .controls{flex-wrap:wrap;gap:6px;justify-content:flex-start}
+  .controls input{width:100%;min-width:0}
+  .controls button{font-size:12px;padding:5px 10px}
+  .controls .lang-btn{font-size:12px;padding:5px 10px}
+  .custom-select{min-width:120px}
+  .cs-selected{font-size:12px;padding:5px 10px}
+
+  #profiles-grid{grid-template-columns:1fr;gap:12px;padding:16px}
+  .profile-card{padding:16px}
+  .pc-name{font-size:16px}
+  .pc-gurmukhi{font-size:13px}
+  .pc-gen{font-size:9px;padding:2px 6px}
+
+  #profile-modal-card{width:95%;max-width:none;max-height:90vh;border-radius:16px}
+  .mh{padding:18px 18px 0}
+  .modal-name{font-size:22px}
+  .modal-gurmukhi{font-size:16px}
+  .modal-gen-badge{font-size:10px;padding:2px 8px}
+  .mbadges{margin:10px 18px 0;gap:4px}
+  .mbadge{font-size:10px;padding:3px 7px}
+  .mdiv{margin:12px 18px}
+  .mgrid{padding:0 18px;gap:8px 12px}
+  .mg-label{font-size:8px}
+  .mg-val{font-size:12px}
+  .ms{padding:10px 18px}
+  .ms-title{font-size:8px}
+  .ms-tag{font-size:10px;padding:3px 7px}
+  .ml-step{font-size:10px;padding:2px 6px}
+  .ml-arrow{font-size:8px}
+  .mfooter{padding:12px 18px 18px}
+  .modal-close{top:10px;right:10px;width:28px;height:28px;font-size:16px}
+
+  #detail-panel{min-width:90vw;max-width:95vw;padding:14px 16px;bottom:10px;border-radius:12px}
+  #detail-panel h3{font-size:16px}
+
+  #minimap{width:100px;height:65px;bottom:12px;right:12px}
+  .zoom-hint{display:none}
+
+  .footer{padding:24px 16px;font-size:11px}
+}
+@media(max-width:380px){
+  .hero-title{font-size:20px}
+  .stats-row{gap:14px}
+  .stat-num{font-size:24px}
+  .stat-label{font-size:10px}
+  .cta-btn{font-size:13px;padding:10px 20px;width:90%}
+  #profiles-grid{padding:12px}
+  .pc-name{font-size:15px}
+  .modal-name{font-size:20px}
+  .mgrid{grid-template-columns:1fr}
 }
 </style>
 </head>
