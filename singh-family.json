@@ -1,14 +1,14 @@
 {
   "p1": {
     "id": "p1",
-    "firstName": "",
+    "firstName": "Baba",
     "middleName": "Singha",
     "lastName": "Singh",
     "parents": [],
     "children": [
       "p2"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਾਬਾ ਸਿੰਘਾ",
     "gender": "male",
     "birth": "",
@@ -27,7 +27,7 @@
       "p3",
       "p4"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬੱਗਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -50,7 +50,7 @@
       "p9",
       "p10"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੋਹਰੀ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -70,7 +70,7 @@
       "p338",
       "p339"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੰਗਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -90,7 +90,7 @@
       "p12",
       "p13"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬੇਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -109,7 +109,7 @@
       "p73",
       "p74"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਲਾਬ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -129,7 +129,7 @@
       "p105",
       "p106"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਰਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -150,7 +150,7 @@
       "p185",
       "p186"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਧਰਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -166,7 +166,7 @@
       "p3"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੌਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -187,7 +187,7 @@
       "p117",
       "p118"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਰਾਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -205,7 +205,7 @@
     "children": [
       "p14"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਫਤਹਿ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -225,7 +225,7 @@
       "p21",
       "p22"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਅਨੋਖ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -243,7 +243,7 @@
     "children": [
       "p70"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਨਰੰਗ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -265,7 +265,7 @@
       "p18",
       "p19"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਫਾਗੜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -285,7 +285,7 @@
       "p362",
       "p363"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਚੰਨਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -304,7 +304,7 @@
       "p355",
       "p356"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਨੁੱਗਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -320,7 +320,7 @@
       "p14"
     ],
     "children": [],
-    "notes": "Had no children; 📍 Punjab",
+    "notes": "Had no children; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੇਠਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -340,7 +340,7 @@
       "p365",
       "p366"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੱਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -361,7 +361,7 @@
       "p359",
       "p360"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਰਨੈਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -380,7 +380,7 @@
       "p23",
       "p24"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਭਗਵਾਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -399,7 +399,7 @@
       "p43",
       "p44"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਿਸ਼ਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -417,7 +417,7 @@
     "children": [
       "p58"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਿਸ਼ਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -436,7 +436,7 @@
       "p25",
       "p26"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਅਰਜਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -457,7 +457,7 @@
       "p34",
       "p35"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੱਜਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -476,7 +476,7 @@
       "p27",
       "p28"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਖ਼ਤੌਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -496,7 +496,7 @@
       "p30",
       "p31"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਨਾਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -512,7 +512,7 @@
       "p25"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਅਵਤਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -528,7 +528,7 @@
       "p25"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਲਜ਼ਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -544,7 +544,7 @@
       "p26"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਜੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -560,7 +560,7 @@
       "p26"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਜੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -576,7 +576,7 @@
       "p26"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਲਕੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -592,7 +592,7 @@
       "p24"
     ],
     "children": [],
-    "notes": "Had no children; 📍 Punjab",
+    "notes": "Had no children; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਰਤਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -611,7 +611,7 @@
       "p36",
       "p37"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਰਨੇਕ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -631,7 +631,7 @@
       "p39",
       "p40"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਲਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -650,7 +650,7 @@
       "p41",
       "p42"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਰਾਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -666,7 +666,7 @@
       "p33"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਵੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -682,7 +682,7 @@
       "p33"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਸੰਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -698,7 +698,7 @@
       "p34"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੋਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -714,7 +714,7 @@
       "p34"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਰਸ਼ਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -730,7 +730,7 @@
       "p34"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਖਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -746,7 +746,7 @@
       "p35"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਵਜ਼ੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -762,7 +762,7 @@
       "p35"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਵਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -782,7 +782,7 @@
       "p46",
       "p47"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੇਹਰ ਸਿੰਘ ਸਮਾਜੀ",
     "gender": "male",
     "birth": "",
@@ -801,7 +801,7 @@
       "p68",
       "p69"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਝੰਡਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -820,7 +820,7 @@
       "p48",
       "p49"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਰੀ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -841,7 +841,7 @@
       "p52",
       "p53"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੁਕੰਦ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -862,7 +862,7 @@
       "p56",
       "p57"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੱਘਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -878,7 +878,7 @@
       "p45"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -894,7 +894,7 @@
       "p45"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਦਰਸ਼ਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -910,7 +910,7 @@
       "p46"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਜੰਟ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -926,7 +926,7 @@
       "p46"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਮੇਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -942,7 +942,7 @@
       "p46"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਰਮੇਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -958,7 +958,7 @@
       "p46"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਦਾਸ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -974,7 +974,7 @@
       "p47"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਖਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -990,7 +990,7 @@
       "p47"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਤੇਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1006,7 +1006,7 @@
       "p47"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਤੇਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1022,7 +1022,7 @@
       "p47"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਦਰਬਾਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1042,7 +1042,7 @@
       "p60",
       "p61"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਾਕਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1063,7 +1063,7 @@
       "p64",
       "p65"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1081,7 +1081,7 @@
     "children": [
       "p66"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਚਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1099,7 +1099,7 @@
     "children": [
       "p67"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੈਬ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1115,7 +1115,7 @@
       "p59"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੱਗਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1131,7 +1131,7 @@
       "p59"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਪਾਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1147,7 +1147,7 @@
       "p59"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬੋਹੜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1163,7 +1163,7 @@
       "p59"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1179,7 +1179,7 @@
       "p60"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਸੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1195,7 +1195,7 @@
       "p61"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਜੰਟ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1211,7 +1211,7 @@
       "p44"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੁਖ਼ਤਿਆਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1227,7 +1227,7 @@
       "p44"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੋਹਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1246,7 +1246,7 @@
       "p71",
       "p72"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਲਹਿਣਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1262,7 +1262,7 @@
       "p70"
     ],
     "children": [],
-    "notes": "Died in a train accident; had no children; 📍 Punjab",
+    "notes": "Died in a train accident; had no children; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੱਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1278,7 +1278,7 @@
       "p70"
     ],
     "children": [],
-    "notes": "Died in a train accident; had no children; 📍 Punjab",
+    "notes": "Died in a train accident; had no children; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਾਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1301,7 +1301,7 @@
       "p79",
       "p80"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਰਾਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1320,7 +1320,7 @@
       "p97",
       "p98"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਵਸਾਵਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1340,7 +1340,7 @@
       "p82",
       "p83"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਵਰਿਆਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1360,7 +1360,7 @@
       "p85",
       "p290"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਰਨਾਮ ਸਿੰਘ ਨੰਬਰਦਾਰ",
     "gender": "male",
     "birth": "",
@@ -1380,7 +1380,7 @@
       "p87",
       "p88"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸ਼ਾਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1400,7 +1400,7 @@
       "p90",
       "p91"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਾਹਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1419,7 +1419,7 @@
       "p92",
       "p93"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਭਾਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1438,7 +1438,7 @@
       "p94",
       "p95"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਪਾਲੂ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1457,7 +1457,7 @@
       "p324",
       "p325"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਭਾਗ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1476,7 +1476,7 @@
       "p328",
       "p329"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਪ੍ਰੀਤਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1495,7 +1495,7 @@
       "p330",
       "p331"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੇਹਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1516,7 +1516,7 @@
       "p293",
       "p294"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਇੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1532,7 +1532,7 @@
       "p76"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1550,7 +1550,7 @@
     "children": [
       "p308"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਨਿਹਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1570,7 +1570,7 @@
       "p306",
       "p307"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਖੇਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1589,7 +1589,7 @@
       "p303",
       "p304"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਨੇਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1607,7 +1607,7 @@
     "children": [
       "p311"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਅਲਬੇਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1625,7 +1625,7 @@
     "children": [
       "p309"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸਪੂਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1641,7 +1641,7 @@
       "p78"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਭੋਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1663,7 +1663,7 @@
       "p322",
       "p323"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਾਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1681,7 +1681,7 @@
     "children": [
       "p318"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੀਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1699,7 +1699,7 @@
     "children": [
       "p96"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਾਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1718,7 +1718,7 @@
       "p313",
       "p314"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਆਤਮਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1738,7 +1738,7 @@
       "p316",
       "p317"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਟਹਿਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1760,7 +1760,7 @@
       "p102",
       "p103"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1776,7 +1776,7 @@
       "p74"
     ],
     "children": [],
-    "notes": "Had 2 daughters; 📍 Punjab",
+    "notes": "Had 2 daughters; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਕੁੰਢਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1792,7 +1792,7 @@
       "p97"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਾਕਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1808,7 +1808,7 @@
       "p97"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਤਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1824,7 +1824,7 @@
       "p97"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਰਤਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1840,7 +1840,7 @@
       "p97"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਦਰਬਾਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1856,7 +1856,7 @@
       "p97"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਿਓਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1874,7 +1874,7 @@
     "children": [
       "p107"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਾਣਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1890,7 +1890,7 @@
       "p7"
     ],
     "children": [],
-    "notes": "Had no children; Jaggar Singh received the land/property; 📍 Punjab",
+    "notes": "Had no children; Jaggar Singh received the land/property; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਬੰਨਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1906,7 +1906,7 @@
       "p7"
     ],
     "children": [],
-    "notes": "Had no children; Jaggar Singh received the land/property; 📍 Punjab",
+    "notes": "Had no children; Jaggar Singh received the land/property; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਧੰਨਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1930,7 +1930,7 @@
       "p113",
       "p114"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੱਗਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1953,7 +1953,7 @@
       "p371",
       "p372"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਚਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1976,7 +1976,7 @@
       "p377",
       "p378"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਲਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -1999,7 +1999,7 @@
       "p383",
       "p384"
     ],
-    "notes": "Alias Mukand; 📍 Punjab",
+    "notes": "Alias Mukand; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੰਡਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2018,7 +2018,7 @@
       "p385",
       "p386"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਅਵਤਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2038,7 +2038,7 @@
       "p388",
       "p389"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਰਨੇਕ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2057,7 +2057,7 @@
       "p390",
       "p391"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਾਕਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2078,7 +2078,7 @@
       "p394",
       "p395"
     ],
-    "notes": "Alias Shotu; 📍 Punjab",
+    "notes": "Alias Shotu; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਜੰਟ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2099,7 +2099,7 @@
       "p121",
       "p122"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਲਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2120,7 +2120,7 @@
       "p135",
       "p136"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਜਾਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2136,7 +2136,7 @@
       "p10"
     ],
     "children": [],
-    "notes": "Died with no children; 📍 Punjab",
+    "notes": "Died with no children; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੋਢਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2155,7 +2155,7 @@
       "p163",
       "p164"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਯੋਧਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2175,7 +2175,7 @@
       "p124",
       "p125"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਭਾਗ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2195,7 +2195,7 @@
       "p127",
       "p128"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਿਰਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2216,7 +2216,7 @@
       "p131",
       "p132"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਟਿੱਕਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2232,7 +2232,7 @@
       "p115"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਰਨੈਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2248,7 +2248,7 @@
       "p119"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬੰਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2264,7 +2264,7 @@
       "p119"
     ],
     "children": [],
-    "notes": "Alias Gaamu; 📍 Punjab",
+    "notes": "Alias Gaamu; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਨਾਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2280,7 +2280,7 @@
       "p119"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੀਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2296,7 +2296,7 @@
       "p120"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਾਕਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2312,7 +2312,7 @@
       "p120"
     ],
     "children": [],
-    "notes": "Paathi; 📍 Punjab",
+    "notes": "Paathi; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਅਜਮੇਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2328,7 +2328,7 @@
       "p120"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੇਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2344,7 +2344,7 @@
       "p121"
     ],
     "children": [],
-    "notes": "Alias Jattu; 📍 Punjab",
+    "notes": "Alias Jattu; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਜੰਟ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2360,7 +2360,7 @@
       "p121"
     ],
     "children": [],
-    "notes": "Alias Sukha; 📍 Punjab",
+    "notes": "Alias Sukha; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਖਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2376,7 +2376,7 @@
       "p121"
     ],
     "children": [],
-    "notes": "Alias DC; 📍 Punjab",
+    "notes": "Alias DC; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਸਵੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2392,7 +2392,7 @@
       "p121"
     ],
     "children": [],
-    "notes": "Alias Cheena; 📍 Punjab",
+    "notes": "Alias Cheena; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2413,7 +2413,7 @@
       "p139",
       "p140"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਫੁੰਮਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2433,7 +2433,7 @@
       "p142",
       "p143"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਦਿੱਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2452,7 +2452,7 @@
       "p144",
       "p145"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਵਾਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2475,7 +2475,7 @@
       "p150",
       "p151"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਾਲ੍ਹਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2491,7 +2491,7 @@
       "p133"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2507,7 +2507,7 @@
       "p133"
     ],
     "children": [],
-    "notes": "Alias Gaaja; 📍 Punjab",
+    "notes": "Alias Gaaja; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਰਾਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2523,7 +2523,7 @@
       "p133"
     ],
     "children": [],
-    "notes": "Alias Mishri; 📍 Punjab",
+    "notes": "Alias Mishri; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੁਖ਼ਤਿਆਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2542,7 +2542,7 @@
       "p152",
       "p153"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਰੂਪ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2558,7 +2558,7 @@
       "p140"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਸੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2574,7 +2574,7 @@
       "p140"
     ],
     "children": [],
-    "notes": "Alias Mithu; 📍 Punjab",
+    "notes": "Alias Mithu; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਪ੍ਰੇਮਜੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2590,7 +2590,7 @@
       "p134"
     ],
     "children": [],
-    "notes": "📍 Rajasthan",
+    "notes": "📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਸਿਕੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2610,7 +2610,7 @@
       "p155",
       "p156"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੰਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2629,7 +2629,7 @@
       "p157",
       "p158"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਬੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2645,7 +2645,7 @@
       "p142"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2661,7 +2661,7 @@
       "p142"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਤੇਜਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2677,7 +2677,7 @@
       "p142"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਰਨੇਕ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2693,7 +2693,7 @@
       "p143"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਖਮੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2709,7 +2709,7 @@
       "p143"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਸਮੇਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2728,7 +2728,7 @@
       "p159",
       "p160"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਿੱਕਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2747,7 +2747,7 @@
       "p161",
       "p162"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਨੰਦਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2763,7 +2763,7 @@
       "p144"
     ],
     "children": [],
-    "notes": "Alias Mandar; 📍 Punjab",
+    "notes": "Alias Mandar; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਖਮੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2779,7 +2779,7 @@
       "p144"
     ],
     "children": [],
-    "notes": "Alias Kaura; 📍 Punjab",
+    "notes": "Alias Kaura; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਇਕਬਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2795,7 +2795,7 @@
       "p145"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਜੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2811,7 +2811,7 @@
       "p145"
     ],
     "children": [],
-    "notes": "Alias Pappa; 📍 Punjab",
+    "notes": "Alias Pappa; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਦੀਸ਼ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2827,7 +2827,7 @@
       "p136"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਿੱਠਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2843,7 +2843,7 @@
       "p136"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੂਰਜਭਾਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2859,7 +2859,7 @@
       "p136"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਾਕਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2875,7 +2875,7 @@
       "p136"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਸੰਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2891,7 +2891,7 @@
       "p136"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਪ੍ਰਿਥੀ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2907,7 +2907,7 @@
       "p136"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਤੇਕ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2927,7 +2927,7 @@
       "p166",
       "p167"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਖੇਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2947,7 +2947,7 @@
       "p169",
       "p170"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬੁੱਕਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2965,7 +2965,7 @@
     "children": [
       "p171"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਚਾਦਟ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -2984,7 +2984,7 @@
       "p172",
       "p173"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਚੰਦ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3016,7 +3016,7 @@
       "p165"
     ],
     "children": [],
-    "notes": "Alias Bindria; 📍 Punjab",
+    "notes": "Alias Bindria; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਵਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3032,7 +3032,7 @@
       "p166"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਹਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3048,7 +3048,7 @@
       "p166"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੋਗਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3069,7 +3069,7 @@
       "p176",
       "p177"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਜਿੱਤਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3088,7 +3088,7 @@
       "p178",
       "p179"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਰਨੇਕ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3108,7 +3108,7 @@
       "p181",
       "p182"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਖਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3124,7 +3124,7 @@
       "p168"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸ਼ੇਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3140,7 +3140,7 @@
       "p168"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਦਲੇਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3156,7 +3156,7 @@
       "p168"
     ],
     "children": [],
-    "notes": "Alias Kanta; 📍 Punjab",
+    "notes": "Alias Kanta; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਕੁਲਵੰਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3172,7 +3172,7 @@
       "p168"
     ],
     "children": [],
-    "notes": "Alias Raja Doctor; 📍 Punjab",
+    "notes": "Alias Raja Doctor; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਰਾਜਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3188,7 +3188,7 @@
       "p169"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਨੱਥਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3204,7 +3204,7 @@
       "p169"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕੌਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3220,7 +3220,7 @@
       "p170"
     ],
     "children": [],
-    "notes": "Alias Dulla; 📍 Punjab",
+    "notes": "Alias Dulla; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਦਿਲਬਾਗ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3236,7 +3236,7 @@
       "p170"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਰਨੈਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3252,7 +3252,7 @@
       "p170"
     ],
     "children": [],
-    "notes": "Doctor; 📍 Punjab",
+    "notes": "Doctor; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਦੀਪ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3271,7 +3271,7 @@
       "p270",
       "p271"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਵਿਸਾਖਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3290,7 +3290,7 @@
       "p257",
       "p258"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਨੰਦ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3310,7 +3310,7 @@
       "p188",
       "p189"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬੂਟਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3331,7 +3331,7 @@
       "p220",
       "p221"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਦਾਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3352,7 +3352,7 @@
       "p192",
       "p193"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਚੰਦਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3371,7 +3371,7 @@
       "p194",
       "p195"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਭੰਗਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3394,7 +3394,7 @@
       "p200",
       "p201"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੰਡਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3412,7 +3412,7 @@
     "children": [
       "p202"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੇਹਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3431,7 +3431,7 @@
       "p203",
       "p204"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਈਸ਼ਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3452,7 +3452,7 @@
       "p207",
       "p208"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਿੱਕਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3470,7 +3470,7 @@
     "children": [
       "p209"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਚਿੱਤਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3486,7 +3486,7 @@
       "p190"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਜੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3502,7 +3502,7 @@
       "p191"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਦਰਸ਼ਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3518,7 +3518,7 @@
       "p191"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਖਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3534,7 +3534,7 @@
       "p192"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3550,7 +3550,7 @@
       "p192"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਰਾਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3566,7 +3566,7 @@
       "p192"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਖਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3582,7 +3582,7 @@
       "p192"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬੰਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3598,7 +3598,7 @@
       "p193"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਾੜਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3616,7 +3616,7 @@
     "children": [
       "p210"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੁਕੰਦ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3635,7 +3635,7 @@
       "p211",
       "p212"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੁਖ਼ਤਿਆਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3651,7 +3651,7 @@
       "p194"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਤੇਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3667,7 +3667,7 @@
       "p195"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਖੇਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3683,7 +3683,7 @@
       "p195"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਨੇਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3699,7 +3699,7 @@
       "p189"
     ],
     "children": [],
-    "notes": "Alias Chidia; 📍 Rajasthan; had 1 daughter",
+    "notes": "Alias Chidia; 📍 Pilibanga, Rajasthan; had 1 daughter",
     "gurmukhi": "ਮੁਖ਼ਤਿਆਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3718,7 +3718,7 @@
       "p213",
       "p214"
     ],
-    "notes": "📍 Rajasthan",
+    "notes": "📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਹਰਨੇਕ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3737,7 +3737,7 @@
       "p215",
       "p216"
     ],
-    "notes": "Alias Aala; 📍 Punjab",
+    "notes": "Alias Aala; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਦਿਆਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3755,7 +3755,7 @@
     "children": [
       "p217"
     ],
-    "notes": "Alias Bhja; 📍 Punjab",
+    "notes": "Alias Bhja; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਭਜਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3771,7 +3771,7 @@
       "p189"
     ],
     "children": [],
-    "notes": "Had no children; 📍 Punjab",
+    "notes": "Had no children; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਚਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3787,7 +3787,7 @@
       "p189"
     ],
     "children": [],
-    "notes": "Had no children; 📍 Punjab",
+    "notes": "Had no children; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਚਰਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3803,7 +3803,7 @@
       "p197"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੱਖਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3819,7 +3819,7 @@
       "p197"
     ],
     "children": [],
-    "notes": "📍 Rajasthan",
+    "notes": "📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਬਲਵੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3835,7 +3835,7 @@
       "p198"
     ],
     "children": [],
-    "notes": "📍 Rajasthan",
+    "notes": "📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਬਲਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3851,7 +3851,7 @@
       "p198"
     ],
     "children": [],
-    "notes": "📍 Rajasthan",
+    "notes": "📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਜਗਜੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3867,7 +3867,7 @@
       "p199"
     ],
     "children": [],
-    "notes": "Alias Pirthi; 📍 Punjab",
+    "notes": "Alias Pirthi; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਪ੍ਰਿਥੀਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3888,7 +3888,7 @@
       "p224",
       "p225"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁੱਚਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3904,7 +3904,7 @@
       "p218"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੈਂਗਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3923,7 +3923,7 @@
       "p226",
       "p227"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਤੇਕ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3941,7 +3941,7 @@
     "children": [
       "p228"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਿੱਕਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3957,7 +3957,7 @@
       "p218"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਿੱਕਰ ਸਿੰਘ ਫੌਜੀ",
     "gender": "male",
     "birth": "",
@@ -3976,7 +3976,7 @@
       "p230",
       "p231"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਅੰਤਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -3994,7 +3994,7 @@
     "children": [
       "p232"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੋਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4010,7 +4010,7 @@
       "p226"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਵਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4026,7 +4026,7 @@
       "p226"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਰਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4042,7 +4042,7 @@
       "p227"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਰਣਧੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4058,7 +4058,7 @@
       "p224"
     ],
     "children": [],
-    "notes": "📍 Rajasthan",
+    "notes": "📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਬਲਕੌਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4079,7 +4079,7 @@
       "p235",
       "p236"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਿੱਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4095,7 +4095,7 @@
       "p219"
     ],
     "children": [],
-    "notes": "Had 1 daughter; 📍 Punjab",
+    "notes": "Had 1 daughter; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਕੇਹਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4114,7 +4114,7 @@
       "p237",
       "p238"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੈਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4133,7 +4133,7 @@
       "p239",
       "p240"
     ],
-    "notes": "Alias Godha; 📍 Punjab",
+    "notes": "Alias Godha; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਾਘੜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4153,7 +4153,7 @@
       "p242",
       "p243"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੋਹਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4169,7 +4169,7 @@
       "p234"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਰੂਪ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4185,7 +4185,7 @@
       "p234"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਤੇਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4201,7 +4201,7 @@
       "p235"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਹਿਮਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4217,7 +4217,7 @@
       "p235"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਮੇਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4233,7 +4233,7 @@
       "p236"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਨਾਜ਼ਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4249,7 +4249,7 @@
       "p236"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਖਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4265,7 +4265,7 @@
       "p236"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਈਕਵਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4285,7 +4285,7 @@
       "p245",
       "p246"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹੀਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4303,7 +4303,7 @@
     "children": [
       "p247"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਅਜੈਬ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4323,7 +4323,7 @@
       "p249",
       "p250"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਰਤਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4341,7 +4341,7 @@
     "children": [
       "p251"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸਰਦੂਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4357,7 +4357,7 @@
       "p244"
     ],
     "children": [],
-    "notes": "📍 Rajasthan",
+    "notes": "📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਬਲਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4373,7 +4373,7 @@
       "p245"
     ],
     "children": [],
-    "notes": "📍 Rajasthan",
+    "notes": "📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਅਮਰਜੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4389,7 +4389,7 @@
       "p245"
     ],
     "children": [],
-    "notes": "📍 Rajasthan",
+    "notes": "📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਭੂਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4405,7 +4405,7 @@
       "p245"
     ],
     "children": [],
-    "notes": "📍 Rajasthan",
+    "notes": "📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਨਾਜ਼ਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4421,7 +4421,7 @@
       "p246"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4440,7 +4440,7 @@
       "p252",
       "p253"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਾਕਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4458,7 +4458,7 @@
     "children": [
       "p254"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਰਨੈਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4477,7 +4477,7 @@
       "p255",
       "p256"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਰਾਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4493,7 +4493,7 @@
       "p252"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਇਕਬਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4509,7 +4509,7 @@
       "p253"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਨਿਰਮਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4525,7 +4525,7 @@
       "p253"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਵਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4545,7 +4545,7 @@
       "p260",
       "p261"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸਰਬਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4561,7 +4561,7 @@
       "p184"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਅਰਜਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4580,7 +4580,7 @@
       "p262",
       "p263"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੁਖ਼ਤਿਆਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4600,7 +4600,7 @@
       "p265",
       "p266"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਰਤਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4620,7 +4620,7 @@
       "p268",
       "p269"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4636,7 +4636,7 @@
       "p259"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਦਰਸ਼ਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4652,7 +4652,7 @@
       "p259"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਖਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4668,7 +4668,7 @@
       "p260"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਤੇਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4684,7 +4684,7 @@
       "p260"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਮੇਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4700,7 +4700,7 @@
       "p260"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਨੇਕ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4716,7 +4716,7 @@
       "p261"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਕੌਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4732,7 +4732,7 @@
       "p261"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਲਾਭ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4748,7 +4748,7 @@
       "p261"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਖਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4770,7 +4770,7 @@
       "p275",
       "p276"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4786,7 +4786,7 @@
       "p183"
     ],
     "children": [],
-    "notes": "Had daughters; 📍 Punjab",
+    "notes": "Had daughters; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਕੁੰਢਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4804,7 +4804,7 @@
     "children": [
       "p277"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਾਕਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4823,7 +4823,7 @@
       "p278",
       "p279"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਿਓਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4841,7 +4841,7 @@
     "children": [
       "p280"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਦਰਬਾਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4859,7 +4859,7 @@
     "children": [
       "p281"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਰਤਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4877,7 +4877,7 @@
     "children": [
       "p282"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਟਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4895,7 +4895,7 @@
     "children": [
       "p283"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਰੀ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4911,7 +4911,7 @@
       "p277"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4927,7 +4927,7 @@
       "p273"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੰਗ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4945,7 +4945,7 @@
     "children": [
       "p284"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਖਮੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4961,7 +4961,7 @@
       "p279"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕੇਸਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4980,7 +4980,7 @@
       "p285",
       "p286"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਬਰਜੰਗ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4996,7 +4996,7 @@
       "p280"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਦੀਸ਼ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5012,7 +5012,7 @@
       "p280"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸ਼ਿਵਰਾਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5032,7 +5032,7 @@
       "p288",
       "p289"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਪੂਰਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5048,7 +5048,7 @@
       "p281"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਲਕੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5064,7 +5064,7 @@
       "p281"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਜਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5080,7 +5080,7 @@
       "p281"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਿੱਠੂ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5096,7 +5096,7 @@
       "p276"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਦੀਵਾਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5115,7 +5115,7 @@
       "p297",
       "p298"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gender": "female",
     "gurmukhi": "ਸੁਰਜੀਤ ਕੌਰ",
     "birth": "",
@@ -5133,7 +5133,7 @@
     "children": [
       "p295"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਖ਼ਤੌਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5153,7 +5153,7 @@
       "p300",
       "p301"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗਾਵਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5169,7 +5169,7 @@
       "p84"
     ],
     "children": [],
-    "notes": "Alias Shotu; 📍 Punjab",
+    "notes": "Alias Shotu; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਆਤਮਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5204,7 +5204,7 @@
       "p296",
       "p302"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੱਖਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5220,7 +5220,7 @@
       "p295"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਮੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5236,7 +5236,7 @@
       "p295"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਛਿੰਦਰਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5252,7 +5252,7 @@
       "p290"
     ],
     "children": [],
-    "notes": "Alias Jattana; 📍 Punjab",
+    "notes": "Alias Jattana; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਜੰਟ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5268,7 +5268,7 @@
       "p290"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਰਬੰਸ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5284,7 +5284,7 @@
       "p292"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5300,7 +5300,7 @@
       "p292"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਸੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5316,7 +5316,7 @@
       "p292"
     ],
     "children": [],
-    "notes": "Alias Kaka; 📍 Punjab",
+    "notes": "Alias Kaka; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਨਛੱਤਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5332,7 +5332,7 @@
       "p88"
     ],
     "children": [],
-    "notes": "Alias Geep; 📍 Punjab",
+    "notes": "Alias Geep; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਮੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5348,7 +5348,7 @@
       "p88"
     ],
     "children": [],
-    "notes": "Alias Jagga; 📍 Punjab",
+    "notes": "Alias Jagga; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਸੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5364,7 +5364,7 @@
       "p87"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਤਾਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5380,7 +5380,7 @@
       "p87"
     ],
     "children": [],
-    "notes": "Alias Jeeta Principal; 📍 Punjab",
+    "notes": "Alias Jeeta Principal; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਰਿੰਦਰਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5396,7 +5396,7 @@
       "p87"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੋਹਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5412,7 +5412,7 @@
       "p86"
     ],
     "children": [],
-    "notes": "Alias Janta Khalsa; born 15/06/1959; 📍 Punjab",
+    "notes": "Alias Janta Khalsa; born 15/06/1959; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਜੰਟ ਸਿੰਘ",
     "gender": "male",
     "birth": "15/06/1959",
@@ -5430,7 +5430,7 @@
     "children": [
       "p310"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਮੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5446,7 +5446,7 @@
       "p309"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੈਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5464,7 +5464,7 @@
     "children": [
       "p312"
     ],
-    "notes": "Sarpanch 1983–1993; 📍 Punjab",
+    "notes": "Sarpanch 1983–1993; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਚਾਨਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5480,7 +5480,7 @@
       "p311"
     ],
     "children": [],
-    "notes": "Alias Teja; 📍 Punjab",
+    "notes": "Alias Teja; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਤੇਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5496,7 +5496,7 @@
       "p95"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਦਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5512,7 +5512,7 @@
       "p95"
     ],
     "children": [],
-    "notes": "Alias DC; 📍 Punjab",
+    "notes": "Alias DC; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਖ਼ਸ਼ੀਸ਼ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5528,7 +5528,7 @@
       "p96"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਤਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5544,7 +5544,7 @@
       "p96"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਵਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5560,7 +5560,7 @@
       "p96"
     ],
     "children": [],
-    "notes": "Alias Geeka; 📍 Punjab",
+    "notes": "Alias Geeka; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਮੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5576,7 +5576,7 @@
       "p93"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਰਨੈਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5592,7 +5592,7 @@
       "p92"
     ],
     "children": [],
-    "notes": "Alias Shinder; 📍 Punjab",
+    "notes": "Alias Shinder; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੋਗਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5608,7 +5608,7 @@
       "p92"
     ],
     "children": [],
-    "notes": "Alias Naria; 📍 Punjab",
+    "notes": "Alias Naria; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਨਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5624,7 +5624,7 @@
       "p92"
     ],
     "children": [],
-    "notes": "Alias Mahna; 📍 Punjab",
+    "notes": "Alias Mahna; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਲਕੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5640,7 +5640,7 @@
       "p92"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਰਾਊ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5656,7 +5656,7 @@
       "p92"
     ],
     "children": [],
-    "notes": "Alias Meeta; 📍 Punjab",
+    "notes": "Alias Meeta; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਮੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5674,7 +5674,7 @@
     "children": [
       "p326"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਥਾਣਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5692,7 +5692,7 @@
     "children": [
       "p327"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਵੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5708,7 +5708,7 @@
       "p324"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬੂਟਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5724,7 +5724,7 @@
       "p325"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਮੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5740,7 +5740,7 @@
       "p82"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਚਰਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5756,7 +5756,7 @@
       "p82"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਭੰਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5776,7 +5776,7 @@
       "p333",
       "p334"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਹਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5795,7 +5795,7 @@
       "p335",
       "p336"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਕਾਰਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5811,7 +5811,7 @@
       "p330"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਸਕਰਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5827,7 +5827,7 @@
       "p330"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕੁਲਵੰਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5843,7 +5843,7 @@
       "p330"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸਾਹਿਬ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5859,7 +5859,7 @@
       "p331"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਸੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5875,7 +5875,7 @@
       "p331"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਰਨੈਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5894,7 +5894,7 @@
       "p340",
       "p341"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੱਖਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5912,7 +5912,7 @@
     "children": [
       "p342"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕਾਕੂ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5931,7 +5931,7 @@
       "p343",
       "p344"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਲੱਖਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5947,7 +5947,7 @@
       "p337"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਿੱਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5963,7 +5963,7 @@
       "p337"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁੱਚਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5979,7 +5979,7 @@
       "p339"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਦਿੱਤਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5995,7 +5995,7 @@
       "p339"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁੱਜਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6016,7 +6016,7 @@
       "p347",
       "p348"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਨੰਦ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6032,7 +6032,7 @@
       "p342"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਦਿਆਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6048,7 +6048,7 @@
       "p342"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਈਸ਼ਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6070,7 +6070,7 @@
       "p352",
       "p353"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਚਤਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6086,7 +6086,7 @@
       "p342"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬੱਗਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6102,7 +6102,7 @@
       "p347"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਰਾਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6120,7 +6120,7 @@
     "children": [
       "p354"
     ],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਇੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6136,7 +6136,7 @@
       "p347"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੋਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6152,7 +6152,7 @@
       "p347"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੁਖ਼ਤਿਆਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6168,7 +6168,7 @@
       "p347"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਭੂਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6184,7 +6184,7 @@
       "p350"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਵੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6200,7 +6200,7 @@
       "p16"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੀਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6216,7 +6216,7 @@
       "p16"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੀਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6232,7 +6232,7 @@
       "p19"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਭੋਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6248,7 +6248,7 @@
       "p19"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬੀਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6264,7 +6264,7 @@
       "p19"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੱਖਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6280,7 +6280,7 @@
       "p19"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਰੂਪ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6296,7 +6296,7 @@
       "p15"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਦਲਵਾਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6312,7 +6312,7 @@
       "p15"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਹਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6328,7 +6328,7 @@
       "p15"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਆਤਮਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6344,7 +6344,7 @@
       "p18"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਨਾਜ਼ਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6360,7 +6360,7 @@
       "p18"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਅਜੈਬ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6376,7 +6376,7 @@
       "p18"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਨੰਦਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6392,7 +6392,7 @@
       "p108"
     ],
     "children": [],
-    "notes": "Alias Mithu; 📍 Punjab",
+    "notes": "Alias Mithu; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਕੁਲਵੰਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6408,7 +6408,7 @@
       "p108"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਲਕੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6424,7 +6424,7 @@
       "p108"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6440,7 +6440,7 @@
       "p108"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਇਕਬਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6456,7 +6456,7 @@
       "p108"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gender": "female",
     "gurmukhi": "ਜੈਲ ਕੌਰ",
     "birth": "",
@@ -6472,7 +6472,7 @@
       "p108"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gender": "female",
     "gurmukhi": "ਪਾਲ ਕੌਰ",
     "birth": "",
@@ -6488,7 +6488,7 @@
       "p109"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੱਖਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6504,7 +6504,7 @@
       "p109"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਖਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6520,7 +6520,7 @@
       "p109"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਅੰਗਰੇਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6536,7 +6536,7 @@
       "p109"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gender": "female",
     "gurmukhi": "ਮਿਲਖੋ ਕੌਰ",
     "birth": "",
@@ -6552,7 +6552,7 @@
       "p109"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gender": "female",
     "gurmukhi": "ਮੂਰਤੀ ਕੌਰ",
     "birth": "",
@@ -6568,7 +6568,7 @@
       "p109"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gender": "female",
     "gurmukhi": "ਛੋਟੀ ਕੌਰ",
     "birth": "",
@@ -6584,7 +6584,7 @@
       "p110"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਦਰਸ਼ਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6600,7 +6600,7 @@
       "p110"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਬਖ਼ਸ਼ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6616,7 +6616,7 @@
       "p110"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਸਵੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6632,7 +6632,7 @@
       "p110"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਮੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6648,7 +6648,7 @@
       "p110"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਅਜੈਬ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6664,7 +6664,7 @@
       "p110"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gender": "female",
     "gurmukhi": "ਕੁਲਵੰਤ ਕੌਰ",
     "birth": "",
@@ -6680,7 +6680,7 @@
       "p111"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸਰਬਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6696,7 +6696,7 @@
       "p111"
     ],
     "children": [],
-    "notes": "Chairman; born 12/08/1954; Passed 10th in 1972; 📍 Punjab",
+    "notes": "Chairman; born 12/08/1954; Passed 10th in 1972; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਛਿੰਦਰਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "12/08/1954",
@@ -6712,7 +6712,7 @@
       "p112"
     ],
     "children": [],
-    "notes": "Alias Jeeta; 📍 Punjab",
+    "notes": "Alias Jeeta; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਰਜੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6728,7 +6728,7 @@
       "p112"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਾਬੂ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6744,7 +6744,7 @@
       "p112"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਸਕਰਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6760,7 +6760,7 @@
       "p113"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਨੱੜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6776,7 +6776,7 @@
       "p113"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਰਣਜੀਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6792,7 +6792,7 @@
       "p114"
     ],
     "children": [],
-    "notes": "Alias Laada; 📍 Punjab",
+    "notes": "Alias Laada; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਸੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6808,7 +6808,7 @@
       "p114"
     ],
     "children": [],
-    "notes": "Alias Kaala; 📍 Punjab",
+    "notes": "Alias Kaala; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਸਵਰਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -6824,7 +6824,7 @@
       "p114"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gender": "female",
     "gurmukhi": "ਗੁੱਡੀ ਕੌਰ",
     "birth": "",
@@ -6840,7 +6840,7 @@
       "p114"
     ],
     "children": [],
-    "notes": "📍 Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gender": "female",
     "gurmukhi": "ਮਲਕੀਤ ਕੌਰ",
     "birth": "",

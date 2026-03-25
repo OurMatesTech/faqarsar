@@ -1,0 +1,28 @@
+{
+  "name": "faqarsar",
+  "version": "1.0.0",
+  "description": "Faqarsar.com — Singh Family Tree (394 members, 10 generations, Mapbox globe)",
+  "scripts": {
+    "dev": "serve -l 3000",
+    "start": "serve -l 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OurMatesTech/faqarsar.git"
+  },
+  "keywords": [
+    "family-tree",
+    "faqarsar",
+    "punjab",
+    "mapbox"
+  ],
+  "author": "OurMatesTech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OurMatesTech/faqarsar/issues"
+  },
+  "homepage": "https://faqarsar.com",
+  "devDependencies": {
+    "serve": "^14.2.6"
+  }
+}
