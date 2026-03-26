@@ -582,6 +582,14 @@ svg.lines path.highlighted{stroke:rgba(251,191,36,0.85);stroke-width:2.5;stroke-
 }
 
 /* ===== MODAL SLIDES ===== */
+/* ===== MODAL SLIDE TRANSITIONS ===== */
+.modal-slides-wrap{overflow:hidden;position:relative}
+.modal-slides-inner{display:flex;transition:transform 0.28s cubic-bezier(0.4,0,0.2,1);will-change:transform}
+.modal-slides-inner>div{flex:0 0 100%;min-width:0}
+@keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+.slide2-skeleton{margin:16px 20px;border-radius:10px;height:14px;
+  background:linear-gradient(90deg,rgba(255,255,255,0.04) 25%,rgba(255,255,255,0.08) 50%,rgba(255,255,255,0.04) 75%);
+  background-size:400px 100%;animation:shimmer 1.4s infinite linear}
 .slide-tabs{display:flex;gap:0;padding:0 20px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:0;align-items:center;justify-content:center}
 .slide-tab{padding:10px 18px;font-size:12px;font-family:'DM Sans',sans-serif;font-weight:500;color:#5a5550;background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;letter-spacing:0.02em;position:relative}
 .slide-tab.active{color:rgba(251,191,36,0.9);border-bottom-color:rgba(251,191,36,0.6)}
@@ -721,8 +729,12 @@ svg.lines path.highlighted{stroke:rgba(251,191,36,0.85);stroke-width:2.5;stroke-
       <div class="slide-dot active" onclick="switchModalSlide(0)"></div>
       <div class="slide-dot" onclick="switchModalSlide(1)"></div>
     </div>
-    <div id="modal-content"></div>
-    <div id="modal-slide2" style="display:none"></div>
+    <div class="modal-slides-wrap">
+      <div class="modal-slides-inner" id="modal-slides-inner">
+        <div id="modal-content"></div>
+        <div id="modal-slide2"></div>
+      </div>
+    </div>
   </div>
   <div class="modal-nav-arrow modal-nav-right" onclick="switchModalSlide(1)" id="modal-arrow-right">&#8250;</div>
 </div>
@@ -1637,6 +1649,8 @@ function openModal(id) {
     (p.notes && p.notes.indexOf('\ud83d\udccd') !== -1 ? "<button class=\"view-on-globe-btn\" onclick=\"flyFromProfile('" + id + "')\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" style=\"margin-right:6px\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"/><path d=\"M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z\"/></svg>" + viewGlobeLabel + "</button>" : "") +
     "</div>";
 
+  // Clear stale cache if switching to a different member
+  if (currentModalId !== id) delete slide2Cache[id];
   currentModalId = id;
   currentSlide = 0;
   switchModalSlide(0);
@@ -1648,6 +1662,11 @@ function closeModal() {
   document.getElementById("profile-modal").classList.remove("modal-visible");
   document.getElementById("profile-modal").classList.add("modal-hidden");
   document.getElementById('modal-slide2').innerHTML = '';
+  // Reset slide position
+  var inner = document.getElementById('modal-slides-inner');
+  if (inner) inner.style.transform = 'translateX(0)';
+  // Don't wipe the whole cache — only clear when a new person is opened
+  currentSlide = 0;
 }
 
 // ===== DEBUG LOG VIEWER =====
@@ -2789,6 +2808,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ===== MODAL SLIDES =====
 var currentModalId = null;
 var currentSlide   = 0;
+var slide2Cache    = {}; // memberId → rendered media HTML, avoids re-fetching on re-swipe
 
 function switchModalSlide(idx) {
   currentSlide = idx;
@@ -2796,8 +2816,8 @@ function switchModalSlide(idx) {
   var dots = document.querySelectorAll('.slide-dot');
   tabs.forEach(function(t, i){ t.classList.toggle('active', i === idx); });
   dots.forEach(function(d, i){ d.classList.toggle('active', i === idx); });
-  document.getElementById('modal-content').style.display  = idx === 0 ? '' : 'none';
-  document.getElementById('modal-slide2').style.display   = idx === 1 ? '' : 'none';
+  var inner = document.getElementById('modal-slides-inner');
+  if (inner) inner.style.transform = idx === 0 ? 'translateX(0)' : 'translateX(-100%)';
   var leftArr = document.getElementById('modal-arrow-left');
   var rightArr = document.getElementById('modal-arrow-right');
   if (leftArr) leftArr.classList.toggle('dimmed', idx === 0);
@@ -2832,7 +2852,7 @@ function switchModalSlide(idx) {
   }, {passive:true});
 })();
 
-function renderSlide2(memberId) {
+function renderSlide2(memberId, forceRefresh) {
   currentModalId = memberId;
   var el = document.getElementById('modal-slide2');
   if (!el) return;
@@ -2932,10 +2952,23 @@ function renderSlide2(memberId) {
     detailsHtml += buildSection('\ud83d\udcdc', isPaLocal ? '\u0A28\u0A4B\u0A1F\u0A38 / \u0A35\u0A3F\u0A30\u0A3E\u0A38\u0A24' : 'Notes / Legacy', legacyItems);
   }
 
-  // Show details instantly, photos/docs load async below
-  el.innerHTML = detailsHtml + '<div id="slide2-media-' + memberId + '"><div class="photo-empty" style="padding:16px 20px;font-size:11px;color:#5a5550">Loading Photos & Documents…</div></div>';
+  // ── Cache check: inject cached media instantly if available ──
+  var cachedMedia = slide2Cache[memberId];
+  if (!forceRefresh && cachedMedia !== undefined) {
+    el.innerHTML = detailsHtml + cachedMedia;
+    return; // instant — no network call
+  }
+
+  // Skeleton loading state (much nicer than plain text)
+  var skeletonHtml = '<div id="slide2-media-' + memberId + '">'
+    + '<div class="slide2-skeleton" style="width:60%;margin-top:18px"></div>'
+    + '<div class="slide2-skeleton" style="width:80%;margin-top:8px"></div>'
+    + '<div class="slide2-skeleton" style="width:40%;margin-top:8px;margin-bottom:18px"></div>'
+    + '</div>';
+  el.innerHTML = detailsHtml + skeletonHtml;
 
   if (!sb) {
+    slide2Cache[memberId] = ''; // cache as empty so we don't retry
     var me = document.getElementById('slide2-media-' + memberId);
     if (me) me.innerHTML = '';
     return;
@@ -3030,6 +3063,7 @@ function renderSlide2(memberId) {
     html += '<input type="file" id="doc-input-' + memberId + '" accept=".pdf,.doc,.docx,.txt,image/*" style="display:none" onchange="uploadDoc(\'' + memberId + '\',this)">';
 
     mediaEl.innerHTML = html;
+    slide2Cache[memberId] = html; // cache media for instant re-swipe
   });
 }
 
@@ -3056,7 +3090,8 @@ function saveDetails(memberId) {
     // Update local raw so Education & Career section re-renders
     var p = raw[memberId];
     if (p) { p.education=edu; p.occupation=occ; p.employer=emp; p.phone=ph; }
-    renderSlide2(memberId);
+    delete slide2Cache[memberId];
+    renderSlide2(memberId, true);
   });
 }
 
@@ -3069,7 +3104,7 @@ function uploadPhoto(memberId, input) {
     if (res.error) { alert('Upload failed: ' + res.error.message); return; }
     var url = sb.storage.from('member-media').getPublicUrl(path).data.publicUrl;
     return sb.from('member_photos').insert({member_id: memberId, url: url, caption: caption, storage_path: path});
-  }).then(function() { renderSlide2(memberId); });
+  }).then(function() { delete slide2Cache[memberId]; renderSlide2(memberId, true); });
 }
 
 function uploadDoc(memberId, input) {
@@ -3082,7 +3117,7 @@ function uploadDoc(memberId, input) {
     if (res.error) { alert('Upload failed: ' + res.error.message); return; }
     var url = sb.storage.from('member-media').getPublicUrl(path).data.publicUrl;
     return sb.from('member_docs').insert({member_id: memberId, name: docName, url: url, doc_date: docDate, storage_path: path, emoji: '📄'});
-  }).then(function() { renderSlide2(memberId); });
+  }).then(function() { delete slide2Cache[memberId]; renderSlide2(memberId, true); });
 }
 
 </script>
