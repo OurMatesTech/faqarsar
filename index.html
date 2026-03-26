@@ -7,6 +7,12 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
 <script src="config.js"></script>
+<script>
+// Fallback tokens for when config.js is absent (e.g. deployed without it)
+if (!window.MAPBOX_TOKEN)  window.MAPBOX_TOKEN  = 'pk.eyJ1Ijoib3VybWF0ZXN0ZWNoIiwiYSI6ImNtbDU4aDV6ejAxMmQzZm9ncWVneHppMTUifQ.MZSR-CHdgx7BAGHSGeGK0A';
+if (!window.SUPABASE_URL)  window.SUPABASE_URL  = 'https://rrwutjtgyexwpajerlmt.supabase.co';
+if (!window.SUPABASE_ANON) window.SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyd3V0anRneWV4d3BhamVybG10Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0OTUxNDQsImV4cCI6MjA5MDA3MTE0NH0.Abke0fUWkdBxUvsNLaJWDZc19dSEArfK1w6MxXTg5-4';
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet"/>
 <style>
