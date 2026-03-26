@@ -536,14 +536,42 @@ svg.lines path.highlighted{stroke:rgba(251,191,36,0.7);stroke-width:2.5;stroke-d
   box-shadow:0 10px 40px rgba(0,0,0,0.6)!important;color:#e8e4dc!important;font-family:system-ui,sans-serif!important;
 }
 #map-overlay .mapboxgl-popup-tip{border-top-color:rgba(12,11,15,0.92)!important}
+.map-hud-toggle{display:none}
 @media(max-width:768px){
-  .map-ui{width:calc(100% - 30px);left:15px;top:15px}
-  #map-search{padding:10px 14px;font-size:12px}
-  .map-close-btn{left:auto;right:15px;top:15px;width:32px;height:32px;font-size:14px}
-  #map-hud{top:auto;bottom:70px;left:15px;right:15px;min-width:0;padding:12px 14px;border-radius:10px}
+  /* Search: leave room for close button on the right */
+  .map-ui{width:calc(100% - 70px);left:15px;top:16px}
+  #map-search{padding:10px 14px;font-size:13px}
+  .map-close-btn{left:auto;right:15px;top:16px;width:36px;height:36px;font-size:15px}
+
+  /* HUD: hidden by default, slides up when .hud-open */
+  #map-hud{
+    top:auto;bottom:60px;left:12px;right:12px;min-width:0;
+    padding:16px 18px;border-radius:14px;
+    transform:translateY(calc(100% + 80px));
+    opacity:0;pointer-events:none;
+    transition:transform 0.35s cubic-bezier(0.32,0,0.67,0),opacity 0.3s;
+    max-height:65vh;overflow-y:auto;
+  }
+  #map-hud.hud-open{transform:translateY(0);opacity:1;pointer-events:auto}
   #map-hud div:first-child{display:none}
-  .map-style-toggle{bottom:16px;padding:4px;gap:2px}
+
+  /* Stats toggle pill – bottom left */
+  .map-hud-toggle{
+    display:flex;align-items:center;gap:5px;
+    position:absolute;bottom:16px;left:15px;z-index:510;
+    background:rgba(12,11,15,0.88);border:1px solid rgba(251,191,36,0.35);
+    border-radius:999px;padding:7px 14px;
+    color:rgba(251,191,36,0.95);font-size:11px;font-weight:600;
+    letter-spacing:0.04em;font-family:'DM Sans',sans-serif;cursor:pointer;
+    backdrop-filter:blur(12px);box-shadow:0 4px 16px rgba(0,0,0,0.35);
+    transition:background 0.2s,border-color 0.2s;
+  }
+  .map-hud-toggle.hud-open{background:rgba(251,191,36,0.15);border-color:rgba(251,191,36,0.6)}
+
+  /* Style toggle: nudge right so it doesn't overlap the stats pill */
+  .map-style-toggle{bottom:16px;left:50%;transform:translateX(-20%);padding:4px;gap:2px}
   .map-style-btn{padding:6px 14px;font-size:10px}
+
   .village-marker{width:14px;height:14px}
   .dest-marker{width:7px;height:7px}
   #map-results{max-height:180px}
@@ -764,6 +792,10 @@ svg.lines path.highlighted{stroke:rgba(251,191,36,0.7);stroke-width:2.5;stroke-d
     <div id="map-results"></div>
   </div>
   <button class="map-close-btn" onclick="closeMap()">✕</button>
+  <button class="map-hud-toggle" id="map-hud-toggle" onclick="toggleMapHud()">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <span id="hud-toggle-label">Stats</span>
+  </button>
   <div id="map-hud">
     <div style="font-size:10px;color:rgba(251,191,36,0.72);letter-spacing:0.18em;opacity:0.95;margin-bottom:8px">MIGRATION TRACKER</div>
     <div style="font-size:18px;color:#fbbf24;font-weight:700;margin-bottom:14px;text-shadow:0 0 8px rgba(251,191,36,0.2)" id="map-hud-title">FAMILY OF FAQARSAR</div>
@@ -2458,6 +2490,22 @@ function closeMap() {
   document.body.style.overflow = '';
   if (mapSpinFrame) { cancelAnimationFrame(mapSpinFrame); mapSpinFrame = null; }
   if (mapAnimFrame) { cancelAnimationFrame(mapAnimFrame); mapAnimFrame = null; }
+  // Reset HUD to collapsed on close so it starts hidden on next open
+  var hud = document.getElementById('map-hud');
+  var btn = document.getElementById('map-hud-toggle');
+  var lbl = document.getElementById('hud-toggle-label');
+  if (hud) hud.classList.remove('hud-open');
+  if (btn) btn.classList.remove('hud-open');
+  if (lbl) lbl.textContent = 'Stats';
+}
+
+function toggleMapHud() {
+  var hud = document.getElementById('map-hud');
+  var btn = document.getElementById('map-hud-toggle');
+  var lbl = document.getElementById('hud-toggle-label');
+  var isOpen = hud.classList.toggle('hud-open');
+  btn.classList.toggle('hud-open', isOpen);
+  lbl.textContent = isOpen ? 'Hide' : 'Stats';
 }
 
 function findRawIdFromMigration(migrationName, migrationRegion) {
