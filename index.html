@@ -822,7 +822,9 @@ svg.lines path.highlighted{stroke:rgba(251,191,36,0.85);stroke-width:2.5;stroke-
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font-size:12px;color:#9ca3af;letter-spacing:0.04em">INTERNATIONAL</span><span style="font-size:15px;color:#22c55e;font-weight:700;text-align:right">6</span></div>
       <div style="display:grid;grid-template-columns:1fr auto;column-gap:12px;row-gap:8px;padding-left:2px">
         <span style="font-size:11px;color:#d1d5db">California, USA</span><span style="font-size:12px;color:#22c55e;font-weight:700;text-align:right">1</span>
-        <span style="font-size:11px;color:#d1d5db">Perth, Australia</span><span style="font-size:12px;color:#a855f7;font-weight:700;text-align:right">3</span>
+        <span style="font-size:11px;color:#d1d5db">Two Rocks, WA</span><span style="font-size:12px;color:#a855f7;font-weight:700;text-align:right">1</span>
+        <span style="font-size:11px;color:#d1d5db">Perth, WA</span><span style="font-size:12px;color:#10b981;font-weight:700;text-align:right">1</span>
+        <span style="font-size:11px;color:#d1d5db">Mandurah, WA</span><span style="font-size:12px;color:#f97316;font-weight:700;text-align:right">1</span>
         <span style="font-size:11px;color:#d1d5db">Canada</span><span style="font-size:12px;color:#f97316;font-weight:700;text-align:right">2</span>
         <span style="font-size:11px;color:#d1d5db">New Zealand</span><span style="font-size:12px;color:#34d399;font-weight:700;text-align:right">1</span>
       </div>
@@ -1831,12 +1833,12 @@ var MIGRATIONS = [
   {id:'naajam',   n:'Naajam Singh',   to:[74.03,29.47], c:'#fcd34d', region:'Pilibanga, Rajasthan'},
   {id:'gurdiyal', n:'Gurdiyal Singh', to:[76.5,29.15],  c:'#40c0ff', region:'Haryana'},
   {id:'mandeep',  n:'Mandeep Singh',  to:[-119.4,36.8], c:'#22c55e', region:'California, USA', intl:true},
-  {id:'kuldeep',  n:'Kuldeep Singh',  to:[115.45,-31.82],c:'#a855f7', region:'Perth, Australia', intl:true},
+  {id:'kuldeep',  n:'Kuldeep Singh',  to:[115.57,-31.49],c:'#a855f7', region:'Two Rocks, WA', intl:true},
   {id:'kuljeet',  n:'Kuljeet Singh',  to:[-80.49,43.45],  c:'#f97316', region:'Kitchener, Canada', intl:true},
   {id:'kuldeep_b',  n:'Kuldeep Singh',       to:[-79.76,43.73],   c:'#22d3ee', region:'Brampton, Canada',          intl:true},
   {id:'navsharn',   n:'Navsharnpreet Singh', to:[174.76,-36.85],  c:'#34d399', region:'Auckland, New Zealand',      intl:true},
-  {id:'gurkirat',   n:'Gurkirat Singh',      to:[116.22,-31.88],  c:'#10b981', region:'Perth, Australia',           intl:true},
-  {id:'gursahib',   n:'Gursahib Singh',      to:[115.35,-32.22],  c:'#f97316', region:'Perth, Australia',           intl:true}
+  {id:'gurkirat',   n:'Gurkirat Singh',      to:[115.86,-31.95],  c:'#10b981', region:'Perth, Australia',           intl:true},
+  {id:'gursahib',   n:'Gursahib Singh',      to:[115.72,-32.53],  c:'#f97316', region:'Mandurah, WA',               intl:true}
 ];
 
 function mapMakeCurve(from, to, n, bulgeScale, lateralShift) {
