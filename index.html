@@ -1865,6 +1865,9 @@ function openMap(e) {
     mapLinesDrawn = true;
     mapOnStyleReady();
     mapStartSpinning();
+    try {
+      migrationMap.setFilter('country-label', ['!=', ['get', 'name_en'], 'India']);
+    } catch(e) {}
   }
 
   migrationMap = new mapboxgl.Map({
@@ -1929,6 +1932,7 @@ function setMapStyle(styleId, btnId) {
   migrationMap.setStyle('mapbox://styles/mapbox/' + styleId);
   migrationMap.once('style.load', function() {
     mapOnStyleReady();
+    try { migrationMap.setFilter('country-label', ['!=', ['get', 'name_en'], 'India']); } catch(e) {}
   });
   document.querySelectorAll('.map-style-btn').forEach(function(b) { b.classList.remove('active'); });
   document.getElementById(btnId).classList.add('active');
