@@ -1527,6 +1527,66 @@ var mapIsInteracting = false;
 var mapCurves = {};
 var mapAnimFrame = null;
 
+function mapGetRouteAnimationProfile(id) {
+  return id === 'gurdiyal' ? 'base' : 'aerial';
+}
+
+function mapSetPaintSafe(layerId, prop, value) {
+  if (!migrationMap) return;
+  try {
+    if (migrationMap.getLayer(layerId)) migrationMap.setPaintProperty(layerId, prop, value);
+  } catch(e) {}
+}
+
+function mapGetVisualTheme() {
+  if (mapCurrentStyle.indexOf('satellite') !== -1) {
+    return {
+      fog:{color:'#10141b','high-color':'#1a2230','star-intensity':0.55,'space-color':'#06080d'},
+      haloColor:'#075985',
+      haloOpacity:0.12,
+      lineColor:'#67e8f9',
+      lineOpacity:0.92,
+      dotGlow:'#0891b2',
+      dotCore:'#a5f3fc',
+      labelColor:'#cffafe',
+      popupColor:'#a5f3fc',
+      originLabel:'#f8fafc',
+      pilLabel:'#e0f2fe',
+      textHalo:'rgba(2,6,23,0.92)'
+    };
+  }
+  if (mapCurrentStyle.indexOf('outdoors') !== -1 || mapCurrentStyle.indexOf('terrain') !== -1) {
+    return {
+      fog:{color:'#d8e0cf','high-color':'#b8c5ac','star-intensity':0,'space-color':'#dbe5d0'},
+      haloColor:'#9a3412',
+      haloOpacity:0.11,
+      lineColor:'#f97316',
+      lineOpacity:0.9,
+      dotGlow:'#ea580c',
+      dotCore:'#fdba74',
+      labelColor:'#ffedd5',
+      popupColor:'#fdba74',
+      originLabel:'#1f2937',
+      pilLabel:'#7c2d12',
+      textHalo:'rgba(255,251,235,0.88)'
+    };
+  }
+  return {
+    fog:{color:'#0c0b0f','high-color':'#050406','star-intensity':0.8,'space-color':'#050406'},
+    haloColor:'#b45309',
+    haloOpacity:0.09,
+    lineColor:'#fbbf24',
+    lineOpacity:0.88,
+    dotGlow:'#f59e0b',
+    dotCore:'#ffd43b',
+    labelColor:'#fde68a',
+    popupColor:'#ffd43b',
+    originLabel:'#f8fafc',
+    pilLabel:'#cbd5e1',
+    textHalo:'rgba(3,7,18,0.9)'
+  };
+}
+
 var PIL_CENTER = [74.06, 29.47];
 var MIGRATIONS = [
   {id:'sikanda',  n:'Sikanda Singh',  to:[74.03,29.49], c:'#ff4060', region:'Pilibanga, Rajasthan'},
@@ -1589,11 +1649,7 @@ function mapMakeFanCurves(from, to, count, spreadAngle) {
 function mapSetupAtmosphere() {
   if (!migrationMap) return;
   try {
-    if (mapCurrentStyle.includes('satellite') || mapCurrentStyle.includes('dark')) {
-      migrationMap.setFog({color:'#0c0b0f','high-color':'#050406','star-intensity':0.8,'space-color':'#050406'});
-    } else {
-      migrationMap.setFog({color:'#f0ece4','high-color':'#d4c8b0','star-intensity':0});
-    }
+    migrationMap.setFog(mapGetVisualTheme().fog);
   } catch(e){}
 }
 
@@ -1613,24 +1669,45 @@ function mapDrawAllLines() {
   mapCurves['pilibanga'] = pilPts;
   var harPts = mapMakeCurve(VILLAGE_POS, [76.5, 29.15], 80);
   mapCurves['gurdiyal'] = harPts;
+  var theme = mapGetVisualTheme();
 
   try {
-  // ── Pilibanga route (scattered ribbon effect) ──
+  // ── Pilibanga route (aerial dotted flight paths) ──
   var pilMembers = MIGRATIONS.filter(function(m) { return m.id !== 'gurdiyal'; });
-  
-  if (!migrationMap.getSource('r-pil-outer')) {
-    migrationMap.addSource('r-pil-outer', {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:pilPts}}});
-  }
-  if (!migrationMap.getLayer('r-pil-outer')) {
-    migrationMap.addLayer({id:'r-pil-outer', type:'line', source:'r-pil-outer',
-      paint:{'line-color':'#ff5050', 'line-width':28, 'line-opacity':0.05, 'line-blur':12},
-      layout:{'line-cap':'round','line-join':'round'}});
-  }
 
   pilMembers.forEach(function(member, idx) {
     var memberPts = mapMakeCurve(VILLAGE_POS, member.to, 80);
+    var profile = mapGetRouteAnimationProfile(member.id);
+    var haloColor = theme.haloColor;
+    var haloWidth = 6;
+    var haloOpacity = theme.haloOpacity;
+    var haloBlur = 4;
+    var lineColor = theme.lineColor;
+    var lineWidth = 1.35;
+    var lineOpacity = theme.lineOpacity;
+    var lineDash = [9, 1.6];
     mapCurves[member.id] = memberPts;
-    
+
+    if (!migrationMap.getSource('r-pil-halo-' + member.id)) {
+      migrationMap.addSource('r-pil-halo-' + member.id, {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:memberPts}}});
+    } else {
+      migrationMap.getSource('r-pil-halo-' + member.id).setData({type:'Feature', geometry:{type:'LineString', coordinates:memberPts}});
+    }
+    if (!migrationMap.getLayer('r-pil-halo-' + member.id)) {
+      migrationMap.addLayer({id:'r-pil-halo-' + member.id, type:'line', source:'r-pil-halo-' + member.id,
+        paint:{
+          'line-color':haloColor,
+          'line-width':haloWidth,
+          'line-opacity':haloOpacity,
+          'line-blur':haloBlur
+        },
+        layout:{'line-cap':'round','line-join':'round'}});
+    }
+    mapSetPaintSafe('r-pil-halo-' + member.id, 'line-color', haloColor);
+    mapSetPaintSafe('r-pil-halo-' + member.id, 'line-width', haloWidth);
+    mapSetPaintSafe('r-pil-halo-' + member.id, 'line-opacity', haloOpacity);
+    mapSetPaintSafe('r-pil-halo-' + member.id, 'line-blur', haloBlur);
+
     if (!migrationMap.getSource('r-pil-strand-' + member.id)) {
       migrationMap.addSource('r-pil-strand-' + member.id, {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:memberPts}}});
     } else {
@@ -1639,11 +1716,43 @@ function mapDrawAllLines() {
     if (!migrationMap.getLayer('r-pil-strand-' + member.id)) {
       migrationMap.addLayer({id:'r-pil-strand-' + member.id, type:'line', source:'r-pil-strand-' + member.id,
         paint:{
-          'line-color':member.c,
-          'line-width':1.8,
-          'line-opacity':0.8
+          'line-color':lineColor,
+          'line-width':lineWidth,
+          'line-opacity':lineOpacity,
+          'line-dasharray':lineDash
         },
         layout:{'line-cap':'round','line-join':'round'}});
+    }
+    mapSetPaintSafe('r-pil-strand-' + member.id, 'line-color', lineColor);
+    mapSetPaintSafe('r-pil-strand-' + member.id, 'line-width', lineWidth);
+    mapSetPaintSafe('r-pil-strand-' + member.id, 'line-opacity', lineOpacity);
+    mapSetPaintSafe('r-pil-strand-' + member.id, 'line-dasharray', lineDash);
+
+    if (profile !== 'base') {
+      if (!migrationMap.getSource('r-pil-anim-' + member.id)) {
+        migrationMap.addSource('r-pil-anim-' + member.id, {type:'geojson', data:{type:'Feature', geometry:{type:'Point', coordinates:memberPts[0]}}});
+      }
+      if (!migrationMap.getLayer('r-pil-anim-g-' + member.id)) {
+        migrationMap.addLayer({id:'r-pil-anim-g-' + member.id, type:'circle', source:'r-pil-anim-' + member.id,
+          paint:{
+            'circle-radius': 7,
+            'circle-color':'#ffd43b',
+            'circle-opacity':0.14,
+            'circle-blur':1
+          }});
+      }
+      if (!migrationMap.getLayer('r-pil-anim-c-' + member.id)) {
+        migrationMap.addLayer({id:'r-pil-anim-c-' + member.id, type:'circle', source:'r-pil-anim-' + member.id,
+          paint:{
+            'circle-radius':2.4,
+            'circle-color':'#ffffff',
+            'circle-opacity':0.98
+          }});
+      }
+      mapSetPaintSafe('r-pil-anim-g-' + member.id, 'circle-radius', 7);
+      mapSetPaintSafe('r-pil-anim-g-' + member.id, 'circle-color', theme.dotCore);
+      mapSetPaintSafe('r-pil-anim-g-' + member.id, 'circle-opacity', 0.14);
+      mapSetPaintSafe('r-pil-anim-c-' + member.id, 'circle-radius', 2.4);
     }
   });
 
@@ -1655,11 +1764,15 @@ function mapDrawAllLines() {
     }
     if (!migrationMap.getLayer('r-pil-dot-g-' + member.id)) {
       migrationMap.addLayer({id:'r-pil-dot-g-' + member.id, type:'circle', source:'r-pil-dot-' + member.id,
-        paint:{'circle-radius':9, 'circle-color':member.c, 'circle-opacity':0.25, 'circle-blur':1}});
+        paint:{'circle-radius':12, 'circle-color':theme.dotGlow, 'circle-opacity':0.14, 'circle-blur':1}});
     }
     if (!migrationMap.getLayer('r-pil-dot-c-' + member.id)) {
       migrationMap.addLayer({id:'r-pil-dot-c-' + member.id, type:'circle', source:'r-pil-dot-' + member.id,
-        paint:{'circle-radius':4, 'circle-color':member.c, 'circle-opacity':0.95, 'circle-stroke-width':1.5, 'circle-stroke-color':'rgba(255,255,255,0.5)'}});
+        paint:{'circle-radius':5, 'circle-color':theme.dotCore, 'circle-opacity':0.95, 'circle-stroke-width':1, 'circle-stroke-color':'rgba(255,255,255,0.4)'}});
+    }
+    if (!migrationMap.getLayer('r-pil-dot-w-' + member.id)) {
+      migrationMap.addLayer({id:'r-pil-dot-w-' + member.id, type:'circle', source:'r-pil-dot-' + member.id,
+        paint:{'circle-radius':2, 'circle-color':'#ffffff', 'circle-opacity':0.98}});
     }
     if (!migrationMap.getLayer('r-pil-dot-label-' + member.id)) {
       migrationMap.addLayer({id:'r-pil-dot-label-' + member.id, type:'symbol', source:'r-pil-dot-' + member.id,
@@ -1671,21 +1784,48 @@ function mapDrawAllLines() {
           'text-anchor':'bottom'
         },
         paint:{
-          'text-color':member.c,
-          'text-halo-color':'#000000',
+          'text-color':theme.labelColor,
+          'text-halo-color':theme.textHalo,
           'text-halo-width':2
         }
       });
     }
+    mapSetPaintSafe('r-pil-dot-g-' + member.id, 'circle-color', theme.dotGlow);
+    mapSetPaintSafe('r-pil-dot-g-' + member.id, 'circle-opacity', 0.14);
+    mapSetPaintSafe('r-pil-dot-c-' + member.id, 'circle-color', theme.dotCore);
+    mapSetPaintSafe('r-pil-dot-label-' + member.id, 'text-color', theme.labelColor);
+    mapSetPaintSafe('r-pil-dot-label-' + member.id, 'text-halo-color', theme.textHalo);
   });
 
-  // ── Haryana route ──
+  // ── Pilibanga comet dot ──
+  if (!migrationMap.getSource('r-pil-d')) {
+    migrationMap.addSource('r-pil-d', {type:'geojson', data:{type:'Feature', geometry:{type:'Point', coordinates:pilPts[0]}}});
+  }
+  if (!migrationMap.getLayer('r-pil-db')) {
+    migrationMap.addLayer({id:'r-pil-db', type:'circle', source:'r-pil-d',
+      paint:{'circle-radius':20, 'circle-color':theme.dotGlow, 'circle-opacity':0.07, 'circle-blur':1}});
+  }
+  if (!migrationMap.getLayer('r-pil-dm')) {
+    migrationMap.addLayer({id:'r-pil-dm', type:'circle', source:'r-pil-d',
+      paint:{'circle-radius':8, 'circle-color':theme.dotCore, 'circle-opacity':0.22, 'circle-blur':0.5}});
+  }
+  if (!migrationMap.getLayer('r-pil-dc')) {
+    migrationMap.addLayer({id:'r-pil-dc', type:'circle', source:'r-pil-d',
+      paint:{'circle-radius':3, 'circle-color':'#ffffff', 'circle-opacity':1.0}});
+  }
+
+  // ── Haryana route (aerial dotted flight path) ──
   if (!migrationMap.getSource('r-har-g')) {
     migrationMap.addSource('r-har-g', {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:harPts}}});
   }
   if (!migrationMap.getLayer('r-har-g')) {
     migrationMap.addLayer({id:'r-har-g', type:'line', source:'r-har-g',
-      paint:{'line-color':'#40c0ff', 'line-width':10, 'line-opacity':0.08, 'line-blur':5},
+      paint:{
+        'line-color':theme.haloColor,
+        'line-width':6,
+        'line-opacity':theme.haloOpacity,
+        'line-blur':4
+      },
       layout:{'line-cap':'round','line-join':'round'}});
   }
 
@@ -1694,35 +1834,51 @@ function mapDrawAllLines() {
   }
   if (!migrationMap.getLayer('r-har-c')) {
     migrationMap.addLayer({id:'r-har-c', type:'line', source:'r-har',
-      paint:{'line-color':'#40c0ff', 'line-width':2.5, 'line-opacity':0.85},
+      paint:{
+        'line-color':theme.lineColor,
+        'line-width':1.5,
+        'line-opacity':theme.lineOpacity,
+        'line-dasharray':[9, 1.6]
+      },
       layout:{'line-cap':'round','line-join':'round'}});
   }
-
-  if (!migrationMap.getSource('r-har-w')) {
-    migrationMap.addSource('r-har-w', {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:harPts}}});
-  }
-  if (!migrationMap.getLayer('r-har-w')) {
-    migrationMap.addLayer({id:'r-har-w', type:'line', source:'r-har-w',
-      paint:{'line-color':'#ffffff', 'line-width':0.7, 'line-opacity':0.25},
-      layout:{'line-cap':'round','line-join':'round'}});
-  }
+  mapSetPaintSafe('r-har-g', 'line-color', theme.haloColor);
+  mapSetPaintSafe('r-har-g', 'line-width', 6);
+  mapSetPaintSafe('r-har-g', 'line-opacity', theme.haloOpacity);
+  mapSetPaintSafe('r-har-g', 'line-blur', 4);
+  mapSetPaintSafe('r-har-c', 'line-color', theme.lineColor);
+  mapSetPaintSafe('r-har-c', 'line-width', 1.5);
+  mapSetPaintSafe('r-har-c', 'line-opacity', theme.lineOpacity);
+  mapSetPaintSafe('r-har-c', 'line-dasharray', [9, 1.6]);
 
   if (!migrationMap.getSource('r-har-d')) {
     migrationMap.addSource('r-har-d', {type:'geojson', data:{type:'Feature', geometry:{type:'Point', coordinates:harPts[0]}}});
   }
-  if (!migrationMap.getLayer('r-har-dg')) {
-    migrationMap.addLayer({id:'r-har-dg', type:'circle', source:'r-har-d',
-      paint:{'circle-radius':10, 'circle-color':'#40c0ff', 'circle-opacity':0.2, 'circle-blur':1}});
+  if (!migrationMap.getLayer('r-har-db')) {
+    migrationMap.addLayer({id:'r-har-db', type:'circle', source:'r-har-d',
+      paint:{'circle-radius':20, 'circle-color':theme.dotGlow, 'circle-opacity':0.07, 'circle-blur':1}});
+  }
+  if (!migrationMap.getLayer('r-har-dm')) {
+    migrationMap.addLayer({id:'r-har-dm', type:'circle', source:'r-har-d',
+      paint:{'circle-radius':8, 'circle-color':theme.dotCore, 'circle-opacity':0.25, 'circle-blur':0.5}});
   }
   if (!migrationMap.getLayer('r-har-dc')) {
     migrationMap.addLayer({id:'r-har-dc', type:'circle', source:'r-har-d',
-      paint:{'circle-radius':3, 'circle-color':'#ffffff', 'circle-opacity':0.95}});
+      paint:{'circle-radius':3, 'circle-color':'#ffffff', 'circle-opacity':1.0}});
   }
 
   // ── Individual destination dots with click handlers ──
   pilMembers.forEach(function(member) {
     migrationMap.on('click', 'r-pil-dot-c-' + member.id, function(e) {
-      var html = '<div style="font-size:13px;font-weight:600;color:'+member.c+'">'+member.n+'</div>';
+      var html = '<div style="font-size:13px;font-weight:600;color:'+theme.popupColor+'">'+member.n+'</div>';
+      html += '<div style="font-size:10px;color:#999;margin-top:2px">'+member.region+'</div>';
+      new mapboxgl.Popup({closeButton:true, offset:8})
+        .setLngLat(member.to)
+        .setHTML(html)
+        .addTo(migrationMap);
+    });
+    migrationMap.on('click', 'r-pil-dot-w-' + member.id, function(e) {
+      var html = '<div style="font-size:13px;font-weight:600;color:'+theme.popupColor+'">'+member.n+'</div>';
       html += '<div style="font-size:10px;color:#999;margin-top:2px">'+member.region+'</div>';
       new mapboxgl.Popup({closeButton:true, offset:8})
         .setLngLat(member.to)
@@ -1732,7 +1888,13 @@ function mapDrawAllLines() {
     migrationMap.on('mouseenter', 'r-pil-dot-c-' + member.id, function() { 
       migrationMap.getCanvas().style.cursor = 'pointer'; 
     });
+    migrationMap.on('mouseenter', 'r-pil-dot-w-' + member.id, function() { 
+      migrationMap.getCanvas().style.cursor = 'pointer'; 
+    });
     migrationMap.on('mouseleave', 'r-pil-dot-c-' + member.id, function() { 
+      migrationMap.getCanvas().style.cursor = ''; 
+    });
+    migrationMap.on('mouseleave', 'r-pil-dot-w-' + member.id, function() { 
       migrationMap.getCanvas().style.cursor = ''; 
     });
   });
@@ -1743,13 +1905,13 @@ function mapDrawAllLines() {
   }
   if (!migrationMap.getLayer('dest-har-g')) {
     migrationMap.addLayer({id:'dest-har-g', type:'circle', source:'dest-har',
-      paint:{'circle-radius':10, 'circle-color':'#40c0ff', 'circle-opacity':0.15, 'circle-blur':1}});
+      paint:{'circle-radius':12, 'circle-color':theme.dotGlow, 'circle-opacity':0.14, 'circle-blur':1}});
   }
   if (!migrationMap.getLayer('dest-har-c')) {
     migrationMap.addLayer({id:'dest-har-c', type:'circle', source:'dest-har',
-      paint:{'circle-radius':5, 'circle-color':'#40c0ff', 'circle-opacity':0.9, 'circle-stroke-width':1.5, 'circle-stroke-color':'rgba(255,255,255,0.3)'}});
+      paint:{'circle-radius':5, 'circle-color':theme.dotCore, 'circle-opacity':0.95, 'circle-stroke-width':1, 'circle-stroke-color':'rgba(255,255,255,0.35)'}});
     migrationMap.on('click', 'dest-har-c', function(e) {
-      var html = '<div style="font-size:13px;font-weight:600;color:#40c0ff">Haryana</div>';
+      var html = '<div style="font-size:13px;font-weight:600;color:'+theme.popupColor+'">Haryana</div>';
       html += '<div style="font-size:10px;color:#999;margin-top:2px">Gurdiyal Singh</div>';
       new mapboxgl.Popup({closeButton:true, offset:12})
         .setLngLat([76.5,29.15])
@@ -1759,6 +1921,20 @@ function mapDrawAllLines() {
     migrationMap.on('mouseenter', 'dest-har-c', function() { migrationMap.getCanvas().style.cursor = 'pointer'; });
     migrationMap.on('mouseleave', 'dest-har-c', function() { migrationMap.getCanvas().style.cursor = ''; });
   }
+  if (!migrationMap.getLayer('dest-har-w')) {
+    migrationMap.addLayer({id:'dest-har-w', type:'circle', source:'dest-har',
+      paint:{'circle-radius':2, 'circle-color':'#ffffff', 'circle-opacity':0.98}});
+    migrationMap.on('click', 'dest-har-w', function(e) {
+      var html = '<div style="font-size:13px;font-weight:600;color:'+theme.popupColor+'">Haryana</div>';
+      html += '<div style="font-size:10px;color:#999;margin-top:2px">Gurdiyal Singh</div>';
+      new mapboxgl.Popup({closeButton:true, offset:12})
+        .setLngLat([76.5,29.15])
+        .setHTML(html)
+        .addTo(migrationMap);
+    });
+    migrationMap.on('mouseenter', 'dest-har-w', function() { migrationMap.getCanvas().style.cursor = 'pointer'; });
+    migrationMap.on('mouseleave', 'dest-har-w', function() { migrationMap.getCanvas().style.cursor = ''; });
+  }
 
   // ── Labels ──
   var fanOrigin = VILLAGE_POS;
@@ -1766,14 +1942,24 @@ function mapDrawAllLines() {
     migrationMap.addSource('origin-label', {type:'geojson', data:{type:'Feature', geometry:{type:'Point', coordinates:fanOrigin}, properties:{name:'FAQARSAR'}}});
     migrationMap.addLayer({id:'origin-label', type:'symbol', source:'origin-label',
       layout:{'text-field':'FAQARSAR', 'text-font':['Open Sans Bold'], 'text-size':12, 'text-offset':[0, 1.5]},
-      paint:{'text-color':'#c8aa78', 'text-halo-color':'#000000', 'text-halo-width':2}});
+      paint:{'text-color':theme.originLabel, 'text-halo-color':theme.textHalo, 'text-halo-width':2}});
   }
   if (!migrationMap.getSource('pil-label')) {
     migrationMap.addSource('pil-label', {type:'geojson', data:{type:'Feature', geometry:{type:'Point', coordinates:PIL_CENTER}, properties:{name:'PILIBANGA'}}});
     migrationMap.addLayer({id:'pil-label', type:'symbol', source:'pil-label',
       layout:{'text-field':'PILIBANGA', 'text-font':['Open Sans Bold'], 'text-size':11, 'text-offset':[0, 1.8]},
-      paint:{'text-color':'#ff5050', 'text-halo-color':'#000000', 'text-halo-width':2}});
+      paint:{'text-color':theme.pilLabel, 'text-halo-color':theme.textHalo, 'text-halo-width':2}});
   }
+  mapSetPaintSafe('r-pil-db', 'circle-color', theme.dotGlow);
+  mapSetPaintSafe('r-pil-dm', 'circle-color', theme.dotCore);
+  mapSetPaintSafe('r-har-db', 'circle-color', theme.dotGlow);
+  mapSetPaintSafe('r-har-dm', 'circle-color', theme.dotCore);
+  mapSetPaintSafe('dest-har-g', 'circle-color', theme.dotGlow);
+  mapSetPaintSafe('dest-har-c', 'circle-color', theme.dotCore);
+  mapSetPaintSafe('origin-label', 'text-color', theme.originLabel);
+  mapSetPaintSafe('origin-label', 'text-halo-color', theme.textHalo);
+  mapSetPaintSafe('pil-label', 'text-color', theme.pilLabel);
+  mapSetPaintSafe('pil-label', 'text-halo-color', theme.textHalo);
   } catch(err) { /* retry on next style.load */ }
 
   mapAnimateDots();
@@ -1782,25 +1968,59 @@ function mapAnimateDots() {
   if (mapAnimFrame) cancelAnimationFrame(mapAnimFrame);
   var start = performance.now();
   var routes = [
-    {id:'pil', pts: mapCurves['pilibanga'], delay:0},
-    {id:'har', pts: mapCurves['gurdiyal'], delay:400}
+    {sourceId:'r-pil-d', pts: mapCurves['pilibanga'], delay:0, speed:0.006},
+    {sourceId:'r-har-d', pts: mapCurves['gurdiyal'], delay:400, speed:0.006}
   ];
+  var dashFrames = [
+    [8, 1.8],
+    [9, 1.6],
+    [10, 1.4],
+    [11, 1.2]
+  ];
+
+  MIGRATIONS.filter(function(m) { return m.id !== 'gurdiyal'; }).forEach(function(member, idx) {
+    var profile = mapGetRouteAnimationProfile(member.id);
+    if (profile === 'base' || !mapCurves[member.id]) return;
+    routes.push({
+      sourceId:'r-pil-anim-' + member.id,
+      pts: mapCurves[member.id],
+      delay:200 + (idx * 140),
+      speed: 0.0045,
+      profile:profile,
+      haloLayer:'r-pil-halo-' + member.id,
+      coreLayer:'r-pil-strand-' + member.id,
+      glowLayer:'r-pil-anim-g-' + member.id,
+      coreDotLayer:'r-pil-anim-c-' + member.id,
+      phase:idx * 0.75
+    });
+  });
 
   function tick(now) {
     if (!migrationMap) return;
     var elapsed = now - start;
     routes.forEach(function(r) {
       if (!r.pts || elapsed < r.delay) return;
-      var speed = 0.012;
       var cycle = r.pts.length + 60;
-      var t = ((elapsed - r.delay) * speed) % cycle;
+      var t = ((elapsed - r.delay) * (r.speed || 0.012)) % cycle;
       var i = Math.floor(t);
       if (i >= 0 && i < r.pts.length) {
         try {
-          migrationMap.getSource('r-' + r.id + '-d').setData({
+          migrationMap.getSource(r.sourceId).setData({
             type:'Feature', geometry:{type:'Point', coordinates:r.pts[i]}
           });
         } catch(e){}
+      }
+
+      if (!r.profile) return;
+      var pulse = 0.5 + (0.5 * Math.sin((elapsed * 0.0012) + r.phase));
+
+      if (r.profile === 'aerial') {
+        var dash = dashFrames[Math.floor(((elapsed * 0.0025) + (r.phase * 2)) % dashFrames.length)];
+        mapSetPaintSafe(r.coreLayer, 'line-dasharray', dash);
+        mapSetPaintSafe(r.haloLayer, 'line-opacity', 0.06 + (pulse * 0.05));
+        mapSetPaintSafe(r.haloLayer, 'line-width', 5.5 + (pulse * 1.2));
+        mapSetPaintSafe(r.glowLayer, 'circle-opacity', 0.10 + (pulse * 0.08));
+        mapSetPaintSafe(r.glowLayer, 'circle-radius', 5.5 + (pulse * 2));
       }
     });
     mapAnimFrame = requestAnimationFrame(tick);
@@ -1893,6 +2113,7 @@ function openMap(e) {
     mapInput._bound = true;
     mapInput.addEventListener('input', function(ev) {
       var val = ev.target.value.toLowerCase();
+      var theme = mapGetVisualTheme();
       mapResults.innerHTML = '';
       if (val.length < 2) { mapResults.style.display = 'none'; return; }
       var matches = MIGRATIONS.filter(function(m) { return m.n.toLowerCase().indexOf(val) !== -1; });
@@ -1901,8 +2122,8 @@ function openMap(e) {
       matches.forEach(function(m) {
         var d = document.createElement('div');
         d.className = 'map-res-item';
-        d.innerHTML = '<div style="color:'+m.c+';font-weight:600;font-size:13px">'+m.n+'</div>'
-          + '<div style="font-size:10px;color:#555;margin-top:2px">\u2192 '+m.region+'</div>';
+        d.innerHTML = '<div style="color:'+theme.popupColor+';font-weight:600;font-size:13px">'+m.n+'</div>'
+          + '<div style="font-size:10px;color:'+theme.pilLabel+';margin-top:2px">\u2192 '+m.region+'</div>';
         d.onclick = function() {
           mapIsInteracting = true;
           var mob = window.innerWidth < 768;
