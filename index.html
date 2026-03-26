@@ -817,11 +817,12 @@ svg.lines path.highlighted{stroke:rgba(251,191,36,0.85);stroke-width:2.5;stroke-
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font-size:12px;color:#9ca3af;letter-spacing:0.04em" id="map-lbl-raj">TO PILIBANGA</span><span style="font-size:15px;color:#fbbf24;font-weight:700;text-align:right">11</span></div>
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font-size:12px;color:#9ca3af;letter-spacing:0.04em" id="map-lbl-har">TO HARYANA</span><span style="font-size:15px;color:#40c0ff;font-weight:700;text-align:right">1</span></div>
       <div style="height:1px;background:rgba(255,255,255,0.06);margin:6px 0"></div>
-      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font-size:12px;color:#9ca3af;letter-spacing:0.04em">INTERNATIONAL</span><span style="font-size:15px;color:#22c55e;font-weight:700;text-align:right">3</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font-size:12px;color:#9ca3af;letter-spacing:0.04em">INTERNATIONAL</span><span style="font-size:15px;color:#22c55e;font-weight:700;text-align:right">6</span></div>
       <div style="display:grid;grid-template-columns:1fr auto;column-gap:12px;row-gap:8px;padding-left:2px">
         <span style="font-size:11px;color:#d1d5db">California, USA</span><span style="font-size:12px;color:#22c55e;font-weight:700;text-align:right">1</span>
-        <span style="font-size:11px;color:#d1d5db">Perth, Australia</span><span style="font-size:12px;color:#a855f7;font-weight:700;text-align:right">1</span>
-        <span style="font-size:11px;color:#d1d5db">Canada</span><span style="font-size:12px;color:#f97316;font-weight:700;text-align:right">1</span>
+        <span style="font-size:11px;color:#d1d5db">Perth, Australia</span><span style="font-size:12px;color:#a855f7;font-weight:700;text-align:right">3</span>
+        <span style="font-size:11px;color:#d1d5db">Canada</span><span style="font-size:12px;color:#f97316;font-weight:700;text-align:right">2</span>
+        <span style="font-size:11px;color:#d1d5db">New Zealand</span><span style="font-size:12px;color:#34d399;font-weight:700;text-align:right">1</span>
       </div>
     </div>
   <div style="border-top:1px solid rgba(251,191,36,0.06);margin-top:14px;padding-top:12px;font-size:11px;color:#9ca3af;letter-spacing:0.08em">414 Members · 10 GENERATIONS</div>
@@ -1132,8 +1133,22 @@ function resetView() {
   applyTransform();
 }
 
-function zoomIn() { scale = Math.min(scale * 1.2, 3); applyTransform(); }
-function zoomOut() { scale = Math.max(scale / 1.2, 0.15); applyTransform(); }
+function zoomIn() {
+  var cx = wrap.clientWidth / 2, cy = wrap.clientHeight / 2;
+  var old = scale;
+  scale = Math.min(scale * 1.2, 3);
+  tx = cx - (cx - tx) * (scale / old);
+  ty = cy - (cy - ty) * (scale / old);
+  applyTransform();
+}
+function zoomOut() {
+  var cx = wrap.clientWidth / 2, cy = wrap.clientHeight / 2;
+  var old = scale;
+  scale = Math.max(scale / 1.2, 0.15);
+  tx = cx - (cx - tx) * (scale / old);
+  ty = cy - (cy - ty) * (scale / old);
+  applyTransform();
+}
 
 wrap.addEventListener('wheel', (e) => {
   e.preventDefault();
@@ -1738,12 +1753,18 @@ function mapGetIntlRouteColor(baseColor) {
     if (color === '#a855f7') return '#e9d5ff';
     if (color === '#f97316') return '#fdba74';
     if (color === '#22d3ee') return '#a5f3fc';
+    if (color === '#34d399') return '#6ee7b7';
+    if (color === '#c084fc') return '#e9d5ff';
+    if (color === '#e879f9') return '#f5d0fe';
   }
   if (mapCurrentStyle.indexOf('outdoors') !== -1 || mapCurrentStyle.indexOf('terrain') !== -1) {
     if (color === '#22c55e') return '#166534';
     if (color === '#a855f7') return '#7e22ce';
     if (color === '#f97316') return '#c2410c';
     if (color === '#22d3ee') return '#0f766e';
+    if (color === '#34d399') return '#065f46';
+    if (color === '#c084fc') return '#6b21a8';
+    if (color === '#e879f9') return '#86198f';
   }
   return baseColor;
 }
@@ -1811,7 +1832,10 @@ var MIGRATIONS = [
   {id:'mandeep',  n:'Mandeep Singh',  to:[-119.4,36.8], c:'#22c55e', region:'California, USA', intl:true},
   {id:'kuldeep',  n:'Kuldeep Singh',  to:[115.86,-31.95],c:'#a855f7', region:'Perth, Australia', intl:true},
   {id:'kuljeet',  n:'Kuljeet Singh',  to:[-80.49,43.45],  c:'#f97316', region:'Kitchener, Canada', intl:true},
-  {id:'kuldeep_b', n:'Kuldeep Singh',  to:[-79.76,43.73],  c:'#22d3ee', region:'Brampton, Canada', intl:true}
+  {id:'kuldeep_b',  n:'Kuldeep Singh',       to:[-79.76,43.73],   c:'#22d3ee', region:'Brampton, Canada',          intl:true},
+  {id:'navsharn',   n:'Navsharnpreet Singh', to:[174.76,-36.85],  c:'#34d399', region:'Auckland, New Zealand',      intl:true},
+  {id:'gurkirat',   n:'Gurkirat Singh',      to:[115.83,-31.92],  c:'#c084fc', region:'Perth, Australia',           intl:true},
+  {id:'gursahib',   n:'Gursahib Singh',      to:[115.89,-31.98],  c:'#e879f9', region:'Perth, Australia',           intl:true}
 ];
 
 function mapMakeCurve(from, to, n, bulgeScale, lateralShift) {
