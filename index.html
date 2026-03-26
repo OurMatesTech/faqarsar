@@ -2020,10 +2020,7 @@ function doAdminLogin() {
       adminUser = res.data.user;
       closeAdminOverlay();
       showAdminBar();
-      if (window._pendingUploadMemberId) {
-        renderSlide2(window._pendingUploadMemberId);
-        window._pendingUploadMemberId = null;
-      }
+      if (currentModalId && currentSlide === 1) renderSlide2(currentModalId);
     }
   });
 }
@@ -2038,13 +2035,20 @@ function showAdminBar() {
   document.getElementById('admin-bar-name').textContent = adminUser ? (adminUser.email || 'Admin') : 'Admin';
 }
 
-// Check auth on page load
+// Check auth on page load + secret shortcut Ctrl+Shift+A to open admin login
 document.addEventListener('DOMContentLoaded', function() {
-  if (!sb) return;
-  sb.auth.getSession().then(function(res) {
-    if (res.data && res.data.session) {
-      adminUser = res.data.session.user;
-      showAdminBar();
+  if (sb) {
+    sb.auth.getSession().then(function(res) {
+      if (res.data && res.data.session) {
+        adminUser = res.data.session.user;
+        showAdminBar();
+      }
+    });
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+      e.preventDefault();
+      if (!adminUser) openAdminOverlay();
     }
   });
 });
@@ -2126,10 +2130,6 @@ function renderSlide2(memberId) {
     } else if (docs.length === 0) {
       html += '<div class="photo-empty" style="padding:12px 0">' + (isPa ? 'ਕੋਈ ਦਸਤਾਵੇਜ਼ ਨਹੀਂ' : 'No documents yet') + '</div>';
     }
-    if (!isAdmin && (photos.length === 0 && docs.length === 0)) {
-      html += '<div style="padding:10px 0;font-size:11px;color:#3a3530;text-align:center">';
-      html += '<span onclick="openAdminOverlay()" style="cursor:pointer;color:rgba(200,170,120,0.3);text-decoration:underline">' + (isPa ? 'ਐਡਮਿਨ?' : 'Admin?') + '</span></div>';
-    }
     html += '</div></div>';
 
     // Hidden file inputs
@@ -2141,11 +2141,11 @@ function renderSlide2(memberId) {
 }
 
 function triggerPhotoUpload(memberId) {
-  if (!adminUser) { window._pendingUploadMemberId = memberId; openAdminOverlay(); return; }
+  if (!adminUser) return;
   document.getElementById('photo-input-' + memberId).click();
 }
 function triggerDocUpload(memberId) {
-  if (!adminUser) { window._pendingUploadMemberId = memberId; openAdminOverlay(); return; }
+  if (!adminUser) return;
   document.getElementById('doc-input-' + memberId).click();
 }
 
