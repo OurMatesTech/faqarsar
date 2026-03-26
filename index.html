@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
 <script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -518,6 +519,65 @@ svg.lines path.highlighted{stroke:rgba(200,170,120,0.6);stroke-width:2.5;stroke-
   #map-results{max-height:180px}
   .map-res-item{padding:10px 12px}
 }
+
+/* ===== MODAL SLIDES ===== */
+.slide-tabs{display:flex;gap:4px;padding:14px 20px 0;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:0}
+.slide-tab{padding:8px 16px;font-size:12px;font-family:'DM Sans',sans-serif;font-weight:500;color:#5a5550;background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;letter-spacing:0.02em}
+.slide-tab.active{color:rgba(200,170,120,0.9);border-bottom-color:rgba(200,170,120,0.6)}
+.slide-tab:hover:not(.active){color:#9a9490}
+.slide-dots{display:flex;gap:5px;justify-content:center;padding:10px 0 4px}
+.slide-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:all 0.2s}
+.slide-dot.active{background:rgba(200,170,120,0.7);width:14px;border-radius:3px}
+
+/* ===== PHOTO GALLERY ===== */
+.photo-gallery{display:flex;gap:10px;overflow-x:auto;padding:14px 20px;scroll-snap-type:x mandatory}
+.photo-gallery::-webkit-scrollbar{height:3px}
+.photo-gallery::-webkit-scrollbar-thumb{background:rgba(200,170,120,0.3);border-radius:2px}
+.photo-card{flex:0 0 120px;scroll-snap-align:start;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:#1a1820;cursor:pointer;transition:transform 0.2s}
+.photo-card:hover{transform:scale(1.03)}
+.photo-card img{width:120px;height:90px;object-fit:cover;display:block}
+.photo-card-caption{font-size:9px;color:#7a7670;padding:5px 7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.photo-empty{padding:24px 20px;text-align:center;color:#3a3530;font-size:13px}
+.photo-add-btn{flex:0 0 120px;height:90px;border-radius:10px;border:1.5px dashed rgba(200,170,120,0.2);background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:rgba(200,170,120,0.4);font-size:11px;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif}
+.photo-add-btn:hover{border-color:rgba(200,170,120,0.5);color:rgba(200,170,120,0.7)}
+.photo-add-btn svg{opacity:0.6}
+
+/* ===== DOC LIST ===== */
+.doc-section{padding:0 20px 20px}
+.doc-section-title{font-size:10px;color:#5a5550;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.doc-list{display:flex;flex-direction:column;gap:6px}
+.doc-card{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#1a1820;border:1px solid rgba(255,255,255,0.06);border-radius:10px;cursor:pointer;transition:all 0.2s;text-decoration:none}
+.doc-card:hover{border-color:rgba(200,170,120,0.2);background:#1f1d24}
+.doc-emoji{font-size:18px;flex-shrink:0}
+.doc-info{flex:1;min-width:0}
+.doc-name{font-size:12px;color:#e8e4dc;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-date{font-size:10px;color:#5a5550;margin-top:2px}
+.doc-add-btn{display:flex;align-items:center;gap:8px;padding:10px 14px;background:none;border:1.5px dashed rgba(200,170,120,0.2);border-radius:10px;color:rgba(200,170,120,0.4);font-size:11px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;width:100%}
+.doc-add-btn:hover{border-color:rgba(200,170,120,0.5);color:rgba(200,170,120,0.7)}
+
+/* ===== ADMIN AUTH OVERLAY ===== */
+#admin-overlay{position:fixed;inset:0;z-index:600;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s}
+#admin-overlay.visible{opacity:1;visibility:visible}
+#admin-card{background:#141218;border:1px solid rgba(200,170,120,0.2);border-radius:20px;padding:32px;width:90%;max-width:360px;position:relative}
+#admin-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent 5%,rgba(200,170,120,0.5) 50%,transparent 95%);border-radius:20px 20px 0 0}
+.admin-title{font-family:'Playfair Display',serif;font-size:20px;color:#e8e4dc;margin-bottom:4px}
+.admin-sub{font-size:12px;color:#5a5550;margin-bottom:24px}
+.admin-field{margin-bottom:14px}
+.admin-field label{display:block;font-size:11px;color:#7a7670;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em}
+.admin-field input{width:100%;padding:11px 14px;background:#0c0b0f;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#e8e4dc;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s}
+.admin-field input:focus{border-color:rgba(200,170,120,0.4)}
+.admin-login-btn{width:100%;padding:13px;background:rgba(200,170,120,0.12);border:1px solid rgba(200,170,120,0.3);border-radius:12px;color:rgba(200,170,120,0.9);font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:all 0.2s;margin-top:6px}
+.admin-login-btn:hover{background:rgba(200,170,120,0.2)}
+.admin-err{font-size:11px;color:rgba(180,80,60,0.9);margin-top:10px;min-height:16px}
+.admin-close-btn{position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:#7a7670;width:28px;height:28px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.2s}
+.admin-close-btn:hover{color:#e8e4dc}
+
+/* ===== ADMIN STATUS BAR ===== */
+#admin-bar{position:fixed;bottom:20px;right:20px;z-index:350;background:#141218;border:1px solid rgba(200,170,120,0.2);border-radius:12px;padding:8px 14px;display:none;align-items:center;gap:10px;font-size:11px;color:#7a7670}
+#admin-bar.visible{display:flex}
+#admin-bar .admin-name{color:rgba(200,170,120,0.8);font-weight:500}
+.admin-logout-btn{background:none;border:none;color:#5a5550;cursor:pointer;font-size:10px;text-transform:uppercase;letter-spacing:0.05em;padding:2px 6px;border-radius:4px;transition:color 0.2s}
+.admin-logout-btn:hover{color:rgba(180,80,60,0.8)}
 </style>
 </head>
 <body>
@@ -577,8 +637,43 @@ svg.lines path.highlighted{stroke:rgba(200,170,120,0.6);stroke-width:2.5;stroke-
   <div id="profile-modal-bg" onclick="closeModal()"></div>
   <div id="profile-modal-card">
     <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="slide-tabs" id="modal-tabs">
+      <button class="slide-tab active" onclick="switchModalSlide(0)"><span class="en">Profile</span><span class="pa" style="display:none">ਪ੍ਰੋਫਾਈਲ</span></button>
+      <button class="slide-tab" onclick="switchModalSlide(1)"><span class="en">Photos & Docs</span><span class="pa" style="display:none">ਫੋਟੋਆਂ ਅਤੇ ਦਸਤਾਵੇਜ਼</span></button>
+    </div>
+    <div class="slide-dots" id="modal-dots">
+      <div class="slide-dot active" onclick="switchModalSlide(0)"></div>
+      <div class="slide-dot" onclick="switchModalSlide(1)"></div>
+    </div>
     <div id="modal-content"></div>
+    <div id="modal-slide2" style="display:none"></div>
   </div>
+</div>
+
+<!-- Admin auth overlay -->
+<div id="admin-overlay">
+  <div id="admin-card">
+    <button class="admin-close-btn" onclick="closeAdminOverlay()">&times;</button>
+    <div class="admin-title"><span class="en">Admin Login</span><span class="pa" style="display:none">ਐਡਮਿਨ ਲੌਗਿਨ</span></div>
+    <div class="admin-sub"><span class="en">Sign in to upload photos & documents</span><span class="pa" style="display:none">ਫੋਟੋਆਂ ਅਤੇ ਦਸਤਾਵੇਜ਼ ਅਪਲੋਡ ਕਰਨ ਲਈ ਸਾਈਨ ਇਨ ਕਰੋ</span></div>
+    <div class="admin-field">
+      <label><span class="en">Email</span><span class="pa" style="display:none">ਈਮੇਲ</span></label>
+      <input type="email" id="admin-email" placeholder="admin@faqarsar.com" autocomplete="email">
+    </div>
+    <div class="admin-field">
+      <label><span class="en">Password</span><span class="pa" style="display:none">ਪਾਸਵਰਡ</span></label>
+      <input type="password" id="admin-pass" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doAdminLogin()">
+    </div>
+    <button class="admin-login-btn" onclick="doAdminLogin()"><span class="en">Sign In</span><span class="pa" style="display:none">ਸਾਈਨ ਇਨ</span></button>
+    <div class="admin-err" id="admin-err"></div>
+  </div>
+</div>
+
+<!-- Admin status bar (bottom-right when logged in) -->
+<div id="admin-bar">
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(200,170,120,0.8)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  <span class="admin-name" id="admin-bar-name"></span>
+  <button class="admin-logout-btn" onclick="doAdminLogout()"><span class="en">Sign out</span><span class="pa" style="display:none">ਸਾਈਨ ਆਊਟ</span></button>
 </div>
 
 <!-- ===== TREE ===== -->
@@ -1410,6 +1505,9 @@ function openModal(id) {
     (p.notes && p.notes.indexOf('\ud83d\udccd') !== -1 ? "<button class=\"view-on-globe-btn\" onclick=\"flyFromProfile('" + id + "')\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" style=\"margin-right:6px\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"/><path d=\"M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z\"/></svg>" + viewGlobeLabel + "</button>" : "") +
     "</div>";
 
+  currentModalId = id;
+  currentSlide = 0;
+  switchModalSlide(0);
   document.getElementById("profile-modal").classList.remove("modal-hidden");
   document.getElementById("profile-modal").classList.add("modal-visible");
 }
@@ -1417,6 +1515,7 @@ function openModal(id) {
 function closeModal() {
   document.getElementById("profile-modal").classList.remove("modal-visible");
   document.getElementById("profile-modal").classList.add("modal-hidden");
+  document.getElementById('modal-slide2').innerHTML = '';
 }
 
 // ===== MIGRATION MAP =====
@@ -1882,6 +1981,197 @@ function flyFromProfile(id) {
     }
   }
   setTimeout(tryFly, 300);
+}
+
+// ===== SUPABASE CLIENT =====
+var sb = null;
+(function() {
+  var url  = window.SUPABASE_URL;
+  var anon = window.SUPABASE_ANON;
+  if (url && anon && window.supabase) {
+    sb = window.supabase.createClient(url, anon);
+  }
+})();
+
+// ===== ADMIN AUTH =====
+var adminUser = null;
+
+function openAdminOverlay() {
+  document.getElementById('admin-overlay').classList.add('visible');
+  setTimeout(function(){ document.getElementById('admin-email').focus(); }, 200);
+}
+function closeAdminOverlay() {
+  document.getElementById('admin-overlay').classList.remove('visible');
+  document.getElementById('admin-err').textContent = '';
+}
+function doAdminLogin() {
+  if (!sb) return;
+  var email = document.getElementById('admin-email').value.trim();
+  var pass  = document.getElementById('admin-pass').value;
+  var btn   = document.querySelector('.admin-login-btn');
+  btn.textContent = 'Signing in…';
+  btn.disabled = true;
+  sb.auth.signInWithPassword({email: email, password: pass}).then(function(res) {
+    btn.textContent = 'Sign In';
+    btn.disabled = false;
+    if (res.error) {
+      document.getElementById('admin-err').textContent = res.error.message;
+    } else {
+      adminUser = res.data.user;
+      closeAdminOverlay();
+      showAdminBar();
+      if (window._pendingUploadMemberId) {
+        renderSlide2(window._pendingUploadMemberId);
+        window._pendingUploadMemberId = null;
+      }
+    }
+  });
+}
+function doAdminLogout() {
+  if (sb) sb.auth.signOut();
+  adminUser = null;
+  document.getElementById('admin-bar').classList.remove('visible');
+}
+function showAdminBar() {
+  var bar = document.getElementById('admin-bar');
+  bar.classList.add('visible');
+  document.getElementById('admin-bar-name').textContent = adminUser ? (adminUser.email || 'Admin') : 'Admin';
+}
+
+// Check auth on page load
+document.addEventListener('DOMContentLoaded', function() {
+  if (!sb) return;
+  sb.auth.getSession().then(function(res) {
+    if (res.data && res.data.session) {
+      adminUser = res.data.session.user;
+      showAdminBar();
+    }
+  });
+});
+
+// ===== MODAL SLIDES =====
+var currentModalId = null;
+var currentSlide   = 0;
+
+function switchModalSlide(idx) {
+  currentSlide = idx;
+  var tabs = document.querySelectorAll('.slide-tab');
+  var dots = document.querySelectorAll('.slide-dot');
+  tabs.forEach(function(t, i){ t.classList.toggle('active', i === idx); });
+  dots.forEach(function(d, i){ d.classList.toggle('active', i === idx); });
+  document.getElementById('modal-content').style.display  = idx === 0 ? '' : 'none';
+  document.getElementById('modal-slide2').style.display   = idx === 1 ? '' : 'none';
+  if (idx === 1 && currentModalId) renderSlide2(currentModalId);
+}
+
+function renderSlide2(memberId) {
+  currentModalId = memberId;
+  var el = document.getElementById('modal-slide2');
+  if (!el) return;
+  var isPa = lang === 'pa';
+  el.innerHTML = '<div class="photo-empty" style="padding:30px 20px">Loading…</div>';
+
+  if (!sb) {
+    el.innerHTML = '<div class="photo-empty">Supabase not configured.</div>';
+    return;
+  }
+
+  Promise.all([
+    sb.from('member_photos').select('*').eq('member_id', memberId).order('created_at'),
+    sb.from('member_docs').select('*').eq('member_id', memberId).order('created_at')
+  ]).then(function(results) {
+    var photos = results[0].data || [];
+    var docs   = results[1].data || [];
+    var isAdmin = !!adminUser;
+    var html = '';
+
+    // ── Photos ──
+    html += '<div style="padding:14px 20px 4px"><div class="doc-section-title">';
+    html += '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>';
+    html += isPa ? 'ਫੋਟੋਆਂ' : 'Photos';
+    html += '</div></div>';
+    html += '<div class="photo-gallery">';
+    if (photos.length === 0 && !isAdmin) {
+      html += '</div><div class="photo-empty">' + (isPa ? 'ਕੋਈ ਫੋਟੋਆਂ ਨਹੀਂ' : 'No photos yet') + '</div>';
+    } else {
+      photos.forEach(function(ph) {
+        html += '<div class="photo-card" onclick="window.open(\'' + ph.url + '\',\'_blank\')">';
+        html += '<img src="' + ph.url + '" alt="' + (ph.caption||'') + '" loading="lazy">';
+        html += '<div class="photo-card-caption">' + (ph.caption || (isPa ? 'ਫੋਟੋ' : 'Photo')) + '</div></div>';
+      });
+      if (isAdmin) {
+        html += '<button class="photo-add-btn" onclick="triggerPhotoUpload(\'' + memberId + '\')">';
+        html += '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>';
+        html += (isPa ? 'ਫੋਟੋ ਜੋੜੋ' : 'Add photo') + '</button>';
+      }
+      html += '</div>';
+    }
+
+    // ── Documents ──
+    html += '<div class="doc-section">';
+    html += '<div class="doc-section-title"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>' + (isPa ? 'ਦਸਤਾਵੇਜ਼' : 'Documents') + '</div>';
+    html += '<div class="doc-list">';
+    docs.forEach(function(doc) {
+      var href = doc.url || '#';
+      html += '<a class="doc-card" href="' + href + '" target="_blank">';
+      html += '<span class="doc-emoji">' + (doc.emoji || '📄') + '</span>';
+      html += '<div class="doc-info"><div class="doc-name">' + doc.name + '</div>';
+      if (doc.doc_date) html += '<div class="doc-date">' + doc.doc_date + '</div>';
+      html += '</div></a>';
+    });
+    if (isAdmin) {
+      html += '<button class="doc-add-btn" onclick="triggerDocUpload(\'' + memberId + '\')">';
+      html += '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>';
+      html += (isPa ? 'ਦਸਤਾਵੇਜ਼ ਜੋੜੋ' : 'Add document') + '</button>';
+    } else if (docs.length === 0) {
+      html += '<div class="photo-empty" style="padding:12px 0">' + (isPa ? 'ਕੋਈ ਦਸਤਾਵੇਜ਼ ਨਹੀਂ' : 'No documents yet') + '</div>';
+    }
+    if (!isAdmin && (photos.length === 0 && docs.length === 0)) {
+      html += '<div style="padding:10px 0;font-size:11px;color:#3a3530;text-align:center">';
+      html += '<span onclick="openAdminOverlay()" style="cursor:pointer;color:rgba(200,170,120,0.3);text-decoration:underline">' + (isPa ? 'ਐਡਮਿਨ?' : 'Admin?') + '</span></div>';
+    }
+    html += '</div></div>';
+
+    // Hidden file inputs
+    html += '<input type="file" id="photo-input-' + memberId + '" accept="image/*" style="display:none" onchange="uploadPhoto(\'' + memberId + '\',this)">';
+    html += '<input type="file" id="doc-input-' + memberId + '" accept=".pdf,.doc,.docx,.txt,image/*" style="display:none" onchange="uploadDoc(\'' + memberId + '\',this)">';
+
+    el.innerHTML = html;
+  });
+}
+
+function triggerPhotoUpload(memberId) {
+  if (!adminUser) { window._pendingUploadMemberId = memberId; openAdminOverlay(); return; }
+  document.getElementById('photo-input-' + memberId).click();
+}
+function triggerDocUpload(memberId) {
+  if (!adminUser) { window._pendingUploadMemberId = memberId; openAdminOverlay(); return; }
+  document.getElementById('doc-input-' + memberId).click();
+}
+
+function uploadPhoto(memberId, input) {
+  var file = input.files[0];
+  if (!file || !sb) return;
+  var path = 'photos/' + memberId + '/' + Date.now() + '_' + file.name.replace(/\s+/g,'_');
+  var caption = prompt('Caption (optional):') || '';
+  sb.storage.from('member-media').upload(path, file, {upsert: false}).then(function(res) {
+    if (res.error) { alert('Upload failed: ' + res.error.message); return; }
+    var url = sb.storage.from('member-media').getPublicUrl(path).data.publicUrl;
+    return sb.from('member_photos').insert({member_id: memberId, url: url, caption: caption, storage_path: path});
+  }).then(function() { renderSlide2(memberId); });
+}
+
+function uploadDoc(memberId, input) {
+  var file = input.files[0];
+  if (!file || !sb) return;
+  var path = 'docs/' + memberId + '/' + Date.now() + '_' + file.name.replace(/\s+/g,'_');
+  var docName = prompt('Document name:', file.name) || file.name;
+  var docDate = prompt('Date (optional, e.g. 1990):') || '';
+  sb.storage.from('member-media').upload(path, file, {upsert: false}).then(function(res) {
+    if (res.error) { alert('Upload failed: ' + res.error.message); return; }
+    var url = sb.storage.from('member-media').getPublicUrl(path).data.publicUrl;
+    return sb.from('member_docs').insert({member_id: memberId, name: docName, url: url, doc_date: docDate, storage_path: path, emoji: '📄'});
+  }).then(function() { renderSlide2(memberId); });
 }
 
 </script>

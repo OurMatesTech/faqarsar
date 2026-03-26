@@ -23,6 +23,7 @@
   },
   "homepage": "https://faqarsar.com",
   "devDependencies": {
+    "@supabase/supabase-js": "^2.100.0",
     "serve": "^14.2.6"
   }
 }
