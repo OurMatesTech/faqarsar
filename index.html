@@ -1102,22 +1102,21 @@ function applyTransform() {
   }
   canvas.style.transform = 'translate('+tx+'px,'+ty+'px) scale('+scale+')';
   // Keep lines at a constant ~1.5 screen-px regardless of zoom.
-  // The SVG stroke-width must be INVERTED vs scale so the rendered size stays constant.
-  // e.g. scale=0.15 → need strokeWidth=10 SVG units → 10×0.15 = 1.5 screen px
-  var sw = 1.5 / scale;                        // regular lines: always 1.5 screen-px
-  var swHL = 2.5 / scale;                      // highlighted:   always 2.5 screen-px
-  var opacity = Math.min(0.55, 0.22 / scale);  // boost opacity when zoomed far out
-  // #region agent log
-  try{var _dl=JSON.parse(localStorage.getItem('dbg3f70c6')||'[]');_dl.push({runId:'line-fix',loc:'applyTransform',msg:'stroke values',d:{scale:scale,sw:sw,swHL:swHL,opacity:opacity},ts:Date.now()});localStorage.setItem('dbg3f70c6',JSON.stringify(_dl));}catch(_e){}
-  // #endregion
-  document.querySelectorAll('svg.lines path:not(.highlighted)').forEach(function(p) {
-    p.style.strokeWidth = sw + 'px';
-    p.style.stroke = 'rgba(251,191,36,' + opacity + ')';
-  });
-  document.querySelectorAll('svg.lines path.highlighted').forEach(function(p) {
-    p.style.strokeWidth = swHL + 'px';
-    var d = 8 / scale, g = 4 / scale;
-    p.style.strokeDasharray = d + ' ' + g;
+  // strokeWidth = target_screen_px / scale so rendered size is always constant.
+  var sw = 1.5 / scale;
+  var swHL = 2.5 / scale;
+  var opacity = Math.min(0.55, 0.22 / scale);
+  var stroke = 'rgba(251,191,36,' + opacity + ')';
+  var d = 8 / scale, g = 4 / scale;
+  var dashArr = d + ' ' + g;
+  svg.querySelectorAll('path').forEach(function(p) {
+    if (p.classList.contains('highlighted')) {
+      p.style.strokeWidth = swHL + 'px';
+      p.style.strokeDasharray = dashArr;
+    } else {
+      p.style.strokeWidth = sw + 'px';
+      p.style.stroke = stroke;
+    }
   });
   drawMinimap();
 }
@@ -1175,9 +1174,6 @@ wrap.addEventListener('touchstart', (e) => {
     const dy = e.touches[0].clientY - e.touches[1].clientY;
     touchStartDist = Math.sqrt(dx*dx+dy*dy);
     touchStartScale = scale;
-    // #region agent log
-    try{var _dl=JSON.parse(localStorage.getItem('dbg3f70c6')||'[]');_dl.push({runId:'post-fix',hyp:'H-pinch',loc:'touchstart-2',msg:'pinch start',d:{wrapW:wrap.clientWidth,wrapH:wrap.clientHeight,scale:scale,touchStartDist:touchStartDist,profilesVis:document.getElementById('profiles-section').classList.contains('profiles-visible'),modalVis:document.getElementById('profile-modal').classList.contains('modal-visible')},ts:Date.now()});localStorage.setItem('dbg3f70c6',JSON.stringify(_dl));}catch(_e){}
-    // #endregion
   }
 }, {passive:false});
 wrap.addEventListener('touchmove', (e) => {
@@ -1191,9 +1187,6 @@ wrap.addEventListener('touchmove', (e) => {
     const dy = e.touches[0].clientY - e.touches[1].clientY;
     const dist = Math.sqrt(dx*dx+dy*dy);
     scale = Math.max(0.15, Math.min(3, touchStartScale * (dist / touchStartDist)));
-    // #region agent log
-    try{var _dl=JSON.parse(localStorage.getItem('dbg3f70c6')||'[]');_dl.push({runId:'post-fix',hyp:'H-pinch',loc:'touchmove-2',msg:'pinch move',d:{dist:dist,scale:scale,touchStartDist:touchStartDist,wrapW:wrap.clientWidth,wrapH:wrap.clientHeight},ts:Date.now()});localStorage.setItem('dbg3f70c6',JSON.stringify(_dl));}catch(_e){}
-    // #endregion
     applyTransform();
   }
 }, {passive:false});
@@ -1230,9 +1223,6 @@ function flyToPerson(id) {
 
     var pos = positions[id];
     if (!pos) return;
-    // #region agent log
-    try{var _dl=JSON.parse(localStorage.getItem('dbg3f70c6')||'[]');_dl.push({runId:'post-fix',hyp:'H1-H4',loc:'flyToPerson-ready',msg:'flyToPerson ready',d:{id:id,attempts:attempts,wrapW:cw,wrapH:ch,treeVis:document.getElementById('tree-section').classList.contains('tree-visible'),profVis:document.getElementById('profiles-section').classList.contains('profiles-visible'),modalVis:document.getElementById('profile-modal').classList.contains('modal-visible')},ts:Date.now()});localStorage.setItem('dbg3f70c6',JSON.stringify(_dl));}catch(_e){}
-    // #endregion
 
     activeId = id;
     updateHighlights();
@@ -1245,9 +1235,6 @@ function flyToPerson(id) {
       scale = targetScale;
       tx = cw / 2 - (pos.x + NODE_W / 2) * targetScale;
       ty = ch / 2 - (pos.y + NODE_H / 2) * targetScale - 20;
-      // #region agent log
-      try{var _dl=JSON.parse(localStorage.getItem('dbg3f70c6')||'[]');_dl.push({runId:'post-fix',hyp:'H1-H3',loc:'flyToPerson-mobile',msg:'mobile transform set',d:{id:id,scale:scale,tx:tx,ty:ty,wrapW:cw,wrapH:ch},ts:Date.now()});localStorage.setItem('dbg3f70c6',JSON.stringify(_dl));}catch(_e){}
-      // #endregion
       applyTransform();
       setTimeout(function() {
         var node = document.getElementById('node-' + id);
@@ -1418,18 +1405,12 @@ function openTree(e) {
   section.classList.remove('tree-hidden');
   section.classList.add('tree-visible');
   document.body.style.overflow = 'hidden';
-  // #region agent log
-  try{var _dl=JSON.parse(localStorage.getItem('dbg3f70c6')||'[]');_dl.push({runId:'post-fix',hyp:'H1-H2-H4',loc:'openTree',msg:'openTree entered',d:{treeBuilt:treeBuilt,wrapW:wrap.clientWidth,wrapH:wrap.clientHeight,profVis:document.getElementById('profiles-section').classList.contains('profiles-visible'),modalVis:document.getElementById('profile-modal').classList.contains('modal-visible')},ts:Date.now()});localStorage.setItem('dbg3f70c6',JSON.stringify(_dl));}catch(_e){}
-  // #endregion
   if (!treeBuilt) {
     buildNodes();
     buildLines();
     treeBuilt = true;
   }
   setTimeout(() => {
-    // #region agent log
-    try{var _dl=JSON.parse(localStorage.getItem('dbg3f70c6')||'[]');_dl.push({runId:'post-fix',hyp:'H1-H4',loc:'openTree-resetView',msg:'resetView firing',d:{wrapW:wrap.clientWidth,wrapH:wrap.clientHeight,scale:scale,tx:tx,ty:ty},ts:Date.now()});localStorage.setItem('dbg3f70c6',JSON.stringify(_dl));}catch(_e){}
-    // #endregion
     resetView();
   }, 50);
 }
@@ -1499,9 +1480,6 @@ function closeProfiles(e) {
   document.getElementById("profiles-section").classList.remove("profiles-visible");
   document.getElementById("profiles-section").classList.add("profiles-hidden");
   document.body.style.overflow = "";
-  // #region agent log
-  try{var _dl=JSON.parse(localStorage.getItem('dbg3f70c6')||'[]');_dl.push({runId:'post-fix',hyp:'H2',loc:'closeProfiles',msg:'closeProfiles applied',d:{profVis:document.getElementById('profiles-section').classList.contains('profiles-visible'),profHid:document.getElementById('profiles-section').classList.contains('profiles-hidden'),modalVis:document.getElementById('profile-modal').classList.contains('modal-visible')},ts:Date.now()});localStorage.setItem('dbg3f70c6',JSON.stringify(_dl));}catch(_e){}
-  // #endregion
 }
 function buildProfileCards() {
   var grid = document.getElementById("profiles-grid");
@@ -1676,9 +1654,6 @@ function closeModal() {
 }
 
 // ===== DEBUG LOG VIEWER =====
-// #region agent log
-(function(){if(location.search.indexOf('dbg')!==-1){var logs=localStorage.getItem('dbg3f70c6')||'[]';var pre=document.createElement('pre');pre.style.cssText='position:fixed;inset:0;z-index:9999;background:#000;color:#0f0;font-size:10px;padding:10px;overflow:auto;white-space:pre-wrap';pre.textContent='DEBUG LOGS (tap to close):\n'+logs;pre.onclick=function(){pre.remove();};document.body.appendChild(pre);}}());
-// #endregion
 
 // ===== MIGRATION MAP =====
 var MAPBOX_TOKEN = window.MAPBOX_TOKEN || '';
@@ -2444,9 +2419,6 @@ function openMap(e) {
     } catch(e) {}
   }
 
-  // #region agent log
-  try{var _dl=JSON.parse(localStorage.getItem('dbg3f70c6')||'[]');_dl.push({runId:'post-fix',hyp:'H-map',loc:'openMap-init',msg:'mapboxgl.Map init start',d:{token:!!MAPBOX_TOKEN,webgl:!!document.createElement('canvas').getContext('webgl2')||!!document.createElement('canvas').getContext('webgl'),containerH:document.getElementById('migration-map').clientHeight,containerW:document.getElementById('migration-map').clientWidth,isMob:window.innerWidth<768},ts:Date.now()});localStorage.setItem('dbg3f70c6',JSON.stringify(_dl));}catch(_e){}
-  // #endregion
   try {
   migrationMap = new mapboxgl.Map({
     container: 'migration-map',
@@ -2456,9 +2428,6 @@ function openMap(e) {
     projection: 'globe'
   });
   } catch(mapErr) {
-    // #region agent log
-    try{var _dl=JSON.parse(localStorage.getItem('dbg3f70c6')||'[]');_dl.push({runId:'post-fix',hyp:'H-map',loc:'openMap-init-err',msg:'mapboxgl.Map THREW',d:{err:String(mapErr)},ts:Date.now()});localStorage.setItem('dbg3f70c6',JSON.stringify(_dl));}catch(_e){}
-    // #endregion
     document.getElementById('migration-map').innerHTML = '<div style="color:#fbbf24;font-size:14px;padding:40px;text-align:center">Migration map could not load on this device.<br><small style="color:#6b7280;">'+String(mapErr)+'</small></div>';
     document.getElementById('map-overlay').style.display = 'block';
     return;
