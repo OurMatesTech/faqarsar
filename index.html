@@ -212,7 +212,7 @@ body{background:#0c0b0f;color:#e8e4dc;font-family:'DM Sans',sans-serif;overflow-
 #canvas{position:absolute;transform-origin:0 0}
 
 svg.lines{position:absolute;top:0;left:0;pointer-events:none;overflow:visible}
-svg.lines path{fill:none;stroke:rgba(251,191,36,0.18);stroke-width:1.5;transition:stroke 0.6s;filter:drop-shadow(0 0 2px rgba(180,83,9,0.08))}
+svg.lines path{fill:none;stroke:rgba(251,191,36,0.22);stroke-width:1.5;transition:stroke 0.3s;filter:drop-shadow(0 0 3px rgba(251,191,36,0.12))}
 svg.lines path.highlighted{stroke:rgba(251,191,36,0.85);stroke-width:2.5;stroke-dasharray:8 4;animation:pathFlow 1.5s linear infinite;filter:drop-shadow(0 0 8px rgba(245,158,11,0.4))}
 @keyframes pathFlow{0%{stroke-dashoffset:24}100%{stroke-dashoffset:0}}
 
@@ -1101,16 +1101,22 @@ function applyTransform() {
     scale = 0.15; tx = 0; ty = 0;
   }
   canvas.style.transform = 'translate('+tx+'px,'+ty+'px) scale('+scale+')';
-  // Keep lines visually constant at ~1.5 screen-px regardless of zoom level
-  var sw = Math.min(2.5, 1.5 / scale);
-  var swHL = Math.min(4, 2.5 / scale);
+  // Keep lines at a constant ~1.5 screen-px regardless of zoom.
+  // The SVG stroke-width must be INVERTED vs scale so the rendered size stays constant.
+  // e.g. scale=0.15 → need strokeWidth=10 SVG units → 10×0.15 = 1.5 screen px
+  var sw = 1.5 / scale;                        // regular lines: always 1.5 screen-px
+  var swHL = 2.5 / scale;                      // highlighted:   always 2.5 screen-px
+  var opacity = Math.min(0.55, 0.22 / scale);  // boost opacity when zoomed far out
+  // #region agent log
+  try{var _dl=JSON.parse(localStorage.getItem('dbg3f70c6')||'[]');_dl.push({runId:'line-fix',loc:'applyTransform',msg:'stroke values',d:{scale:scale,sw:sw,swHL:swHL,opacity:opacity},ts:Date.now()});localStorage.setItem('dbg3f70c6',JSON.stringify(_dl));}catch(_e){}
+  // #endregion
   document.querySelectorAll('svg.lines path:not(.highlighted)').forEach(function(p) {
     p.style.strokeWidth = sw + 'px';
+    p.style.stroke = 'rgba(251,191,36,' + opacity + ')';
   });
   document.querySelectorAll('svg.lines path.highlighted').forEach(function(p) {
     p.style.strokeWidth = swHL + 'px';
-    // Also scale the dash pattern so it stays visible
-    var d = Math.max(6, 8 / scale), g = Math.max(2, 4 / scale);
+    var d = 8 / scale, g = 4 / scale;
     p.style.strokeDasharray = d + ' ' + g;
   });
   drawMinimap();
