@@ -1101,6 +1101,9 @@ wrap.addEventListener('touchstart', (e) => {
     dragStartX = e.touches[0].clientX; dragStartY = e.touches[0].clientY;
     dragTxStart = tx; dragTyStart = ty;
   } else if (e.touches.length === 2) {
+    // #region agent log
+    fetch('http://127.0.0.1:7596/ingest/9e6e8893-6868-4647-ab9d-7d76b8da9797',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'3f70c6'},body:JSON.stringify({sessionId:'3f70c6',runId:'pre-fix',hypothesisId:'H2-H4',location:'index.html:1103',message:'tree pinch touchstart',data:{touches:e.touches.length,wrapW:wrap.clientWidth,wrapH:wrap.clientHeight,scale:scale,tx:tx,ty:ty,treeVisible:document.getElementById('tree-section').classList.contains('tree-visible'),profilesVisible:document.getElementById('profiles-section').classList.contains('profiles-visible'),modalVisible:document.getElementById('profile-modal').classList.contains('modal-visible')},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
     isDragging = false;
     const dx = e.touches[0].clientX - e.touches[1].clientX;
     const dy = e.touches[0].clientY - e.touches[1].clientY;
@@ -1118,6 +1121,9 @@ wrap.addEventListener('touchmove', (e) => {
     const dy = e.touches[0].clientY - e.touches[1].clientY;
     const dist = Math.sqrt(dx*dx+dy*dy);
     scale = Math.max(0.15, Math.min(3, touchStartScale * (dist / touchStartDist)));
+    // #region agent log
+    fetch('http://127.0.0.1:7596/ingest/9e6e8893-6868-4647-ab9d-7d76b8da9797',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'3f70c6'},body:JSON.stringify({sessionId:'3f70c6',runId:'pre-fix',hypothesisId:'H3-H4',location:'index.html:1120',message:'tree pinch touchmove',data:{touchStartDist:touchStartDist,dist:dist,scale:scale,touchStartScale:touchStartScale,wrapW:wrap.clientWidth,wrapH:wrap.clientHeight,profilesVisible:document.getElementById('profiles-section').classList.contains('profiles-visible'),modalVisible:document.getElementById('profile-modal').classList.contains('modal-visible')},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
     applyTransform();
   }
 }, {passive:true});
@@ -1154,6 +1160,9 @@ function flyToPerson(id) {
 
     var pos = positions[id];
     if (!pos) return;
+    // #region agent log
+    fetch('http://127.0.0.1:7596/ingest/9e6e8893-6868-4647-ab9d-7d76b8da9797',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'3f70c6'},body:JSON.stringify({sessionId:'3f70c6',runId:'pre-fix',hypothesisId:'H1-H4',location:'index.html:1155',message:'flyToPerson ready',data:{id:id,attempts:attempts,wrapW:cw,wrapH:ch,treeVisible:document.getElementById('tree-section').classList.contains('tree-visible'),profilesVisible:document.getElementById('profiles-section').classList.contains('profiles-visible'),modalVisible:document.getElementById('profile-modal').classList.contains('modal-visible')},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
 
     activeId = id;
     updateHighlights();
@@ -1166,6 +1175,9 @@ function flyToPerson(id) {
       scale = targetScale;
       tx = cw / 2 - (pos.x + NODE_W / 2) * targetScale;
       ty = ch / 2 - (pos.y + NODE_H / 2) * targetScale - 20;
+      // #region agent log
+      fetch('http://127.0.0.1:7596/ingest/9e6e8893-6868-4647-ab9d-7d76b8da9797',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'3f70c6'},body:JSON.stringify({sessionId:'3f70c6',runId:'pre-fix',hypothesisId:'H1-H3',location:'index.html:1166',message:'flyToPerson mobile transform',data:{id:id,targetScale:targetScale,scale:scale,tx:tx,ty:ty,wrapW:cw,wrapH:ch},timestamp:Date.now()})}).catch(()=>{});
+      // #endregion
       applyTransform();
       setTimeout(function() {
         var node = document.getElementById('node-' + id);
@@ -1336,12 +1348,20 @@ function openTree(e) {
   section.classList.remove('tree-hidden');
   section.classList.add('tree-visible');
   document.body.style.overflow = 'hidden';
+  // #region agent log
+  fetch('http://127.0.0.1:7596/ingest/9e6e8893-6868-4647-ab9d-7d76b8da9797',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'3f70c6'},body:JSON.stringify({sessionId:'3f70c6',runId:'pre-fix',hypothesisId:'H1-H2-H4',location:'index.html:1338',message:'openTree entered',data:{treeBuilt:treeBuilt,wrapW:wrap.clientWidth,wrapH:wrap.clientHeight,profilesVisible:document.getElementById('profiles-section').classList.contains('profiles-visible'),modalVisible:document.getElementById('profile-modal').classList.contains('modal-visible')},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
   if (!treeBuilt) {
     buildNodes();
     buildLines();
     treeBuilt = true;
   }
-  setTimeout(() => resetView(), 50);
+  setTimeout(() => {
+    // #region agent log
+    fetch('http://127.0.0.1:7596/ingest/9e6e8893-6868-4647-ab9d-7d76b8da9797',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'3f70c6'},body:JSON.stringify({sessionId:'3f70c6',runId:'pre-fix',hypothesisId:'H1-H4',location:'index.html:1344',message:'openTree resetView scheduled',data:{wrapW:wrap.clientWidth,wrapH:wrap.clientHeight,scale:scale,tx:tx,ty:ty},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
+    resetView();
+  }, 50);
 }
 function closeTree(e) {
   e.preventDefault();
@@ -1409,6 +1429,9 @@ function closeProfiles(e) {
   document.getElementById("profiles-section").classList.remove("profiles-visible");
   document.getElementById("profiles-section").classList.add("profiles-hidden");
   document.body.style.overflow = "";
+  // #region agent log
+  fetch('http://127.0.0.1:7596/ingest/9e6e8893-6868-4647-ab9d-7d76b8da9797',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'3f70c6'},body:JSON.stringify({sessionId:'3f70c6',runId:'pre-fix',hypothesisId:'H2',location:'index.html:1411',message:'closeProfiles applied',data:{profilesVisible:document.getElementById('profiles-section').classList.contains('profiles-visible'),profilesHidden:document.getElementById('profiles-section').classList.contains('profiles-hidden'),modalVisible:document.getElementById('profile-modal').classList.contains('modal-visible')},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
 }
 function buildProfileCards() {
   var grid = document.getElementById("profiles-grid");
