@@ -2216,7 +2216,11 @@ function mapDrawAllLines() {
     mapCurves[m.id] = pts;
     var srcH = 'r-intl-h-'+m.id, srcC = 'r-intl-c-'+m.id, srcD = 'r-intl-d-'+m.id, srcD2 = 'r-intl-d2-'+m.id;
     var srcDot = 'r-intl-dot-'+m.id;
+    // Use member colour directly; mapGetIntlRouteColor only adjusts for satellite/terrain
     var intlColor = mapGetIntlRouteColor(m.c);
+    // #region agent log
+    try{var _dl=JSON.parse(localStorage.getItem('dbg3f70c6')||'[]');_dl.push({runId:'color-check',loc:'drawIntl',msg:'intl route color',d:{id:m.id,mc:m.c,intlColor:intlColor,style:mapCurrentStyle},ts:Date.now()});localStorage.setItem('dbg3f70c6',JSON.stringify(_dl));}catch(_e){}
+    // #endregion
     if (!migrationMap.getSource(srcH)) migrationMap.addSource(srcH, {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:pts}}});
     else migrationMap.getSource(srcH).setData({type:'Feature', geometry:{type:'LineString', coordinates:pts}});
     if (!migrationMap.getLayer(srcH)) migrationMap.addLayer({id:srcH, type:'line', source:srcH, paint:{'line-color':intlColor,'line-width':6,'line-opacity':theme.har.haloOpacity,'line-blur':4}, layout:{'line-cap':'round','line-join':'round'}});
@@ -2226,10 +2230,10 @@ function mapDrawAllLines() {
     mapSetPaintSafe(srcH, 'line-blur', 4);
     if (!migrationMap.getSource(srcC)) migrationMap.addSource(srcC, {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:pts}}});
     else migrationMap.getSource(srcC).setData({type:'Feature', geometry:{type:'LineString', coordinates:pts}});
-    if (!migrationMap.getLayer(srcC)) migrationMap.addLayer({id:srcC, type:'line', source:srcC, paint:{'line-color':intlColor,'line-width':1.5,'line-opacity':theme.har.lineOpacity,'line-dasharray':[9,1.6]}, layout:{'line-cap':'round','line-join':'round'}});
+    if (!migrationMap.getLayer(srcC)) migrationMap.addLayer({id:srcC, type:'line', source:srcC, paint:{'line-color':intlColor,'line-width':2,'line-opacity':0.96,'line-dasharray':[9,1.6]}, layout:{'line-cap':'round','line-join':'round'}});
     mapSetPaintSafe(srcC, 'line-color', intlColor);
-    mapSetPaintSafe(srcC, 'line-width', 1.5);
-    mapSetPaintSafe(srcC, 'line-opacity', theme.har.lineOpacity);
+    mapSetPaintSafe(srcC, 'line-width', 2);
+    mapSetPaintSafe(srcC, 'line-opacity', 0.96);
     mapSetPaintSafe(srcC, 'line-dasharray', [9,1.6]);
     if (!migrationMap.getSource(srcDot)) migrationMap.addSource(srcDot, {type:'geojson', data:{type:'Feature', geometry:{type:'Point', coordinates:m.to}, properties:{name:m.n}}});
     if (!migrationMap.getLayer(srcDot+'-g')) migrationMap.addLayer({id:srcDot+'-g', type:'circle', source:srcDot, paint:{'circle-radius':10,'circle-color':intlColor,'circle-opacity':0.15,'circle-blur':1}});
