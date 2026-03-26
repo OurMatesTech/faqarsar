@@ -1427,18 +1427,19 @@ var mapIsInteracting = false;
 var mapCurves = {};
 var mapAnimFrame = null;
 
+var PIL_CENTER = [74.06, 29.47];
 var MIGRATIONS = [
-  {id:'sikanda',  n:'Sikanda Singh',  to:[74.08,29.44], c:'#ff4060', region:'Pilibanga, Rajasthan'},
-  {id:'mukhtiar', n:'Mukhtiar Singh', to:[74.08,29.44], c:'#ff6040', region:'Pilibanga, Rajasthan'},
-  {id:'harnek',   n:'Harnek Singh',   to:[74.08,29.44], c:'#ff8040', region:'Pilibanga, Rajasthan'},
-  {id:'balvir',   n:'Balvir Singh',   to:[74.08,29.44], c:'#ff5050', region:'Pilibanga, Rajasthan'},
-  {id:'baldev1',  n:'Baldev Singh',   to:[74.08,29.44], c:'#ff7030', region:'Pilibanga, Rajasthan'},
-  {id:'jagjeet',  n:'Jagjeet Singh',  to:[74.08,29.44], c:'#ff4570', region:'Pilibanga, Rajasthan'},
-  {id:'balkaur',  n:'Balkaur Kaur',   to:[74.08,29.44], c:'#ff60a0', region:'Pilibanga, Rajasthan'},
-  {id:'baldev2',  n:'Baldev Singh',   to:[74.08,29.44], c:'#ff5060', region:'Pilibanga, Rajasthan'},
-  {id:'amarjit',  n:'Amarjit Singh',  to:[74.08,29.44], c:'#ff8060', region:'Pilibanga, Rajasthan'},
-  {id:'bhoora',   n:'Bhoora Singh',   to:[74.08,29.44], c:'#ff4050', region:'Pilibanga, Rajasthan'},
-  {id:'naajam',   n:'Naajam Singh',   to:[74.08,29.44], c:'#ff7050', region:'Pilibanga, Rajasthan'},
+  {id:'sikanda',  n:'Sikanda Singh',  to:[74.03,29.49], c:'#ff4060', region:'Pilibanga, Rajasthan'},
+  {id:'mukhtiar', n:'Mukhtiar Singh', to:[74.04,29.50], c:'#ff6040', region:'Pilibanga, Rajasthan'},
+  {id:'harnek',   n:'Harnek Singh',   to:[74.06,29.50], c:'#ff8040', region:'Pilibanga, Rajasthan'},
+  {id:'balvir',   n:'Balvir Singh',   to:[74.08,29.49], c:'#ff5050', region:'Pilibanga, Rajasthan'},
+  {id:'baldev1',  n:'Baldev Singh',   to:[74.09,29.48], c:'#ff7030', region:'Pilibanga, Rajasthan'},
+  {id:'jagjeet',  n:'Jagjeet Singh',  to:[74.09,29.47], c:'#ff4570', region:'Pilibanga, Rajasthan'},
+  {id:'balkaur',  n:'Balkaur Kaur',   to:[74.08,29.46], c:'#ff60a0', region:'Pilibanga, Rajasthan'},
+  {id:'baldev2',  n:'Baldev Singh',   to:[74.06,29.45], c:'#ff5060', region:'Pilibanga, Rajasthan'},
+  {id:'amarjit',  n:'Amarjit Singh',  to:[74.04,29.45], c:'#ff8060', region:'Pilibanga, Rajasthan'},
+  {id:'bhoora',   n:'Bhoora Singh',   to:[74.03,29.46], c:'#ff4050', region:'Pilibanga, Rajasthan'},
+  {id:'naajam',   n:'Naajam Singh',   to:[74.03,29.47], c:'#ff7050', region:'Pilibanga, Rajasthan'},
   {id:'gurdiyal', n:'Gurdiyal Singh', to:[76.5,29.15],  c:'#40c0ff', region:'Haryana'}
 ];
 
@@ -1508,16 +1509,13 @@ function mapAddVillageMarker() {
 function mapDrawAllLines() {
   if (!migrationMap) return;
 
-  var pilPts = mapMakeCurve(VILLAGE_POS, [74.08, 29.44], 80);
+  var pilPts = mapMakeCurve(VILLAGE_POS, PIL_CENTER, 80);
   mapCurves['pilibanga'] = pilPts;
   var harPts = mapMakeCurve(VILLAGE_POS, [76.5, 29.15], 80);
   mapCurves['gurdiyal'] = harPts;
-  MIGRATIONS.forEach(function(m) {
-    if (m.id !== 'gurdiyal') mapCurves[m.id] = pilPts;
-  });
 
   try {
-  // ── Pilibanga route (bundled ribbon effect) ──
+  // ── Pilibanga route (scattered ribbon effect) ──
   var pilMembers = MIGRATIONS.filter(function(m) { return m.id !== 'gurdiyal'; });
   
   if (!migrationMap.getSource('r-pil-outer')) {
@@ -1525,87 +1523,61 @@ function mapDrawAllLines() {
   }
   if (!migrationMap.getLayer('r-pil-outer')) {
     migrationMap.addLayer({id:'r-pil-outer', type:'line', source:'r-pil-outer',
-      paint:{'line-color':'#ff5050', 'line-width':18, 'line-opacity':0.08, 'line-blur':8},
+      paint:{'line-color':'#ff5050', 'line-width':28, 'line-opacity':0.05, 'line-blur':12},
       layout:{'line-cap':'round','line-join':'round'}});
   }
 
   pilMembers.forEach(function(member, idx) {
-    var offset = ((idx - (pilMembers.length - 1) / 2) / pilMembers.length) * 1.5;
+    var memberPts = mapMakeCurve(VILLAGE_POS, member.to, 80);
+    mapCurves[member.id] = memberPts;
     
     if (!migrationMap.getSource('r-pil-strand-' + member.id)) {
-      migrationMap.addSource('r-pil-strand-' + member.id, {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:pilPts}}});
+      migrationMap.addSource('r-pil-strand-' + member.id, {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:memberPts}}});
+    } else {
+      migrationMap.getSource('r-pil-strand-' + member.id).setData({type:'Feature', geometry:{type:'LineString', coordinates:memberPts}});
     }
     if (!migrationMap.getLayer('r-pil-strand-' + member.id)) {
       migrationMap.addLayer({id:'r-pil-strand-' + member.id, type:'line', source:'r-pil-strand-' + member.id,
         paint:{
           'line-color':member.c,
-          'line-width':1.2,
-          'line-opacity':0.7,
-          'line-offset':offset
+          'line-width':1.8,
+          'line-opacity':0.8
         },
         layout:{'line-cap':'round','line-join':'round'}});
     }
   });
 
-  if (!migrationMap.getSource('r-pil-core')) {
-    migrationMap.addSource('r-pil-core', {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:pilPts}}});
-  }
-  if (!migrationMap.getLayer('r-pil-core')) {
-    migrationMap.addLayer({id:'r-pil-core', type:'line', source:'r-pil-core',
-      paint:{'line-color':'#ff5050', 'line-width':5, 'line-opacity':0.6},
-      layout:{'line-cap':'round','line-join':'round'}});
-  }
-
-  if (!migrationMap.getSource('r-pil-highlight')) {
-    migrationMap.addSource('r-pil-highlight', {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:pilPts}}});
-  }
-  if (!migrationMap.getLayer('r-pil-highlight')) {
-    migrationMap.addLayer({id:'r-pil-highlight', type:'line', source:'r-pil-highlight',
-      paint:{'line-color':'#ffffff', 'line-width':1.5, 'line-opacity':0.5},
-      layout:{'line-cap':'round','line-join':'round'}});
-  }
-
-  var pilMembers = MIGRATIONS.filter(function(m) { return m.id !== 'gurdiyal'; });
   pilMembers.forEach(function(member, idx) {
-    var spacing = pilPts.length / (pilMembers.length + 1);
-    var pointIdx = Math.floor((idx + 1) * spacing);
-    var labelPos = pilPts[Math.min(pointIdx, pilPts.length - 1)];
+    var endPt = member.to;
     
-    if (!migrationMap.getSource('r-pil-label-' + member.id)) {
-      migrationMap.addSource('r-pil-label-' + member.id, {
-        type:'geojson',
-        data:{type:'Feature', geometry:{type:'Point', coordinates:labelPos}, properties:{name:member.n}}
-      });
+    if (!migrationMap.getSource('r-pil-dot-' + member.id)) {
+      migrationMap.addSource('r-pil-dot-' + member.id, {type:'geojson', data:{type:'Feature', geometry:{type:'Point', coordinates:endPt}, properties:{name:member.n}}});
     }
-    if (!migrationMap.getLayer('r-pil-label-' + member.id)) {
-      migrationMap.addLayer({id:'r-pil-label-' + member.id, type:'symbol', source:'r-pil-label-' + member.id,
+    if (!migrationMap.getLayer('r-pil-dot-g-' + member.id)) {
+      migrationMap.addLayer({id:'r-pil-dot-g-' + member.id, type:'circle', source:'r-pil-dot-' + member.id,
+        paint:{'circle-radius':9, 'circle-color':member.c, 'circle-opacity':0.25, 'circle-blur':1}});
+    }
+    if (!migrationMap.getLayer('r-pil-dot-c-' + member.id)) {
+      migrationMap.addLayer({id:'r-pil-dot-c-' + member.id, type:'circle', source:'r-pil-dot-' + member.id,
+        paint:{'circle-radius':4, 'circle-color':member.c, 'circle-opacity':0.95, 'circle-stroke-width':1.5, 'circle-stroke-color':'rgba(255,255,255,0.5)'}});
+    }
+    if (!migrationMap.getLayer('r-pil-dot-label-' + member.id)) {
+      migrationMap.addLayer({id:'r-pil-dot-label-' + member.id, type:'symbol', source:'r-pil-dot-' + member.id,
         layout:{
           'text-field':member.n,
           'text-font':['Open Sans Semibold', 'Arial Unicode MS Regular'],
-          'text-size':8,
-          'text-offset':[0, -1.2],
+          'text-size':9,
+          'text-offset':[0, -1.4],
           'text-anchor':'bottom'
         },
         paint:{
           'text-color':member.c,
           'text-halo-color':'#000000',
-          'text-halo-width':1.8
+          'text-halo-width':2
         }
       });
     }
   });
-
-  if (!migrationMap.getSource('r-pil-d')) {
-    migrationMap.addSource('r-pil-d', {type:'geojson', data:{type:'Feature', geometry:{type:'Point', coordinates:pilPts[0]}}});
-  }
-  if (!migrationMap.getLayer('r-pil-dg')) {
-    migrationMap.addLayer({id:'r-pil-dg', type:'circle', source:'r-pil-d',
-      paint:{'circle-radius':12, 'circle-color':'#ff5050', 'circle-opacity':0.2, 'circle-blur':1}});
-  }
-  if (!migrationMap.getLayer('r-pil-dc')) {
-    migrationMap.addLayer({id:'r-pil-dc', type:'circle', source:'r-pil-d',
-      paint:{'circle-radius':4, 'circle-color':'#ffffff', 'circle-opacity':0.95}});
-  }
 
   // ── Haryana route ──
   if (!migrationMap.getSource('r-har-g')) {
@@ -1647,42 +1619,45 @@ function mapDrawAllLines() {
       paint:{'circle-radius':3, 'circle-color':'#ffffff', 'circle-opacity':0.95}});
   }
 
-  // ── Destinations ──
-  if (!migrationMap.getSource('dests')) {
-    migrationMap.addSource('dests', {type:'geojson', data:{type:'FeatureCollection', features:[
-      {type:'Feature', properties:{color:'#ff5050', name:'11 Singh families', region:'Pilibanga, Rajasthan'}, geometry:{type:'Point', coordinates:[74.08,29.44]}},
-      {type:'Feature', properties:{color:'#40c0ff', name:'Gurdiyal Singh', region:'Haryana'}, geometry:{type:'Point', coordinates:[76.5,29.15]}}
-    ]}});
-  }
-  if (!migrationMap.getLayer('dests-glow')) {
-    migrationMap.addLayer({id:'dests-glow', type:'circle', source:'dests',
-      paint:{'circle-radius':10, 'circle-color':['get','color'], 'circle-opacity':0.15, 'circle-blur':1}});
-  }
-  if (!migrationMap.getLayer('dests-core')) {
-    migrationMap.addLayer({id:'dests-core', type:'circle', source:'dests',
-      paint:{'circle-radius':5, 'circle-color':['get','color'], 'circle-opacity':0.9, 'circle-stroke-width':1.5, 'circle-stroke-color':'rgba(255,255,255,0.3)'}});
-    migrationMap.on('click', 'dests-core', function(e) {
-      var props = e.features[0].properties;
-      var html = '<div style="font-size:13px;font-weight:600;color:'+props.color+'">'+props.region+'</div>';
-      
-      if (props.region === 'Pilibanga, Rajasthan') {
-        var pilMembers = MIGRATIONS.filter(function(m) { return m.id !== 'gurdiyal'; });
-        html += '<div style="font-size:10px;color:#999;margin-top:6px;max-height:150px;overflow-y:auto;">';
-        pilMembers.forEach(function(m, idx) {
-          html += '<div style="padding:2px 0;color:'+m.c+'">• '+m.n+'</div>';
-        });
-        html += '</div>';
-      } else {
-        html += '<div style="font-size:10px;color:#777;margin-top:2px">'+props.name+'</div>';
-      }
-      
-      new mapboxgl.Popup({closeButton:true, offset:12})
-        .setLngLat(e.lngLat)
+  // ── Individual destination dots with click handlers ──
+  pilMembers.forEach(function(member) {
+    migrationMap.on('click', 'r-pil-dot-c-' + member.id, function(e) {
+      var html = '<div style="font-size:13px;font-weight:600;color:'+member.c+'">'+member.n+'</div>';
+      html += '<div style="font-size:10px;color:#999;margin-top:2px">'+member.region+'</div>';
+      new mapboxgl.Popup({closeButton:true, offset:8})
+        .setLngLat(member.to)
         .setHTML(html)
         .addTo(migrationMap);
     });
-    migrationMap.on('mouseenter', 'dests-core', function() { migrationMap.getCanvas().style.cursor = 'pointer'; });
-    migrationMap.on('mouseleave', 'dests-core', function() { migrationMap.getCanvas().style.cursor = ''; });
+    migrationMap.on('mouseenter', 'r-pil-dot-c-' + member.id, function() { 
+      migrationMap.getCanvas().style.cursor = 'pointer'; 
+    });
+    migrationMap.on('mouseleave', 'r-pil-dot-c-' + member.id, function() { 
+      migrationMap.getCanvas().style.cursor = ''; 
+    });
+  });
+  
+  // ── Haryana destination ──
+  if (!migrationMap.getSource('dest-har')) {
+    migrationMap.addSource('dest-har', {type:'geojson', data:{type:'Feature', properties:{name:'Gurdiyal Singh', region:'Haryana'}, geometry:{type:'Point', coordinates:[76.5,29.15]}}});
+  }
+  if (!migrationMap.getLayer('dest-har-g')) {
+    migrationMap.addLayer({id:'dest-har-g', type:'circle', source:'dest-har',
+      paint:{'circle-radius':10, 'circle-color':'#40c0ff', 'circle-opacity':0.15, 'circle-blur':1}});
+  }
+  if (!migrationMap.getLayer('dest-har-c')) {
+    migrationMap.addLayer({id:'dest-har-c', type:'circle', source:'dest-har',
+      paint:{'circle-radius':5, 'circle-color':'#40c0ff', 'circle-opacity':0.9, 'circle-stroke-width':1.5, 'circle-stroke-color':'rgba(255,255,255,0.3)'}});
+    migrationMap.on('click', 'dest-har-c', function(e) {
+      var html = '<div style="font-size:13px;font-weight:600;color:#40c0ff">Haryana</div>';
+      html += '<div style="font-size:10px;color:#999;margin-top:2px">Gurdiyal Singh</div>';
+      new mapboxgl.Popup({closeButton:true, offset:12})
+        .setLngLat([76.5,29.15])
+        .setHTML(html)
+        .addTo(migrationMap);
+    });
+    migrationMap.on('mouseenter', 'dest-har-c', function() { migrationMap.getCanvas().style.cursor = 'pointer'; });
+    migrationMap.on('mouseleave', 'dest-har-c', function() { migrationMap.getCanvas().style.cursor = ''; });
   }
 
   // ── Labels ──
@@ -1694,9 +1669,9 @@ function mapDrawAllLines() {
       paint:{'text-color':'#c8aa78', 'text-halo-color':'#000000', 'text-halo-width':2}});
   }
   if (!migrationMap.getSource('pil-label')) {
-    migrationMap.addSource('pil-label', {type:'geojson', data:{type:'Feature', geometry:{type:'Point', coordinates:[74.08,29.44]}, properties:{name:'PILIBANGA'}}});
+    migrationMap.addSource('pil-label', {type:'geojson', data:{type:'Feature', geometry:{type:'Point', coordinates:PIL_CENTER}, properties:{name:'PILIBANGA'}}});
     migrationMap.addLayer({id:'pil-label', type:'symbol', source:'pil-label',
-      layout:{'text-field':'PILIBANGA', 'text-font':['Open Sans Bold'], 'text-size':11, 'text-offset':[0, -2]},
+      layout:{'text-field':'PILIBANGA', 'text-font':['Open Sans Bold'], 'text-size':11, 'text-offset':[0, 1.8]},
       paint:{'text-color':'#ff5050', 'text-halo-color':'#000000', 'text-halo-width':2}});
   }
   } catch(err) { /* retry on next style.load */ }
