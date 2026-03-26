@@ -2542,18 +2542,22 @@ function findRawIdFromMigration(migrationName, migrationRegion) {
   var parts = migrationName.toLowerCase().split(' ');
   var bestId = null;
   var regionLower = (migrationRegion || '').toLowerCase();
+  // Extract first part of region (e.g. "Auckland" from "Auckland, New Zealand")
+  var regionCity = regionLower.split(',')[0].trim();
   Object.keys(raw).forEach(function(id) {
     var p = raw[id];
     var mid = (p.middleName || '').toLowerCase();
-    var last = (p.lastName || '').toLowerCase();
     var note = (p.notes || '').toLowerCase();
+    // Name must match: at least one word from the migration name matches middleName
     var nameMatch = parts.some(function(w) { return w.length > 2 && mid.indexOf(w) !== -1; });
-    if (nameMatch && (note.indexOf('rajasthan') !== -1 || note.indexOf('pilibanga') !== -1 || note.indexOf('haryana') !== -1 || note.indexOf('california') !== -1 || note.indexOf('perth') !== -1 || note.indexOf('canada') !== -1 || note.indexOf('brampton') !== -1 || note.indexOf('kitchener') !== -1)) {
-      if (regionLower && note.indexOf(regionLower.split(',')[0].trim()) !== -1) {
-        bestId = id;
-      } else if (!bestId) {
-        bestId = id;
-      }
+    if (!nameMatch) return;
+    // Notes must contain a non-Faqarsar location (member has migrated)
+    var hasMigratedNote = note.indexOf('📍') !== -1 && note.indexOf('faqarsar') === -1;
+    // Prefer exact city match in notes
+    if (hasMigratedNote && regionCity && note.indexOf(regionCity) !== -1) {
+      bestId = id; // exact region match — always wins
+    } else if (hasMigratedNote && !bestId) {
+      bestId = id; // fallback: any migrated member with matching name
     }
   });
   return bestId;
