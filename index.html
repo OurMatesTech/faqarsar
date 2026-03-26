@@ -156,10 +156,10 @@ body{background:#0c0b0f;color:#e8e4dc;font-family:'DM Sans',sans-serif;overflow-
 .profile-card:hover{background:linear-gradient(180deg,rgba(251,191,36,0.08),rgba(251,191,36,0.03));border-color:rgba(251,191,36,0.3);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.3),0 0 25px rgba(245,158,11,0.06)}
 .profile-card.hidden{display:none}
 .pc-gen{position:absolute;top:10px;right:12px;font-size:10px;color:rgba(251,191,36,0.8);background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.18);border-radius:999px;padding:3px 9px;letter-spacing:0.04em;line-height:1;backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(0,0,0,0.18)}
-.pc-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:500;color:#f3eee6;margin-bottom:4px;line-height:1.15;max-width:calc(100% - 92px);padding-top:6px}
-.pc-gurmukhi{font-size:14px;color:rgba(251,191,36,0.76);margin-bottom:10px;max-width:calc(100% - 92px)}
-.pc-father{font-size:11px;color:#8b847a;margin-bottom:8px;line-height:1.45}
-.pc-children-count{font-size:10px;color:rgba(251,191,36,0.5);letter-spacing:0.04em}
+.pc-name{font-family:'Playfair Display',serif;font-size:21px;font-weight:500;color:#f3eee6;margin-bottom:4px;line-height:1.15;max-width:calc(100% - 92px);padding-top:6px}
+.pc-gurmukhi{font-size:15px;color:rgba(251,191,36,0.76);margin-bottom:10px;max-width:calc(100% - 92px)}
+.pc-father{font-size:13px;color:#8b847a;margin-bottom:8px;line-height:1.5}
+.pc-children-count{font-size:12px;color:rgba(251,191,36,0.5);letter-spacing:0.04em}
 .pc-note{font-size:10px;color:rgba(198,106,84,0.82);font-style:italic;margin-top:4px;line-height:1.4}
 .pc-note.loc{color:rgba(129,211,163,0.9);font-style:normal}
 .pc-ornament{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(251,191,36,0.2),transparent)}
@@ -169,8 +169,8 @@ body{background:#0c0b0f;color:#e8e4dc;font-family:'DM Sans',sans-serif;overflow-
 #profile-modal-bg{position:absolute;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px)}
 #profile-modal-card{position:relative;z-index:1;width:90%;max-width:520px;max-height:85vh;overflow-y:auto;background:#141218;border:1px solid rgba(251,191,36,0.2);border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,0.6),0 0 50px rgba(245,158,11,0.06)}
 #profile-modal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent 5%,rgba(251,191,36,0.6) 50%,transparent 95%);border-radius:20px 20px 0 0}
-.modal-close{position:absolute;top:16px;right:16px;z-index:2;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:#7a7670;font-size:20px;width:32px;height:32px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
-.modal-close:hover{background:rgba(255,255,255,0.1);color:#e8e4dc}
+.modal-close{position:absolute;top:12px;right:12px;z-index:2;background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.3);color:rgba(251,191,36,0.9);font-size:22px;width:42px;height:42px;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-weight:300}
+.modal-close:hover{background:rgba(251,191,36,0.22);border-color:rgba(251,191,36,0.5);color:#fbbf24}
 .mh{padding:24px 28px 0}
 .modal-gen-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:rgba(251,191,36,0.6);background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.15);border-radius:6px;padding:3px 10px;margin-bottom:12px;letter-spacing:0.04em}
 .modal-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:500;color:#e8e4dc;line-height:1.2;margin-bottom:4px}
@@ -398,8 +398,10 @@ svg.lines path.highlighted{stroke:rgba(251,191,36,0.85);stroke-width:2.5;stroke-
 
   #profiles-grid{grid-template-columns:1fr;gap:12px;padding:16px}
   .profile-card{padding:18px 16px 16px}
-  .pc-name{font-size:16px}
-  .pc-gurmukhi{font-size:13px}
+  .pc-name{font-size:18px}
+  .pc-gurmukhi{font-size:14px}
+  .pc-father{font-size:13px}
+  .pc-children-count{font-size:12px}
   .pc-gen{top:8px;right:10px;font-size:9px;padding:3px 7px}
 
   #profile-modal-card{width:95%;max-width:none;max-height:90vh;border-radius:16px}
@@ -420,7 +422,7 @@ svg.lines path.highlighted{stroke:rgba(251,191,36,0.85);stroke-width:2.5;stroke-
   .ml-arrow{font-size:8px}
   .mfooter{padding:12px 16px 16px;flex-direction:column;display:flex;gap:8px}
   .mfooter .modal-action,.mfooter .view-on-globe-btn{width:100%;justify-content:center;text-align:center;font-size:12px;padding:10px 16px}
-  .modal-close{top:8px;right:8px;width:28px;height:28px;font-size:16px}
+  .modal-close{top:10px;right:10px;width:40px;height:40px;font-size:20px;border-radius:10px}
   .slide-tabs{padding:0 12px}
   .slide-tab{padding:8px 12px;font-size:11px}
   .slide-dots{padding:6px 0 2px}
@@ -1754,8 +1756,8 @@ function mapGetIntlRouteColor(baseColor) {
     if (color === '#f97316') return '#fdba74';
     if (color === '#22d3ee') return '#a5f3fc';
     if (color === '#34d399') return '#6ee7b7';
-    if (color === '#c084fc') return '#e9d5ff';
-    if (color === '#e879f9') return '#f5d0fe';
+    if (color === '#10b981') return '#6ee7b7';
+    if (color === '#f97316') return '#fdba74';
   }
   if (mapCurrentStyle.indexOf('outdoors') !== -1 || mapCurrentStyle.indexOf('terrain') !== -1) {
     if (color === '#22c55e') return '#166534';
@@ -1763,8 +1765,7 @@ function mapGetIntlRouteColor(baseColor) {
     if (color === '#f97316') return '#c2410c';
     if (color === '#22d3ee') return '#0f766e';
     if (color === '#34d399') return '#065f46';
-    if (color === '#c084fc') return '#6b21a8';
-    if (color === '#e879f9') return '#86198f';
+    if (color === '#10b981') return '#065f46';
   }
   return baseColor;
 }
@@ -1830,12 +1831,12 @@ var MIGRATIONS = [
   {id:'naajam',   n:'Naajam Singh',   to:[74.03,29.47], c:'#fcd34d', region:'Pilibanga, Rajasthan'},
   {id:'gurdiyal', n:'Gurdiyal Singh', to:[76.5,29.15],  c:'#40c0ff', region:'Haryana'},
   {id:'mandeep',  n:'Mandeep Singh',  to:[-119.4,36.8], c:'#22c55e', region:'California, USA', intl:true},
-  {id:'kuldeep',  n:'Kuldeep Singh',  to:[115.77,-31.75],c:'#a855f7', region:'Perth, Australia', intl:true},
+  {id:'kuldeep',  n:'Kuldeep Singh',  to:[115.58,-31.82],c:'#a855f7', region:'Perth, Australia', intl:true},
   {id:'kuljeet',  n:'Kuljeet Singh',  to:[-80.49,43.45],  c:'#f97316', region:'Kitchener, Canada', intl:true},
   {id:'kuldeep_b',  n:'Kuldeep Singh',       to:[-79.76,43.73],   c:'#22d3ee', region:'Brampton, Canada',          intl:true},
   {id:'navsharn',   n:'Navsharnpreet Singh', to:[174.76,-36.85],  c:'#34d399', region:'Auckland, New Zealand',      intl:true},
-  {id:'gurkirat',   n:'Gurkirat Singh',      to:[115.93,-31.95],  c:'#c084fc', region:'Perth, Australia',           intl:true},
-  {id:'gursahib',   n:'Gursahib Singh',      to:[115.82,-32.14],  c:'#e879f9', region:'Perth, Australia',           intl:true}
+  {id:'gurkirat',   n:'Gurkirat Singh',      to:[116.18,-31.88],  c:'#10b981', region:'Perth, Australia',           intl:true},
+  {id:'gursahib',   n:'Gursahib Singh',      to:[115.72,-32.22],  c:'#f97316', region:'Perth, Australia',           intl:true}
 ];
 
 function mapMakeCurve(from, to, n, bulgeScale, lateralShift) {
@@ -2605,7 +2606,7 @@ function mapFlyToMember(member, showPopup) {
   if (mob) {
     migrationMap.flyTo({
       center: member.to,
-      zoom: 7,
+      zoom: 4.5,
       pitch: 25,
       duration: 2000,
       essential: true
@@ -2631,7 +2632,7 @@ function mapFlyToMember(member, showPopup) {
     setTimeout(function() {
       migrationMap.flyTo({
         center: member.to,
-        zoom: 9,
+        zoom: 6,
         pitch: 50,
         bearing: -15 + Math.random() * 30,
         duration: 2800,
