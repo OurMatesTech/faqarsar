@@ -3003,6 +3003,12 @@ function mapFlyToMember(member, showPopup) {
       }
     });
   } else {
+    var _desktopFlyStart = Date.now();
+    var _desktopBearing = -15 + Math.random() * 30;
+    var _desktopZoom = member.intl ? 5 : 6;
+    // #region agent log
+    fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H-D1',location:'index.html:3005',message:'desktop fly-in start',data:{memberId:member.id,isIntl:!!member.intl,currentZoom:currentZoom,targetZoom:_desktopZoom,region:member.region,mapWidth:migrationMap.getCanvas().width,mapHeight:migrationMap.getCanvas().height},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
     // Cinematic desktop fly-in: zoom out first, then sweep in
     migrationMap.flyTo({
       center: VILLAGE_POS,
@@ -3012,29 +3018,37 @@ function mapFlyToMember(member, showPopup) {
       duration: 800,
       essential: true
     });
-    setTimeout(function() {
+    migrationMap.once('moveend', function() {
+      var _pullbackMs = Date.now() - _desktopFlyStart;
+      // #region agent log
+      fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H-D1',location:'index.html:3015',message:'desktop pullback moveend',data:{pullbackMs:_pullbackMs,currentZoom:migrationMap.getZoom()},timestamp:Date.now()})}).catch(()=>{});
+      // #endregion
       migrationMap.flyTo({
         center: member.to,
-        zoom: 6,
+        zoom: _desktopZoom,
         pitch: 50,
-        bearing: -15 + Math.random() * 30,
+        bearing: _desktopBearing,
         duration: 2800,
         curve: 1.6,
         essential: true
       });
-      setTimeout(function() {
+      migrationMap.once('moveend', function() {
+        var _totalMs = Date.now() - _desktopFlyStart;
+        // #region agent log
+        fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H-D3',location:'index.html:3025',message:'desktop sweep moveend - showing popup',data:{totalMs:_totalMs,memberId:member.id,showPopup:showPopup!==false,popupCooldown:mapPopupCooldown},timestamp:Date.now()})}).catch(()=>{});
+        // #endregion
         if (showPopup !== false) {
           if(mapPopupCooldown)return;new mapboxgl.Popup({closeButton:true, closeOnClick:true, offset:12})
             .setLngLat(member.to)
             .setHTML(mapPopupHtml(member.n, member.region, theme))
             .addTo(migrationMap);
         }
-        // Gentle settle
-        setTimeout(function() {
-          migrationMap.easeTo({pitch: 40, bearing: 0, duration: 1200});
-        }, 600);
-      }, 3000);
-    }, 900);
+        // #region agent log
+        fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H-D4',location:'index.html:3033',message:'desktop settle easing',data:{totalMs:_totalMs},timestamp:Date.now()})}).catch(()=>{});
+        // #endregion
+        migrationMap.easeTo({pitch: 40, bearing: 0, duration: 1200});
+      });
+    });
   }
 }
 
