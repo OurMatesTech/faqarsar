@@ -212,7 +212,9 @@ body{background:#0c0b0f;color:#e8e4dc;font-family:'DM Sans',sans-serif;overflow-
 
 #canvas-wrap{position:absolute;inset:0;overflow:hidden;cursor:grab}
 #canvas-wrap.dragging{cursor:grabbing}
-#canvas{position:absolute;transform-origin:0 0}
+#canvas{position:absolute;transform-origin:0 0;will-change:transform;backface-visibility:hidden}
+#canvas-wrap.dragging .node,#canvas-wrap.dragging svg.lines path{transition:none!important}
+#canvas-wrap.dragging svg.lines path{filter:none!important}
 
 svg.lines{position:absolute;top:0;left:0;pointer-events:none;overflow:visible}
 svg.lines path{fill:none;stroke:rgba(251,191,36,0.22);stroke-width:1.5;transition:stroke 0.3s;filter:drop-shadow(0 0 3px rgba(251,191,36,0.12))}
@@ -947,12 +949,10 @@ svg.lines path.highlighted{stroke:rgba(251,191,36,0.85);stroke-width:2.5;stroke-
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font-size:12px;color:#9ca3af;letter-spacing:0.04em">TO GIDDERBAHA</span><span style="font-size:15px;color:#38bdf8;font-weight:700;text-align:right">1</span></div>
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font-size:12px;color:#9ca3af;letter-spacing:0.04em" id="map-lbl-har">TO HARYANA</span><span style="font-size:15px;color:#40c0ff;font-weight:700;text-align:right">1</span></div>
       <div style="height:1px;background:rgba(255,255,255,0.06);margin:6px 0"></div>
-      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font-size:12px;color:#9ca3af;letter-spacing:0.04em">INTERNATIONAL</span><span style="font-size:15px;color:#22c55e;font-weight:700;text-align:right">6</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font-size:12px;color:#9ca3af;letter-spacing:0.04em">INTERNATIONAL</span><span style="font-size:15px;color:#22c55e;font-weight:700;text-align:right">7</span></div>
       <div style="display:grid;grid-template-columns:1fr auto;column-gap:12px;row-gap:8px;padding-left:2px">
-        <span style="font-size:11px;color:#d1d5db">California, USA</span><span style="font-size:12px;color:#22c55e;font-weight:700;text-align:right">1</span>
-        <span style="font-size:11px;color:#d1d5db">Yanchep, WA</span><span style="font-size:12px;color:#f97316;font-weight:700;text-align:right">1</span>
-        <span style="font-size:11px;color:#d1d5db">Perth, WA</span><span style="font-size:12px;color:#10b981;font-weight:700;text-align:right">1</span>
-        <span style="font-size:11px;color:#d1d5db">Mandurah, WA</span><span style="font-size:12px;color:#f97316;font-weight:700;text-align:right">1</span>
+        <span style="font-size:11px;color:#d1d5db">USA</span><span style="font-size:12px;color:#22c55e;font-weight:700;text-align:right">1</span>
+        <span style="font-size:11px;color:#d1d5db">Australia</span><span style="font-size:12px;color:#10b981;font-weight:700;text-align:right">3</span>
         <span style="font-size:11px;color:#d1d5db">Canada</span><span style="font-size:12px;color:#f97316;font-weight:700;text-align:right">2</span>
         <span style="font-size:11px;color:#d1d5db">New Zealand</span><span style="font-size:12px;color:#34d399;font-weight:700;text-align:right">1</span>
       </div>
@@ -1300,14 +1300,17 @@ function applyTransform() {
   if (isNaN(tx) || isNaN(ty) || isNaN(scale) || scale === 0) {
     scale = 0.15; tx = 0; ty = 0;
   }
-  canvas.style.transform = 'translate('+tx+'px,'+ty+'px) scale('+scale+')';
+  var renderScale = Math.max(0.15, Math.min(3, Math.round(scale * 1000) / 1000));
+  var renderTx = isDragging ? Math.round(tx) : Math.round(tx * 2) / 2;
+  var renderTy = isDragging ? Math.round(ty) : Math.round(ty * 2) / 2;
+  canvas.style.transform = 'translate3d('+renderTx+'px,'+renderTy+'px,0) scale('+renderScale+')';
   // Keep lines at a constant ~1.5 screen-px regardless of zoom.
   // strokeWidth = target_screen_px / scale so rendered size is always constant.
-  var sw = 1.5 / scale;
-  var swHL = 2.5 / scale;
-  var opacity = Math.min(0.55, 0.22 / scale);
+  var sw = 1.5 / renderScale;
+  var swHL = 2.5 / renderScale;
+  var opacity = Math.min(0.55, 0.22 / renderScale);
   var stroke = 'rgba(251,191,36,' + opacity + ')';
-  var d = 8 / scale, g = 4 / scale;
+  var d = 8 / renderScale, g = 4 / renderScale;
   var dashArr = d + ' ' + g;
   svg.querySelectorAll('path').forEach(function(p) {
     if (p.classList.contains('highlighted')) {
@@ -1379,11 +1382,13 @@ let touchStartDist = 0, touchStartScale = 1;
 wrap.addEventListener('touchstart', (e) => {
   if (e.touches.length === 1 && !e.target.closest('.node')) {
     isDragging = true;
+    wrap.classList.add('dragging');
     dragStartX = e.touches[0].clientX; dragStartY = e.touches[0].clientY;
     dragTxStart = tx; dragTyStart = ty;
   } else if (e.touches.length === 2) {
     e.preventDefault();
     isDragging = false;
+    wrap.classList.remove('dragging');
     const dx = e.touches[0].clientX - e.touches[1].clientX;
     const dy = e.touches[0].clientY - e.touches[1].clientY;
     touchStartDist = Math.sqrt(dx*dx+dy*dy);
@@ -1404,7 +1409,8 @@ wrap.addEventListener('touchmove', (e) => {
     applyTransform();
   }
 }, {passive:false});
-wrap.addEventListener('touchend', () => { isDragging = false; });
+wrap.addEventListener('touchend', () => { isDragging = false; wrap.classList.remove('dragging'); });
+wrap.addEventListener('touchcancel', () => { isDragging = false; wrap.classList.remove('dragging'); });
 
 function selectPerson(id) {
   if (activeId === id) { clearSelection(); return; }
@@ -1909,6 +1915,8 @@ var mapAnimFrame = null;
 var mapSpinFrame = null;
 
 function mapGetRouteAnimationProfile(id) {
+  if (window.innerWidth < 768) return 'base';
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return 'base';
   return id === 'gurdiyal' ? 'base' : 'aerial';
 }
 
@@ -2060,13 +2068,13 @@ var MIGRATIONS = [
   {id:'jasmail_k',pid:'p418', n:'Jasmail Kaur',   to:[74.88,30.32], c:'#a78bfa', region:'Mithri Budhgir, Punjab'},
   {id:'jaswinder_k',pid:'p427', n:'Jaswinder Singh',to:[74.65,30.00], c:'#38bdf8', region:'Gidderbaha, Punjab'},
   {id:'gurdiyal', pid:'p167', n:'Gurdiyal Singh', to:[76.5,29.15],  c:'#40c0ff', region:'Haryana'},
-  {id:'mandeep',  pid:'p398', n:'Mandeep Singh',  to:[-119.4,36.8], c:'#22c55e', region:'California, USA', intl:true},
-  {id:'kuldeep',  pid:'p399', n:'Kuldeep Singh',  to:[115.63,-31.55],c:'#f97316', region:'Yanchep, WA', intl:true},
-  {id:'kuljeet',  pid:'p404', n:'Kuljeet Singh',  to:[-80.49,43.45],  c:'#f97316', region:'Kitchener, Canada', intl:true},
-  {id:'kuldeep_b',pid:'p410', n:'Kuldeep Singh',       to:[-79.76,43.73],   c:'#22d3ee', region:'Brampton, Canada',          intl:true},
-  {id:'navsharn', pid:'p414', n:'Navsharnpreet Singh', to:[174.76,-36.85],  c:'#34d399', region:'Auckland, New Zealand',      intl:true},
-  {id:'gurkirat', pid:'p415', n:'Gurkirat Singh',      to:[115.86,-31.95],  c:'#10b981', region:'Perth, Australia',           intl:true},
-  {id:'gursahib', pid:'p416', n:'Gursahib Singh',      to:[115.72,-32.53],  c:'#a855f7', region:'Mandurah, WA',               intl:true}
+  {id:'mandeep',  pid:'p398', n:'Mandeep Singh',  to:[-119.4,36.8], c:'#22c55e', region:'USA', intl:true},
+  {id:'kuldeep',  pid:'p399', n:'Kuldeep Singh',  to:[115.63,-31.55],c:'#f97316', region:'Australia', intl:true},
+  {id:'kuljeet',  pid:'p404', n:'Kuljeet Singh',  to:[-80.49,43.45],  c:'#f97316', region:'Canada', intl:true},
+  {id:'kuldeep_b',pid:'p410', n:'Kuldeep Singh',       to:[-79.76,43.73],   c:'#22d3ee', region:'Canada',          intl:true},
+  {id:'navsharn', pid:'p414', n:'Navsharnpreet Singh', to:[174.76,-36.85],  c:'#34d399', region:'New Zealand',      intl:true},
+  {id:'gurkirat', pid:'p415', n:'Gurkirat Singh',      to:[115.86,-31.95],  c:'#10b981', region:'Australia',           intl:true},
+  {id:'gursahib', pid:'p416', n:'Gursahib Singh',      to:[115.72,-32.53],  c:'#a855f7', region:'Australia',               intl:true}
 ];
 
 function mapMakeCurve(from, to, n, bulgeScale, lateralShift) {
@@ -2961,15 +2969,29 @@ function flyFromProfile(id) {
   var note = p.notes ? p.notes.toLowerCase() : '';
   var target = VILLAGE_POS;
   var isMob = window.innerWidth < 768;
+  var matchedMigration = null;
 
-  if (note.indexOf('pilibanga') !== -1 || note.indexOf('rajasthan') !== -1) {
-    var found = false;
+  MIGRATIONS.forEach(function(m) {
+    if (!matchedMigration && m.pid === id) {
+      matchedMigration = m;
+    }
+  });
+
+  if (!matchedMigration) {
     MIGRATIONS.forEach(function(m) {
-      if (m.n.toLowerCase().indexOf(p.middleName.toLowerCase()) !== -1 && !found) {
-        target = m.to; found = true;
+      if (matchedMigration) return;
+      var sameName = m.n.toLowerCase() === fullName(id).toLowerCase();
+      var sameMiddle = p.middleName && m.n.toLowerCase().indexOf(p.middleName.toLowerCase()) !== -1;
+      if (sameName || sameMiddle) {
+        matchedMigration = m;
       }
     });
-    if (!found) target = [74.08, 29.44];
+  }
+
+  if (matchedMigration) {
+    target = matchedMigration.to;
+  } else if (note.indexOf('pilibanga') !== -1 || note.indexOf('rajasthan') !== -1) {
+    target = [74.08, 29.44];
   } else if (note.indexOf('haryana') !== -1) {
     target = [76.5, 29.15];
   } else if (note.indexOf('kheowali') !== -1) {
@@ -2979,12 +3001,6 @@ function flyFromProfile(id) {
   openMap({preventDefault:function(){}});
 
   var attempts = 0;
-  var matchedMigration = null;
-  MIGRATIONS.forEach(function(m) {
-    if (m.n.toLowerCase().indexOf(p.middleName.toLowerCase()) !== -1 && !matchedMigration) {
-      matchedMigration = m;
-    }
-  });
 
   function tryFly() {
     attempts++;
@@ -3002,10 +3018,11 @@ function flyFromProfile(id) {
             var region = '';
             if (note.indexOf('rajasthan') !== -1 || note.indexOf('pilibanga') !== -1) region = 'Pilibanga, Rajasthan';
             else if (note.indexOf('haryana') !== -1) region = 'Haryana';
-            else if (note.indexOf('california') !== -1) region = 'California, USA';
-            else if (note.indexOf('perth') !== -1) region = 'Perth, Australia';
-            else if (note.indexOf('brampton') !== -1) region = 'Brampton, Canada';
-            else if (note.indexOf('kitchener') !== -1) region = 'Kitchener, Canada';
+            else if (note.indexOf('california') !== -1) region = 'USA';
+            else if (note.indexOf('perth') !== -1 || note.indexOf('mandurah') !== -1 || note.indexOf('yanchep') !== -1) region = 'Australia';
+            else if (note.indexOf('brampton') !== -1) region = 'Canada';
+            else if (note.indexOf('kitchener') !== -1) region = 'Canada';
+            else if (note.indexOf('auckland') !== -1) region = 'New Zealand';
             else if (note.indexOf('canada') !== -1) region = 'Canada';
             else region = displayNote(p.notes);
             if(mapPopupCooldown)return;new mapboxgl.Popup({closeButton:true, closeOnClick:true, offset:15})
@@ -3091,6 +3108,19 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!adminUser) openAdminOverlay();
     }
   });
+  if (window.mapboxgl && MAPBOX_TOKEN) {
+    var prewarmMapbox = function() {
+      try {
+        mapboxgl.accessToken = MAPBOX_TOKEN;
+        if (typeof mapboxgl.prewarm === 'function') mapboxgl.prewarm();
+      } catch (e) {}
+    };
+    if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(prewarmMapbox, { timeout: 2000 });
+    } else {
+      setTimeout(prewarmMapbox, 1200);
+    }
+  }
 });
 
 // ===== MODAL SLIDES =====
