@@ -1913,6 +1913,9 @@ var mapIsInteracting = false;
 var mapCurves = {};
 var mapAnimFrame = null;
 var mapSpinFrame = null;
+var mapDebugRunSeq = 0;
+var mapDebugRunId = '';
+var mapDebugOpenStart = 0;
 
 function mapGetRouteAnimationProfile(id) {
   if (window.innerWidth < 768) return 'base';
@@ -2588,6 +2591,9 @@ function mapAnimateDots() {
       });
     }
   });
+  // #region agent log
+  fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H2',location:'index.html:2544',message:'mapAnimateDots prepared routes',data:{sinceOpenMs:Date.now()-mapDebugOpenStart,routeCount:routes.length,isMobile:window.innerWidth<768},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
 
   function tick(now) {
     if (!migrationMap) return;
@@ -2667,6 +2673,12 @@ function mapStartSpinning() {
 
 function openMap(e) {
   if (e && e.preventDefault) e.preventDefault();
+  mapDebugRunSeq += 1;
+  mapDebugRunId = 'map-open-' + mapDebugRunSeq;
+  mapDebugOpenStart = Date.now();
+  // #region agent log
+  fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H1',location:'index.html:2668',message:'openMap start',data:{mapExists:!!migrationMap,isMobile:window.innerWidth<768,profileFlowId:window.__mapDebugProfileFlowId||null},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
   document.getElementById('map-overlay').style.display = 'block';
   document.body.style.overflow = 'hidden';
   if (migrationMap) { migrationMap.resize(); return; }
@@ -2678,11 +2690,16 @@ function openMap(e) {
   function drawOnce() {
     if (mapLinesDrawn) return;
     mapLinesDrawn = true;
+    var drawStart = Date.now();
     mapOnStyleReady();
+    var setupMs = Date.now() - drawStart;
     mapStartSpinning();
     try {
       migrationMap.setLayoutProperty('country-label', 'visibility', 'none');
     } catch(e) {}
+    // #region agent log
+    fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H2',location:'index.html:2678',message:'drawOnce completed',data:{sinceOpenMs:Date.now()-mapDebugOpenStart,setupMs:setupMs,isMobile:window.innerWidth<768,migrationCount:MIGRATIONS.length},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
   }
 
   try {
@@ -2700,6 +2717,9 @@ function openMap(e) {
   }
 
   migrationMap.on('style.load', function() {
+    // #region agent log
+    fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H1',location:'index.html:2702',message:'map style.load event',data:{sinceOpenMs:Date.now()-mapDebugOpenStart,isMobile:window.innerWidth<768},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
     drawOnce();
   });
 
@@ -2893,6 +2913,9 @@ function mapFlyToMember(member, showPopup) {
   var mob = window.innerWidth < 768;
   var theme = mapGetVisualTheme();
   var currentZoom = migrationMap.getZoom();
+  // #region agent log
+  fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H4',location:'index.html:2890',message:'mapFlyToMember called',data:{memberId:member&&member.id||null,isMobile:mob,showPopup:showPopup!==false,currentZoom:currentZoom},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
 
   if (mob) {
     migrationMap.flyTo({
@@ -2987,6 +3010,10 @@ function flyFromProfile(id) {
       }
     });
   }
+  window.__mapDebugProfileFlowId = id;
+  // #region agent log
+  fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:'profile-flow-' + id + '-' + Date.now(),hypothesisId:'H3',location:'index.html:2963',message:'flyFromProfile resolved target',data:{profileId:id,isMobile:isMob,hasMatchedMigration:!!matchedMigration,matchedMigrationId:matchedMigration&&matchedMigration.id||null,target:target},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
 
   if (matchedMigration) {
     target = matchedMigration.to;
@@ -3005,6 +3032,9 @@ function flyFromProfile(id) {
   function tryFly() {
     attempts++;
     if (migrationMap && migrationMap.isStyleLoaded()) {
+      // #region agent log
+      fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H4',location:'index.html:3005',message:'flyFromProfile tryFly ready',data:{profileId:id,attempts:attempts,hasMatchedMigration:!!matchedMigration,matchedMigrationId:matchedMigration&&matchedMigration.id||null,isMobile:isMob,sinceOpenMs:Date.now()-mapDebugOpenStart},timestamp:Date.now()})}).catch(()=>{});
+      // #endregion
       if (matchedMigration) {
         mapFlyToMember(matchedMigration, true);
       } else {
