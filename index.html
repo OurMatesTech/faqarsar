@@ -1918,8 +1918,18 @@ var mapDebugRunId = '';
 var mapDebugOpenStart = 0;
 
 function mapGetRouteAnimationProfile(id) {
-  if (window.innerWidth < 768) return 'base';
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return 'base';
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // #region agent log
+    console.log('[debug-5cd82b]', JSON.stringify({hypothesisId:'H5', location:'index.html:1920', message:'map route profile forced to base by reduced motion', data:{memberId:id}}));
+    // #endregion
+    return 'base';
+  }
+  if (window.innerWidth < 768) {
+    // #region agent log
+    console.log('[debug-5cd82b]', JSON.stringify({hypothesisId:'H5', location:'index.html:1920', message:'map route profile using lightweight mobile animation', data:{memberId:id, innerWidth:window.innerWidth}}));
+    // #endregion
+    return id === 'gurdiyal' ? 'base' : 'mobile';
+  }
   return id === 'gurdiyal' ? 'base' : 'aerial';
 }
 
@@ -2614,13 +2624,18 @@ function mapAnimateDots() {
       if (!r.profile) return;
       var pulse = 0.5 + (0.5 * Math.sin((elapsed * 0.0012) + r.phase));
 
-      if (r.profile === 'aerial') {
+      if (r.profile === 'aerial' || r.profile === 'mobile') {
         var dash = dashFrames[Math.floor(((elapsed * 0.0025) + (r.phase * 2)) % dashFrames.length)];
         mapSetPaintSafe(r.coreLayer, 'line-dasharray', dash);
-        mapSetPaintSafe(r.haloLayer, 'line-opacity', 0.06 + (pulse * 0.05));
-        mapSetPaintSafe(r.haloLayer, 'line-width', 5.5 + (pulse * 1.2));
-        mapSetPaintSafe(r.glowLayer, 'circle-opacity', 0.10 + (pulse * 0.08));
-        mapSetPaintSafe(r.glowLayer, 'circle-radius', 5.5 + (pulse * 2));
+        if (r.profile === 'aerial') {
+          mapSetPaintSafe(r.haloLayer, 'line-opacity', 0.06 + (pulse * 0.05));
+          mapSetPaintSafe(r.haloLayer, 'line-width', 5.5 + (pulse * 1.2));
+          mapSetPaintSafe(r.glowLayer, 'circle-opacity', 0.10 + (pulse * 0.08));
+          mapSetPaintSafe(r.glowLayer, 'circle-radius', 5.5 + (pulse * 2));
+        } else {
+          mapSetPaintSafe(r.haloLayer, 'line-opacity', 0.05 + (pulse * 0.02));
+          mapSetPaintSafe(r.glowLayer, 'circle-opacity', 0.06 + (pulse * 0.04));
+        }
       }
     });
     mapAnimFrame = requestAnimationFrame(tick);
@@ -2661,7 +2676,12 @@ function mapStartSpinning() {
   
   function rotate() {
     if (!migrationMap) return;
-    if (!userInteracting && !userHasInteracted && migrationMap.getZoom() < 5) {
+    // #region agent log
+    if (!userInteracting && !userHasInteracted && migrationMap.getZoom() < 5 && mapIsInteracting) {
+      fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H8',location:'index.html:2679',message:'rotate BLOCKED because mapIsInteracting=true',data:{zoom:migrationMap.getZoom(),mapIsInteracting:mapIsInteracting},timestamp:Date.now()})}).catch(()=>{});
+    }
+    // #endregion
+    if (!userInteracting && !userHasInteracted && !mapIsInteracting && migrationMap.getZoom() < 5) {
       var center = migrationMap.getCenter();
       center.lng += (360 / (secondsPerRev * 60));
       migrationMap.easeTo({center:center, duration:0, easing:function(n){return n;}});
@@ -2918,21 +2938,30 @@ function mapFlyToMember(member, showPopup) {
   // #endregion
 
   if (mob) {
+    // #region agent log
+    console.log('[debug-5cd82b]', JSON.stringify({hypothesisId:'H6', location:'index.html:2917', message:'mapFlyToMember using mobile branch', data:{memberId:member&&member.id||null, showPopup:showPopup!==false, zoom:4.5, pitch:25, duration:2000}}));
+    // #endregion
     migrationMap.flyTo({
       center: member.to,
-      zoom: 4.5,
-      pitch: 25,
-      duration: 2000,
+      zoom: 5.1,
+      pitch: 42,
+      bearing: -12,
+      duration: 2400,
+      curve: 1.5,
       essential: true
     });
-    if (showPopup !== false) {
-      setTimeout(function() {
+    migrationMap.once('moveend', function() {
+      mapIsInteracting = false;
+      // #region agent log
+      fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H6',location:'index.html:2917',message:'mobile mapFlyToMember moveend',data:{memberId:member&&member.id||null,showPopup:showPopup!==false},timestamp:Date.now()})}).catch(()=>{});
+      // #endregion
+      if (showPopup !== false) {
         if(mapPopupCooldown)return;new mapboxgl.Popup({closeButton:true, closeOnClick:true, offset:12})
           .setLngLat(member.to)
           .setHTML(mapPopupHtml(member.n, member.region, theme, null, member.id))
           .addTo(migrationMap);
-      }, 2200);
-    }
+      }
+    });
   } else {
     // Cinematic desktop fly-in: zoom out first, then sweep in
     migrationMap.flyTo({
@@ -3016,6 +3045,9 @@ function flyFromProfile(id) {
   // #endregion
 
   if (matchedMigration) {
+    // #region agent log
+    console.log('[debug-5cd82b]', JSON.stringify({hypothesisId:'H7', location:'index.html:2991', message:'flyFromProfile matched migration', data:{profileId:id, migrationId:matchedMigration.id, migrationRegion:matchedMigration.region}}));
+    // #endregion
     target = matchedMigration.to;
   } else if (note.indexOf('pilibanga') !== -1 || note.indexOf('rajasthan') !== -1) {
     target = [74.08, 29.44];
