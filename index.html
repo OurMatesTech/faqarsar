@@ -2153,9 +2153,13 @@ function mapAddVillageMarker() {
 function mapDrawAllLines() {
   if (!migrationMap) return;
 
-  var pilPts = mapMakeCurve(VILLAGE_POS, PIL_CENTER, 80);
+  var _drawStart = Date.now();
+  var isMobDraw = window.innerWidth < 768;
+  var curvePts = isMobDraw ? 40 : 80;
+
+  var pilPts = mapMakeCurve(VILLAGE_POS, PIL_CENTER, curvePts);
   mapCurves['pilibanga'] = pilPts;
-  var harPts = mapMakeCurve(VILLAGE_POS, [76.5, 29.15], 80);
+  var harPts = mapMakeCurve(VILLAGE_POS, [76.5, 29.15], curvePts);
   mapCurves['gurdiyal'] = harPts;
   var theme = mapGetVisualTheme();
   var pilLabelStyle = mapGetPilLabelStyle();
@@ -2164,12 +2168,15 @@ function mapDrawAllLines() {
   // ── Pilibanga route (aerial dotted flight paths) ──
   var pilMembers = MIGRATIONS.filter(function(m) { return m.id !== 'gurdiyal' && !m.intl; });
   var intlMembers = MIGRATIONS.filter(function(m) { return m.intl; });
+  // #region agent log
+  var _t0 = Date.now();
+  // #endregion
 
   pilMembers.forEach(function(member, idx) {
     var ratio = pilMembers.length > 1 ? (idx - ((pilMembers.length - 1) / 2)) / (pilMembers.length - 1) : 0;
     var bulgeScale = 0.16 + ((idx % 4) * 0.025);
     var lateralShift = ratio * 0.05;
-    var memberPts = mapMakeCurve(VILLAGE_POS, member.to, 80, bulgeScale, lateralShift);
+    var memberPts = mapMakeCurve(VILLAGE_POS, member.to, curvePts, bulgeScale, lateralShift);
     var profile = mapGetRouteAnimationProfile(member.id);
     var haloColor = theme.pil.haloColor;
     var haloWidth = 6;
@@ -2181,25 +2188,27 @@ function mapDrawAllLines() {
     var lineDash = [9, 1.6];
     mapCurves[member.id] = memberPts;
 
-    if (!migrationMap.getSource('r-pil-halo-' + member.id)) {
-      migrationMap.addSource('r-pil-halo-' + member.id, {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:memberPts}}});
-    } else {
-      migrationMap.getSource('r-pil-halo-' + member.id).setData({type:'Feature', geometry:{type:'LineString', coordinates:memberPts}});
+    if (!isMobDraw) {
+      if (!migrationMap.getSource('r-pil-halo-' + member.id)) {
+        migrationMap.addSource('r-pil-halo-' + member.id, {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:memberPts}}});
+      } else {
+        migrationMap.getSource('r-pil-halo-' + member.id).setData({type:'Feature', geometry:{type:'LineString', coordinates:memberPts}});
+      }
+      if (!migrationMap.getLayer('r-pil-halo-' + member.id)) {
+        migrationMap.addLayer({id:'r-pil-halo-' + member.id, type:'line', source:'r-pil-halo-' + member.id,
+          paint:{
+            'line-color':haloColor,
+            'line-width':haloWidth,
+            'line-opacity':haloOpacity,
+            'line-blur':haloBlur
+          },
+          layout:{'line-cap':'round','line-join':'round'}});
+      }
+      mapSetPaintSafe('r-pil-halo-' + member.id, 'line-color', haloColor);
+      mapSetPaintSafe('r-pil-halo-' + member.id, 'line-width', haloWidth);
+      mapSetPaintSafe('r-pil-halo-' + member.id, 'line-opacity', haloOpacity);
+      mapSetPaintSafe('r-pil-halo-' + member.id, 'line-blur', haloBlur);
     }
-    if (!migrationMap.getLayer('r-pil-halo-' + member.id)) {
-      migrationMap.addLayer({id:'r-pil-halo-' + member.id, type:'line', source:'r-pil-halo-' + member.id,
-        paint:{
-          'line-color':haloColor,
-          'line-width':haloWidth,
-          'line-opacity':haloOpacity,
-          'line-blur':haloBlur
-        },
-        layout:{'line-cap':'round','line-join':'round'}});
-    }
-    mapSetPaintSafe('r-pil-halo-' + member.id, 'line-color', haloColor);
-    mapSetPaintSafe('r-pil-halo-' + member.id, 'line-width', haloWidth);
-    mapSetPaintSafe('r-pil-halo-' + member.id, 'line-opacity', haloOpacity);
-    mapSetPaintSafe('r-pil-halo-' + member.id, 'line-blur', haloBlur);
 
     if (!migrationMap.getSource('r-pil-strand-' + member.id)) {
       migrationMap.addSource('r-pil-strand-' + member.id, {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:memberPts}}});
@@ -2249,6 +2258,11 @@ function mapDrawAllLines() {
     }
   });
 
+  // #region agent log
+  fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H9',location:'index.html:2153',message:'mapDrawAllLines pil strands done',data:{ms:Date.now()-_t0,isMobile:isMobDraw,curvePts:curvePts,memberCount:pilMembers.length},timestamp:Date.now()})}).catch(()=>{});
+  var _t1 = Date.now();
+  // #endregion
+
   pilMembers.forEach(function(member, idx) {
     var endPt = member.to;
     
@@ -2296,18 +2310,24 @@ function mapDrawAllLines() {
   });
 
   // ── Pilibanga route (aerial dotted flight path) ──
-  if (!migrationMap.getSource('r-pil-g')) {
-    migrationMap.addSource('r-pil-g', {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:pilPts}}});
-  }
-  if (!migrationMap.getLayer('r-pil-g')) {
-    migrationMap.addLayer({id:'r-pil-g', type:'line', source:'r-pil-g',
-      paint:{
-        'line-color':theme.pil.haloColor,
-        'line-width':6,
-        'line-opacity':theme.pil.haloOpacity,
-        'line-blur':4
-      },
-      layout:{'line-cap':'round','line-join':'round'}});
+  if (!isMobDraw) {
+    if (!migrationMap.getSource('r-pil-g')) {
+      migrationMap.addSource('r-pil-g', {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:pilPts}}});
+    }
+    if (!migrationMap.getLayer('r-pil-g')) {
+      migrationMap.addLayer({id:'r-pil-g', type:'line', source:'r-pil-g',
+        paint:{
+          'line-color':theme.pil.haloColor,
+          'line-width':6,
+          'line-opacity':theme.pil.haloOpacity,
+          'line-blur':4
+        },
+        layout:{'line-cap':'round','line-join':'round'}});
+    }
+    mapSetPaintSafe('r-pil-g', 'line-color', theme.pil.haloColor);
+    mapSetPaintSafe('r-pil-g', 'line-width', 6);
+    mapSetPaintSafe('r-pil-g', 'line-opacity', theme.pil.haloOpacity);
+    mapSetPaintSafe('r-pil-g', 'line-blur', 4);
   }
   if (!migrationMap.getSource('r-pil-c')) {
     migrationMap.addSource('r-pil-c', {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:pilPts}}});
@@ -2322,10 +2342,6 @@ function mapDrawAllLines() {
       },
       layout:{'line-cap':'round','line-join':'round'}});
   }
-  mapSetPaintSafe('r-pil-g', 'line-color', theme.pil.haloColor);
-  mapSetPaintSafe('r-pil-g', 'line-width', 6);
-  mapSetPaintSafe('r-pil-g', 'line-opacity', theme.pil.haloOpacity);
-  mapSetPaintSafe('r-pil-g', 'line-blur', 4);
   mapSetPaintSafe('r-pil-c', 'line-color', theme.pil.lineColor);
   mapSetPaintSafe('r-pil-c', 'line-width', 1.5);
   mapSetPaintSafe('r-pil-c', 'line-opacity', theme.pil.lineOpacity);
@@ -2349,18 +2365,24 @@ function mapDrawAllLines() {
   }
 
   // ── Haryana route (aerial dotted flight path) ──
-  if (!migrationMap.getSource('r-har-g')) {
-    migrationMap.addSource('r-har-g', {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:harPts}}});
-  }
-  if (!migrationMap.getLayer('r-har-g')) {
-    migrationMap.addLayer({id:'r-har-g', type:'line', source:'r-har-g',
-      paint:{
-        'line-color':theme.har.haloColor,
-        'line-width':6,
-        'line-opacity':theme.har.haloOpacity,
-        'line-blur':4
-      },
-      layout:{'line-cap':'round','line-join':'round'}});
+  if (!isMobDraw) {
+    if (!migrationMap.getSource('r-har-g')) {
+      migrationMap.addSource('r-har-g', {type:'geojson', data:{type:'Feature', geometry:{type:'LineString', coordinates:harPts}}});
+    }
+    if (!migrationMap.getLayer('r-har-g')) {
+      migrationMap.addLayer({id:'r-har-g', type:'line', source:'r-har-g',
+        paint:{
+          'line-color':theme.har.haloColor,
+          'line-width':6,
+          'line-opacity':theme.har.haloOpacity,
+          'line-blur':4
+        },
+        layout:{'line-cap':'round','line-join':'round'}});
+    }
+    mapSetPaintSafe('r-har-g', 'line-color', theme.har.haloColor);
+    mapSetPaintSafe('r-har-g', 'line-width', 6);
+    mapSetPaintSafe('r-har-g', 'line-opacity', theme.har.haloOpacity);
+    mapSetPaintSafe('r-har-g', 'line-blur', 4);
   }
 
   if (!migrationMap.getSource('r-har')) {
@@ -2376,10 +2398,6 @@ function mapDrawAllLines() {
       },
       layout:{'line-cap':'round','line-join':'round'}});
   }
-  mapSetPaintSafe('r-har-g', 'line-color', theme.har.haloColor);
-  mapSetPaintSafe('r-har-g', 'line-width', 6);
-  mapSetPaintSafe('r-har-g', 'line-opacity', theme.har.haloOpacity);
-  mapSetPaintSafe('r-har-g', 'line-blur', 4);
   mapSetPaintSafe('r-har-c', 'line-color', theme.har.lineColor);
   mapSetPaintSafe('r-har-c', 'line-width', 1.5);
   mapSetPaintSafe('r-har-c', 'line-opacity', theme.har.lineOpacity);
@@ -2400,6 +2418,11 @@ function mapDrawAllLines() {
     migrationMap.addLayer({id:'r-har-dc', type:'circle', source:'r-har-d',
       paint:{'circle-radius':3, 'circle-color':'#ffffff', 'circle-opacity':1.0}});
   }
+
+  // #region agent log
+  fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H9',location:'index.html:2252',message:'mapDrawAllLines pil dots done',data:{ms:Date.now()-_t1,isMobile:isMobDraw},timestamp:Date.now()})}).catch(()=>{});
+  var _t2 = Date.now();
+  // #endregion
 
   // ── Individual destination dots with click handlers ──
   pilMembers.forEach(function(member) {
@@ -2461,11 +2484,16 @@ function mapDrawAllLines() {
   }
 
 
+  // #region agent log
+  fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H9',location:'index.html:2405',message:'mapDrawAllLines click handlers done',data:{ms:Date.now()-_t2,isMobile:isMobDraw},timestamp:Date.now()})}).catch(()=>{});
+  var _t3 = Date.now();
+  // #endregion
+
   // ── International routes (long-distance arcs) ──
   intlMembers.forEach(function(m, idx) {
     var bulgeOffset = 0.20 + (idx * 0.02);
     var lateralOffset = (idx - (intlMembers.length - 1) / 2) * 0.015;
-    var pts = mapMakeCurve(VILLAGE_POS, m.to, 80, bulgeOffset, lateralOffset);
+    var pts = mapMakeCurve(VILLAGE_POS, m.to, curvePts, bulgeOffset, lateralOffset);
     mapCurves[m.id] = pts;
     var srcH = 'r-intl-h-'+m.id, srcC = 'r-intl-c-'+m.id, srcD = 'r-intl-d-'+m.id, srcD2 = 'r-intl-d2-'+m.id;
     var srcDot = 'r-intl-dot-'+m.id;
@@ -2552,11 +2580,17 @@ function mapDrawAllLines() {
   mapSetPaintSafe('pil-label', 'text-halo-blur', pilLabelStyle.regionHaloBlur);
   } catch(err) { /* retry on next style.load */ }
 
+  // #region agent log
+  fetch('http://127.0.0.1:7391/ingest/f7fa9045-2e46-49c3-a673-7a4e0800b5f1',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5cd82b'},body:JSON.stringify({sessionId:'5cd82b',runId:mapDebugRunId,hypothesisId:'H9',location:'index.html:2553',message:'mapDrawAllLines complete',data:{totalMs:Date.now()-_drawStart,intlMs:Date.now()-_t3,isMobile:isMobDraw,intlCount:intlMembers.length},timestamp:Date.now()})}).catch(()=>{});
+  // #endregion
+
   mapAnimateDots();
 }
 function mapAnimateDots() {
   if (mapAnimFrame) cancelAnimationFrame(mapAnimFrame);
   var start = performance.now();
+  var isMobAnim = window.innerWidth < 768;
+  var _animFrameCount = 0;
   var routes = [
     {sourceId:'r-pil-d', pts: mapCurves['pilibanga'], delay:0, speed:0.006},
     {sourceId:'r-har-d', pts: mapCurves['gurdiyal'], delay:400, speed:0.006}
@@ -2607,6 +2641,11 @@ function mapAnimateDots() {
 
   function tick(now) {
     if (!migrationMap) return;
+    _animFrameCount++;
+    if (isMobAnim && (_animFrameCount % 2 !== 0)) {
+      mapAnimFrame = requestAnimationFrame(tick);
+      return;
+    }
     var elapsed = now - start;
     routes.forEach(function(r) {
       if (!r.pts || elapsed < r.delay) return;
