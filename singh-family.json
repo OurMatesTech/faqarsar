@@ -9,10 +9,10 @@
       "p2"
     ],
     "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਬਾਬਾ ਸਿੰਘਾ",
+    "gurmukhi": "ਬਾਬਾ ਸਿੰਘਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p2": {
@@ -31,7 +31,7 @@
     "gurmukhi": "ਬੱਗਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p3": {
@@ -54,7 +54,7 @@
     "gurmukhi": "ਮੋਹਰੀ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p4": {
@@ -74,7 +74,7 @@
     "gurmukhi": "ਸੰਗਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p5": {
@@ -94,7 +94,7 @@
     "gurmukhi": "ਬੇਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p6": {
@@ -113,7 +113,7 @@
     "gurmukhi": "ਗੁਲਾਬ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p7": {
@@ -133,7 +133,7 @@
     "gurmukhi": "ਕਰਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p8": {
@@ -154,7 +154,7 @@
     "gurmukhi": "ਧਰਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p9": {
@@ -166,17 +166,17 @@
       "p3"
     ],
     "children": [],
-    "notes": "📍 Faqarsar, Punjab",
+    "notes": "Had 2 daughters; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੌਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p10": {
     "id": "p10",
     "firstName": "",
-    "middleName": "Ram",
+    "middleName": "Raaw",
     "lastName": "Singh",
     "parents": [
       "p3"
@@ -188,10 +188,10 @@
       "p118"
     ],
     "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਰਾਮ ਸਿੰਘ",
+    "gurmukhi": "ਰਾਅ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p11": {
@@ -206,10 +206,10 @@
       "p14"
     ],
     "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਫਤਹਿ ਸਿੰਘ",
+    "gurmukhi": "ਫਤਿਹ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p12": {
@@ -229,7 +229,7 @@
     "gurmukhi": "ਅਨੋਖ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p13": {
@@ -247,7 +247,7 @@
     "gurmukhi": "ਨਰੰਗ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p14": {
@@ -269,7 +269,7 @@
     "gurmukhi": "ਫਾਗੜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p15": {
@@ -289,7 +289,7 @@
     "gurmukhi": "ਚੰਨਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p16": {
@@ -305,10 +305,10 @@
       "p356"
     ],
     "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਨੁੱਗਾ ਸਿੰਘ",
+    "gurmukhi": "ਨੁੱਘਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p17": {
@@ -324,7 +324,7 @@
     "gurmukhi": "ਜੇਠਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p18": {
@@ -344,7 +344,7 @@
     "gurmukhi": "ਮੱਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p19": {
@@ -365,7 +365,7 @@
     "gurmukhi": "ਕਰਨੈਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p20": {
@@ -384,7 +384,7 @@
     "gurmukhi": "ਭਗਵਾਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p21": {
@@ -403,7 +403,7 @@
     "gurmukhi": "ਕਿਸ਼ਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p22": {
@@ -421,7 +421,7 @@
     "gurmukhi": "ਬਿਸ਼ਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p23": {
@@ -440,7 +440,7 @@
     "gurmukhi": "ਅਰਜਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p24": {
@@ -461,7 +461,7 @@
     "gurmukhi": "ਸੱਜਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p25": {
@@ -660,7 +660,7 @@
   "p36": {
     "id": "p36",
     "firstName": "",
-    "middleName": "Balveer",
+    "middleName": "Balvir",
     "lastName": "Singh",
     "parents": [
       "p33"
@@ -715,7 +715,7 @@
     ],
     "children": [],
     "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਰਸ਼ਪਾਲ ਸਿੰਘ",
+    "gurmukhi": "ਰਛਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
     "death": "",
@@ -786,7 +786,7 @@
     "gurmukhi": "ਮੇਹਰ ਸਿੰਘ ਸਮਾਜੀ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p44": {
@@ -805,7 +805,7 @@
     "gurmukhi": "ਝੰਡਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p45": {
@@ -1046,7 +1046,7 @@
     "gurmukhi": "ਕਾਕਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p59": {
@@ -1250,7 +1250,7 @@
     "gurmukhi": "ਲਹਿਣਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p71": {
@@ -1266,7 +1266,7 @@
     "gurmukhi": "ਮੱਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p72": {
@@ -1282,7 +1282,7 @@
     "gurmukhi": "ਕਾਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p73": {
@@ -1302,10 +1302,10 @@
       "p80"
     ],
     "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਰਾਵ ਸਿੰਘ",
+    "gurmukhi": "ਰਾਅ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p74": {
@@ -1324,7 +1324,7 @@
     "gurmukhi": "ਵਸਾਵਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p75": {
@@ -1344,7 +1344,7 @@
     "gurmukhi": "ਵਰਿਆਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p76": {
@@ -1364,7 +1364,7 @@
     "gurmukhi": "ਹਰਨਾਮ ਸਿੰਘ ਨੰਬਰਦਾਰ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p77": {
@@ -1384,7 +1384,7 @@
     "gurmukhi": "ਸ਼ਾਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p78": {
@@ -1404,7 +1404,7 @@
     "gurmukhi": "ਕਾਹਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p79": {
@@ -1423,7 +1423,7 @@
     "gurmukhi": "ਭਾਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p80": {
@@ -1442,7 +1442,7 @@
     "gurmukhi": "ਪਾਲੂ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p81": {
@@ -1461,7 +1461,7 @@
     "gurmukhi": "ਭਾਗ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p82": {
@@ -1480,7 +1480,7 @@
     "gurmukhi": "ਪ੍ਰੀਤਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p83": {
@@ -1499,7 +1499,7 @@
     "gurmukhi": "ਮੇਹਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p84": {
@@ -1520,7 +1520,7 @@
     "gurmukhi": "ਇੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p85": {
@@ -1536,7 +1536,7 @@
     "gurmukhi": "ਜਗੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p86": {
@@ -1554,7 +1554,7 @@
     "gurmukhi": "ਨਿਹਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p87": {
@@ -1574,7 +1574,7 @@
     "gurmukhi": "ਖੇਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p88": {
@@ -1593,7 +1593,7 @@
     "gurmukhi": "ਨੇਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p89": {
@@ -1611,7 +1611,7 @@
     "gurmukhi": "ਅਲਬੇਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p90": {
@@ -1629,7 +1629,7 @@
     "gurmukhi": "ਸਪੂਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p91": {
@@ -1645,7 +1645,7 @@
     "gurmukhi": "ਭੋਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p92": {
@@ -1667,7 +1667,7 @@
     "gurmukhi": "ਕਾਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p93": {
@@ -1685,7 +1685,7 @@
     "gurmukhi": "ਗੀਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p94": {
@@ -1703,7 +1703,7 @@
     "gurmukhi": "ਕਾਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p95": {
@@ -1722,7 +1722,7 @@
     "gurmukhi": "ਆਤਮਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p96": {
@@ -1764,7 +1764,7 @@
     "gurmukhi": "ਸੁੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p98": {
@@ -1780,7 +1780,7 @@
     "gurmukhi": "ਕੁੰਢਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p99": {
@@ -1796,7 +1796,7 @@
     "gurmukhi": "ਹਾਕਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p100": {
@@ -1809,10 +1809,10 @@
     ],
     "children": [],
     "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਕਤਾਰ ਸਿੰਘ",
+    "gurmukhi": "ਕਟਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p101": {
@@ -1828,7 +1828,7 @@
     "gurmukhi": "ਕਰਤਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p102": {
@@ -1844,7 +1844,7 @@
     "gurmukhi": "ਦਰਬਾਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p103": {
@@ -1860,7 +1860,7 @@
     "gurmukhi": "ਜਿਓਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p104": {
@@ -1875,10 +1875,10 @@
       "p107"
     ],
     "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਮਾਣਾ ਸਿੰਘ",
+    "gurmukhi": "ਮਾਣ੍ਹਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p105": {
@@ -1894,7 +1894,7 @@
     "gurmukhi": "ਬੰਨਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p106": {
@@ -1910,7 +1910,7 @@
     "gurmukhi": "ਧੰਨਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p107": {
@@ -1934,7 +1934,7 @@
     "gurmukhi": "ਜੱਗਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p108": {
@@ -1957,7 +1957,7 @@
     "gurmukhi": "ਬਚਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p109": {
@@ -1980,7 +1980,7 @@
     "gurmukhi": "ਲਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p110": {
@@ -2003,7 +2003,7 @@
     "gurmukhi": "ਗੰਡਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p111": {
@@ -2022,7 +2022,7 @@
     "gurmukhi": "ਅਵਤਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p112": {
@@ -2042,7 +2042,7 @@
     "gurmukhi": "ਹਰਨੇਕ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p113": {
@@ -2061,7 +2061,7 @@
     "gurmukhi": "ਹਾਕਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p114": {
@@ -2082,7 +2082,7 @@
     "gurmukhi": "ਗੁਰਜੰਟ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p115": {
@@ -2103,7 +2103,7 @@
     "gurmukhi": "ਲਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p116": {
@@ -2124,7 +2124,7 @@
     "gurmukhi": "ਸੁਜਾਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p117": {
@@ -2140,7 +2140,7 @@
     "gurmukhi": "ਸੋਢਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p118": {
@@ -2159,7 +2159,7 @@
     "gurmukhi": "ਯੋਧਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p119": {
@@ -2179,7 +2179,7 @@
     "gurmukhi": "ਭਾਗ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p120": {
@@ -2199,7 +2199,7 @@
     "gurmukhi": "ਕਿਰਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p121": {
@@ -2220,7 +2220,7 @@
     "gurmukhi": "ਟਿੱਕਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p122": {
@@ -2236,7 +2236,7 @@
     "gurmukhi": "ਕਰਨੈਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p123": {
@@ -2252,7 +2252,7 @@
     "gurmukhi": "ਬੰਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p124": {
@@ -2268,7 +2268,7 @@
     "gurmukhi": "ਗੁਰਨਾਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p125": {
@@ -2284,7 +2284,7 @@
     "gurmukhi": "ਜੀਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p126": {
@@ -2295,12 +2295,14 @@
     "parents": [
       "p120"
     ],
-    "children": [],
+    "children": [
+      "p413"
+    ],
     "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਹਾਕਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p127": {
@@ -2312,12 +2314,13 @@
       "p120"
     ],
     "children": [],
-    "notes": "Paathi; 📍 Faqarsar, Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਅਜਮੇਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
-    "spouse": ""
+    "death": "Deceased",
+    "spouse": "",
+    "occupation": "Paathi"
   },
   "p128": {
     "id": "p128",
@@ -2332,7 +2335,7 @@
     "gurmukhi": "ਜੇਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p129": {
@@ -2348,7 +2351,7 @@
     "gurmukhi": "ਗੁਰਜੰਟ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p130": {
@@ -2364,7 +2367,7 @@
     "gurmukhi": "ਸੁਖਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p131": {
@@ -2380,7 +2383,7 @@
     "gurmukhi": "ਜਸਵੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p132": {
@@ -2396,7 +2399,7 @@
     "gurmukhi": "ਗੁਰਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p133": {
@@ -2417,7 +2420,7 @@
     "gurmukhi": "ਫੁੰਮਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p134": {
@@ -2437,7 +2440,7 @@
     "gurmukhi": "ਗੁਰਦਿੱਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p135": {
@@ -2456,7 +2459,7 @@
     "gurmukhi": "ਜਵਾਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p136": {
@@ -2479,7 +2482,7 @@
     "gurmukhi": "ਮਾਲ੍ਹਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p137": {
@@ -2495,7 +2498,7 @@
     "gurmukhi": "ਜਗੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p138": {
@@ -2511,7 +2514,7 @@
     "gurmukhi": "ਜਗਰਾਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p139": {
@@ -2527,7 +2530,7 @@
     "gurmukhi": "ਮੁਖ਼ਤਿਆਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p140": {
@@ -2546,7 +2549,7 @@
     "gurmukhi": "ਰੂਪ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p152": {
@@ -2594,7 +2597,7 @@
     "gurmukhi": "ਸਿਕੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p142": {
@@ -2614,7 +2617,7 @@
     "gurmukhi": "ਸੰਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p143": {
@@ -2633,7 +2636,7 @@
     "gurmukhi": "ਕਬੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p154": {
@@ -2687,14 +2690,18 @@
   "p157": {
     "id": "p157",
     "firstName": "",
-    "middleName": "Sukhmandar",
+    "middleName": "Sukhjinder",
     "lastName": "Singh",
     "parents": [
       "p143"
     ],
-    "children": [],
-    "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਸੁਖਮੰਦਰ ਸਿੰਘ",
+    "children": [
+      "p434",
+      "p435",
+      "p433"
+    ],
+    "notes": "Alias Binder; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਸੁਖਜਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
     "death": "",
@@ -2708,13 +2715,17 @@
     "parents": [
       "p143"
     ],
-    "children": [],
-    "notes": "📍 Faqarsar, Punjab",
+    "children": [
+      "p437",
+      "p438"
+    ],
+    "notes": "Alias Gora; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਸਮੇਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
     "death": "",
-    "spouse": ""
+    "spouse": "",
+    "occupation": "Ex Panchayat Secretary"
   },
   "p144": {
     "id": "p144",
@@ -2732,7 +2743,7 @@
     "gurmukhi": "ਬਿੱਕਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p145": {
@@ -2751,7 +2762,7 @@
     "gurmukhi": "ਜਗਨੰਦਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p159": {
@@ -2831,7 +2842,7 @@
     "gurmukhi": "ਮਿੱਠਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p147": {
@@ -2847,7 +2858,7 @@
     "gurmukhi": "ਸੂਰਜਭਾਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p148": {
@@ -2863,7 +2874,7 @@
     "gurmukhi": "ਕਾਕਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p149": {
@@ -2879,7 +2890,7 @@
     "gurmukhi": "ਬਸੰਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p150": {
@@ -2895,7 +2906,7 @@
     "gurmukhi": "ਪ੍ਰਿਥੀ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p151": {
@@ -2908,10 +2919,10 @@
     ],
     "children": [],
     "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਤੇਕ ਸਿੰਘ",
+    "gurmukhi": "ਟੇਕ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p163": {
@@ -2931,7 +2942,7 @@
     "gurmukhi": "ਖੇਤਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p164": {
@@ -2951,7 +2962,7 @@
     "gurmukhi": "ਬੁੱਕਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p165": {
@@ -2966,10 +2977,10 @@
       "p171"
     ],
     "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਚਾਦਟ ਸਿੰਘ",
+    "gurmukhi": "ਚੜ੍ਹਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p166": {
@@ -2988,7 +2999,7 @@
     "gurmukhi": "ਚੰਦ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p167": {
@@ -3004,7 +3015,7 @@
     "gurmukhi": "ਗੁਰਦਿਆਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p171": {
@@ -3073,7 +3084,7 @@
     "gurmukhi": "ਜਗਜਿੱਤਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p169": {
@@ -3092,7 +3103,7 @@
     "gurmukhi": "ਹਰਨੇਕ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p170": {
@@ -3112,7 +3123,7 @@
     "gurmukhi": "ਸੁਖਦੇਵ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p174": {
@@ -3251,13 +3262,17 @@
     "parents": [
       "p170"
     ],
-    "children": [],
-    "notes": "Doctor; 📍 Faqarsar, Punjab",
+    "children": [
+      "p415",
+      "p416"
+    ],
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੁਰਦੀਪ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
     "death": "",
-    "spouse": ""
+    "spouse": "",
+    "occupation": "Doctor"
   },
   "p183": {
     "id": "p183",
@@ -3275,7 +3290,7 @@
     "gurmukhi": "ਵਿਸਾਖਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p184": {
@@ -3294,7 +3309,7 @@
     "gurmukhi": "ਨੰਦ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p185": {
@@ -3314,7 +3329,7 @@
     "gurmukhi": "ਬੂਟਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p186": {
@@ -3335,7 +3350,7 @@
     "gurmukhi": "ਦਾਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p187": {
@@ -3356,7 +3371,7 @@
     "gurmukhi": "ਚੰਦਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p188": {
@@ -3375,7 +3390,7 @@
     "gurmukhi": "ਭੰਗਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p189": {
@@ -3392,14 +3407,17 @@
       "p198",
       "p199",
       "p200",
-      "p201"
+      "p201",
+      "p417",
+      "p418",
+      "p419"
     ],
     "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਗੰਡਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
-    "spouse": ""
+    "death": "Deceased",
+    "spouse": "Punjab Kaur"
   },
   "p190": {
     "id": "p190",
@@ -3416,7 +3434,7 @@
     "gurmukhi": "ਮੇਹਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p191": {
@@ -3435,7 +3453,7 @@
     "gurmukhi": "ਈਸ਼ਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p192": {
@@ -3456,7 +3474,7 @@
     "gurmukhi": "ਕਿੱਕਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p193": {
@@ -3474,7 +3492,7 @@
     "gurmukhi": "ਬਚਿੱਤਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p202": {
@@ -3620,7 +3638,7 @@
     "gurmukhi": "ਮੁਕੰਦ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p195": {
@@ -3639,7 +3657,7 @@
     "gurmukhi": "ਮੁਖ਼ਤਿਆਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p210": {
@@ -3703,7 +3721,7 @@
     "gurmukhi": "ਮੁਖ਼ਤਿਆਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p197": {
@@ -3721,9 +3739,9 @@
     "notes": "📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਹਰਨੇਕ ਸਿੰਘ",
     "gender": "male",
-    "birth": "",
-    "death": "",
-    "spouse": ""
+    "birth": "1943",
+    "death": "02/10/2016",
+    "spouse": "Karnail Kaur"
   },
   "p198": {
     "id": "p198",
@@ -3737,11 +3755,11 @@
       "p215",
       "p216"
     ],
-    "notes": "Alias Aala; 📍 Faqarsar, Punjab",
+    "notes": "Alias Aala; 📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਗੁਰਦਿਆਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p199": {
@@ -3755,11 +3773,11 @@
     "children": [
       "p217"
     ],
-    "notes": "Alias Bhja; 📍 Faqarsar, Punjab",
+    "notes": "Alias Bhja; 📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਗੁਰਭਜਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p200": {
@@ -3775,7 +3793,7 @@
     "gurmukhi": "ਬਚਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p201": {
@@ -3791,7 +3809,7 @@
     "gurmukhi": "ਗੁਰਚਰਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p213": {
@@ -3802,13 +3820,16 @@
     "parents": [
       "p197"
     ],
-    "children": [],
+    "children": [
+      "p398",
+      "p399"
+    ],
     "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮੱਖਣ ਸਿੰਘ",
     "gender": "male",
-    "birth": "",
+    "birth": "09/1967",
     "death": "",
-    "spouse": ""
+    "spouse": "Shinder Kaur"
   },
   "p214": {
     "id": "p214",
@@ -3818,13 +3839,16 @@
     "parents": [
       "p197"
     ],
-    "children": [],
+    "children": [
+      "p396",
+      "p397"
+    ],
     "notes": "📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਬਲਵੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
     "death": "",
-    "spouse": ""
+    "spouse": "Sukhjeet Kaur"
   },
   "p215": {
     "id": "p215",
@@ -3834,7 +3858,9 @@
     "parents": [
       "p198"
     ],
-    "children": [],
+    "children": [
+      "p471"
+    ],
     "notes": "📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਬਲਦੇਵ ਸਿੰਘ",
     "gender": "male",
@@ -3850,7 +3876,12 @@
     "parents": [
       "p198"
     ],
-    "children": [],
+    "children": [
+      "p472",
+      "p473",
+      "p474",
+      "p475"
+    ],
     "notes": "📍 Pilibanga, Rajasthan",
     "gurmukhi": "ਜਗਜੀਤ ਸਿੰਘ",
     "gender": "male",
@@ -3866,9 +3897,11 @@
     "parents": [
       "p199"
     ],
-    "children": [],
-    "notes": "Alias Pirthi; 📍 Faqarsar, Punjab",
-    "gurmukhi": "ਪ੍ਰਿਥੀਪਾਲ ਸਿੰਘ",
+    "children": [
+      "p476"
+    ],
+    "notes": "Alias Pirthi; Alias Pithipal; 📍 Pilibanga, Rajasthan",
+    "gurmukhi": "ਪਿਰਥੀਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
     "death": "",
@@ -3892,7 +3925,7 @@
     "gurmukhi": "ਸੁੱਚਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p222": {
@@ -3908,7 +3941,7 @@
     "gurmukhi": "ਮੈਂਗਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p223": {
@@ -3924,10 +3957,10 @@
       "p227"
     ],
     "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਤੇਕ ਸਿੰਘ",
+    "gurmukhi": "ਟੇਕ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p224": {
@@ -3945,7 +3978,7 @@
     "gurmukhi": "ਕਿੱਕਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p225": {
@@ -3961,7 +3994,7 @@
     "gurmukhi": "ਬਿੱਕਰ ਸਿੰਘ ਫੌਜੀ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p226": {
@@ -4009,8 +4042,11 @@
     "parents": [
       "p226"
     ],
-    "children": [],
-    "notes": "📍 Faqarsar, Punjab",
+    "children": [
+      "p459",
+      "p460"
+    ],
+    "notes": "Alias Binder; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਵਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4025,8 +4061,10 @@
     "parents": [
       "p226"
     ],
-    "children": [],
-    "notes": "📍 Faqarsar, Punjab",
+    "children": [
+      "p461"
+    ],
+    "notes": "Alias Sewa; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਸੁਰਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -4041,7 +4079,9 @@
     "parents": [
       "p227"
     ],
-    "children": [],
+    "children": [
+      "p458"
+    ],
     "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਰਣਧੀਰ ਸਿੰਘ",
     "gender": "male",
@@ -4083,7 +4123,7 @@
     "gurmukhi": "ਮਿੱਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p233": {
@@ -4099,7 +4139,7 @@
     "gurmukhi": "ਕੇਹਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p234": {
@@ -4118,7 +4158,7 @@
     "gurmukhi": "ਜੈਲਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p235": {
@@ -4137,7 +4177,7 @@
     "gurmukhi": "ਬਾਘੜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p236": {
@@ -4157,7 +4197,7 @@
     "gurmukhi": "ਸੋਹਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p237": {
@@ -4266,7 +4306,7 @@
     ],
     "children": [],
     "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਈਕਵਰ ਸਿੰਘ",
+    "gurmukhi": "ਇਕਵਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
     "death": "",
@@ -4289,7 +4329,7 @@
     "gurmukhi": "ਹੀਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p244": {
@@ -4307,7 +4347,7 @@
     "gurmukhi": "ਅਜੈਬ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p245": {
@@ -4327,7 +4367,7 @@
     "gurmukhi": "ਕਰਤਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p246": {
@@ -4345,7 +4385,7 @@
     "gurmukhi": "ਸਰਦੂਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p247": {
@@ -4444,7 +4484,7 @@
     "gurmukhi": "ਹਾਕਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p252": {
@@ -4462,7 +4502,7 @@
     "gurmukhi": "ਕਰਨੈਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p253": {
@@ -4481,7 +4521,7 @@
     "gurmukhi": "ਜਗਰਾਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p254": {
@@ -4549,7 +4589,7 @@
     "gurmukhi": "ਸਰਬਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p258": {
@@ -4565,7 +4605,7 @@
     "gurmukhi": "ਅਰਜਨ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p259": {
@@ -4584,7 +4624,7 @@
     "gurmukhi": "ਮੁਖ਼ਤਿਆਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p260": {
@@ -4604,7 +4644,7 @@
     "gurmukhi": "ਕਰਤਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p261": {
@@ -4624,7 +4664,7 @@
     "gurmukhi": "ਜਗੀਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p262": {
@@ -4774,7 +4814,7 @@
     "gurmukhi": "ਸੁੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p271": {
@@ -4790,7 +4830,7 @@
     "gurmukhi": "ਕੁੰਢਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p272": {
@@ -4808,7 +4848,7 @@
     "gurmukhi": "ਹਾਕਮ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p273": {
@@ -4827,7 +4867,7 @@
     "gurmukhi": "ਜਿਓਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p274": {
@@ -4845,7 +4885,7 @@
     "gurmukhi": "ਦਰਬਾਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p275": {
@@ -4863,7 +4903,7 @@
     "gurmukhi": "ਕਰਤਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p276": {
@@ -4881,7 +4921,7 @@
     "gurmukhi": "ਕਟਾਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p277": {
@@ -4905,14 +4945,17 @@
   "p283": {
     "id": "p283",
     "firstName": "",
-    "middleName": "Paal",
+    "middleName": "Satpal",
     "lastName": "Singh",
     "parents": [
       "p277"
     ],
-    "children": [],
-    "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਪਾਲ ਸਿੰਘ",
+    "children": [
+      "p420",
+      "p421"
+    ],
+    "notes": "Alias Paal; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਸਤਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
     "death": "",
@@ -4926,7 +4969,10 @@
     "parents": [
       "p273"
     ],
-    "children": [],
+    "children": [
+      "p407",
+      "p408"
+    ],
     "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਜੰਗ ਸਿੰਘ",
     "gender": "male",
@@ -4960,7 +5006,10 @@
     "parents": [
       "p279"
     ],
-    "children": [],
+    "children": [
+      "p462",
+      "p463"
+    ],
     "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਕੇਸਰ ਸਿੰਘ",
     "gender": "male",
@@ -4995,8 +5044,10 @@
     "parents": [
       "p280"
     ],
-    "children": [],
-    "notes": "📍 Faqarsar, Punjab",
+    "children": [
+      "p427"
+    ],
+    "notes": "Alias Deesh; 📍 Faqarsar, Punjab",
     "gurmukhi": "ਜਗਦੀਸ਼ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
@@ -5011,7 +5062,9 @@
     "parents": [
       "p280"
     ],
-    "children": [],
+    "children": [
+      "p428"
+    ],
     "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਸ਼ਿਵਰਾਜ ਸਿੰਘ",
     "gender": "male",
@@ -5047,7 +5100,9 @@
     "parents": [
       "p281"
     ],
-    "children": [],
+    "children": [
+      "p424"
+    ],
     "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਲਕੀਤ ਸਿੰਘ",
     "gender": "male",
@@ -5063,7 +5118,10 @@
     "parents": [
       "p281"
     ],
-    "children": [],
+    "children": [
+      "p422",
+      "p423"
+    ],
     "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਬਲਜਿੰਦਰ ਸਿੰਘ",
     "gender": "male",
@@ -5079,7 +5137,10 @@
     "parents": [
       "p281"
     ],
-    "children": [],
+    "children": [
+      "p425",
+      "p426"
+    ],
     "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਮਿੱਠੂ ਸਿੰਘ",
     "gender": "male",
@@ -5095,7 +5156,12 @@
     "parents": [
       "p276"
     ],
-    "children": [],
+    "children": [
+      "p400",
+      "p401",
+      "p402",
+      "p403"
+    ],
     "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਦੀਵਾਨ ਸਿੰਘ",
     "gender": "male",
@@ -5119,7 +5185,7 @@
     "gender": "female",
     "gurmukhi": "ਸੁਰਜੀਤ ਕੌਰ",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p291": {
@@ -5464,12 +5530,13 @@
     "children": [
       "p312"
     ],
-    "notes": "Sarpanch 1983–1993; 📍 Faqarsar, Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਚਾਨਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
     "death": "",
-    "spouse": ""
+    "spouse": "",
+    "occupation": "Sarpanch 1983–1993"
   },
   "p312": {
     "id": "p312",
@@ -5675,7 +5742,7 @@
       "p326"
     ],
     "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਥਾਣਾ ਸਿੰਘ",
+    "gurmukhi": "ਠਾਣਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
     "death": "",
@@ -5898,7 +5965,7 @@
     "gurmukhi": "ਮੱਖਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p338": {
@@ -5916,7 +5983,7 @@
     "gurmukhi": "ਕਾਕੂ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p339": {
@@ -5935,7 +6002,7 @@
     "gurmukhi": "ਸੁਲੱਖਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p340": {
@@ -5951,7 +6018,7 @@
     "gurmukhi": "ਮਿੱਤ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p341": {
@@ -5967,7 +6034,7 @@
     "gurmukhi": "ਸੁੱਚਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p343": {
@@ -5983,7 +6050,7 @@
     "gurmukhi": "ਦਿੱਤਣ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p344": {
@@ -5999,7 +6066,7 @@
     "gurmukhi": "ਗੁੱਜਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p342": {
@@ -6020,7 +6087,7 @@
     "gurmukhi": "ਨੰਦ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p345": {
@@ -6036,7 +6103,7 @@
     "gurmukhi": "ਗੁਰਦਿਆਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p346": {
@@ -6052,7 +6119,7 @@
     "gurmukhi": "ਈਸ਼ਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p347": {
@@ -6074,7 +6141,7 @@
     "gurmukhi": "ਚਤਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p348": {
@@ -6090,7 +6157,7 @@
     "gurmukhi": "ਬੱਗਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p349": {
@@ -6106,7 +6173,7 @@
     "gurmukhi": "ਜਗਰਾਜ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p350": {
@@ -6124,7 +6191,7 @@
     "gurmukhi": "ਇੰਦਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p351": {
@@ -6140,7 +6207,7 @@
     "gurmukhi": "ਜੋਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p352": {
@@ -6156,7 +6223,7 @@
     "gurmukhi": "ਮੁਖ਼ਤਿਆਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p353": {
@@ -6172,13 +6239,13 @@
     "gurmukhi": "ਭੂਰਾ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
-    "death": "",
+    "death": "Deceased",
     "spouse": ""
   },
   "p354": {
     "id": "p354",
     "firstName": "",
-    "middleName": "Balveer",
+    "middleName": "Balvir",
     "lastName": "Singh",
     "parents": [
       "p350"
@@ -6696,12 +6763,13 @@
       "p111"
     ],
     "children": [],
-    "notes": "Chairman; born 12/08/1954; Passed 10th in 1972; 📍 Faqarsar, Punjab",
+    "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਛਿੰਦਰਪਾਲ ਸਿੰਘ",
     "gender": "male",
     "birth": "12/08/1954",
     "death": "",
-    "spouse": ""
+    "spouse": "",
+    "education": "Passed 10th (1972)"
   },
   "p387": {
     "id": "p387",
@@ -6761,7 +6829,7 @@
     ],
     "children": [],
     "notes": "📍 Faqarsar, Punjab",
-    "gurmukhi": "ਨੱੜ ਸਿੰਘ",
+    "gurmukhi": "ਨਰ ਸਿੰਘ",
     "gender": "male",
     "birth": "",
     "death": "",
@@ -6843,6 +6911,1370 @@
     "notes": "📍 Faqarsar, Punjab",
     "gender": "female",
     "gurmukhi": "ਮਲਕੀਤ ਕੌਰ",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p396": {
+    "id": "p396",
+    "firstName": "",
+    "middleName": "Bhupinder",
+    "lastName": "Singh",
+    "parents": [
+      "p214"
+    ],
+    "children": [
+      "p432"
+    ],
+    "notes": "📍 Pilibanga, Rajasthan",
+    "gurmukhi": "ਭੁਪਿੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "1987",
+    "death": "",
+    "spouse": ""
+  },
+  "p397": {
+    "id": "p397",
+    "firstName": "",
+    "middleName": "Rajwinder",
+    "lastName": "Singh",
+    "parents": [
+      "p214"
+    ],
+    "children": [
+      "p431"
+    ],
+    "notes": "📍 Pilibanga, Rajasthan",
+    "gurmukhi": "ਰਾਜਵਿੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "07/1990",
+    "death": "",
+    "spouse": ""
+  },
+  "p398": {
+    "id": "p398",
+    "firstName": "",
+    "middleName": "Mandeep",
+    "lastName": "Singh",
+    "parents": [
+      "p213"
+    ],
+    "children": [],
+    "notes": "📍 California, USA",
+    "gurmukhi": "ਮਨਦੀਪ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "07/1995",
+    "death": "",
+    "spouse": "",
+    "education": "BSc. Agriculture - PAU Ludhiana; MSc. Agriculture - PAU Ludhiana; Ph.D. Agronomy & Horticulture - University of Nebraska-Lincoln, USA"
+  },
+  "p399": {
+    "id": "p399",
+    "firstName": "",
+    "middleName": "Kuldeep",
+    "lastName": "Singh",
+    "parents": [
+      "p213"
+    ],
+    "children": [],
+    "notes": "📍 Perth, Australia",
+    "gurmukhi": "ਕੁਲਦੀਪ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p400": {
+    "id": "p400",
+    "firstName": "",
+    "middleName": "Gurmeet",
+    "lastName": "Singh",
+    "parents": [
+      "p282"
+    ],
+    "children": [
+      "p404",
+      "p405"
+    ],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਗੁਰਮੀਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p401": {
+    "id": "p401",
+    "firstName": "",
+    "middleName": "Gurjeet",
+    "lastName": "Singh",
+    "parents": [
+      "p282"
+    ],
+    "children": [
+      "p406"
+    ],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਗੁਰਜੀਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p402": {
+    "id": "p402",
+    "firstName": "",
+    "middleName": "Nachattar",
+    "lastName": "Singh",
+    "parents": [
+      "p282"
+    ],
+    "children": [
+      "p430"
+    ],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਨਛੱਤਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p403": {
+    "id": "p403",
+    "firstName": "",
+    "middleName": "Surjit",
+    "lastName": "Singh",
+    "parents": [
+      "p282"
+    ],
+    "children": [
+      "p429"
+    ],
+    "notes": "Alias Seta; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਸੁਰਜੀਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p404": {
+    "id": "p404",
+    "firstName": "",
+    "middleName": "Kuljeet",
+    "lastName": "Singh",
+    "parents": [
+      "p400"
+    ],
+    "children": [],
+    "notes": "📍 Kitchener, Canada",
+    "gurmukhi": "ਕੁਲਜੀਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p405": {
+    "id": "p405",
+    "firstName": "",
+    "middleName": "Gurpreet",
+    "lastName": "Singh",
+    "parents": [
+      "p400"
+    ],
+    "children": [
+      "p448"
+    ],
+    "notes": "Alias Gopi; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਗੁਰਪ੍ਰੀਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p406": {
+    "id": "p406",
+    "firstName": "",
+    "middleName": "Jaspreet",
+    "lastName": "Singh",
+    "parents": [
+      "p401"
+    ],
+    "children": [
+      "p447"
+    ],
+    "notes": "Alias Jassa; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਜਸਪ੍ਰੀਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p407": {
+    "id": "p407",
+    "firstName": "",
+    "middleName": "Balwinder",
+    "lastName": "Singh",
+    "parents": [
+      "p278"
+    ],
+    "children": [
+      "p409",
+      "p410"
+    ],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਬਲਵਿੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p408": {
+    "id": "p408",
+    "firstName": "",
+    "middleName": "Joginder",
+    "lastName": "Singh",
+    "parents": [
+      "p278"
+    ],
+    "children": [
+      "p412",
+      "p411"
+    ],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਜੋਗਿੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p409": {
+    "id": "p409",
+    "firstName": "",
+    "middleName": "Hardeep",
+    "lastName": "Singh",
+    "parents": [
+      "p407"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਹਰਦੀਪ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p410": {
+    "id": "p410",
+    "firstName": "",
+    "middleName": "Kuldeep",
+    "lastName": "Singh",
+    "parents": [
+      "p407"
+    ],
+    "children": [
+      "p457"
+    ],
+    "notes": "📍 Brampton, Canada",
+    "gurmukhi": "ਕੁਲਦੀਪ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p411": {
+    "id": "p411",
+    "firstName": "",
+    "middleName": "Nirmal",
+    "lastName": "Singh",
+    "parents": [
+      "p408"
+    ],
+    "children": [
+      "p443",
+      "p444",
+      "p445",
+      "p446"
+    ],
+    "notes": "Alias Nimma; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਨਿਰਮਲ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p412": {
+    "id": "p412",
+    "firstName": "",
+    "middleName": "Baljeet",
+    "lastName": "Singh",
+    "parents": [
+      "p408"
+    ],
+    "children": [
+      "p441",
+      "p442"
+    ],
+    "notes": "Alias Beeta; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਬਲਜੀਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p413": {
+    "id": "p413",
+    "firstName": "",
+    "middleName": "Harmander",
+    "lastName": "Singh",
+    "parents": [
+      "p126"
+    ],
+    "children": [
+      "p414"
+    ],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਹਰਮੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p414": {
+    "id": "p414",
+    "firstName": "",
+    "middleName": "Navsharnpreet",
+    "lastName": "Singh",
+    "parents": [
+      "p413"
+    ],
+    "children": [],
+    "notes": "📍 Auckland, New Zealand",
+    "gurmukhi": "ਨਵਸ਼ਰਨਪ੍ਰੀਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p415": {
+    "id": "p415",
+    "firstName": "",
+    "middleName": "Gurkirat",
+    "lastName": "Singh",
+    "parents": [
+      "p182"
+    ],
+    "children": [],
+    "notes": "📍 Perth, Australia",
+    "gurmukhi": "ਗੁਰਕੀਰਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p416": {
+    "id": "p416",
+    "firstName": "",
+    "middleName": "Gursahib",
+    "lastName": "Singh",
+    "parents": [
+      "p182"
+    ],
+    "children": [],
+    "notes": "📍 Perth, Australia",
+    "gurmukhi": "ਗੁਰਸਾਹਿਬ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p417": {
+    "id": "p417",
+    "firstName": "",
+    "middleName": "Tej",
+    "lastName": "Kaur",
+    "parents": [
+      "p189"
+    ],
+    "children": [],
+    "notes": "Alias Kaane; 📍 Raisingh Nagar, Rajasthan",
+    "gurmukhi": "ਤੇਜ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "Deceased",
+    "spouse": ""
+  },
+  "p418": {
+    "id": "p418",
+    "firstName": "",
+    "middleName": "Jasmail",
+    "lastName": "Kaur",
+    "parents": [
+      "p189"
+    ],
+    "children": [],
+    "notes": "Alias Maro; 📍 Mithri Budhgir, Punjab",
+    "gurmukhi": "ਜਸਮੇਲ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "Deceased",
+    "spouse": ""
+  },
+  "p419": {
+    "id": "p419",
+    "firstName": "",
+    "middleName": "Balvir",
+    "lastName": "Kaur",
+    "parents": [
+      "p189"
+    ],
+    "children": [],
+    "notes": "Alias Koran; 📍 Pilibanga, Rajasthan",
+    "gurmukhi": "ਬਲਵੀਰ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "Deceased",
+    "spouse": ""
+  },
+  "p420": {
+    "id": "p420",
+    "firstName": "",
+    "middleName": "Kulbir",
+    "lastName": "Singh",
+    "parents": [
+      "p283"
+    ],
+    "children": [],
+    "notes": "Alias Kaaka; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਕੁਲਬੀਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p421": {
+    "id": "p421",
+    "firstName": "",
+    "middleName": "Gurbaj",
+    "lastName": "Singh",
+    "parents": [
+      "p283"
+    ],
+    "children": [
+      "p451"
+    ],
+    "notes": "Alias Gora; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਗੁਰਬਜ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p422": {
+    "id": "p422",
+    "firstName": "",
+    "middleName": "Narinder",
+    "lastName": "Singh",
+    "parents": [
+      "p288"
+    ],
+    "children": [
+      "p450"
+    ],
+    "notes": "Alias Manga; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਨਰਿੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p423": {
+    "id": "p423",
+    "firstName": "",
+    "middleName": "Sukhdeep",
+    "lastName": "Singh",
+    "parents": [
+      "p288"
+    ],
+    "children": [],
+    "notes": "Alias Seepa; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਸੁਖਦੀਪ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p424": {
+    "id": "p424",
+    "firstName": "",
+    "middleName": "Rajwinder",
+    "lastName": "Singh",
+    "parents": [
+      "p287"
+    ],
+    "children": [
+      "p470"
+    ],
+    "notes": "Alias Raju; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਰਾਜਵਿੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p425": {
+    "id": "p425",
+    "firstName": "",
+    "middleName": "Jagseer",
+    "lastName": "Singh",
+    "parents": [
+      "p289"
+    ],
+    "children": [
+      "p466",
+      "p467"
+    ],
+    "notes": "Alias Seera; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਜਗਸੀਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p426": {
+    "id": "p426",
+    "firstName": "",
+    "middleName": "Lakhdeep",
+    "lastName": "Singh",
+    "parents": [
+      "p289"
+    ],
+    "children": [
+      "p468",
+      "p469"
+    ],
+    "notes": "Alias Lakha; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਲਖਦੀਪ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p427": {
+    "id": "p427",
+    "firstName": "",
+    "middleName": "Jaswinder",
+    "lastName": "Singh",
+    "parents": [
+      "p285"
+    ],
+    "children": [
+      "p464",
+      "p465"
+    ],
+    "notes": "Alias Kaali; 📍 Gidderbaha, Punjab",
+    "gurmukhi": "ਜਸਵਿੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p428": {
+    "id": "p428",
+    "firstName": "",
+    "middleName": "Sukhjinder",
+    "lastName": "Singh",
+    "parents": [
+      "p286"
+    ],
+    "children": [
+      "p449"
+    ],
+    "notes": "Alias Bhalla; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਸੁਖਜਿੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p429": {
+    "id": "p429",
+    "firstName": "",
+    "middleName": "Lakhveer",
+    "lastName": "Singh",
+    "parents": [
+      "p403"
+    ],
+    "children": [
+      "p455",
+      "p456"
+    ],
+    "notes": "Alias Lucky; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਲਖਵੀਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p430": {
+    "id": "p430",
+    "firstName": "",
+    "middleName": "Jasveer",
+    "lastName": "Singh",
+    "parents": [
+      "p402"
+    ],
+    "children": [
+      "p452",
+      "p453",
+      "p454"
+    ],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਜਸਵੀਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p431": {
+    "id": "p431",
+    "firstName": "",
+    "middleName": "Parmeet",
+    "lastName": "Singh",
+    "parents": [
+      "p397"
+    ],
+    "children": [],
+    "notes": "📍 Pilibanga, Rajasthan",
+    "gurmukhi": "ਪਰਮੀਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p432": {
+    "id": "p432",
+    "firstName": "",
+    "middleName": "Gurekam",
+    "lastName": "Singh",
+    "parents": [
+      "p396"
+    ],
+    "children": [],
+    "notes": "Alias Ekam; 📍 Pilibanga, Rajasthan",
+    "gurmukhi": "ਗੁਰਕਮ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p433": {
+    "id": "p433",
+    "firstName": "",
+    "middleName": "Jaspreet",
+    "lastName": "Singh",
+    "parents": [
+      "p157"
+    ],
+    "children": [
+      "p436"
+    ],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਜਸਪ੍ਰੀਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p434": {
+    "id": "p434",
+    "firstName": "",
+    "middleName": "Amandeep",
+    "lastName": "Kaur",
+    "parents": [
+      "p157"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਅਮਨਦੀਪ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p435": {
+    "id": "p435",
+    "firstName": "",
+    "middleName": "Kirandeep",
+    "lastName": "Kaur",
+    "parents": [
+      "p157"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਕਿਰਨਦੀਪ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p436": {
+    "id": "p436",
+    "firstName": "",
+    "middleName": "Gurnawab",
+    "lastName": "Singh",
+    "parents": [
+      "p433"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਗੁਰਨਵਾਬ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p437": {
+    "id": "p437",
+    "firstName": "",
+    "middleName": "Gursewak",
+    "lastName": "Singh",
+    "parents": [
+      "p158"
+    ],
+    "children": [
+      "p439"
+    ],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਗੁਰਸੇਵਕ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": "",
+    "occupation": "Media Professional"
+  },
+  "p438": {
+    "id": "p438",
+    "firstName": "",
+    "middleName": "Gurlal",
+    "lastName": "Singh",
+    "parents": [
+      "p158"
+    ],
+    "children": [
+      "p440"
+    ],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਗੁਰਲਾਲ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": "",
+    "occupation": "Social Audit Coordinator"
+  },
+  "p439": {
+    "id": "p439",
+    "firstName": "",
+    "middleName": "Tekniwaj",
+    "lastName": "Singh",
+    "parents": [
+      "p437"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਟੇਕਨਿਵਾਜ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p440": {
+    "id": "p440",
+    "firstName": "",
+    "middleName": "Gurniwaj",
+    "lastName": "Singh",
+    "parents": [
+      "p438"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਗੁਰਨਿਵਾਜ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p441": {
+    "id": "p441",
+    "firstName": "",
+    "middleName": "Gurjinder",
+    "lastName": "Singh",
+    "parents": [
+      "p412"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਗੁਰਜਿੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p442": {
+    "id": "p442",
+    "firstName": "",
+    "middleName": "Harmanpreet",
+    "lastName": "Kaur",
+    "parents": [
+      "p412"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਹਰਮਨਪ੍ਰੀਤ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p443": {
+    "id": "p443",
+    "firstName": "",
+    "middleName": "Navneet",
+    "lastName": "Kaur",
+    "parents": [
+      "p411"
+    ],
+    "children": [],
+    "notes": "Alias Navu; 📍 Faqarsar, Punjab",
+    "gurmukhi": "ਨਵਨੀਤ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p444": {
+    "id": "p444",
+    "firstName": "",
+    "middleName": "Arpanjot",
+    "lastName": "Kaur",
+    "parents": [
+      "p411"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਅਰਪਨਜੋਤ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p445": {
+    "id": "p445",
+    "firstName": "",
+    "middleName": "Manveer",
+    "lastName": "Kaur",
+    "parents": [
+      "p411"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਮਨਵੀਰ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p446": {
+    "id": "p446",
+    "firstName": "",
+    "middleName": "Khushveer",
+    "lastName": "Singh",
+    "parents": [
+      "p411"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਖੁਸ਼ਵੀਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p447": {
+    "id": "p447",
+    "firstName": "",
+    "middleName": "Samarpreet",
+    "lastName": "Singh",
+    "parents": [
+      "p406"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਸਮਰਪ੍ਰੀਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p448": {
+    "id": "p448",
+    "firstName": "",
+    "middleName": "Ekamjot",
+    "lastName": "Singh",
+    "parents": [
+      "p405"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਏਕਮਜੋਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p449": {
+    "id": "p449",
+    "firstName": "",
+    "middleName": "Manteshwar",
+    "lastName": "Singh",
+    "parents": [
+      "p428"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਮੰਤੇਸ਼ਵਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p450": {
+    "id": "p450",
+    "firstName": "",
+    "middleName": "Mankirat",
+    "lastName": "Singh",
+    "parents": [
+      "p422"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਮਨਕੀਰਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p451": {
+    "id": "p451",
+    "firstName": "",
+    "middleName": "Guneet",
+    "lastName": "Singh",
+    "parents": [
+      "p421"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਗੁਨੀਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p452": {
+    "id": "p452",
+    "firstName": "",
+    "middleName": "Parneet",
+    "lastName": "Kaur",
+    "parents": [
+      "p430"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਪਰਨੀਤ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p453": {
+    "id": "p453",
+    "firstName": "",
+    "middleName": "Amandeep",
+    "lastName": "Kaur",
+    "parents": [
+      "p430"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਅਮਨਦੀਪ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p454": {
+    "id": "p454",
+    "firstName": "",
+    "middleName": "Fatehveer",
+    "lastName": "Singh",
+    "parents": [
+      "p430"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਫਤਿਹਵੀਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p455": {
+    "id": "p455",
+    "firstName": "",
+    "middleName": "Paramvir",
+    "lastName": "Singh",
+    "parents": [
+      "p429"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਪਰਮਵੀਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p456": {
+    "id": "p456",
+    "firstName": "",
+    "middleName": "Gursimran",
+    "lastName": "Kaur",
+    "parents": [
+      "p429"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਗੁਰਸਿਮਰਨ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p457": {
+    "id": "p457",
+    "firstName": "",
+    "middleName": "Barkat",
+    "lastName": "Kaur",
+    "parents": [
+      "p410"
+    ],
+    "children": [],
+    "notes": "📍 Brampton, Canada",
+    "gurmukhi": "ਬਰਕਤ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p458": {
+    "id": "p458",
+    "firstName": "",
+    "middleName": "Navjot",
+    "lastName": "Singh",
+    "parents": [
+      "p232"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਨਵਜੋਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p459": {
+    "id": "p459",
+    "firstName": "",
+    "middleName": "Harkirat",
+    "lastName": "Kaur",
+    "parents": [
+      "p230"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਹਰਕਿਰਤ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p460": {
+    "id": "p460",
+    "firstName": "",
+    "middleName": "Shubhkirat",
+    "lastName": "Singh",
+    "parents": [
+      "p230"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਸ਼ੁਭਕਿਰਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p461": {
+    "id": "p461",
+    "firstName": "",
+    "middleName": "Mehramjeet",
+    "lastName": "Singh",
+    "parents": [
+      "p231"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਮੇਹਰਮਜੀਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p462": {
+    "id": "p462",
+    "firstName": "",
+    "middleName": "Ranveer",
+    "lastName": "Singh",
+    "parents": [
+      "p284"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਰਣਵੀਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p463": {
+    "id": "p463",
+    "firstName": "",
+    "middleName": "Gurmehar",
+    "lastName": "Singh",
+    "parents": [
+      "p284"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਗੁਰਮਹਿਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p464": {
+    "id": "p464",
+    "firstName": "",
+    "middleName": "Khushmeen",
+    "lastName": "Kaur",
+    "parents": [
+      "p427"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਖੁਸ਼ਮੀਨ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p465": {
+    "id": "p465",
+    "firstName": "",
+    "middleName": "Gurfarmaan",
+    "lastName": "Singh",
+    "parents": [
+      "p427"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਗੁਰਫਰਮਾਨ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p466": {
+    "id": "p466",
+    "firstName": "",
+    "middleName": "Mehakpreet",
+    "lastName": "Kaur",
+    "parents": [
+      "p425"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਮਹਕਪਰੀਤ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p467": {
+    "id": "p467",
+    "firstName": "",
+    "middleName": "Sukhmanjot",
+    "lastName": "Singh",
+    "parents": [
+      "p425"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਸੁਖਮੰਜੋਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p468": {
+    "id": "p468",
+    "firstName": "",
+    "middleName": "Vannpreet",
+    "lastName": "Kaur",
+    "parents": [
+      "p426"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਵਣਪਰੀਤ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p469": {
+    "id": "p469",
+    "firstName": "",
+    "middleName": "Roshanjot",
+    "lastName": "Singh",
+    "parents": [
+      "p426"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਰੋਸ਼ਨਜੋਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p470": {
+    "id": "p470",
+    "firstName": "",
+    "middleName": "Navraj",
+    "lastName": "Singh",
+    "parents": [
+      "p424"
+    ],
+    "children": [],
+    "notes": "📍 Faqarsar, Punjab",
+    "gurmukhi": "ਨਵਰਾਜ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p471": {
+    "id": "p471",
+    "firstName": "",
+    "middleName": "Navjot",
+    "lastName": "Singh",
+    "parents": [
+      "p215"
+    ],
+    "children": [],
+    "notes": "📍 Pilibanga, Rajasthan",
+    "gurmukhi": "ਨਵਜੋਤ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p472": {
+    "id": "p472",
+    "firstName": "",
+    "middleName": "Lakhwinder",
+    "lastName": "Singh",
+    "parents": [
+      "p216"
+    ],
+    "children": [],
+    "notes": "📍 Pilibanga, Rajasthan",
+    "gurmukhi": "ਲਖਵਿੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p473": {
+    "id": "p473",
+    "firstName": "",
+    "middleName": "Gurvinder",
+    "lastName": "Singh",
+    "parents": [
+      "p216"
+    ],
+    "children": [],
+    "notes": "📍 Pilibanga, Rajasthan",
+    "gurmukhi": "ਗੁਰਵਿੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p474": {
+    "id": "p474",
+    "firstName": "",
+    "middleName": "Balinder",
+    "lastName": "Singh",
+    "parents": [
+      "p216"
+    ],
+    "children": [],
+    "notes": "📍 Pilibanga, Rajasthan",
+    "gurmukhi": "ਬਲਿੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p475": {
+    "id": "p475",
+    "firstName": "",
+    "middleName": "Manpreet",
+    "lastName": "Kaur",
+    "parents": [
+      "p216"
+    ],
+    "children": [],
+    "notes": "📍 Pilibanga, Rajasthan",
+    "gurmukhi": "ਮਨਪ੍ਰੀਤ ਕੌਰ",
+    "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p476": {
+    "id": "p476",
+    "firstName": "",
+    "middleName": "Jashandeep",
+    "lastName": "Singh",
+    "parents": [
+      "p217"
+    ],
+    "children": [],
+    "notes": "📍 Pilibanga, Rajasthan",
+    "gurmukhi": "ਜਸ਼ਨਦੀਪ ਸਿੰਘ",
+    "gender": "male",
     "birth": "",
     "death": "",
     "spouse": ""

@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Faqarsar.com — Singh Family Tree (394 members, 10 generations, Mapbox globe)",
   "scripts": {
-    "dev": "serve -l 3000",
-    "start": "serve -l 3000"
+    "dev": "serve -l tcp://0.0.0.0:3000 --no-port-switching",
+    "start": "serve -l tcp://0.0.0.0:3000 --no-port-switching",
+    "sync:data": "node scripts/sync-raw-to-index.js"
   },
   "repository": {
     "type": "git",

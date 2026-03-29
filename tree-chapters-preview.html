@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tree chapters preview (not applied to main site)</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh;
+      background: #0f0e12;
+      color: #e8e4dc;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      padding: 24px 20px 48px;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 1.35rem;
+      color: #fbbf24;
+      margin: 0 0 8px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(251,191,36,0.55);
+      border: 1px solid rgba(251,191,36,0.2);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (min-width: 860px) {
+      .grid { grid-template-columns: 280px 1fr; align-items: start; }
+    }
+    section {
+      background: rgba(251,191,36,0.04);
+      border: 1px solid rgba(251,191,36,0.12);
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+    section h2 {
+      margin: 0 0 14px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(251,191,36,0.65);
+    }
+    .hub-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hub-node {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(251,191,36,0.15);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+    .hub-node small { display: block; color: #7a7670; font-size: 11px; margin-top: 2px; }
+    .hub-arrow { color: rgba(251,191,36,0.35); font-size: 12px; padding-left: 8px; }
+    .fork {
+      display: grid;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    @media (min-width: 400px) {
+      .fork { grid-template-columns: 1fr 1fr; }
+    }
+    .chapter-grid {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    .chapter-btn {
+      text-align: left;
+      cursor: pointer;
+      background: rgba(0,0,0,0.2);
+      border: 1px solid rgba(251,191,36,0.12);
+      border-radius: 10px;
+      padding: 10px 12px;
+      color: inherit;
+      font-family: inherit;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .chapter-btn:hover {
+      border-color: rgba(251,191,36,0.35);
+      background: rgba(251,191,36,0.06);
+    }
+    .chapter-btn.active {
+      border-color: rgba(251,191,36,0.55);
+      background: rgba(251,191,36,0.1);
+    }
+    .chapter-btn .id { font-size: 10px; color: #6a6560; }
+    .chapter-btn .n { font-weight: 600; color: #f5e6c8; }
+    .chapter-btn .meta { font-size: 11px; color: #8a8580; margin-top: 4px; }
+    .stage {
+      min-height: 160px;
+      background: rgba(0,0,0,0.2);
+      border: 1px dashed rgba(251,191,36,0.2);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 14px;
+    }
+    .stage h3 { margin: 0 0 8px; font-size: 15px; color: #fbbf24; }
+    .stage p { margin: 0; color: #9a9490; font-size: 13px; }
+    .note {
+      margin-top: 24px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 12px;
+      color: #6a6560;
+    }
+    a { color: rgba(251,191,36,0.85); }
+  </style>
+</head>
+<body>
+  <span class="badge">Prototype only — main family tree unchanged</span>
+  <h1>G1–G3 hub + nine G4 chapters</h1>
+
+  <div class="grid">
+    <section>
+      <h2>Hub (generations 1–3)</h2>
+      <div class="hub-flow">
+        <div class="hub-node">Baba Singha Singh <small>Generation 1 · p1</small></div>
+        <div class="hub-arrow">↓</div>
+        <div class="hub-node">Bagga Singh <small>Generation 2 · p2</small></div>
+        <div class="hub-arrow">↓</div>
+        <div class="fork">
+          <div class="hub-node">Mohri Singh <small>Gen 3 · p3 → 6 sons at G4</small></div>
+          <div class="hub-node">Sangat Singh <small>Gen 3 · p4 → 3 sons at G4</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Nine chapter roots (Generation 4)</h2>
+      <p style="margin:0 0 14px;color:#8a8580;font-size:13px;">Click a name — the pane below is where the real subtree layout would render.</p>
+      <div class="chapter-grid" id="chapters"></div>
+      <div class="stage" id="stage">
+        <h3>No chapter selected</h3>
+        <p>Choose one of the nine G4 roots. Each chapter is a disjoint subtree in your current JSON.</p>
+      </div>
+    </section>
+  </div>
+
+  <p class="note">
+    This file is <code>tree-chapters-preview.html</code>. Open with
+    <a href="/tree-chapters-preview.html">http://localhost:3000/tree-chapters-preview.html</a>
+    while <code>npm run dev</code> is running. Nothing here is linked from the homepage.
+    On the main site, the tree opens first as a compact <strong>G1–G4 overview</strong> (13 people); chapter links use <code>index.html?chapter=…</code> for a single branch (smaller canvas, smoother pan/zoom).
+  </p>
+
+  <script>
+    var CHAPTERS = [
+      { id: 'p5', name: 'Bela Singh', line: 'Mohri', members: 75 },
+      { id: 'p6', name: 'Gulab Singh', line: 'Mohri', members: 79 },
+      { id: 'p7', name: 'Karam Singh', line: 'Mohri', members: 41 },
+      { id: 'p8', name: 'Dharam Singh', line: 'Mohri', members: 157 },
+      { id: 'p9', name: 'Saun Singh', line: 'Mohri', members: 1 },
+      { id: 'p10', name: 'Raaw Singh', line: 'Mohri', members: 81 },
+      { id: 'p337', name: 'Makhan Singh', line: 'Sangat', members: 3 },
+      { id: 'p338', name: 'Kaaku Singh', line: 'Sangat', members: 12 },
+      { id: 'p339', name: 'Sulakhan Singh', line: 'Sangat', members: 3 }
+    ];
+
+    var grid = document.getElementById('chapters');
+    var stage = document.getElementById('stage');
+    var active = null;
+
+    CHAPTERS.forEach(function (c) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chapter-btn';
+      b.innerHTML =
+        '<span class="id">' + c.id + '</span><br><span class="n">' + c.name + '</span>' +
+        '<div class="meta">' + c.line + ' · ' + c.members + ' in subtree</div>';
+      b.onclick = function () {
+        if (active) active.classList.remove('active');
+        b.classList.add('active');
+        active = b;
+        stage.innerHTML =
+          '<h3>Chapter: ' + c.name + ' <span style="opacity:0.5">(' + c.id + ')</span></h3>' +
+          '<p><strong>' + c.members + '</strong> people in this branch. Open the real tree with this branch pre-selected:</p>' +
+          '<p style="margin-top:12px"><a href="index.html?chapter=' + c.id + '" style="display:inline-block;padding:10px 16px;background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.35);border-radius:10px;color:#fbbf24;text-decoration:none;font-weight:600">Open family tree →</a></p>' +
+          '<p style="margin-top:10px;font-size:12px;color:#6a6560">Then click <strong>Explore the Family Tree</strong> on the homepage (or scroll to the tree). The branch dropdown will match this chapter.</p>';
+      };
+      grid.appendChild(b);
+    });
+  </script>
+</body>
+</html>

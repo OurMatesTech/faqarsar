@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faqarsar.com — Generation Timeline</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+body{background:#0c0b0f;min-height:100vh;display:flex;flex-direction:column;align-items:stretch;padding:0 16px 48px;color:#e8e4dc;font-family:'DM Sans',system-ui,sans-serif;font-size:16px;-webkit-font-smoothing:antialiased}
+.timeline-site-nav{max-width:820px;width:100%;margin:0 auto;padding:20px 2px 12px}
+.back-to-site{
+  display:inline-flex;align-items:center;gap:6px;font-size:14px;padding:7px 14px;border-radius:8px;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);color:#a09a90;
+  text-decoration:none;font-family:'DM Sans',sans-serif;transition:all 0.2s;
+}
+.back-to-site:hover{background:rgba(255,255,255,0.1);color:#e8e4dc}
+#page{width:100%;max-width:820px;margin:0 auto;flex:1}
+:root{
+  --gold:rgba(251,191,36,0.95);
+  --gold-dim:rgba(251,191,36,0.10);
+  --gold-border:rgba(251,191,36,0.22);
+  --gold-hi:rgba(251,191,36,0.38);
+  --gold-soft:rgba(251,191,36,0.65);
+  --est:rgba(120,160,200,0.55);
+  --est-cap:rgba(120,160,200,0.82);
+  --bg:#0c0b0f;--card:#141218;--surface:#1a1820;--surface2:#1e1c24;
+  --text:#e8e4dc;--muted:#7a7670;--muted2:#5a5550;
+}
+#outer{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text);border-radius:14px;border:1px solid var(--gold-border);overflow:hidden;box-shadow:0 4px 40px rgba(0,0,0,0.35)}
+
+#topbar{background:var(--card);border-bottom:1px solid var(--gold-border);padding:16px 18px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+#topbar-left{flex:1;min-width:0}
+.main-title{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:1.5rem;color:var(--gold);line-height:1.18;margin-bottom:6px;letter-spacing:-0.02em}
+.sub-title{font-family:'Source Serif 4',Georgia,serif;font-size:0.98rem;font-weight:400;color:var(--muted);line-height:1.55;max-width:36em}
+#lang-btn{flex-shrink:0;align-self:flex-start;background:transparent;border:1px solid var(--gold-hi);color:var(--gold);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:6px 14px;border-radius:20px;cursor:pointer;white-space:nowrap;transition:background 0.15s}
+#lang-btn:hover{background:var(--gold-dim)}
+
+#chips{display:flex;gap:8px;padding:12px 18px;background:var(--card);border-bottom:1px solid var(--gold-border);flex-wrap:wrap}
+.chip{background:var(--surface);border:1px solid var(--gold-border);border-radius:8px;padding:6px 12px;display:flex;align-items:baseline;gap:6px}
+.chip-num{font-weight:700;font-size:1rem;color:var(--gold)}
+.chip-lbl{color:var(--muted);font-size:0.8125rem}
+
+#body{padding:18px 18px 16px;overflow:hidden}
+.ax-wrap{position:relative;margin-bottom:3px}
+.ax-ticks{position:relative;height:18px}
+.ax-tick{position:absolute;transform:translateX(-50%);white-space:nowrap;user-select:none}
+.ax-line{height:1px;background:var(--gold-border)}
+.chart-area{position:relative}
+.gridlines{position:absolute;inset:0;pointer-events:none}
+.gl{position:absolute;top:0;bottom:0;width:1px}
+.gl-now{position:absolute;top:0;bottom:0;width:1px;background:rgba(251,191,36,0.28)}
+.now-pin{position:absolute;top:-16px;transform:translateX(-50%);color:var(--gold);white-space:nowrap;padding:2px 5px;background:var(--card);border:1px solid var(--gold-hi);border-radius:8px}
+.row{display:flex;align-items:center;height:34px;margin-bottom:4px}
+.row-lbl{text-align:right;padding-right:10px;flex-shrink:0}
+.lbl-g{font-weight:700;font-size:0.8125rem;color:var(--gold);display:block}
+.lbl-s{font-size:0.75rem;color:var(--muted);display:block}
+.track{flex:1;height:34px;position:relative;overflow:hidden}
+.b-range{position:absolute;top:4px;bottom:4px;background:rgba(251,191,36,0.06);border-top:1px solid rgba(251,191,36,0.14);border-bottom:1px solid rgba(251,191,36,0.14)}
+.b-core{position:absolute;top:9px;bottom:9px;border-radius:3px;cursor:default;transition:opacity 0.15s}
+.b-core:hover{opacity:0.88}
+.b-core:hover .tip{opacity:1;transform:translateX(-50%) translateY(-2px)}
+.b-core:focus{outline:none}
+.b-core:focus-visible .tip,.b-core:focus .tip{opacity:1;transform:translateX(-50%) translateY(-2px)}
+@media (hover:none) and (pointer:coarse){
+  .b-core:active{opacity:0.92}
+  .b-core:active .tip{opacity:1;transform:translateX(-50%) translateY(-2px)}
+}
+.b-cap{position:absolute;top:50%;border-radius:50%;transform:translateY(-50%)}
+.tip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--surface2);border:1px solid var(--gold-hi);color:var(--text);font-size:0.8125rem;padding:6px 12px;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity 0.15s,transform 0.15s;z-index:20;line-height:1.55}
+.tip-g{font-family:'Playfair Display',serif;font-weight:600;font-size:0.875rem;color:var(--gold);margin-bottom:2px}
+.sec{font-size:0.65rem;font-weight:600;display:flex;align-items:center;gap:8px;margin:10px 0 6px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted2)}
+.sec::after{content:'';flex:1;height:1px;background:var(--gold-border)}
+.sec-dot{border-radius:50%;flex-shrink:0;background:rgba(251,191,36,0.55)}
+
+#legend{display:flex;flex-wrap:wrap;gap:14px;padding:12px 18px 14px;background:var(--card);border-top:1px solid var(--gold-border)}
+.li{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:0.875rem}
+.ls-bar{height:5px;border-radius:2px;flex-shrink:0}
+.ls-range{height:5px;border-radius:1px;flex-shrink:0;border-top:1px solid rgba(251,191,36,0.28);border-bottom:1px solid rgba(251,191,36,0.28);background:rgba(251,191,36,0.08)}
+
+#assump{padding:16px 18px 20px}
+.a-hdr{font-family:'DM Sans',sans-serif;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.a-hdr::after{content:'';flex:1;height:1px;background:var(--gold-border)}
+.a-grid{display:grid;gap:8px}
+.ai{font-family:'Source Serif 4',Georgia,serif;font-size:0.9375rem;color:var(--muted);line-height:1.55;display:flex;gap:8px}
+.ai-dot{border-radius:50%;background:var(--gold);flex-shrink:0}
+.ai b{color:var(--text);font-weight:500}
+
+@media(max-width:559px){
+  body{padding:0 0 28px;font-size:15px}
+  .timeline-site-nav{padding:12px 12px 8px;max-width:none}
+  .back-to-site{font-size:13px;padding:6px 12px}
+  #page{max-width:none}
+  #outer{border-radius:0;border-left:0;border-right:0;box-shadow:none}
+  #topbar{padding:14px 12px 12px;gap:10px}
+  #chips{padding:10px 12px;gap:6px}
+  .chip{padding:5px 10px;border-radius:6px}
+  #body{padding:10px 4px 12px}
+  #legend{padding:10px 12px 12px;gap:10px 14px}
+  #assump{padding:14px 12px 18px}
+  .main-title{font-size:clamp(1.15rem,4.5vw,1.35rem);padding-right:4px}
+  .sub-title{font-size:0.8125rem;line-height:1.5}
+  .chip-num{font-size:0.9rem}
+  .chip-lbl{font-size:0.65rem;letter-spacing:0.02em}
+  .ax-tick{font-size:0}
+  .ax-tick.m40{font-size:0.5rem;color:var(--muted)}
+  .ax-wrap{margin-left:34px}
+  .chart-area{margin-left:34px}
+  .row-lbl{width:34px;min-width:34px;padding-right:5px;text-align:right}
+  .lbl-g{font-size:0.7rem;letter-spacing:-0.02em}
+  .lbl-s{font-size:0;height:0;overflow:hidden}
+  .row{height:30px;margin-bottom:3px}
+  .track{min-width:0}
+  .b-core{top:8px;bottom:8px}
+  .b-cap{width:4px;height:4px}
+  .now-pin{font-size:0.5rem;padding:2px 5px;top:-14px}
+  .sec{font-size:0.55rem;margin:8px 0 5px}
+  .tip{font-size:0.75rem;max-width:min(92vw,320px);white-space:normal;text-align:center;line-height:1.4}
+  .tip-g{font-size:0.8rem}
+  .li{font-size:0.75rem;gap:6px}
+  .ls-bar{width:16px}
+  .ls-range{width:16px}
+  .a-hdr{font-size:0.6rem}
+  .a-grid{grid-template-columns:1fr}
+  .ai{font-size:0.8125rem;gap:6px}
+  .ai-dot{width:4px;height:4px;margin-top:6px;flex-shrink:0}
+  #lang-btn{font-size:11px;padding:5px 12px}
+}
+
+@media(min-width:560px){
+  body{font-size:17px}
+  #topbar{padding:20px 24px 18px}
+  #chips{padding:14px 24px;gap:10px}
+  .chip{padding:7px 14px}
+  .chip-num{font-size:1.05rem}
+  .chip-lbl{font-size:0.8125rem}
+  #body{padding:22px 24px 22px}
+  #legend{padding:14px 24px 16px;gap:18px}
+  #assump{padding:18px 24px 22px}
+  .main-title{font-size:1.65rem}
+  .sub-title{font-size:1.02rem}
+  .ax-tick{font-size:0.65rem;color:var(--muted2)}
+  .ax-tick.m40{font-size:0.7rem;color:var(--muted)}
+  .ax-wrap{margin-left:122px}
+  .chart-area{margin-left:122px}
+  .row-lbl{width:122px}
+  .lbl-g{font-size:0.8125rem}
+  .lbl-s{font-size:0.6875rem}
+  .row{height:36px}
+  .track{height:36px}
+  .b-core{top:10px;bottom:10px}
+  .b-cap{width:5px;height:5px}
+  .now-pin{font-size:0.65rem;padding:3px 7px}
+  .sec{font-size:0.6rem}
+  .tip{font-size:0.8125rem}
+  .tip-g{font-size:0.875rem}
+  .li{font-size:0.875rem}
+  .ls-bar{width:22px}
+  .ls-range{width:22px}
+  .a-hdr{font-size:0.72rem}
+  .a-grid{grid-template-columns:1fr 1fr}
+  .ai{font-size:0.98rem}
+  .ai-dot{width:4px;height:4px;margin-top:7px}
+  #lang-btn{font-size:12px;padding:6px 15px}
+}
+</style>
+</head>
+<body>
+<nav class="timeline-site-nav" aria-label="Site">
+  <a href="index.html" class="back-to-site" id="timeline-back">&larr; Back to Faqarsar</a>
+</nav>
+<div id="page">
+<div id="outer">
+  <div id="topbar">
+    <div id="topbar-left">
+      <div class="main-title" id="t-title">Generation Timeline</div>
+      <div class="sub-title" id="t-sub">Estimated span of each generation — birth through lifespan.</div>
+    </div>
+    <button type="button" id="lang-btn" onclick="toggleLang()">ਪੰਜਾਬੀ</button>
+  </div>
+
+  <div id="chips">
+    <div class="chip"><span class="chip-num">7</span><span class="chip-lbl" id="c1">generations</span></div>
+    <div class="chip"><span class="chip-num">~280</span><span class="chip-lbl" id="c2">years documented</span></div>
+    <div class="chip"><span class="chip-num">~1760</span><span class="chip-lbl" id="c3">earliest ancestor</span></div>
+    <div class="chip"><span class="chip-num">456+</span><span class="chip-lbl" id="c4">members</span></div>
+  </div>
+
+  <div id="body"><div id="chart-root"></div></div>
+
+  <div id="legend">
+    <div class="li"><span class="ls-bar" style="background:rgba(120,160,200,0.55)"></span><span id="l1">Estimated</span></div>
+    <div class="li"><span class="ls-range"></span><span id="l2">Possible range</span></div>
+  </div>
+
+  <div id="assump">
+    <div class="a-hdr" id="t-assump">Assumptions &amp; anchor points</div>
+    <div class="a-grid">
+      <div class="ai"><span class="ai-dot"></span><span id="a1">Marriage Age : <b>20–35 yrs (Avg. 27)</b></span></div>
+      <div class="ai"><span class="ai-dot"></span><span id="a2">Generation Gap Avg. : <b>27–30 yrs</b></span></div>
+      <div class="ai"><span class="ai-dot"></span><span id="a3">Average Lifespan : <b>70–90 yrs</b></span></div>
+      <div class="ai"><span class="ai-dot"></span><span id="a4">G1 Back-Calculated to: <b>~1760</b></span></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+const MIN=1760,MAX=2060;
+const pct=y=>Math.max(0,Math.min(100,(y-MIN)/(MAX-MIN)*100));
+
+const gens=[
+  {g:1,pa:'ਪਹਿਲੀ ਪੀੜ੍ਹੀ',en:'1st generation',bMin:1760,bMax:1775,dMin:1830,dMax:1860,type:'est'},
+  {g:2,pa:'ਦੂਜੀ ਪੀੜ੍ਹੀ',en:'2nd generation',bMin:1787,bMax:1800,dMin:1857,dMax:1882,type:'est'},
+  {g:3,pa:'ਤੀਜੀ ਪੀੜ੍ਹੀ',en:'3rd generation',bMin:1815,bMax:1828,dMin:1885,dMax:1908,type:'est'},
+  {g:4,pa:'ਚੌਥੀ ਪੀੜ੍ਹੀ',en:'4th generation',bMin:1842,bMax:1856,dMin:1912,dMax:1938,type:'est'},
+  {g:5,pa:'ਪੰਜਵੀਂ ਪੀੜ੍ਹੀ',en:'5th generation',bMin:1870,bMax:1885,dMin:1940,dMax:1968,type:'est'},
+  {g:6,pa:'ਛੇਵੀਂ ਪੀੜ੍ਹੀ',en:'6th generation',bMin:1895,bMax:1915,dMin:1965,dMax:2000,type:'est'},
+  {g:7,pa:'ਸੱਤਵੀਂ ਪੀੜ੍ਹੀ',en:'7th generation',bMin:1936,bMax:1950,dMin:2005,dMax:2040,type:'est'},
+];
+
+let lang='en';
+const S={
+  en:{btn:'ਪੰਜਾਬੀ',backNav:'← Back to Faqarsar',title:'Generation Timeline',sub:'Estimated span of each generation — birth through lifespan.',now:'now',c1:'generations',c2:'years documented',c3:'earliest ancestor',c4:'members',l1:'Estimated',l2:'Possible range',assump:'Assumptions & anchor points',a1:'Marriage Age : <b>20–35 yrs (Avg. 27)</b>',a2:'Generation Gap Avg. : <b>27–30 yrs</b>',a3:'Average Lifespan : <b>70–90 yrs</b>',a4:'G1 Back-Calculated to: <b>~1760</b>'},
+  pa:{btn:'English',title:'ਪੀੜ੍ਹੀ ਸਮਾਂ-ਰੇਖਾ',sub:'ਹਰ ਪੀੜ੍ਹੀ ਦੀ ਅਨੁਮਾਨਿਤ ਮਿਆਦ — ਜਨਮ ਤੋਂ ਉਮਰ ਤੱਕ।',now:'ਹੁਣ',c1:'ਪੀੜ੍ਹੀਆਂ',c2:'ਦਰਜ ਸਾਲ',c3:'ਸਭ ਤੋਂ ਪੁਰਾਣਾ ਪੁਰਖਾ',c4:'ਮੈਂਬਰ',l1:'ਅਨੁਮਾਨਿਤ',l2:'ਸੰਭਾਵਿਤ ਸੀਮਾ',assump:'ਧਾਰਨਾਵਾਂ ਅਤੇ ਅਧਾਰ ਬਿੰਦੂ',a1:'ਵਿਆਹ ਦੀ ਉਮਰ : <b>20–35 ਸਾਲ (ਔਸਤ 27)</b>',a2:'ਪੀੜ੍ਹੀਆਂ ਦੇ ਫਰਕ ਦੀ ਔਸਤ : <b>27–30 ਸਾਲ</b>',a3:'ਔਸਤ ਜੀਵਨਕਾਲ : <b>70–90 ਸਾਲ</b>',a4:'ਪਹਿਲੀ ਪੀੜ੍ਹੀ ਦੀ ਅਨੁਮਾਨਿਤ ਹੋਂਦ : <b>~1760</b>'}
+};
+
+function buildChart(){
+  const root=document.getElementById('chart-root');
+  root.innerHTML='';
+  const mob=window.innerWidth<560;
+
+  const axW=document.createElement('div');axW.className='ax-wrap';
+  const axT=document.createElement('div');axT.className='ax-ticks';
+  for(let y=1760;y<=2060;y+=20){
+    const s=document.createElement('span');
+    s.className='ax-tick'+(y%40===0?' m40':'');
+    s.textContent=y;s.style.left=pct(y)+'%';
+    axT.appendChild(s);
+  }
+  axW.appendChild(axT);
+  axW.appendChild(Object.assign(document.createElement('div'),{className:'ax-line'}));
+  root.appendChild(axW);
+
+  const ca=document.createElement('div');ca.className='chart-area';
+  const gls=document.createElement('div');gls.className='gridlines';
+  for(let y=1760;y<=2060;y+=20){
+    const d=document.createElement('div');d.className='gl';
+    d.style.left=pct(y)+'%';
+    if(mob&&y%40!==0){d.style.display='none';}
+    else{d.style.background=y%40===0?'rgba(251,191,36,0.10)':'rgba(251,191,36,0.045)';}
+    gls.appendChild(d);
+  }
+  const nl=document.createElement('div');nl.className='gl-now';nl.style.left=pct(2026)+'%';
+  const np=document.createElement('span');np.className='now-pin';np.id='now-pin';
+  np.textContent=S[lang].now;np.style.left=pct(2026)+'%';
+  gls.appendChild(nl);gls.appendChild(np);
+  ca.appendChild(gls);
+
+  gens.forEach(g=>{
+    const row=document.createElement('div');row.className='row';
+    const lbl=document.createElement('div');lbl.className='row-lbl';
+    lbl.innerHTML=`<span class="lbl-g">G${g.g}</span><span class="lbl-s" data-en="${g.en}" data-pa="${g.pa}">${lang==='pa'?g.pa:g.en}</span>`;
+    row.appendChild(lbl);
+    const tr=document.createElement('div');tr.className='track';
+    const rb=document.createElement('div');rb.className='b-range';
+    rb.style.left=pct(g.bMin)+'%';rb.style.width=(pct(Math.min(g.dMax,MAX))-pct(g.bMin))+'%';
+    tr.appendChild(rb);
+    const bA=(g.bMin+g.bMax)/2,dA=(g.dMin+g.dMax)/2;
+    const ic=g.type==='conf';
+    const cb=document.createElement('div');cb.className='b-core';
+    cb.setAttribute('tabindex','0');
+    cb.setAttribute('role','button');
+    if(ic){
+      const L=pct(g.bMin),R=pct(Math.min(g.bMax,MAX));
+      cb.style.left=L+'%';cb.style.width=Math.max(0,R-L)+'%';
+    }else{
+      cb.style.left=pct(bA)+'%';cb.style.width=(pct(Math.min(dA,MAX))-pct(bA))+'%';
+    }
+    cb.style.background=ic?'rgba(251,191,36,0.72)':'rgba(120,160,200,0.52)';
+    const cc=ic?'rgba(251,191,36,0.88)':'rgba(120,160,200,0.8)';
+    ['left','right'].forEach(side=>{
+      const c=document.createElement('div');c.className='b-cap';
+      c.style[side]='-2px';c.style.background=cc;cb.appendChild(c);
+    });
+    const spanYrs=Math.round(dA-bA);
+    const tip=document.createElement('div');tip.className='tip';
+    tip.dataset.en=`Born ~${g.bMin}–${g.bMax}  ·  Est. end ~${g.dMin}–${g.dMax}  ·  ~${spanYrs} yrs`;
+    tip.dataset.pa=`ਜਨਮ ~${g.bMin}–${g.bMax}  ·  ਅੰਤ ~${g.dMin}–${g.dMax}  ·  ~${spanYrs} ਸਾਲ`;
+    tip.innerHTML=`<div class="tip-g">G${g.g}</div>${tip.dataset[lang]}`;
+    cb.setAttribute('aria-label','G'+g.g+': '+tip.dataset[lang]);
+    cb.appendChild(tip);tr.appendChild(cb);row.appendChild(tr);ca.appendChild(row);
+  });
+  root.appendChild(ca);
+}
+
+function applyLang(){
+  const s=S[lang];
+  document.getElementById('lang-btn').textContent=s.btn;
+  var back=document.getElementById('timeline-back');
+  if(back) back.textContent=S.en.backNav;
+  document.getElementById('t-title').textContent=s.title;
+  document.getElementById('t-sub').textContent=s.sub;
+  ['c1','c2','c3','c4','l1','l2'].forEach(id=>document.getElementById(id).textContent=s[id]);
+  document.getElementById('t-assump').textContent=s.assump;
+  for(let i=1;i<=4;i++)document.getElementById('a'+i).innerHTML=s['a'+i];
+}
+
+function toggleLang(){
+  lang=lang==='en'?'pa':'en';
+  applyLang();
+  buildChart();
+}
+
+applyLang();
+buildChart();
+let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(buildChart,150);});
+</script>
+</body>
+</html>
