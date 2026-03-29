@@ -138,6 +138,13 @@ body{background:#0c0b0f;color:#e8e4dc;font-family:'DM Sans',sans-serif;overflow-
 #profiles-section{position:fixed;inset:0;z-index:200;background:#0c0b0f;transition:opacity 0.4s,visibility 0.4s;overflow-y:auto;-webkit-overflow-scrolling:touch}
 #profiles-section.profiles-hidden{opacity:0;visibility:hidden;pointer-events:none}
 #profiles-section.profiles-visible{opacity:1;visibility:visible;pointer-events:auto}
+#heritage-section{position:fixed;inset:0;z-index:200;background:#0c0b0f;transition:opacity 0.4s,visibility 0.4s;display:flex;flex-direction:column;overflow:hidden}
+#heritage-section.heritage-hidden{opacity:0;visibility:hidden;pointer-events:none}
+#heritage-section.heritage-visible{opacity:1;visibility:visible;pointer-events:auto}
+#heritage-section .heritage-toolbar{flex-shrink:0;position:relative;z-index:10;display:flex;align-items:center;padding:16px 24px;background:rgba(12,11,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(251,191,36,0.08)}
+#heritage-section .heritage-toolbar .title-area{width:100%}
+#heritage-section .heritage-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#heritage-section .hg-wrap{border-top:none;min-height:100%;box-sizing:border-box;padding-top:32px;padding-bottom:64px}
 #profiles-toolbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:rgba(12,11,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(251,191,36,0.08)}
 .custom-select{position:relative;min-width:140px}
 .cs-selected{background:#1a1820;border:1px solid rgba(251,191,36,0.2);color:#e8e4dc;font-size:13px;padding:6px 14px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;transition:all 0.2s;font-family:'DM Sans',sans-serif}
@@ -994,30 +1001,43 @@ svg.lines path.highlighted{stroke:rgba(251,191,36,0.85);stroke-width:2.5;stroke-
     <a href="#" onclick="openTree(event)" class="cta-btn" id="cta-tree"><span id="cta-tree-text">Explore the Family Tree</span> <span class="arrow">&darr;</span></a>
     <a href="#" onclick="openProfiles(event)" class="cta-btn cta-profiles" id="cta-profiles"><span id="cta-profiles-text">Browse Profiles</span> <span class="arrow">&rarr;</span></a>
     <a href="#" onclick="openMap(event)" class="cta-btn" id="cta-map"><span id="cta-map-text">Migration map</span> <span class="arrow">&#x1F310;</span></a>
-    <a href="generation-timeline.html" class="cta-btn cta-timeline" id="cta-timeline"><span id="cta-timeline-text">Generation timeline</span> <span class="arrow">&rarr;</span></a>
-    <a href="#heritage-gallery" class="cta-btn cta-gallery" id="cta-gallery"><span id="cta-gallery-text">Heritage gallery</span> <span class="arrow">&#x1F4F7;</span></a>
+    <a href="generation-timeline.html" class="cta-btn cta-timeline" id="cta-timeline"><span id="cta-timeline-text">Generation Timeline</span> <span class="arrow">&rarr;</span></a>
+    <a href="#" onclick="openHeritageGallery(event)" class="cta-btn cta-gallery" id="cta-gallery"><span id="cta-gallery-text">Heritage Gallery</span> <span class="arrow">&#x1F4DC;</span></a>
   </div>
   <div class="scroll-hint" id="scroll-hint">Click to Explore</div>
 </section>
 
-<section class="hg-wrap" id="heritage-gallery" aria-label="Heritage photo gallery">
-  <div class="hg-inner">
-    <header class="hg-head">
-      <p class="hg-eyebrow" id="hg-eyebrow">OUR HERITAGE</p>
-      <h2 class="hg-title" id="hg-title">Heritage Gallery</h2>
-      <p class="hg-sub" id="hg-sub">Family moments from Faqarsar, Pilibanga (Rajasthan), and beyond. Everyone can browse; only a signed-in admin can add or remove photos.</p>
-      <div class="hg-rule"></div>
-    </header>
-    <div class="hg-stats"><span class="hg-chip"><strong id="hg-stat-n">0</strong> <span id="hg-stat-lbl">photos</span></span></div>
-    <div class="hg-upload-wrap" id="hg-upload-wrap" hidden>
-      <button type="button" class="hg-upload-open" id="hg-upload-open">Upload photo</button>
-    </div>
-    <div class="hg-grid" id="hg-grid"></div>
-  </div>
-</section>
-
 <!-- Fixed language toggle visible on all screens -->
 <button id="lang-toggle-fixed" onclick="toggleLang()" class="lang-fixed">ਪੰਜਾਬੀ</button>
+
+<!-- ===== HERITAGE GALLERY (full screen — opened from landing CTA) ===== -->
+<section id="heritage-section" class="heritage-hidden" aria-label="Heritage photo gallery">
+  <header class="heritage-toolbar">
+    <div class="title-area">
+      <a href="#" class="back-btn" id="heritage-back" onclick="closeHeritageGallery(event)">&larr; Back</a>
+      <div>
+        <h2 id="heritage-toolbar-title">Heritage Gallery</h2>
+      </div>
+    </div>
+  </header>
+  <div class="heritage-scroll">
+    <div class="hg-wrap" id="heritage-gallery">
+      <div class="hg-inner">
+        <header class="hg-head">
+          <p class="hg-eyebrow" id="hg-eyebrow">OUR HERITAGE</p>
+          <h2 class="hg-title" id="hg-title">Heritage Gallery</h2>
+          <p class="hg-sub" id="hg-sub">A collection of moments — preserving our story across generations.</p>
+          <div class="hg-rule"></div>
+        </header>
+        <div class="hg-stats"><span class="hg-chip"><strong id="hg-stat-n">0</strong> <span id="hg-stat-lbl">photos</span></span></div>
+        <div class="hg-upload-wrap" id="hg-upload-wrap" hidden>
+          <button type="button" class="hg-upload-open" id="hg-upload-open">Upload photo</button>
+        </div>
+        <div class="hg-grid" id="hg-grid"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ===== PROFILES ===== -->
 <section id="profiles-section" class="profiles-hidden">
@@ -2421,7 +2441,13 @@ function closeTreeDiagramModal() {
   var m = document.getElementById('tree-diagram-modal');
   if (m) m.classList.add('modal-hidden');
   var sec = document.getElementById('tree-section');
-  if (!sec || !sec.classList.contains('tree-visible')) document.body.style.overflow = '';
+  if (!sec || !sec.classList.contains('tree-visible')) {
+    var profV = document.getElementById('profiles-section');
+    var herV = document.getElementById('heritage-section');
+    var profOpen = profV && profV.classList.contains('profiles-visible');
+    var herOpen = herV && herV.classList.contains('heritage-visible');
+    if (!profOpen && !herOpen) document.body.style.overflow = '';
+  }
 }
 
 (function syncTreeBranchSelectValue() {
@@ -2474,7 +2500,11 @@ function closeTree(e) {
   const section = document.getElementById('tree-section');
   section.classList.remove('tree-visible');
   section.classList.add('tree-hidden');
-  document.body.style.overflow = '';
+  var profV = document.getElementById('profiles-section');
+  var herV = document.getElementById('heritage-section');
+  var profOpen = profV && profV.classList.contains('profiles-visible');
+  var herOpen = herV && herV.classList.contains('heritage-visible');
+  if (!profOpen && !herOpen) document.body.style.overflow = '';
   clearSelection();
 }
 
@@ -2503,7 +2533,7 @@ function toggleLang() {
   if (el('cta-tree-text')) el('cta-tree-text').textContent = isPa ? '\u0A2A\u0A30\u0A3F\u0A35\u0A3E\u0A30\u0A3F\u0A15 \u0A30\u0A41\u0A71\u0A16 \u0A26\u0A47\u0A16\u0A4B' : 'Explore the Family Tree';
   if (el('cta-profiles-text')) el('cta-profiles-text').textContent = isPa ? '\u0A2A\u0A4D\u0A30\u0A4B\u0A2B\u0A3E\u0A08\u0A32\u0A3E\u0A02 \u0A35\u0A47\u0A16\u0A4B' : 'Browse Profiles';
   if (el('cta-map-text')) el('cta-map-text').textContent = isPa ? '\u0A2A\u0A30\u0A35\u0A3E\u0A38 \u0A28\u0A15\u0A38\u0A3C\u0A3E' : 'Migration Map';
-  if (el('cta-timeline-text')) el('cta-timeline-text').textContent = isPa ? '\u0A2A\u0A40\u0A5C\u0A4D\u0A39\u0A40 \u0A38\u0A2E\u0A3E\u0A02-\u0A30\u0A47\u0A16\u0A3E' : 'Generation timeline';
+  if (el('cta-timeline-text')) el('cta-timeline-text').textContent = 'Generation Timeline';
   if (el('scroll-hint')) el('scroll-hint').textContent = isPa ? '\u0A16\u0A4B\u0A1C\u0A23 \u0A32\u0A08 \u0A15\u0A32\u0A3F\u0A71\u0A15 \u0A15\u0A30\u0A4B' : 'Click to Explore';
   if (el('tree-title')) el('tree-title').textContent = isPa ? '\u0A2A\u0A30\u0A3F\u0A35\u0A3E\u0A30\u0A3F\u0A15 \u0A30\u0A41\u0A71\u0A16' : 'Family Tree';
   var tbs = el('tree-branch-select');
@@ -2524,6 +2554,9 @@ function toggleLang() {
   if (el('footer-text')) el('footer-text').innerHTML = isPa ? 'Faqarsar.com &mdash; \u0A38\u0A3E\u0A21\u0A40 \u0A35\u0A3F\u0A30\u0A3E\u0A38\u0A24 \u0A28\u0A42\u0A70 \u0A38\u0A3E\u0A02\u0A2D\u0A23\u0A3E' : 'Faqarsar.com &mdash; Preserving our heritage, one name at a time';
   if (el('footer-privacy-link')) el('footer-privacy-link').textContent = isPa ? '\u0A2A\u0A30\u0A3E\u0A08\u0A35\u0A47\u0A38\u0A40' : 'Privacy';
   updateFooterVisitsDisplay();
+  heritageApplyStaticLabels();
+  renderHeritageGrid();
+  heritageLbRefreshIfOpen();
   if (treeBuilt) {
     rebuildNodeLabels();
     var treeSec = document.getElementById('tree-section');
@@ -2551,6 +2584,31 @@ function rebuildNodeLabels() {
 }
 
 var profilesBuilt = false;
+function openHeritageGallery(e) {
+  if (e) e.preventDefault();
+  heritageLbClose();
+  heritageUmClose();
+  var section = document.getElementById('heritage-section');
+  if (!section) return;
+  section.classList.remove('heritage-hidden');
+  section.classList.add('heritage-visible');
+  document.body.style.overflow = 'hidden';
+  loadHeritageGallery();
+}
+function closeHeritageGallery(e) {
+  if (e) e.preventDefault();
+  heritageLbClose();
+  heritageUmClose();
+  var section = document.getElementById('heritage-section');
+  if (!section) return;
+  section.classList.remove('heritage-visible');
+  section.classList.add('heritage-hidden');
+  var treeV = document.getElementById('tree-section');
+  var profV = document.getElementById('profiles-section');
+  var treeOpen = treeV && treeV.classList.contains('tree-visible');
+  var profOpen = profV && profV.classList.contains('profiles-visible');
+  if (!treeOpen && !profOpen) document.body.style.overflow = '';
+}
 function openProfiles(e) {
   e.preventDefault();
   var section = document.getElementById("profiles-section");
@@ -2563,7 +2621,11 @@ function closeProfiles(e) {
   e.preventDefault();
   document.getElementById("profiles-section").classList.remove("profiles-visible");
   document.getElementById("profiles-section").classList.add("profiles-hidden");
-  document.body.style.overflow = "";
+  var treeV = document.getElementById('tree-section');
+  var herV = document.getElementById('heritage-section');
+  var treeOpen = treeV && treeV.classList.contains('tree-visible');
+  var herOpen = herV && herV.classList.contains('heritage-visible');
+  if (!treeOpen && !herOpen) document.body.style.overflow = '';
 }
 function buildProfileCards() {
   var grid = document.getElementById("profiles-grid");
@@ -4028,6 +4090,7 @@ function doAdminLogin() {
       adminUser = res.data.user;
       closeAdminOverlay();
       showAdminBar();
+      heritageRefreshAdminUi();
       if (currentModalId && currentSlide === 1) renderSlide3(currentModalId, true);
       if (currentModalId && currentSlide === 2) renderSlide2(currentModalId, true);
     }
@@ -4037,6 +4100,7 @@ function doAdminLogout() {
   if (sb) sb.auth.signOut();
   adminUser = null;
   document.getElementById('admin-bar').classList.remove('visible');
+  heritageRefreshAdminUi();
 }
 function showAdminBar() {
   var bar = document.getElementById('admin-bar');
@@ -4051,6 +4115,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (res.data && res.data.session) {
         adminUser = res.data.session.user;
         showAdminBar();
+        heritageRefreshAdminUi();
       }
     });
   }
@@ -4074,6 +4139,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   fetchVisitCount();
+  initHeritageGallery();
 });
 
 // ===== MODAL SLIDES =====
@@ -4383,6 +4449,325 @@ function uploadDoc(memberId, input) {
     var url = sb.storage.from('member-media').getPublicUrl(path).data.publicUrl;
     return sb.from('member_docs').insert({member_id: memberId, name: docName, url: url, doc_date: docDate, storage_path: path, emoji: '📄'});
   }).then(function() { delete slide2Cache[memberId]; renderSlide2(memberId, true); });
+}
+
+// ===== HERITAGE LANDING GALLERY (Supabase table heritage_site, storage bucket member-media path heritage/) =====
+var heritagePhotos = [];
+var heritageLbIndex = -1;
+var heritageUploadFile = null;
+
+function heritageNormalizeRow(r) {
+  if (!r) return r;
+  return {
+    id: r.id,
+    url: r.url,
+    caption: r.caption != null ? r.caption : (r.caption_en != null ? r.caption_en : ''),
+    caption_pa: r.caption_pa || '',
+    year: r.year != null ? r.year : (r.photo_year != null ? r.photo_year : ''),
+    storage_path: r.storage_path || ''
+  };
+}
+
+function heritageRowCaption(row) {
+  if (lang === 'pa' && row.caption_pa) return row.caption_pa;
+  return row.caption || '';
+}
+
+function heritageApplyStaticLabels() {
+  var isPa = lang === 'pa';
+  var g = function(id) { return document.getElementById(id); };
+  if (g('cta-gallery-text')) g('cta-gallery-text').textContent = 'Heritage Gallery';
+  if (g('heritage-toolbar-title')) g('heritage-toolbar-title').textContent = 'Heritage Gallery';
+  if (g('heritage-back')) {
+    g('heritage-back').textContent = isPa ? '\u2190 \u0A2A\u0A3F\u0A71\u0A1B\u0A47' : '\u2190 Back';
+    g('heritage-back').setAttribute('aria-label', isPa ? '\u0A17\u0A48\u0A32\u0A30\u0A40 \u0A2C\u0A70\u0A26 \u0A15\u0A30\u0A4B' : 'Close heritage gallery');
+  }
+  if (g('hg-eyebrow')) g('hg-eyebrow').textContent = 'OUR HERITAGE';
+  if (g('hg-title')) g('hg-title').textContent = 'Heritage Gallery';
+  if (g('hg-sub')) g('hg-sub').textContent = 'A collection of moments \u2014 preserving our story across generations.';
+  if (g('hg-stat-lbl')) g('hg-stat-lbl').textContent = isPa ? '\u0A2B\u0A4B\u0A1F\u0A4B' : 'photos';
+  if (g('hg-upload-open')) g('hg-upload-open').textContent = isPa ? '\u0A2B\u0A4B\u0A1F\u0A4B \u0A05\u0A2A\u0A32\u0A4B\u0A21 \u0A15\u0A30\u0A4B' : 'Upload photo';
+  if (g('hg-um-title')) g('hg-um-title').textContent = isPa ? '\u0A2B\u0A4B\u0A1F\u0A4B \u0A05\u0A2A\u0A32\u0A4B\u0A21 \u0A15\u0A30\u0A4B' : 'Upload photo';
+  if (g('hg-um-lbl-file')) g('hg-um-lbl-file').textContent = isPa ? '\u0A1B\u0A35\u0A40' : 'Image';
+  if (g('hg-drop-hint')) g('hg-drop-hint').textContent = isPa ? '\u0A07\u0A20\u0A47 \u0A1B\u0A35\u0A40 \u0A38\u0A41\u0A1F\u0A4B \u0A1C\u0A3E \u0A15\u0A32\u0A3F\u0A71\u0A15 \u0A15\u0A30\u0A15\u0A47 \u0A2C\u0A30\u0A4B\u0A1C \u0A15\u0A30\u0A4B' : 'Drop an image here or click to browse';
+  if (g('hg-lbl-cap-en')) g('hg-lbl-cap-en').textContent = isPa ? '\u0A38\u0A3F\u0A30\u0A32\u0A47\u0A16 (\u0A05\u0A70\u0A17\u0A30\u0A47\u0A1C\u0A40)' : 'Caption (English)';
+  if (g('hg-lbl-cap-pa')) g('hg-lbl-cap-pa').textContent = isPa ? '\u0A38\u0A3F\u0A30\u0A32\u0A47\u0A16 (\u0A2A\u0A70\u0A1C\u0A3E\u0A2C\u0A40, \u0A35\u0A3F\u0A15\u0A32\u0A4D\u0A2A)' : 'Caption (Punjabi, optional)';
+  if (g('hg-lbl-year')) g('hg-lbl-year').textContent = isPa ? '\u0A38\u0A3E\u0A32 (\u0A35\u0A3F\u0A15\u0A32\u0A4D\u0A2A)' : 'Year (optional)';
+  if (g('hg-um-cancel')) g('hg-um-cancel').textContent = isPa ? '\u0A30\u0A71\u0A26 \u0A15\u0A30\u0A4B' : 'Cancel';
+  if (g('hg-um-go')) g('hg-um-go').textContent = isPa ? '\u0A05\u0A2A\u0A32\u0A4B\u0A21' : 'Upload';
+  var n = heritagePhotos.length;
+  if (g('hg-stat-n')) g('hg-stat-n').textContent = String(n);
+}
+
+function heritageRefreshAdminUi() {
+  var wrap = document.getElementById('hg-upload-wrap');
+  var sec = document.getElementById('heritage-gallery');
+  if (wrap) wrap.hidden = !adminUser;
+  if (sec) sec.classList.toggle('hg-admin', !!adminUser);
+  renderHeritageGrid();
+}
+
+function renderHeritageGrid() {
+  var grid = document.getElementById('hg-grid');
+  if (!grid) return;
+  var isPa = lang === 'pa';
+  grid.innerHTML = '';
+  var n = heritagePhotos.length;
+  var statN = document.getElementById('hg-stat-n');
+  if (statN) statN.textContent = String(n);
+
+  if (n === 0) return;
+
+  heritagePhotos.forEach(function(row, idx) {
+    var card = document.createElement('div');
+    card.className = 'hg-card';
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    var capText = heritageRowCaption(row);
+    var yr = row.year ? String(row.year).trim() : '';
+    var sub = capText + (yr ? (capText ? ' · ' : '') + yr : '');
+
+    var del = document.createElement('button');
+    del.type = 'button';
+    del.className = 'hg-card-del';
+    del.setAttribute('aria-label', isPa ? '\u0A39\u0A1F\u0A3E\u0A13' : 'Delete');
+    del.innerHTML = '&times;';
+    del.onclick = function(e) {
+      e.stopPropagation();
+      heritageDeletePhoto(row);
+    };
+
+    var imgW = document.createElement('div');
+    imgW.className = 'hg-card-img-wrap';
+    var img = document.createElement('img');
+    img.className = 'hg-card-img';
+    img.src = row.url;
+    img.alt = capText || (isPa ? '\u0A2B\u0A4B\u0A1F\u0A4B' : 'Photo');
+    img.loading = 'lazy';
+    imgW.appendChild(img);
+
+    var cap = document.createElement('div');
+    cap.className = 'hg-card-cap';
+    cap.textContent = sub || (isPa ? '\u0A2B\u0A4B\u0A1F\u0A4B' : 'Photo');
+
+    card.appendChild(del);
+    card.appendChild(imgW);
+    card.appendChild(cap);
+
+    card.onclick = function() { heritageLbOpen(idx); };
+    card.onkeydown = function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        heritageLbOpen(idx);
+      }
+    };
+    grid.appendChild(card);
+  });
+}
+
+function loadHeritageGallery() {
+  if (!sb) {
+    heritagePhotos = [];
+    heritageApplyStaticLabels();
+    renderHeritageGrid();
+    return;
+  }
+  sb.from('heritage_site').select('*').order('created_at', { ascending: false }).then(function(res) {
+    if (res.error) {
+      console.warn('heritage_site:', res.error.message);
+      heritagePhotos = [];
+    } else {
+      heritagePhotos = (res.data || []).map(heritageNormalizeRow);
+    }
+    heritageApplyStaticLabels();
+    heritageRefreshAdminUi();
+  });
+}
+
+function heritageLbOpen(idx) {
+  if (idx < 0 || idx >= heritagePhotos.length) return;
+  heritageLbIndex = idx;
+  var lb = document.getElementById('hg-lightbox');
+  var im = document.getElementById('hg-lb-img');
+  var cap = document.getElementById('hg-lb-cap');
+  var ctr = document.getElementById('hg-lb-ctr');
+  if (!lb || !im || !cap || !ctr) return;
+  var row = heritagePhotos[idx];
+  im.src = row.url;
+  var t = heritageRowCaption(row);
+  var yr = row.year ? String(row.year).trim() : '';
+  cap.textContent = t + (yr ? (t ? ' · ' : '') + yr : '');
+  var isPa = lang === 'pa';
+  ctr.textContent = (idx + 1) + ' / ' + heritagePhotos.length + (isPa ? ' \u0A2B\u0A4B\u0A1F\u0A4B' : ' photos');
+  lb.classList.add('hg-lb-on');
+  document.body.style.overflow = 'hidden';
+}
+
+function heritageSyncBodyAfterModalClose() {
+  var hs = document.getElementById('heritage-section');
+  var treeV = document.getElementById('tree-section');
+  var profV = document.getElementById('profiles-section');
+  if (hs && hs.classList.contains('heritage-visible')) {
+    document.body.style.overflow = 'hidden';
+    return;
+  }
+  if ((treeV && treeV.classList.contains('tree-visible')) || (profV && profV.classList.contains('profiles-visible'))) {
+    document.body.style.overflow = 'hidden';
+    return;
+  }
+  document.body.style.overflow = '';
+}
+
+function heritageLbClose() {
+  var lb = document.getElementById('hg-lightbox');
+  if (lb) lb.classList.remove('hg-lb-on');
+  heritageLbIndex = -1;
+  heritageSyncBodyAfterModalClose();
+}
+
+function heritageLbNav(delta) {
+  if (heritagePhotos.length === 0) return;
+  var next = heritageLbIndex + delta;
+  if (next < 0) next = heritagePhotos.length - 1;
+  if (next >= heritagePhotos.length) next = 0;
+  heritageLbOpen(next);
+}
+
+function heritageLbRefreshIfOpen() {
+  var lb = document.getElementById('hg-lightbox');
+  if (lb && lb.classList.contains('hg-lb-on') && heritageLbIndex >= 0) {
+    heritageLbOpen(heritageLbIndex);
+  }
+}
+
+function heritageUmOpen() {
+  if (!adminUser) return;
+  heritageUploadFile = null;
+  var go = document.getElementById('hg-um-go');
+  var prev = document.getElementById('hg-drop-prev');
+  var fin = document.getElementById('hg-file');
+  if (fin) fin.value = '';
+  if (go) go.disabled = true;
+  if (prev) { prev.style.display = 'none'; prev.removeAttribute('src'); }
+  var ce = document.getElementById('hg-cap-en');
+  var cp = document.getElementById('hg-cap-pa');
+  var yr = document.getElementById('hg-year');
+  if (ce) ce.value = '';
+  if (cp) cp.value = '';
+  if (yr) yr.value = '';
+  var m = document.getElementById('hg-upload-modal');
+  if (m) m.classList.add('hg-um-on');
+  document.body.style.overflow = 'hidden';
+}
+
+function heritageUmClose() {
+  var m = document.getElementById('hg-upload-modal');
+  if (m) m.classList.remove('hg-um-on');
+  heritageSyncBodyAfterModalClose();
+}
+
+function heritageSetUploadPreview(file) {
+  heritageUploadFile = file || null;
+  var go = document.getElementById('hg-um-go');
+  var prev = document.getElementById('hg-drop-prev');
+  if (go) go.disabled = !heritageUploadFile;
+  if (!prev) return;
+  if (heritageUploadFile && heritageUploadFile.type.indexOf('image/') === 0) {
+    try {
+      prev.src = URL.createObjectURL(heritageUploadFile);
+      prev.style.display = 'block';
+    } catch (e) {
+      prev.style.display = 'none';
+    }
+  } else {
+    prev.style.display = 'none';
+    prev.removeAttribute('src');
+  }
+}
+
+function heritageDoUpload() {
+  if (!adminUser || !sb || !heritageUploadFile) return;
+  var capEn = (document.getElementById('hg-cap-en') || {}).value || '';
+  var capPa = (document.getElementById('hg-cap-pa') || {}).value || '';
+  var yearV = ((document.getElementById('hg-year') || {}).value || '').trim();
+  var go = document.getElementById('hg-um-go');
+  if (go) { go.disabled = true; go.textContent = lang === 'pa' ? '\u0A05\u0A2A\u0A32\u0A4B\u0A21…' : 'Uploading…'; }
+  var path = 'heritage/' + Date.now() + '_' + heritageUploadFile.name.replace(/\s+/g, '_');
+  sb.storage.from('member-media').upload(path, heritageUploadFile, { upsert: false }).then(function(res) {
+    if (res.error) throw res.error;
+    var url = sb.storage.from('member-media').getPublicUrl(path).data.publicUrl;
+    var row = { url: url, caption: capEn, caption_pa: capPa, storage_path: path };
+    if (yearV) row.year = yearV;
+    return sb.from('heritage_site').insert(row);
+  }).then(function(ins) {
+    if (ins && ins.error) throw ins.error;
+    heritageUmClose();
+    if (go) go.textContent = lang === 'pa' ? '\u0A05\u0A2A\u0A32\u0A4B\u0A21' : 'Upload';
+    if (go) go.disabled = true;
+    heritageUploadFile = null;
+    loadHeritageGallery();
+  }).catch(function(err) {
+    alert((lang === 'pa' ? '\u0A05\u0A2A\u0A32\u0A4B\u0A21 \u0A28\u0A3F\u0A71\u0A15\u0A32\u0A40:' : 'Upload failed: ') + (err && err.message ? err.message : String(err)));
+    if (go) { go.disabled = !heritageUploadFile; go.textContent = lang === 'pa' ? '\u0A05\u0A2A\u0A32\u0A4B\u0A21' : 'Upload'; }
+  });
+}
+
+function heritageDeletePhoto(row) {
+  if (!adminUser || !sb || !row || !row.id) return;
+  var isPa = lang === 'pa';
+  if (!confirm(isPa ? '\u0A07\u0A38 \u0A2B\u0A4B\u0A1F\u0A4B \u0A39\u0A1F\u0A3E\u0A23\u0A40 \u0A39\u0A48?' : 'Delete this photo?')) return;
+  var p = row.storage_path
+    ? sb.storage.from('member-media').remove([row.storage_path]).catch(function() { return null; })
+    : Promise.resolve();
+  p.then(function() {
+    return sb.from('heritage_site').delete().eq('id', row.id);
+  }).then(function(delRes) {
+    if (delRes && delRes.error) throw delRes.error;
+    if (heritageLbIndex >= 0) heritageLbClose();
+    loadHeritageGallery();
+  }).catch(function(err) {
+    alert((isPa ? '\u0A39\u0A1F\u0A3E\u0A09\u0A23 \u0A28\u0A3F\u0A71\u0A15\u0A32\u0A40:' : 'Delete failed: ') + (err && err.message ? err.message : String(err)));
+  });
+}
+
+function heritageOnKeydown(e) {
+  if (e.key !== 'Escape') return;
+  var um = document.getElementById('hg-upload-modal');
+  var lb = document.getElementById('hg-lightbox');
+  if (um && um.classList.contains('hg-um-on')) {
+    e.preventDefault();
+    heritageUmClose();
+  } else if (lb && lb.classList.contains('hg-lb-on')) {
+    e.preventDefault();
+    heritageLbClose();
+  } else {
+    var hs = document.getElementById('heritage-section');
+    if (hs && hs.classList.contains('heritage-visible')) {
+      e.preventDefault();
+      closeHeritageGallery(e);
+    }
+  }
+}
+
+function initHeritageGallery() {
+  heritageApplyStaticLabels();
+  var openBtn = document.getElementById('hg-upload-open');
+  if (openBtn) openBtn.onclick = function() { heritageUmOpen(); };
+  var fin = document.getElementById('hg-file');
+  if (fin) fin.onchange = function() { heritageSetUploadPreview(fin.files[0] || null); };
+  var drop = document.getElementById('hg-drop');
+  if (drop) {
+    drop.addEventListener('dragover', function(e) { e.preventDefault(); drop.classList.add('hg-drag'); });
+    drop.addEventListener('dragleave', function() { drop.classList.remove('hg-drag'); });
+    drop.addEventListener('drop', function(e) {
+      e.preventDefault();
+      drop.classList.remove('hg-drag');
+      var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (f && f.type.indexOf('image/') === 0) heritageSetUploadPreview(f);
+    });
+  }
+  document.addEventListener('keydown', heritageOnKeydown);
+  loadHeritageGallery();
 }
 
 </script>

@@ -8,3 +8,4 @@
 window.MAPBOX_TOKEN  = 'your_mapbox_public_token_here';
 window.SUPABASE_URL  = 'https://your-project-ref.supabase.co';
 window.SUPABASE_ANON = 'your_supabase_anon_key_here';
+// Landing heritage gallery + profile Gallery tab: table heritage_site (url, caption, caption_pa optional, year optional, storage_path); member-media bucket path heritage/… ; member_photos / member_docs for per-profile uploads.

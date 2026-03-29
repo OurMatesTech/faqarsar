@@ -223,7 +223,7 @@ const gens=[
 let lang='en';
 const S={
   en:{btn:'ਪੰਜਾਬੀ',backNav:'← Back to Faqarsar',title:'Generation Timeline',sub:'Estimated span of each generation — birth through lifespan.',now:'now',c1:'generations',c2:'years documented',c3:'earliest ancestor',c4:'members',l1:'Estimated',l2:'Possible range',assump:'Assumptions & anchor points',a1:'Marriage Age : <b>20–35 yrs (Avg. 27)</b>',a2:'Generation Gap Avg. : <b>27–30 yrs</b>',a3:'Average Lifespan : <b>70–90 yrs</b>',a4:'G1 Back-Calculated to: <b>~1760</b>'},
-  pa:{btn:'English',title:'ਪੀੜ੍ਹੀ ਸਮਾਂ-ਰੇਖਾ',sub:'ਹਰ ਪੀੜ੍ਹੀ ਦੀ ਅਨੁਮਾਨਿਤ ਮਿਆਦ — ਜਨਮ ਤੋਂ ਉਮਰ ਤੱਕ।',now:'ਹੁਣ',c1:'ਪੀੜ੍ਹੀਆਂ',c2:'ਦਰਜ ਸਾਲ',c3:'ਸਭ ਤੋਂ ਪੁਰਾਣਾ ਪੁਰਖਾ',c4:'ਮੈਂਬਰ',l1:'ਅਨੁਮਾਨਿਤ',l2:'ਸੰਭਾਵਿਤ ਸੀਮਾ',assump:'ਧਾਰਨਾਵਾਂ ਅਤੇ ਅਧਾਰ ਬਿੰਦੂ',a1:'ਵਿਆਹ ਦੀ ਉਮਰ : <b>20–35 ਸਾਲ (ਔਸਤ 27)</b>',a2:'ਪੀੜ੍ਹੀਆਂ ਦੇ ਫਰਕ ਦੀ ਔਸਤ : <b>27–30 ਸਾਲ</b>',a3:'ਔਸਤ ਜੀਵਨਕਾਲ : <b>70–90 ਸਾਲ</b>',a4:'ਪਹਿਲੀ ਪੀੜ੍ਹੀ ਦੀ ਅਨੁਮਾਨਿਤ ਹੋਂਦ : <b>~1760</b>'}
+  pa:{btn:'English',now:'ਹੁਣ',c1:'ਪੀੜ੍ਹੀਆਂ',c2:'ਸਾਲਾਂ ਦਾ ਦਸਤਾਵੇਜ',c3:'ਪਹਿਲੇ ਪੁਰਖੇ',c4:'ਮੈਂਬਰ',l1:'ਅਨੁਮਾਨਿਤ',l2:'ਸੰਭਾਵਿਤ ਸੀਮਾ',assump:'ਧਾਰਨਾਵਾਂ ਅਤੇ ਅਧਾਰ ਬਿੰਦੂ',a1:'ਵਿਆਹ ਦੀ ਉਮਰ : <b>20–35 ਸਾਲ (ਔਸਤ 27)</b>',a2:'ਪੀੜ੍ਹੀਆਂ ਦੇ ਫਰਕ ਦੀ ਔਸਤ : <b>27–30 ਸਾਲ</b>',a3:'ਔਸਤ ਜੀਵਨਕਾਲ : <b>70–90 ਸਾਲ</b>',a4:'ਪਹਿਲੀ ਪੀੜ੍ਹੀ ਦੀ ਅਨੁਮਾਨਿਤ ਹੋਂਦ : <b>~1760</b>'}
 };
 
 function buildChart(){
@@ -300,8 +300,8 @@ function applyLang(){
   document.getElementById('lang-btn').textContent=s.btn;
   var back=document.getElementById('timeline-back');
   if(back) back.textContent=S.en.backNav;
-  document.getElementById('t-title').textContent=s.title;
-  document.getElementById('t-sub').textContent=s.sub;
+  document.getElementById('t-title').textContent=S.en.title;
+  document.getElementById('t-sub').textContent=S.en.sub;
   ['c1','c2','c3','c4','l1','l2'].forEach(id=>document.getElementById(id).textContent=s[id]);
   document.getElementById('t-assump').textContent=s.assump;
   for(let i=1;i<=4;i++)document.getElementById('a'+i).innerHTML=s['a'+i];
