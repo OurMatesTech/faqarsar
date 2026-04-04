@@ -4,6 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Faqarsar.com — Family Tree</title>
+<meta name="description" content="Explore the Faqarsar family tree: interactive lineage across generations, family profiles, heritage gallery, and migration map. Preserving our village heritage.">
+<link rel="canonical" href="https://faqarsar.com/">
+<meta name="theme-color" content="#0c0b0f">
+<meta property="og:site_name" content="Faqarsar.com">
+<meta property="og:title" content="Faqarsar.com — Family Tree">
+<meta property="og:description" content="Explore the Faqarsar family tree: interactive lineage, profiles, and migration map. Preserving village heritage.">
+<meta property="og:url" content="https://faqarsar.com/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://faqarsar.com/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1376">
+<meta property="og:image:height" content="768">
+<meta property="og:image:alt" content="Family of Faqarsar — interactive family tree and heritage">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Faqarsar.com — Family Tree">
+<meta name="twitter:description" content="Explore the Faqarsar family tree: interactive lineage, profiles, and migration map.">
+<meta name="twitter:image" content="https://faqarsar.com/og-image.png">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
 <script src="config.js"></script>
@@ -173,7 +191,7 @@ body{background:#0c0b0f;color:#e8e4dc;font-family:'DM Sans',sans-serif;overflow-
 #profile-modal.modal-hidden{opacity:0;visibility:hidden;pointer-events:none}
 #profile-modal.modal-visible{opacity:1;visibility:visible;pointer-events:auto}
 #profile-modal-bg{position:absolute;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px)}
-#profile-modal-card{position:relative;z-index:1;width:90%;max-width:520px;max-height:85vh;overflow-y:auto;-webkit-overflow-scrolling:touch;background:#141218;border:1px solid rgba(251,191,36,0.2);border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,0.6),0 0 50px rgba(245,158,11,0.06);scrollbar-width:thin;scrollbar-color:rgba(251,191,36,0.15) transparent}
+#profile-modal-card{position:relative;z-index:1;width:90%;max-width:520px;max-height:85vh;overflow-y:auto;-webkit-overflow-scrolling:touch;background:#141218;border:1px solid rgba(251,191,36,0.2);border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,0.6),0 0 50px rgba(245,158,11,0.06);scrollbar-width:thin;scrollbar-color:rgba(251,191,36,0.15) transparent;container-type:inline-size;container-name:pmodal}
 #profile-modal-card::-webkit-scrollbar{width:3px}
 #profile-modal-card::-webkit-scrollbar-thumb{background:rgba(251,191,36,0.15);border-radius:2px}
 #profile-modal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent 5%,rgba(251,191,36,0.6) 50%,transparent 95%);border-radius:20px 20px 0 0}
@@ -203,6 +221,69 @@ body{background:#0c0b0f;color:#e8e4dc;font-family:'DM Sans',sans-serif;overflow-
 .ml-step.ml-current{background:rgba(251,191,36,0.12);border-color:rgba(251,191,36,0.25);color:#e8e4dc;font-weight:500}
 .ml-arrow{color:rgba(251,191,36,0.3);font-size:10px}
 .mfooter{padding:12px 28px 18px;display:flex;gap:10px;flex-wrap:wrap}
+.share-strip{margin:0 28px 2px;padding:14px 0 0;border-top:1px solid rgba(251,191,36,0.08)}
+.share-strip-head{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:600;color:rgba(251,191,36,0.5);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:10px}
+.share-strip-ico{opacity:0.75;flex-shrink:0}
+.share-strip-btns{display:flex;flex-wrap:wrap;gap:8px}
+.share-pill{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 12px;border-radius:999px;font-size:11px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;border:1px solid transparent;transition:background .2s,transform .15s,box-shadow .2s;white-space:nowrap;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.share-pill:active{transform:scale(0.97)}
+.share-pill-wa{background:rgba(37,211,102,0.12);border-color:rgba(37,211,102,0.35);color:#d9f8e5}
+.share-pill-wa:hover{background:rgba(37,211,102,0.22);border-color:rgba(37,211,102,0.55);box-shadow:0 4px 14px rgba(37,211,102,0.12)}
+.share-pill-fb{background:rgba(24,119,242,0.14);border-color:rgba(24,119,242,0.35);color:#dbeafe}
+.share-pill-fb:hover{background:rgba(24,119,242,0.24);border-color:rgba(59,130,246,0.55);box-shadow:0 4px 14px rgba(37,99,235,0.15)}
+.share-pill-ig{background:linear-gradient(135deg,rgba(225,48,108,0.18),rgba(253,29,29,0.12));border-color:rgba(225,48,108,0.35);color:#fce7f3}
+.share-pill-ig:hover{background:linear-gradient(135deg,rgba(225,48,108,0.28),rgba(253,29,29,0.2));border-color:rgba(251,113,133,0.45)}
+.share-pill-copy,.share-pill-more{background:rgba(251,191,36,0.06);border-color:rgba(251,191,36,0.15);color:rgba(251,191,36,0.85)}
+.share-pill-copy:hover,.share-pill-more:hover{background:rgba(251,191,36,0.12);border-color:rgba(251,191,36,0.4);color:#fbbf24}
+.share-pill svg{width:14px;height:14px;flex-shrink:0}
+@container pmodal (max-width:560px){
+  .share-strip-btns{
+    display:flex;
+    flex-wrap:nowrap;
+    gap:3px;
+    justify-content:space-between;
+    width:100%;
+  }
+  .share-strip-btns .share-pill{
+    flex:1 1 0;
+    min-width:0;
+    padding:7px 4px;
+    font-size:9px;
+    gap:0;
+    justify-content:center;
+  }
+  .share-strip-btns .share-pill>span:last-of-type{display:none}
+  .share-strip-btns .share-pill svg{width:15px;height:15px}
+}
+@media (max-width:768px){
+  #profile-modal .share-strip-btns{
+    display:flex;
+    flex-wrap:nowrap;
+    gap:3px;
+    justify-content:space-between;
+    width:100%;
+  }
+  #profile-modal .share-strip-btns .share-pill{
+    flex:1 1 0;
+    min-width:0;
+    padding:7px 4px;
+    font-size:9px;
+    gap:0;
+    justify-content:center;
+  }
+  #profile-modal .share-strip-btns .share-pill>span:last-of-type{display:none}
+  #profile-modal .share-strip-btns .share-pill svg{width:15px;height:15px}
+}
+.share-toolbar-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:10px;cursor:pointer;background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.22);color:rgba(251,191,36,0.92);font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;transition:all .2s;flex-shrink:0}
+.share-toolbar-btn:hover{background:rgba(251,191,36,0.16);border-color:rgba(251,191,36,0.45);color:#fbbf24}
+.share-toolbar-btn svg{width:15px;height:15px;opacity:0.9}
+@media (max-width:480px){
+  .share-toolbar-btn .share-toolbar-btn-text{display:none}
+  .share-toolbar-btn{padding:8px 11px;min-width:42px;justify-content:center;border-radius:10px}
+  .share-toolbar-btn svg{width:17px;height:17px}
+}
+#share-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);z-index:9999;padding:12px 20px;background:rgba(20,18,24,0.97);border:1px solid rgba(251,191,36,0.25);border-radius:12px;color:#e8e4dc;font-size:13px;font-weight:500;box-shadow:0 16px 48px rgba(0,0,0,0.45);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s cubic-bezier(0.4,0,0.2,1)}
+#share-toast.share-toast-visible{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
 .modal-action{font-size:12px;font-weight:500;padding:9px 20px;border-radius:10px;cursor:pointer;background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.25);color:rgba(251,191,36,0.9);font-family:'DM Sans',sans-serif;transition:all 0.2s}
 .modal-action:hover{background:rgba(251,191,36,0.18);color:#fbbf24;border-color:rgba(251,191,36,0.4)}
 .modal-note{font-size:13px;font-style:italic;color:rgba(180,80,60,0.8);margin-top:4px;line-height:1.4}
@@ -552,6 +633,7 @@ svg.lines path.highlighted{stroke:rgba(251,191,36,0.85);stroke-width:2.5;stroke-
   .mbadges{margin:8px 0 0;gap:5px}
   .mbadge{font-size:10px;padding:3px 8px;font-weight:500}
   .mdiv{margin:10px 16px}
+  .share-strip{margin:0 16px 2px;padding-top:12px}
   .mgrid{padding:0 16px;gap:8px 16px}
   .mgrid>div{min-height:30px}
   .mg-label{font-size:9px;font-weight:600;color:rgba(251,191,36,0.5);letter-spacing:0.1em;margin-bottom:2px}
@@ -1063,6 +1145,10 @@ svg.lines path.highlighted{stroke:rgba(251,191,36,0.85);stroke-width:2.5;stroke-
           <div class="cs-option" data-val="10">G11</div>
         </div>
       </div>
+      <button type="button" class="share-toolbar-btn" id="profiles-share-btn" onclick="shareProfilesPage(event)" title="Share profiles" aria-label="Share family profiles">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <span id="profiles-share-btn-label" class="share-toolbar-btn-text">Share</span>
+      </button>
     </div>
   </div>
   <div id="profiles-grid"></div>
@@ -1144,6 +1230,10 @@ svg.lines path.highlighted{stroke:rgba(251,191,36,0.85);stroke-width:2.5;stroke-
       <button onclick="resetView()">Fit</button>
       <button onclick="zoomIn()">+</button>
       <button onclick="zoomOut()">&minus;</button>
+      <button type="button" class="share-toolbar-btn" id="tree-share-btn" onclick="shareTreePage(event)" title="Share family tree" aria-label="Share family tree">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <span id="tree-share-btn-label" class="share-toolbar-btn-text">Share</span>
+      </button>
     </div>
   </div>
 
@@ -2369,11 +2459,180 @@ function syncUrlFromTreeState() {
   try {
     var u = new URL(location.href);
     u.searchParams.delete('full');
+    u.searchParams.delete('person');
+    u.searchParams.delete('view');
+    u.searchParams.set('view', 'tree');
     if (treeLayoutRootId === 'p1' && treeViewMode === 'hub') u.searchParams.delete('chapter');
     else u.searchParams.set('chapter', treeLayoutRootId);
+    u.searchParams.delete('tree');
     var qs = u.searchParams.toString();
     history.replaceState(null, '', u.pathname + (qs ? '?' + qs : '') + location.hash);
   } catch (eU) {}
+}
+
+function syncUrlFromTreeClosed() {
+  try {
+    var u = new URL(location.href);
+    u.searchParams.delete('view');
+    u.searchParams.delete('tree');
+    u.searchParams.delete('chapter');
+    var qs = u.searchParams.toString();
+    history.replaceState(null, '', u.pathname + (qs ? '?' + qs : '') + location.hash);
+  } catch (e) {}
+}
+
+function syncPersonUrl(id) {
+  if (!id || !raw[id]) return;
+  try {
+    var u = new URL(location.href);
+    u.searchParams.delete('full');
+    u.searchParams.delete('view');
+    u.searchParams.delete('tree');
+    u.searchParams.delete('chapter');
+    u.searchParams.set('person', id);
+    var qs = u.searchParams.toString();
+    history.replaceState(null, '', u.pathname + (qs ? '?' + qs : '') + location.hash);
+  } catch (e) {}
+}
+
+function clearPersonUrl() {
+  try {
+    var u = new URL(location.href);
+    if (!u.searchParams.has('person')) return;
+    u.searchParams.delete('person');
+    var qs = u.searchParams.toString();
+    history.replaceState(null, '', u.pathname + (qs ? '?' + qs : '') + location.hash);
+  } catch (e) {}
+}
+
+function clearProfilesViewUrl() {
+  try {
+    var u = new URL(location.href);
+    if (u.searchParams.get('view') !== 'profiles') return;
+    u.searchParams.delete('view');
+    var qs = u.searchParams.toString();
+    history.replaceState(null, '', u.pathname + (qs ? '?' + qs : '') + location.hash);
+  } catch (e) {}
+}
+
+function buildProfileShareUrl(id) {
+  var u = new URL(location.href);
+  u.searchParams.delete('full');
+  u.searchParams.delete('view');
+  u.searchParams.delete('tree');
+  u.searchParams.delete('chapter');
+  u.searchParams.set('person', id);
+  return u.toString();
+}
+
+function buildTreeShareUrl() {
+  var u = new URL(location.href);
+  u.searchParams.delete('full');
+  u.searchParams.delete('person');
+  u.searchParams.set('view', 'tree');
+  if (treeLayoutRootId === 'p1' && treeViewMode === 'hub') u.searchParams.delete('chapter');
+  else u.searchParams.set('chapter', treeLayoutRootId);
+  u.searchParams.delete('tree');
+  return u.toString();
+}
+
+function buildProfilesListShareUrl() {
+  var u = new URL(location.href);
+  u.searchParams.delete('full');
+  u.searchParams.delete('person');
+  u.searchParams.delete('chapter');
+  u.searchParams.delete('tree');
+  u.searchParams.set('view', 'profiles');
+  return u.toString();
+}
+
+function showShareToast(msg) {
+  var el = document.getElementById('share-toast');
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.add('share-toast-visible');
+  clearTimeout(showShareToast._t);
+  showShareToast._t = setTimeout(function() {
+    el.classList.remove('share-toast-visible');
+  }, 2600);
+}
+
+function copyStringToClipboard(text, okMsg) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() { showShareToast(okMsg); }).catch(function() { fallbackCopy(text, okMsg); });
+  } else {
+    fallbackCopy(text, okMsg);
+  }
+}
+function fallbackCopy(text, okMsg) {
+  try {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showShareToast(okMsg);
+  } catch (e) {
+    showShareToast(text);
+  }
+}
+
+function shareOpenWhatsApp(url, textLine) {
+  var t = (textLine ? textLine + '\n\n' : '') + url;
+  window.open('https://wa.me/?text=' + encodeURIComponent(t), '_blank', 'noopener,noreferrer');
+}
+
+function shareOpenFacebook(url) {
+  window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), '_blank', 'noopener,noreferrer');
+}
+
+function shareNativeOrCopy(title, text, url, copiedMsg) {
+  if (navigator.share) {
+    navigator.share({ title: title, text: text, url: url }).catch(function() {
+      copyStringToClipboard(url, copiedMsg);
+    });
+  } else {
+    copyStringToClipboard(url, copiedMsg);
+  }
+}
+
+function shareProfileChannel(ev, channel) {
+  var btn = ev && ev.currentTarget;
+  var id = btn && btn.getAttribute('data-share-profile');
+  if (!id || !raw[id]) return;
+  var url = buildProfileShareUrl(id);
+  var name = fullName(id);
+  var site = lang === 'pa' ? '\u0A2B\u0A15\u0A30\u0A38\u0A30 \u0A2A\u0A30\u0A3F\u0A35\u0A3E\u0A30' : 'Family of Faqarsar';
+  var line = site + ' \u2014 ' + name;
+  var copiedMsg = lang === 'pa' ? '\u0A32\u0A3F\u0A02\u0A15 \u0A15\u0A3E\u0A2A\u0A40 \u0A39\u0A4B \u0A17\u0A07\u0A06' : 'Link copied';
+  if (channel === 'wa') shareOpenWhatsApp(url, line);
+  else if (channel === 'fb') shareOpenFacebook(url);
+  else if (channel === 'copy') copyStringToClipboard(url, copiedMsg);
+  else if (channel === 'ig') {
+    copyStringToClipboard(url, lang === 'pa' ? '\u0A32\u0A3F\u0A02\u0A15 \u0A15\u0A3E\u0A2A\u0A40 \u2014 Instagram \u0A38\u0A1F\u0A4B\u0A30\u0A40 \u0A1C\u0A3E\u0A02 \u0A2A\u0A47\u0A38\u0A1F \u0A15\u0A30\u0A4B' : 'Link copied — paste in Instagram Story');
+  } else if (channel === 'more') shareNativeOrCopy(site + ' \u2014 ' + name, line, url, copiedMsg);
+}
+
+function shareTreePage(ev) {
+  if (ev && ev.preventDefault) ev.preventDefault();
+  var url = buildTreeShareUrl();
+  var title = lang === 'pa' ? '\u0A2B\u0A15\u0A30\u0A38\u0A30 \u0A2A\u0A30\u0A3F\u0A35\u0A3E\u0A30\u0A15 \u0A30\u0A41\u0A71\u0A16' : 'Faqarsar family tree';
+  var line = lang === 'pa' ? '\u0A2B\u0A15\u0A30\u0A38\u0A30 \u0A2A\u0A30\u0A3F\u0A35\u0A3E\u0A30\u0A15 \u0A30\u0A41\u0A71\u0A16 \u0A26\u0A47\u0A16\u0A4B' : 'Explore the Faqarsar family tree on Faqarsar.com';
+  var copiedMsg = lang === 'pa' ? '\u0A32\u0A3F\u0A02\u0A15 \u0A15\u0A3E\u0A2A\u0A40 \u0A39\u0A4B \u0A17\u0A07\u0A06' : 'Link copied';
+  shareNativeOrCopy(title, line, url, copiedMsg);
+}
+
+function shareProfilesPage(ev) {
+  if (ev && ev.preventDefault) ev.preventDefault();
+  var url = buildProfilesListShareUrl();
+  var title = lang === 'pa' ? '\u0A2B\u0A15\u0A30\u0A38\u0A30 \u0A2A\u0A30\u0A3F\u0A35\u0A3E\u0A30\u0A15 \u0A2A\u0A4D\u0A30\u0A4B\u0A2B\u0A3E\u0A08\u0A32\u0A3E\u0A02' : 'Faqarsar family profiles';
+  var line = lang === 'pa' ? '\u0A2A\u0A30\u0A3F\u0A35\u0A3E\u0A30\u0A15 \u0A2A\u0A4D\u0A30\u0A4B\u0A2B\u0A3E\u0A08\u0A32\u0A3E\u0A02 \u0A26\u0A47\u0A16\u0A4B' : 'Browse family profiles on Faqarsar.com';
+  var copiedMsg = lang === 'pa' ? '\u0A32\u0A3F\u0A02\u0A15 \u0A15\u0A3E\u0A2A\u0A40 \u0A39\u0A4B \u0A17\u0A07\u0A06' : 'Link copied';
+  shareNativeOrCopy(title, line, url, copiedMsg);
 }
 
 function updateTreeNavButton() {
@@ -2494,6 +2753,7 @@ function openTree(e) {
     }
     resetView();
   }, 50);
+  syncUrlFromTreeState();
 }
 function closeTree(e) {
   if (e && e.preventDefault) e.preventDefault();
@@ -2508,6 +2768,7 @@ function closeTree(e) {
   var herOpen = herV && herV.classList.contains('heritage-visible');
   if (!profOpen && !herOpen) document.body.style.overflow = '';
   clearSelection();
+  syncUrlFromTreeClosed();
 }
 
 // ===== PRIVACY OVERLAY =====
@@ -2553,6 +2814,16 @@ function toggleLang() {
   if (el('tree-nav-btn')) updateTreeNavButton();
   if (el('profiles-title')) el('profiles-title').textContent = isPa ? '\u0A2A\u0A30\u0A3F\u0A35\u0A3E\u0A30\u0A3F\u0A15 \u0A2A\u0A4D\u0A30\u0A4B\u0A2B\u0A3E\u0A08\u0A32\u0A3E\u0A02' : 'Family Profiles';
   if (el('profiles-subtitle')) el('profiles-subtitle').innerHTML = isPa ? treeStats.members + ' \u0A2E\u0A48\u0A02\u0A2C\u0A30 &middot; \u0A35\u0A47\u0A30\u0A35\u0A47 \u0A32\u0A08 \u0A15\u0A3E\u0A30\u0A21 \u0A15\u0A32\u0A3F\u0A71\u0A15 \u0A15\u0A30\u0A4B' : treeStats.members + ' Members &middot; Click Any Card for Details';
+  if (el('profiles-share-btn-label')) el('profiles-share-btn-label').textContent = isPa ? '\u0A38\u0A3E\u0A02\u0A1D\u0A3E \u0A15\u0A30\u0A4B' : 'Share';
+  if (el('tree-share-btn-label')) el('tree-share-btn-label').textContent = isPa ? '\u0A38\u0A3E\u0A02\u0A1D\u0A3E \u0A15\u0A30\u0A4B' : 'Share';
+  if (el('profiles-share-btn')) {
+    el('profiles-share-btn').setAttribute('aria-label', isPa ? '\u0A2A\u0A30\u0A3F\u0A35\u0A3E\u0A30\u0A15 \u0A2A\u0A4D\u0A30\u0A4B\u0A2B\u0A3E\u0A08\u0A32\u0A3E\u0A02 \u0A38\u0A3E\u0A02\u0A1D\u0A3E \u0A15\u0A30\u0A4B' : 'Share family profiles page');
+    el('profiles-share-btn').title = isPa ? '\u0A38\u0A3E\u0A02\u0A1D\u0A3E \u0A15\u0A30\u0A4B' : 'Share profiles';
+  }
+  if (el('tree-share-btn')) {
+    el('tree-share-btn').setAttribute('aria-label', isPa ? '\u0A2A\u0A30\u0A3F\u0A35\u0A3E\u0A30\u0A15 \u0A30\u0A41\u0A71\u0A16 \u0A38\u0A3E\u0A02\u0A1D\u0A3E \u0A15\u0A30\u0A4B' : 'Share family tree');
+    el('tree-share-btn').title = isPa ? '\u0A38\u0A3E\u0A02\u0A1D\u0A3E \u0A15\u0A30\u0A4B' : 'Share tree';
+  }
   if (el('footer-text')) el('footer-text').innerHTML = isPa ? 'Faqarsar.com &mdash; \u0A38\u0A3E\u0A21\u0A40 \u0A35\u0A3F\u0A30\u0A3E\u0A38\u0A24 \u0A28\u0A42\u0A70 \u0A38\u0A3E\u0A02\u0A2D\u0A23\u0A3E' : 'Faqarsar.com &mdash; Preserving our heritage, one name at a time';
   if (el('footer-privacy-link')) el('footer-privacy-link').textContent = isPa ? '\u0A2A\u0A30\u0A3E\u0A08\u0A35\u0A47\u0A38\u0A40' : 'Privacy';
   updateFooterVisitsDisplay();
@@ -2628,6 +2899,7 @@ function closeProfiles(e) {
   var treeOpen = treeV && treeV.classList.contains('tree-visible');
   var herOpen = herV && herV.classList.contains('heritage-visible');
   if (!treeOpen && !herOpen) document.body.style.overflow = '';
+  clearProfilesViewUrl();
 }
 function buildProfileCards() {
   var grid = document.getElementById("profiles-grid");
@@ -2710,6 +2982,19 @@ function openModal(id) {
   }
   familySnap += "</div>";
 
+  var shareStripTitle = isPa ? '\u0A38\u0A3E\u0A02\u0A1D\u0A3E \u0A15\u0A30\u0A4B' : 'Share';
+  var shareCopyLbl = isPa ? '\u0A32\u0A3F\u0A02\u0A15 \u0A15\u0A3E\u0A2A\u0A40 \u0A15\u0A30\u0A4B' : 'Copy link';
+  var shareMoreLbl = isPa ? '\u0A39\u0A4B\u0A30' : 'More';
+  var shareStripHtml = '<div class="share-strip" role="group" aria-label="' + shareStripTitle + '">' +
+    '<div class="share-strip-head"><svg class="share-strip-ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><span>' + shareStripTitle + '</span></div>' +
+    '<div class="share-strip-btns">' +
+    '<button type="button" class="share-pill share-pill-wa" data-share-profile="' + id + '" onclick="shareProfileChannel(event,\'wa\')" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.123 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>WhatsApp</span></button>' +
+    '<button type="button" class="share-pill share-pill-fb" data-share-profile="' + id + '" onclick="shareProfileChannel(event,\'fb\')" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span>Facebook</span></button>' +
+    '<button type="button" class="share-pill share-pill-ig" data-share-profile="' + id + '" onclick="shareProfileChannel(event,\'ig\')" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><span>Instagram</span></button>' +
+    '<button type="button" class="share-pill share-pill-copy" data-share-profile="' + id + '" onclick="shareProfileChannel(event,\'copy\')" aria-label="' + shareCopyLbl + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><span>' + shareCopyLbl + '</span></button>' +
+    '<button type="button" class="share-pill share-pill-more" data-share-profile="' + id + '" onclick="shareProfileChannel(event,\'more\')" aria-label="' + shareMoreLbl + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg><span>' + shareMoreLbl + '</span></button>' +
+    '</div></div>';
+
   // Status badges
   var isDeceased = p.notes && (p.notes.indexOf('Died') !== -1);
   var badges = "";
@@ -2774,7 +3059,7 @@ function openModal(id) {
     "</div>" +
     "<div class=\"mdiv\"></div>" +
     "<div class=\"ms\"><div class=\"ms-title\"><svg width=\"10\" height=\"10\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M3 6l3 1 3-1 3 1 3-1 3 1 3-1\"/><path d=\"M3 12l3 1 3-1 3 1 3-1 3 1 3-1\"/></svg>" + lineageLabel + "</div><div class=\"ml\">" + lh + "</div></div>" +
-    familySnap +
+    familySnap + shareStripHtml +
     "<div class=\"mfooter\"><button class=\"modal-action\" onclick=\"closeModal();closeProfiles(event||window.event);openTree(event||window.event);setTimeout(function(){flyToPerson('" + id + "')},600)\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" style=\"vertical-align:-2px;margin-right:5px\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 8v4l2 2\"/></svg>" + viewTreeLabel + "</button>" +
     (p.notes && p.notes.indexOf('\ud83d\udccd') !== -1 ? "<button class=\"view-on-globe-btn\" onclick=\"flyFromProfile('" + id + "')\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" style=\"margin-right:6px\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"/><path d=\"M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z\"/></svg>" + viewGlobeLabel + "</button>" : "") +
     "</div>";
@@ -2786,11 +3071,13 @@ function openModal(id) {
   switchModalSlide(0);
   document.getElementById("profile-modal").classList.remove("modal-hidden");
   document.getElementById("profile-modal").classList.add("modal-visible");
+  syncPersonUrl(id);
   // Pre-fetch slides in background so they're instant when swiped to
   setTimeout(function() { renderSlide3(id); renderSlide2(id); }, 50);
 }
 
 function closeModal() {
+  clearPersonUrl();
   document.getElementById("profile-modal").classList.remove("modal-visible");
   document.getElementById("profile-modal").classList.add("modal-hidden");
   document.getElementById('modal-slide2').innerHTML = '';
@@ -4172,6 +4459,24 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   fetchVisitCount();
   initHeritageGallery();
+  setTimeout(function() {
+    try {
+      var u = new URL(location.href);
+      var pid = u.searchParams.get('person');
+      if (pid && raw[pid]) {
+        openProfiles({preventDefault:function(){}});
+        openModal(pid);
+        return;
+      }
+      if (u.searchParams.get('view') === 'profiles') {
+        openProfiles({preventDefault:function(){}});
+        return;
+      }
+      if (u.searchParams.get('view') === 'tree' || u.searchParams.get('tree') === '1') {
+        openTree({preventDefault:function(){}});
+      }
+    } catch (eDl) {}
+  }, 0);
 });
 
 // ===== MODAL SLIDES =====
@@ -4803,5 +5108,6 @@ function initHeritageGallery() {
 }
 
 </script>
+<div id="share-toast" class="" role="status" aria-live="polite"></div>
 </body>
 </html>
