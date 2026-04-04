@@ -2640,6 +2640,14 @@ function fbDebugLog(message, data, hypothesisId) {
   // #endregion
 }
 
+function fbRememberLastDebug(payload) {
+  // #region agent log
+  try {
+    localStorage.setItem('fb_debug_last_da6281', JSON.stringify(payload));
+  } catch (e) {}
+  // #endregion
+}
+
 function shareOpenFacebook(url, textLine, copiedMsg) {
   var FB_APP_ID = '1984280252518132';
   try {
@@ -2652,6 +2660,7 @@ function shareOpenFacebook(url, textLine, copiedMsg) {
     var isMobileShare = sharePreferSameTab();
     // #region agent log
     fbDebugLog('entry', { isMobileShare: isMobileShare, hrefHost: location.hostname, shareUrl: url, dialogUrl: dialogUrl }, 'H1');
+    fbRememberLastDebug({ runId: 'fb-app-handoff-v2', branch: isMobileShare ? 'mobile-anchor' : 'desktop-popup', dialogUrl: dialogUrl, timestamp: Date.now() });
     // #endregion
     if (isMobileShare) {
       var a = document.createElement('a');
@@ -2662,6 +2671,7 @@ function shareOpenFacebook(url, textLine, copiedMsg) {
       document.body.appendChild(a);
       // #region agent log
       fbDebugLog('mobileAnchorClick', { target: a.target, rel: a.rel }, 'H2');
+      try { showShareToast('FB debug: mobile-anchor'); } catch (e) {}
       // #endregion
       a.click();
       document.body.removeChild(a);
@@ -2670,6 +2680,7 @@ function shareOpenFacebook(url, textLine, copiedMsg) {
     var w = window.open(dialogUrl + '&display=popup', '_blank', 'noopener,noreferrer,width=626,height=436');
     // #region agent log
     fbDebugLog('desktopWindowOpen', { returnedWindow: !!w }, 'H4');
+    try { showShareToast('FB debug: desktop-popup'); } catch (e) {}
     // #endregion
     if (!w) {
       // #region agent log
