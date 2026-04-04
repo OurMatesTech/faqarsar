@@ -2673,7 +2673,7 @@ function shareOpenFacebook(url, textLine, copiedMsg) {
     url = absolutizeShareUrl(url);
     var enc = encodeURIComponent(url);
     var redirectEnc = encodeURIComponent(absolutizeShareUrl(location.href));
-    var composerText = encodeURIComponent((textLine ? textLine + '\n\n' : '') + url);
+    var composerText = encodeURIComponent(url);
     var dialogUrl = 'https://www.facebook.com/dialog/share?app_id=' + FB_APP_ID +
       '&href=' + enc +
       '&redirect_uri=' + redirectEnc;
@@ -2681,7 +2681,7 @@ function shareOpenFacebook(url, textLine, copiedMsg) {
     var isMobileShare = sharePreferSameTab();
     // #region agent log
     fbDebugLog('entry', { isMobileShare: isMobileShare, hrefHost: location.hostname, shareUrl: url, dialogUrl: dialogUrl, appSchemeUrl: appSchemeUrl }, 'H8');
-    fbRememberLastDebug({ runId: 'fb-composer-scheme', branch: isMobileShare ? 'mobile-composer-scheme' : 'desktop-popup', dialogUrl: dialogUrl, appSchemeUrl: appSchemeUrl, timestamp: Date.now() });
+    fbRememberLastDebug({ runId: 'fb-composer-url-only', branch: isMobileShare ? 'mobile-composer-url-only' : 'desktop-popup', dialogUrl: dialogUrl, appSchemeUrl: appSchemeUrl, timestamp: Date.now() });
     // #endregion
     if (isMobileShare) {
       fbInstallHandoffProbe();
@@ -2691,8 +2691,8 @@ function shareOpenFacebook(url, textLine, copiedMsg) {
       a.style.display = 'none';
       document.body.appendChild(a);
       // #region agent log
-      fbDebugLog('mobileComposerSchemeClick', { target: a.target, href: a.href }, 'H11');
-      try { showShareToast('FB debug: mobile-composer-scheme'); } catch (e) {}
+      fbDebugLog('mobileComposerUrlOnlyClick', { target: a.target, href: a.href }, 'H12');
+      try { showShareToast('FB debug: mobile-composer-url-only'); } catch (e) {}
       // #endregion
       a.click();
       document.body.removeChild(a);
