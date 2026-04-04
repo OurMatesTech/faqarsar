@@ -2621,6 +2621,25 @@ function sharePreferSameTab() {
   return false;
 }
 
+function fbDebugLog(message, data, hypothesisId) {
+  // #region agent log
+  var payload = {
+    sessionId: 'da6281',
+    runId: 'fb-app-handoff',
+    hypothesisId: hypothesisId,
+    location: 'index.html:shareOpenFacebook',
+    message: message,
+    data: data || {},
+    timestamp: Date.now()
+  };
+  try {
+    var prev = sessionStorage.getItem('fb_debug_da6281') || '';
+    sessionStorage.setItem('fb_debug_da6281', prev + (prev ? '\n' : '') + JSON.stringify(payload));
+  } catch (e) {}
+  fetch('http://127.0.0.1:7465/ingest/d020a98d-240f-417b-a740-6dfb6050e79c',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'da6281'},body:JSON.stringify(payload)}).catch(function(){});
+  // #endregion
+}
+
 function shareOpenFacebook(url, textLine, copiedMsg) {
   var FB_APP_ID = '1984280252518132';
   try {
@@ -2630,22 +2649,38 @@ function shareOpenFacebook(url, textLine, copiedMsg) {
     var dialogUrl = 'https://www.facebook.com/dialog/share?app_id=' + FB_APP_ID +
       '&href=' + enc +
       '&redirect_uri=' + redirectEnc;
-    if (sharePreferSameTab()) {
+    var isMobileShare = sharePreferSameTab();
+    // #region agent log
+    fbDebugLog('entry', { isMobileShare: isMobileShare, hrefHost: location.hostname, shareUrl: url, dialogUrl: dialogUrl }, 'H1');
+    // #endregion
+    if (isMobileShare) {
       var a = document.createElement('a');
       a.href = dialogUrl;
       a.target = '_blank';
       a.rel = 'noopener noreferrer';
       a.style.display = 'none';
       document.body.appendChild(a);
+      // #region agent log
+      fbDebugLog('mobileAnchorClick', { target: a.target, rel: a.rel }, 'H2');
+      // #endregion
       a.click();
       document.body.removeChild(a);
       return;
     }
     var w = window.open(dialogUrl + '&display=popup', '_blank', 'noopener,noreferrer,width=626,height=436');
+    // #region agent log
+    fbDebugLog('desktopWindowOpen', { returnedWindow: !!w }, 'H4');
+    // #endregion
     if (!w) {
+      // #region agent log
+      fbDebugLog('desktopFallbackAssign', {}, 'H4');
+      // #endregion
       window.location.assign(dialogUrl);
     }
   } catch (e) {
+    // #region agent log
+    fbDebugLog('error', { error: String(e && e.message) }, 'H3');
+    // #endregion
     try {
       copyStringToClipboard(url, copiedMsg);
     } catch (e2) {}
