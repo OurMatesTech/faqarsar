@@ -2519,6 +2519,7 @@ function getShareCanonicalOrigin() {
   try {
     var h = location.hostname;
     if (/^(www\.)?faqarsar\.com$/i.test(h)) return 'https://faqarsar.com';
+    if (h === 'localhost' || h === '127.0.0.1' || h === '[::1]') return 'https://faqarsar.com';
     return location.origin;
   } catch (e) {
     return '';
@@ -2608,17 +2609,6 @@ function shareOpenWhatsApp(url, textLine) {
   window.open('https://wa.me/?text=' + encodeURIComponent(t), '_blank', 'noopener,noreferrer');
 }
 
-function _agentDbg(payload) {
-  // #region agent log
-  var body = Object.assign({ sessionId: 'da6281', timestamp: Date.now() }, payload);
-  try {
-    var prev = sessionStorage.getItem('fb_debug_da6281') || '';
-    sessionStorage.setItem('fb_debug_da6281', prev + (prev ? '\n' : '') + JSON.stringify(body));
-  } catch (e) {}
-  fetch('http://127.0.0.1:7465/ingest/d020a98d-240f-417b-a740-6dfb6050e79c', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': 'da6281' }, body: JSON.stringify(body) }).catch(function() {});
-  // #endregion
-}
-
 function sharePreferSameTab() {
   try {
     if (navigator.userAgentData && navigator.userAgentData.mobile === true) return true;
@@ -2632,34 +2622,23 @@ function sharePreferSameTab() {
 }
 
 function shareOpenFacebook(url, textLine, copiedMsg) {
-  var _inUrl = url;
   try {
     url = absolutizeShareUrl(url);
     var enc = encodeURIComponent(url);
     var shareHref = 'https://www.facebook.com/sharer/sharer.php?u=' + enc;
     var mobileSharer = 'https://m.facebook.com/sharer.php?u=' + enc;
-    var preferSame = sharePreferSameTab();
-    // #region agent log
-    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'beforeNavigate', data: { preferSameTab: preferSame, branch: preferSame ? 'mFacebookSharer' : 'desktopWindowOpen', inUrlLen: _inUrl && _inUrl.length, outUrlLen: url && url.length }, hypothesisId: 'AUTO-FB', runId: 'fb-auto-open' });
-    // #endregion
-    if (preferSame) {
-      window.location.assign(mobileSharer);
+    if (sharePreferSameTab()) {
+      var wm = window.open(mobileSharer, '_blank', 'noopener,noreferrer');
+      if (!wm) {
+        window.location.assign(mobileSharer);
+      }
       return;
     }
     var w = window.open(shareHref, '_blank', 'noopener,noreferrer');
-    // #region agent log
-    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'afterWindowOpen', data: { hasRef: !!w, popupBlocked: w === null }, hypothesisId: 'H3', runId: 'fb-auto-open' });
-    // #endregion
     if (!w) {
       window.location.assign(shareHref);
-      // #region agent log
-      _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'sameTabFallback', data: { reason: 'popupBlocked' }, hypothesisId: 'H3', runId: 'fb-auto-open' });
-      // #endregion
     }
   } catch (e) {
-    // #region agent log
-    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'error', data: { err: String(e && e.message) }, hypothesisId: 'H4', runId: 'fb-auto-open' });
-    // #endregion
     try {
       copyStringToClipboard(url, copiedMsg);
     } catch (e2) {}
@@ -2679,9 +2658,6 @@ function shareNativeOrCopy(title, text, url, copiedMsg) {
 function shareProfileChannel(ev, channel) {
   var btn = ev && ev.currentTarget;
   var id = btn && btn.getAttribute('data-share-profile');
-  // #region agent log
-  _agentDbg({ location: 'index.html:shareProfileChannel', message: 'entry', data: { channel: String(channel), id: id || null, hasRaw: !!(id && raw[id]), earlyExit: !id || !raw[id] }, hypothesisId: 'H1', runId: 'post-fix' });
-  // #endregion
   if (!id || !raw[id]) return;
   var url = buildProfileShareUrl(id);
   var name = fullName(id);
