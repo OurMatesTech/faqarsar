@@ -2625,11 +2625,19 @@ function shareOpenFacebook(url, textLine, copiedMsg) {
   try {
     url = absolutizeShareUrl(url);
     var enc = encodeURIComponent(url);
-    var titleEnc = encodeURIComponent(textLine || '');
     var shareHref = 'https://www.facebook.com/sharer/sharer.php?u=' + enc;
     if (sharePreferSameTab()) {
-      var mobileSharer = 'https://www.facebook.com/sharer/sharer.php?m2w&u=' + enc + '&t=' + titleEnc;
-      window.location.assign(mobileSharer);
+      if (typeof navigator.share === 'function') {
+        navigator.share({
+          title: textLine || 'Faqarsar.com',
+          text: textLine || '',
+          url: url
+        }).catch(function() {
+          copyStringToClipboard(url, copiedMsg);
+        });
+        return;
+      }
+      copyStringToClipboard(url, copiedMsg);
       return;
     }
     var w = window.open(shareHref, '_blank', 'noopener,noreferrer');
