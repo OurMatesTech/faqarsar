@@ -2622,27 +2622,26 @@ function sharePreferSameTab() {
 }
 
 function shareOpenFacebook(url, textLine, copiedMsg) {
+  var FB_APP_ID = '1984280252518132';
   try {
     url = absolutizeShareUrl(url);
     var enc = encodeURIComponent(url);
-    var shareHref = 'https://www.facebook.com/sharer/sharer.php?u=' + enc;
+    var redirectEnc = encodeURIComponent(absolutizeShareUrl(location.href));
+    var dialogUrl = 'https://www.facebook.com/dialog/share?app_id=' + FB_APP_ID +
+      '&display=touch' +
+      '&href=' + enc +
+      '&redirect_uri=' + redirectEnc;
+    var desktopDialog = 'https://www.facebook.com/dialog/share?app_id=' + FB_APP_ID +
+      '&display=popup' +
+      '&href=' + enc +
+      '&redirect_uri=' + redirectEnc;
     if (sharePreferSameTab()) {
-      if (typeof navigator.share === 'function') {
-        navigator.share({
-          title: textLine || 'Faqarsar.com',
-          text: textLine || '',
-          url: url
-        }).catch(function() {
-          copyStringToClipboard(url, copiedMsg);
-        });
-        return;
-      }
-      copyStringToClipboard(url, copiedMsg);
+      window.location.assign(dialogUrl);
       return;
     }
-    var w = window.open(shareHref, '_blank', 'noopener,noreferrer');
+    var w = window.open(desktopDialog, '_blank', 'noopener,noreferrer,width=626,height=436');
     if (!w) {
-      window.location.assign(shareHref);
+      window.location.assign(desktopDialog);
     }
   } catch (e) {
     try {
