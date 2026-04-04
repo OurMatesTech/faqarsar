@@ -2631,35 +2631,51 @@ function sharePreferSameTab() {
   return false;
 }
 
-function shareOpenFacebook(url) {
+function shareOpenFacebook(url, textLine, copiedMsg) {
   var _inUrl = url;
   try {
     url = absolutizeShareUrl(url);
     var shareHref = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
     var preferSame = sharePreferSameTab();
     // #region agent log
-    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'beforeNavigate', data: { preferSameTab: preferSame, inUrlLen: _inUrl && _inUrl.length, outUrlLen: url && url.length, shareHrefLen: shareHref.length, host: location.hostname, proto: location.protocol }, hypothesisId: 'M-H3', runId: 'mobile-fix' });
+    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'beforeNavigate', data: { preferSameTab: preferSame, hasShare: typeof navigator.share === 'function', inUrlLen: _inUrl && _inUrl.length, outUrlLen: url && url.length, shareHrefLen: shareHref.length, host: location.hostname, proto: location.protocol }, hypothesisId: 'APP-H1', runId: 'app-crash-fix' });
     // #endregion
     if (preferSame) {
-      window.location.assign(shareHref);
+      if (typeof navigator.share === 'function') {
+        // #region agent log
+        _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'mobileWebShareAttempt', data: {}, hypothesisId: 'APP-H1', runId: 'app-crash-fix' });
+        // #endregion
+        navigator.share({ title: textLine || 'Faqarsar.com', text: textLine || '', url: url }).then(function() {
+          // #region agent log
+          _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'mobileWebShareSuccess', data: {}, hypothesisId: 'APP-H1', runId: 'app-crash-fix' });
+          // #endregion
+        }).catch(function(err) {
+          // #region agent log
+          _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'mobileWebShareReject', data: { err: String(err && err.message) }, hypothesisId: 'APP-H1', runId: 'app-crash-fix' });
+          // #endregion
+          copyStringToClipboard(url, copiedMsg);
+        });
+        return;
+      }
       // #region agent log
-      _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'mobileSameTab', data: { branch: 'locationAssign' }, hypothesisId: 'M-H3', runId: 'mobile-fix' });
+      _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'mobileNoWebShareClipboard', data: {}, hypothesisId: 'APP-H1', runId: 'app-crash-fix' });
       // #endregion
+      copyStringToClipboard(url, copiedMsg);
       return;
     }
     var w = window.open(shareHref, '_blank', 'noopener,noreferrer');
     // #region agent log
-    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'afterWindowOpen', data: { hasRef: !!w, popupBlocked: w === null }, hypothesisId: 'H3', runId: 'mobile-fix' });
+    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'afterWindowOpen', data: { hasRef: !!w, popupBlocked: w === null }, hypothesisId: 'H3', runId: 'app-crash-fix' });
     // #endregion
     if (!w) {
       window.location.assign(shareHref);
       // #region agent log
-      _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'sameTabFallback', data: { reason: 'popupBlocked' }, hypothesisId: 'H3', runId: 'mobile-fix' });
+      _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'sameTabFallback', data: { reason: 'popupBlocked' }, hypothesisId: 'H3', runId: 'app-crash-fix' });
       // #endregion
     }
   } catch (e) {
     // #region agent log
-    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'error', data: { err: String(e && e.message) }, hypothesisId: 'H4', runId: 'mobile-fix' });
+    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'error', data: { err: String(e && e.message) }, hypothesisId: 'H4', runId: 'app-crash-fix' });
     // #endregion
   }
 }
@@ -2687,7 +2703,7 @@ function shareProfileChannel(ev, channel) {
   var line = site + ' \u2014 ' + name;
   var copiedMsg = lang === 'pa' ? '\u0A32\u0A3F\u0A02\u0A15 \u0A15\u0A3E\u0A2A\u0A40 \u0A39\u0A4B \u0A17\u0A07\u0A06' : 'Link copied';
   if (channel === 'wa') shareOpenWhatsApp(url, line);
-  else if (channel === 'fb') shareOpenFacebook(url);
+  else if (channel === 'fb') shareOpenFacebook(url, line, copiedMsg);
   else if (channel === 'copy') copyStringToClipboard(url, copiedMsg);
   else if (channel === 'ig') {
     copyStringToClipboard(url, lang === 'pa' ? '\u0A32\u0A3F\u0A02\u0A15 \u0A15\u0A3E\u0A2A\u0A40 \u2014 Instagram \u0A38\u0A1F\u0A4B\u0A30\u0A40 \u0A1C\u0A3E\u0A02 \u0A2A\u0A47\u0A38\u0A1F \u0A15\u0A30\u0A4B' : 'Link copied — paste in Instagram Story');
