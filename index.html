@@ -2648,6 +2648,25 @@ function fbRememberLastDebug(payload) {
   // #endregion
 }
 
+function fbInstallHandoffProbe() {
+  if (fbInstallHandoffProbe._done) return;
+  fbInstallHandoffProbe._done = true;
+  // #region agent log
+  document.addEventListener('visibilitychange', function() {
+    fbDebugLog('visibilitychange', { state: document.visibilityState }, 'H9');
+    fbRememberLastDebug({ runId: 'fb-app-scheme', event: 'visibilitychange', state: document.visibilityState, timestamp: Date.now() });
+  });
+  window.addEventListener('pagehide', function() {
+    fbDebugLog('pagehide', {}, 'H9');
+    fbRememberLastDebug({ runId: 'fb-app-scheme', event: 'pagehide', timestamp: Date.now() });
+  });
+  window.addEventListener('blur', function() {
+    fbDebugLog('blur', {}, 'H9');
+    fbRememberLastDebug({ runId: 'fb-app-scheme', event: 'blur', timestamp: Date.now() });
+  });
+  // #endregion
+}
+
 function shareOpenFacebook(url, textLine, copiedMsg) {
   var FB_APP_ID = '1984280252518132';
   try {
@@ -2657,21 +2676,22 @@ function shareOpenFacebook(url, textLine, copiedMsg) {
     var dialogUrl = 'https://www.facebook.com/dialog/share?app_id=' + FB_APP_ID +
       '&href=' + enc +
       '&redirect_uri=' + redirectEnc;
+    var appSchemeUrl = 'fb://faceweb/f?href=' + encodeURIComponent(dialogUrl);
     var isMobileShare = sharePreferSameTab();
     // #region agent log
-    fbDebugLog('entry', { isMobileShare: isMobileShare, hrefHost: location.hostname, shareUrl: url, dialogUrl: dialogUrl }, 'H1');
-    fbRememberLastDebug({ runId: 'fb-app-handoff-v2', branch: isMobileShare ? 'mobile-anchor' : 'desktop-popup', dialogUrl: dialogUrl, timestamp: Date.now() });
+    fbDebugLog('entry', { isMobileShare: isMobileShare, hrefHost: location.hostname, shareUrl: url, dialogUrl: dialogUrl, appSchemeUrl: appSchemeUrl }, 'H8');
+    fbRememberLastDebug({ runId: 'fb-app-scheme', branch: isMobileShare ? 'mobile-app-scheme' : 'desktop-popup', dialogUrl: dialogUrl, appSchemeUrl: appSchemeUrl, timestamp: Date.now() });
     // #endregion
     if (isMobileShare) {
+      fbInstallHandoffProbe();
       var a = document.createElement('a');
-      a.href = dialogUrl;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
+      a.href = appSchemeUrl;
+      a.target = '_self';
       a.style.display = 'none';
       document.body.appendChild(a);
       // #region agent log
-      fbDebugLog('mobileAnchorClick', { target: a.target, rel: a.rel }, 'H2');
-      try { showShareToast('FB debug: mobile-anchor'); } catch (e) {}
+      fbDebugLog('mobileSchemeClick', { target: a.target, href: a.href }, 'H8');
+      try { showShareToast('FB debug: mobile-app-scheme'); } catch (e) {}
       // #endregion
       a.click();
       document.body.removeChild(a);
