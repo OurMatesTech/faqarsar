@@ -2515,6 +2515,28 @@ function clearProfilesViewUrl() {
   } catch (e) {}
 }
 
+function getShareCanonicalOrigin() {
+  try {
+    var h = location.hostname;
+    if (/^(www\.)?faqarsar\.com$/i.test(h)) return 'https://faqarsar.com';
+    return location.origin;
+  } catch (e) {
+    return '';
+  }
+}
+
+function absolutizeShareUrl(urlString) {
+  try {
+    var u = new URL(urlString);
+    if (u.protocol === 'file:') return urlString;
+    var origin = getShareCanonicalOrigin();
+    if (!origin) return urlString;
+    return new URL(u.pathname + u.search + u.hash, origin).toString();
+  } catch (e) {
+    return urlString;
+  }
+}
+
 function buildProfileShareUrl(id) {
   var u = new URL(location.href);
   u.searchParams.delete('full');
@@ -2522,7 +2544,7 @@ function buildProfileShareUrl(id) {
   u.searchParams.delete('tree');
   u.searchParams.delete('chapter');
   u.searchParams.set('person', id);
-  return u.toString();
+  return absolutizeShareUrl(u.toString());
 }
 
 function buildTreeShareUrl() {
@@ -2533,7 +2555,7 @@ function buildTreeShareUrl() {
   if (treeLayoutRootId === 'p1' && treeViewMode === 'hub') u.searchParams.delete('chapter');
   else u.searchParams.set('chapter', treeLayoutRootId);
   u.searchParams.delete('tree');
-  return u.toString();
+  return absolutizeShareUrl(u.toString());
 }
 
 function buildProfilesListShareUrl() {
@@ -2543,7 +2565,7 @@ function buildProfilesListShareUrl() {
   u.searchParams.delete('chapter');
   u.searchParams.delete('tree');
   u.searchParams.set('view', 'profiles');
-  return u.toString();
+  return absolutizeShareUrl(u.toString());
 }
 
 function showShareToast(msg) {
@@ -2587,7 +2609,15 @@ function shareOpenWhatsApp(url, textLine) {
 }
 
 function shareOpenFacebook(url) {
-  window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), '_blank', 'noopener,noreferrer');
+  url = absolutizeShareUrl(url);
+  var shareHref = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url) + '&display=popup';
+  var a = document.createElement('a');
+  a.href = shareHref;
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
 
 function shareNativeOrCopy(title, text, url, copiedMsg) {
