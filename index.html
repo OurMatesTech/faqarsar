@@ -2621,101 +2621,32 @@ function sharePreferSameTab() {
   return false;
 }
 
-function fbDebugLog(message, data, hypothesisId) {
-  // #region agent log
-  var payload = {
-    sessionId: 'da6281',
-    runId: 'fb-app-handoff',
-    hypothesisId: hypothesisId,
-    location: 'index.html:shareOpenFacebook',
-    message: message,
-    data: data || {},
-    timestamp: Date.now()
-  };
-  try {
-    var prev = sessionStorage.getItem('fb_debug_da6281') || '';
-    sessionStorage.setItem('fb_debug_da6281', prev + (prev ? '\n' : '') + JSON.stringify(payload));
-  } catch (e) {}
-  fetch('http://127.0.0.1:7465/ingest/d020a98d-240f-417b-a740-6dfb6050e79c',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'da6281'},body:JSON.stringify(payload)}).catch(function(){});
-  // #endregion
-}
-
-function fbRememberLastDebug(payload) {
-  // #region agent log
-  try {
-    localStorage.setItem('fb_debug_last_da6281', JSON.stringify(payload));
-  } catch (e) {}
-  // #endregion
-}
-
-function fbInstallHandoffProbe() {
-  if (fbInstallHandoffProbe._done) return;
-  fbInstallHandoffProbe._done = true;
-  // #region agent log
-  document.addEventListener('visibilitychange', function() {
-    fbDebugLog('visibilitychange', { state: document.visibilityState }, 'H9');
-    fbRememberLastDebug({ runId: 'fb-app-scheme', event: 'visibilitychange', state: document.visibilityState, timestamp: Date.now() });
-  });
-  window.addEventListener('pagehide', function() {
-    fbDebugLog('pagehide', {}, 'H9');
-    fbRememberLastDebug({ runId: 'fb-app-scheme', event: 'pagehide', timestamp: Date.now() });
-  });
-  window.addEventListener('blur', function() {
-    fbDebugLog('blur', {}, 'H9');
-    fbRememberLastDebug({ runId: 'fb-app-scheme', event: 'blur', timestamp: Date.now() });
-  });
-  // #endregion
-}
-
 function shareOpenFacebook(url, textLine, copiedMsg) {
   var FB_APP_ID = '1984280252518132';
   try {
     url = absolutizeShareUrl(url);
     var enc = encodeURIComponent(url);
     var redirectEnc = encodeURIComponent(absolutizeShareUrl(location.href));
-    var composerText = encodeURIComponent(url);
+    var composerText = encodeURIComponent((textLine ? textLine + '\n\n' : '') + url);
     var dialogUrl = 'https://www.facebook.com/dialog/share?app_id=' + FB_APP_ID +
       '&href=' + enc +
       '&redirect_uri=' + redirectEnc;
-    var appSchemeUrl = 'fb://composer?text=' + composerText;
-    var isMobileShare = sharePreferSameTab();
-    // #region agent log
-    fbDebugLog('entry', { isMobileShare: isMobileShare, hrefHost: location.hostname, shareUrl: url, dialogUrl: dialogUrl, appSchemeUrl: appSchemeUrl }, 'H8');
-    fbRememberLastDebug({ runId: 'fb-composer-url-only', branch: isMobileShare ? 'mobile-composer-url-only' : 'desktop-popup', dialogUrl: dialogUrl, appSchemeUrl: appSchemeUrl, timestamp: Date.now() });
-    // #endregion
-    if (isMobileShare) {
-      fbInstallHandoffProbe();
+    if (sharePreferSameTab()) {
       var a = document.createElement('a');
-      a.href = appSchemeUrl;
+      a.href = 'fb://composer?text=' + composerText;
       a.target = '_self';
       a.style.display = 'none';
       document.body.appendChild(a);
-      // #region agent log
-      fbDebugLog('mobileComposerUrlOnlyClick', { target: a.target, href: a.href }, 'H12');
-      try { showShareToast('FB debug: mobile-composer-url-only'); } catch (e) {}
-      // #endregion
       a.click();
       document.body.removeChild(a);
       return;
     }
     var w = window.open(dialogUrl + '&display=popup', '_blank', 'noopener,noreferrer,width=626,height=436');
-    // #region agent log
-    fbDebugLog('desktopWindowOpen', { returnedWindow: !!w }, 'H4');
-    try { showShareToast('FB debug: desktop-popup'); } catch (e) {}
-    // #endregion
     if (!w) {
-      // #region agent log
-      fbDebugLog('desktopFallbackAssign', {}, 'H4');
-      // #endregion
       window.location.assign(dialogUrl);
     }
   } catch (e) {
-    // #region agent log
-    fbDebugLog('error', { error: String(e && e.message) }, 'H3');
-    // #endregion
-    try {
-      copyStringToClipboard(url, copiedMsg);
-    } catch (e2) {}
+    try { copyStringToClipboard(url, copiedMsg); } catch (e2) {}
   }
 }
 
