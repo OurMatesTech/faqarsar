@@ -2608,16 +2608,60 @@ function shareOpenWhatsApp(url, textLine) {
   window.open('https://wa.me/?text=' + encodeURIComponent(t), '_blank', 'noopener,noreferrer');
 }
 
+function _agentDbg(payload) {
+  // #region agent log
+  var body = Object.assign({ sessionId: 'da6281', timestamp: Date.now() }, payload);
+  try {
+    var prev = sessionStorage.getItem('fb_debug_da6281') || '';
+    sessionStorage.setItem('fb_debug_da6281', prev + (prev ? '\n' : '') + JSON.stringify(body));
+  } catch (e) {}
+  fetch('http://127.0.0.1:7465/ingest/d020a98d-240f-417b-a740-6dfb6050e79c', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': 'da6281' }, body: JSON.stringify(body) }).catch(function() {});
+  // #endregion
+}
+
+function sharePreferSameTab() {
+  try {
+    if (navigator.userAgentData && navigator.userAgentData.mobile === true) return true;
+  } catch (e) {}
+  var ua = navigator.userAgent || '';
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(ua)) return true;
+  try {
+    if (navigator.maxTouchPoints > 0 && window.matchMedia('(pointer: coarse)').matches) return true;
+  } catch (e2) {}
+  return false;
+}
+
 function shareOpenFacebook(url) {
-  url = absolutizeShareUrl(url);
-  var shareHref = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url) + '&display=popup';
-  var a = document.createElement('a');
-  a.href = shareHref;
-  a.target = '_blank';
-  a.rel = 'noopener noreferrer';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  var _inUrl = url;
+  try {
+    url = absolutizeShareUrl(url);
+    var shareHref = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
+    var preferSame = sharePreferSameTab();
+    // #region agent log
+    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'beforeNavigate', data: { preferSameTab: preferSame, inUrlLen: _inUrl && _inUrl.length, outUrlLen: url && url.length, shareHrefLen: shareHref.length, host: location.hostname, proto: location.protocol }, hypothesisId: 'M-H3', runId: 'mobile-fix' });
+    // #endregion
+    if (preferSame) {
+      window.location.assign(shareHref);
+      // #region agent log
+      _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'mobileSameTab', data: { branch: 'locationAssign' }, hypothesisId: 'M-H3', runId: 'mobile-fix' });
+      // #endregion
+      return;
+    }
+    var w = window.open(shareHref, '_blank', 'noopener,noreferrer');
+    // #region agent log
+    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'afterWindowOpen', data: { hasRef: !!w, popupBlocked: w === null }, hypothesisId: 'H3', runId: 'mobile-fix' });
+    // #endregion
+    if (!w) {
+      window.location.assign(shareHref);
+      // #region agent log
+      _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'sameTabFallback', data: { reason: 'popupBlocked' }, hypothesisId: 'H3', runId: 'mobile-fix' });
+      // #endregion
+    }
+  } catch (e) {
+    // #region agent log
+    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'error', data: { err: String(e && e.message) }, hypothesisId: 'H4', runId: 'mobile-fix' });
+    // #endregion
+  }
 }
 
 function shareNativeOrCopy(title, text, url, copiedMsg) {
@@ -2633,6 +2677,9 @@ function shareNativeOrCopy(title, text, url, copiedMsg) {
 function shareProfileChannel(ev, channel) {
   var btn = ev && ev.currentTarget;
   var id = btn && btn.getAttribute('data-share-profile');
+  // #region agent log
+  _agentDbg({ location: 'index.html:shareProfileChannel', message: 'entry', data: { channel: String(channel), id: id || null, hasRaw: !!(id && raw[id]), earlyExit: !id || !raw[id] }, hypothesisId: 'H1', runId: 'post-fix' });
+  // #endregion
   if (!id || !raw[id]) return;
   var url = buildProfileShareUrl(id);
   var name = fullName(id);
