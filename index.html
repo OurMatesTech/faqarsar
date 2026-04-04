@@ -2628,20 +2628,22 @@ function shareOpenFacebook(url, textLine, copiedMsg) {
     var enc = encodeURIComponent(url);
     var redirectEnc = encodeURIComponent(absolutizeShareUrl(location.href));
     var dialogUrl = 'https://www.facebook.com/dialog/share?app_id=' + FB_APP_ID +
-      '&display=touch' +
-      '&href=' + enc +
-      '&redirect_uri=' + redirectEnc;
-    var desktopDialog = 'https://www.facebook.com/dialog/share?app_id=' + FB_APP_ID +
-      '&display=popup' +
       '&href=' + enc +
       '&redirect_uri=' + redirectEnc;
     if (sharePreferSameTab()) {
-      window.location.assign(dialogUrl);
+      var a = document.createElement('a');
+      a.href = dialogUrl;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
       return;
     }
-    var w = window.open(desktopDialog, '_blank', 'noopener,noreferrer,width=626,height=436');
+    var w = window.open(dialogUrl + '&display=popup', '_blank', 'noopener,noreferrer,width=626,height=436');
     if (!w) {
-      window.location.assign(desktopDialog);
+      window.location.assign(dialogUrl);
     }
   } catch (e) {
     try {
