@@ -2625,13 +2625,11 @@ function shareOpenFacebook(url, textLine, copiedMsg) {
   try {
     url = absolutizeShareUrl(url);
     var enc = encodeURIComponent(url);
+    var titleEnc = encodeURIComponent(textLine || '');
     var shareHref = 'https://www.facebook.com/sharer/sharer.php?u=' + enc;
-    var mobileSharer = 'https://m.facebook.com/sharer.php?u=' + enc;
     if (sharePreferSameTab()) {
-      var wm = window.open(mobileSharer, '_blank', 'noopener,noreferrer');
-      if (!wm) {
-        window.location.assign(mobileSharer);
-      }
+      var mobileSharer = 'https://www.facebook.com/sharer/sharer.php?m2w&u=' + enc + '&t=' + titleEnc;
+      window.location.assign(mobileSharer);
       return;
     }
     var w = window.open(shareHref, '_blank', 'noopener,noreferrer');
