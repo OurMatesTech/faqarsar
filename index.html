@@ -2635,48 +2635,34 @@ function shareOpenFacebook(url, textLine, copiedMsg) {
   var _inUrl = url;
   try {
     url = absolutizeShareUrl(url);
-    var shareHref = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
+    var enc = encodeURIComponent(url);
+    var shareHref = 'https://www.facebook.com/sharer/sharer.php?u=' + enc;
+    var mobileSharer = 'https://m.facebook.com/sharer.php?u=' + enc;
     var preferSame = sharePreferSameTab();
     // #region agent log
-    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'beforeNavigate', data: { preferSameTab: preferSame, hasShare: typeof navigator.share === 'function', inUrlLen: _inUrl && _inUrl.length, outUrlLen: url && url.length, shareHrefLen: shareHref.length, host: location.hostname, proto: location.protocol }, hypothesisId: 'APP-H1', runId: 'app-crash-fix' });
+    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'beforeNavigate', data: { preferSameTab: preferSame, branch: preferSame ? 'mFacebookSharer' : 'desktopWindowOpen', inUrlLen: _inUrl && _inUrl.length, outUrlLen: url && url.length }, hypothesisId: 'AUTO-FB', runId: 'fb-auto-open' });
     // #endregion
     if (preferSame) {
-      if (typeof navigator.share === 'function') {
-        // #region agent log
-        _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'mobileWebShareAttempt', data: {}, hypothesisId: 'APP-H1', runId: 'app-crash-fix' });
-        // #endregion
-        navigator.share({ title: textLine || 'Faqarsar.com', text: textLine || '', url: url }).then(function() {
-          // #region agent log
-          _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'mobileWebShareSuccess', data: {}, hypothesisId: 'APP-H1', runId: 'app-crash-fix' });
-          // #endregion
-        }).catch(function(err) {
-          // #region agent log
-          _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'mobileWebShareReject', data: { err: String(err && err.message) }, hypothesisId: 'APP-H1', runId: 'app-crash-fix' });
-          // #endregion
-          copyStringToClipboard(url, copiedMsg);
-        });
-        return;
-      }
-      // #region agent log
-      _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'mobileNoWebShareClipboard', data: {}, hypothesisId: 'APP-H1', runId: 'app-crash-fix' });
-      // #endregion
-      copyStringToClipboard(url, copiedMsg);
+      window.location.assign(mobileSharer);
       return;
     }
     var w = window.open(shareHref, '_blank', 'noopener,noreferrer');
     // #region agent log
-    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'afterWindowOpen', data: { hasRef: !!w, popupBlocked: w === null }, hypothesisId: 'H3', runId: 'app-crash-fix' });
+    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'afterWindowOpen', data: { hasRef: !!w, popupBlocked: w === null }, hypothesisId: 'H3', runId: 'fb-auto-open' });
     // #endregion
     if (!w) {
       window.location.assign(shareHref);
       // #region agent log
-      _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'sameTabFallback', data: { reason: 'popupBlocked' }, hypothesisId: 'H3', runId: 'app-crash-fix' });
+      _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'sameTabFallback', data: { reason: 'popupBlocked' }, hypothesisId: 'H3', runId: 'fb-auto-open' });
       // #endregion
     }
   } catch (e) {
     // #region agent log
-    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'error', data: { err: String(e && e.message) }, hypothesisId: 'H4', runId: 'app-crash-fix' });
+    _agentDbg({ location: 'index.html:shareOpenFacebook', message: 'error', data: { err: String(e && e.message) }, hypothesisId: 'H4', runId: 'fb-auto-open' });
     // #endregion
+    try {
+      copyStringToClipboard(url, copiedMsg);
+    } catch (e2) {}
   }
 }
 
