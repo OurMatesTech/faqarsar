@@ -6439,7 +6439,11 @@
     "parents": [
       "p18"
     ],
-    "children": [],
+    "children": [
+      "p517",
+      "p518",
+      "p519"
+    ],
     "notes": "📍 Faqarsar, Punjab",
     "gurmukhi": "ਅਜੈਬ ਸਿੰਘ",
     "gender": "male",
@@ -8951,6 +8955,178 @@
     "notes": "📍 6 Mk-B, Pilibanga, Sri Ganganagar, Rajasthan 335039",
     "gurmukhi": "ਨਵਨੀਤ ਕੌਰ",
     "gender": "female",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p517": {
+    "id": "p517",
+    "firstName": "",
+    "middleName": "Nachattar",
+    "lastName": "Singh",
+    "parents": [
+      "p365"
+    ],
+    "children": [
+      "p523",
+      "p524"
+    ],
+    "notes": "",
+    "gurmukhi": "ਨਛੱਤਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p518": {
+    "id": "p518",
+    "firstName": "",
+    "middleName": "Sardool",
+    "lastName": "Singh",
+    "parents": [
+      "p365"
+    ],
+    "children": [
+      "p520"
+    ],
+    "notes": "",
+    "gurmukhi": "ਸਰਦੂਲ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p519": {
+    "id": "p519",
+    "firstName": "",
+    "middleName": "Dharminder",
+    "lastName": "Singh",
+    "parents": [
+      "p365"
+    ],
+    "children": [
+      "p521",
+      "p522"
+    ],
+    "notes": "",
+    "gurmukhi": "ਧਰਮਿੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p520": {
+    "id": "p520",
+    "firstName": "",
+    "middleName": "Sikander",
+    "lastName": "Singh",
+    "parents": [
+      "p518"
+    ],
+    "children": [],
+    "notes": "",
+    "gurmukhi": "ਸਿਕੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p521": {
+    "id": "p521",
+    "firstName": "",
+    "middleName": "Sukhjinder",
+    "lastName": "Singh",
+    "parents": [
+      "p519"
+    ],
+    "children": [],
+    "notes": "",
+    "gurmukhi": "ਸੁਖਜਿੰਦਰ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p522": {
+    "id": "p522",
+    "firstName": "",
+    "middleName": "Onkardeep",
+    "lastName": "Singh",
+    "parents": [
+      "p519"
+    ],
+    "children": [],
+    "notes": "",
+    "gurmukhi": "ੳਕਾਰਦੀਪ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p523": {
+    "id": "p523",
+    "firstName": "",
+    "middleName": "Gurlabh",
+    "lastName": "Singh",
+    "parents": [
+      "p517"
+    ],
+    "children": [
+      "p526"
+    ],
+    "notes": "",
+    "gurmukhi": "ਗੁਰਲਾਭ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p524": {
+    "id": "p524",
+    "firstName": "",
+    "middleName": "Rashpal",
+    "lastName": "Singh",
+    "parents": [
+      "p517"
+    ],
+    "children": [
+      "p525"
+    ],
+    "notes": "",
+    "gurmukhi": "ਰਛਪਾਲ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p525": {
+    "id": "p525",
+    "firstName": "",
+    "middleName": "Ekam",
+    "lastName": "Singh",
+    "parents": [
+      "p524"
+    ],
+    "children": [],
+    "notes": "",
+    "gurmukhi": "ਏਕਮ ਸਿੰਘ",
+    "gender": "male",
+    "birth": "",
+    "death": "",
+    "spouse": ""
+  },
+  "p526": {
+    "id": "p526",
+    "firstName": "",
+    "middleName": "Agam",
+    "lastName": "Singh",
+    "parents": [
+      "p523"
+    ],
+    "children": [],
+    "notes": "",
+    "gurmukhi": "ਅਗਮ ਸਿੰਘ",
+    "gender": "male",
     "birth": "",
     "death": "",
     "spouse": ""
